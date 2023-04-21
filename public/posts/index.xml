@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Roman Rader</title>
+    <link>https://rrader.github.io/posts/</link>
+    <description>Recent content in Posts on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 22 Apr 2023 00:06:01 +0300</lastBuildDate><atom:link href="https://rrader.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://rrader.github.io/posts/about/</link>
+      <pubDate>Sat, 22 Apr 2023 00:06:01 +0300</pubDate>
+      
+      <guid>https://rrader.github.io/posts/about/</guid>
+      <description>📧 xrader00@vutbr.cz
+🎓 Google Scholar
+📧 roman.rader@gmail.com
+🔗 LinkedIn
+🐙 Github
+❓ Stack Overflow
+💻 Geektastic
+📍 Kyiv, Ukraine</description>
+    </item>
+    
+  </channel>
+</rss>

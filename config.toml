@@ -1,0 +1,4 @@
+baseURL = 'https://rrader.github.io/'
+languageCode = 'en-us'
+title = 'Roman Rader'
+theme = "nostyleplease"
