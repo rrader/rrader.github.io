@@ -35,10 +35,21 @@ title = "google scholar"
 url = "https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ"
 
 [[entries]]
-title = "all posts"
+title = "teaching"
 
 [entries.post_list]
-limit = 100
+section = "teach_posts"
+limit = 5
 show_more = true
 show_more_text = "See archive..."
-show_more_url = "posts"
+show_more_url = "teach_posts"
+
+[[entries]]
+title = "study"
+
+[entries.post_list]
+section = "study_posts"
+limit = 5
+show_more = true
+show_more_text = "See archive..."
+show_more_url = "study_posts"

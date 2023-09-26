@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Study posts on Roman Rader</title>
+    <link>https://rrader.github.io/study_posts/</link>
+    <description>Recent content in Study posts on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Sep 2023 11:47:10 +0300</lastBuildDate><atom:link href="https://rrader.github.io/study_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study</title>
+      <link>https://rrader.github.io/study_posts/flubot-case-study/</link>
+      <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
+      
+      <guid>https://rrader.github.io/study_posts/flubot-case-study/</guid>
+      <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.
+Attendance at the 48th IEEE Conference on Local Computer Networks Our paper on Detecting DoH-based data exfiltration was published at the 48th IEEE Conference on Local Computer Networks, which took place from October 1-5, 2023, in Daytona Beach, Florida, USA.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,7 @@ draft: false
 mathjax: true
 ---
 
-Link to the detailed experiment results with jupyter notebooks: [rrader.github.io/doh-flubot-detection/](https://rrader.github.io/doh-flubot-detection/)
+RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.
 
 # Attendance at the 48th IEEE Conference on Local Computer Networks
 
@@ -15,7 +15,7 @@ Our paper on Detecting DoH-based data exfiltration was published at the 48th IEE
 
 ## Introduction
 
-Our paper describes a case-study on detecting the FluBot, an Android banking Trojan active in 2021-2022. Prior work on DoH malware detection has focused on machine learning classifiers to detect malware flows within DoH traffic. Our paper introduces a two-layer detection method.
+Paper describes a case-study on detecting the FluBot, an Android banking Trojan active in 2021-2022. Prior work on DoH malware detection has focused on machine learning classifiers to detect malware flows within DoH traffic. Our paper introduces a two-layer detection method.
 
 ## Two-Layered DoH Malware Detection
 
@@ -62,6 +62,28 @@ The moment of infection of an Android with FluBot. The value of~$\ln \rho(a)$ ri
 We introduced a two-layer classification method to detect FluBot malware exploiting DoH covert channels. Future research will focus on enhancing detection accuracy and extending the model to other DNS-based covert channels like DoH, DoT, and DoQ.
 
 ---
+
+- [Experimental jupyter notebooks](https://rrader.github.io/doh-flubot-detection/)
+- DOI [10.1109/LCN58197.2023.10223341](https://doi.org/10.1109/LCN58197.2023.10223341)
+- Citation:
+
+```
+@INPROCEEDINGS{10223341,
+  author={Rader, Roman and Jerabek, Kamil and Rysavy, Ondrej},
+  booktitle={2023 IEEE 48th Conference on Local Computer Networks (LCN)}, 
+  title={Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={1-4},
+  abstract={This paper presents a novel approach for detecting the FluBot malware, an advanced Android banking Trojan that has been observed in active attacks in 2021 and 2022. The proposed method uses a two-layer detection mechanism to identify FluBot network connections. In the first layer, a machine learning algorithm is used to detect DNS-over-HTTPS (DoH) within Netflow records. The second layer uses a modified version of an existing domain generation algorithm (DGA) detection algorithm to target the DoH connections associated with the FluBot malware specifically. To evaluate the effectiveness of this approach, we used a dataset consisting of FluBot network traffic captured in a controlled sandbox environment. The preliminary results show that our DoH classifier achieves high accuracy and detection rates in identifying instances of FluBot malware, while maintaining a low false positive rate.},
+  keywords={},
+  doi={10.1109/LCN58197.2023.10223341},
+  ISSN={2832-1421},
+  month={Oct},}
+```
+
+---
 References:
 
  - [1] K. Jeřábek, K. Hynek, T. Čejka, and O. Ryšavỳ, “Collection of datasets with dns over https traffic,” Data in Brief, vol. 42, p. 108310, 2022.
@@ -73,4 +95,4 @@ References:
    and Information System (ICIMCIS), pp. 202–206, IEEE, 2022.
 
 This work was supported by the Technology Agency of the Czech Republic as part of the
-   FW03010099 project: Context-based analysis of encrypted traffic using flow data.]
+   FW03010099 project: Context-based analysis of encrypted traffic using flow data.

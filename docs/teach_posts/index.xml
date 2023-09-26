@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Roman Rader</title>
-    <link>https://rrader.github.io/</link>
-    <description>Recent content on Roman Rader</description>
+    <title>Teaching posts on Roman Rader</title>
+    <link>https://rrader.github.io/teach_posts/</link>
+    <description>Recent content in Teaching posts on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Aug 2022 21:30:04 +0800</lastBuildDate><atom:link href="https://rrader.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 16:03:47 +0300</lastBuildDate><atom:link href="https://rrader.github.io/teach_posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[9 клас] Мова програмування Python</title>
       <link>https://rrader.github.io/teach_posts/python/</link>
@@ -24,16 +24,6 @@
       <guid>https://rrader.github.io/teach_posts/it_society/</guid>
       <description>Руденко, Речич, Потієнко &amp;ldquo;Інформатика 10(11)&amp;rdquo;: https://drive.google.com/file/d/10RYy98dABr-PaZ9-ynB5S1aH9bUGNFSP/view?usp=sharing
 §1.1 - §1.7 Інформаційна безпека Лекція Тріада інформаційної безпеки Конфіденційність (англ. Confidentiality) Цілісність (англ. Integrity) Доступність (англ. Availability) Відео як захистити себе від кіберзлочинності: https://www.youtube.com/watch?v=DlUzZEZeuRs&amp;amp;t=74s Створення Telegram-бота Частина 1 Частина 2 Онлайн-навчання Лекція Цифрова особистість: http://mediadriver.online/tsifrova_osobystist_u_nebezpetsi/tsifrova-osobistist/ Ресурси для онлайн-навчання: https://prometheus.org.ua https://ed-era.com https://www.edx.org https://www.coursera.org інші </description>
-    </item>
-    
-    <item>
-      <title>[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study</title>
-      <link>https://rrader.github.io/study_posts/flubot-case-study/</link>
-      <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
-      
-      <guid>https://rrader.github.io/study_posts/flubot-case-study/</guid>
-      <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.
-Attendance at the 48th IEEE Conference on Local Computer Networks Our paper on Detecting DoH-based data exfiltration was published at the 48th IEEE Conference on Local Computer Networks, which took place from October 1-5, 2023, in Daytona Beach, Florida, USA.</description>
     </item>
     
   </channel>
