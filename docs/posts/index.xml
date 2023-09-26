@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Roman Rader</title>
-    <link>https://rrader.github.io/</link>
-    <description>Recent content on Roman Rader</description>
+    <title>Posts on Roman Rader</title>
+    <link>https://rrader.github.io/posts/</link>
+    <description>Recent content in Posts on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Aug 2022 21:30:04 +0800</lastBuildDate><atom:link href="https://rrader.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 11:47:10 +0300</lastBuildDate><atom:link href="https://rrader.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study</title>
       <link>https://rrader.github.io/posts/flubot-case-study/</link>
