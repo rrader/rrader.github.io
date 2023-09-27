@@ -22,6 +22,11 @@ draft: false
  - [Частина 1](https://docs.google.com/presentation/d/1eZyYJT-uH31v6iwMQBNXnYgzJrCUz_CKJWmkwyTV-yE/edit#slide=id.p)
  - [Частина 2](https://docs.google.com/presentation/d/1IrKcm3caWXpCzmp1su9NKmlfHxmKSYHl8pKGRcPCmTg/edit#slide=id.p)
 
+# Штучний інтелект, інтернет речей
+
+ - [Лекція](https://docs.google.com/presentation/d/1snfh9XLUgh_QHbQ9xLaT0vSYccP_t3W2/edit?usp=sharing&ouid=104694272738030810384&rtpof=true&sd=true) 
+ - [Правила гри в імітацію](https://docs.google.com/presentation/d/1t2geuQFSIq9EgQXQnoMUEdM54Jl7-Ry4/edit?usp=sharing&ouid=104694272738030810384&rtpof=true&sd=true)
+
 # Онлайн-навчання
 
  - [Лекція](https://docs.google.com/presentation/d/1lytr-3QN0vq3zszE-Elsmsza0CLnWVzRcQ2WpzRte8c/edit#slide=id.g2471bf9b87b_1_28)
