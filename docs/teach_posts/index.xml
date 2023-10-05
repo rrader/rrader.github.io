@@ -6,7 +6,18 @@
     <description>Recent content in Teaching posts on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Sep 2023 16:03:47 +0300</lastBuildDate><atom:link href="https://rrader.github.io/teach_posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Oct 2023 15:29:19 +0300</lastBuildDate><atom:link href="https://rrader.github.io/teach_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[10 клас] Моделі і моделювання. Аналіз та візуалізація даних</title>
+      <link>https://rrader.github.io/teach_posts/data_analysis/</link>
+      <pubDate>Thu, 05 Oct 2023 15:29:19 +0300</pubDate>
+      
+      <guid>https://rrader.github.io/teach_posts/data_analysis/</guid>
+      <description>Руденко, Речич, Потієнко &amp;ldquo;Інформатика 10(11)&amp;rdquo;: https://drive.google.com/file/d/10RYy98dABr-PaZ9-ynB5S1aH9bUGNFSP/view?usp=sharing
+§2.1 - §2.7 Набори даних Набори даних можна взяти з відкритих джерел, наприклад:
+Набори відкритих даних від державних органів України: https://toolkit.data.gov.ua/ https://data.gov.ua/ https://diia.data.gov.ua/ Санкції НАЗК (Національне агентство з питань запобігання корупції) https://sanctions.nazk.gov.ua/ Набори даних Європейського Союзу https://data.europa.eu/ The Humanitarian Data Exchange https://data.humdata.org/ Відкриті дані ООН https://data.un.org/ Статті Як відкриті дані допомагають Україні під час війни День відкритих даних відзначається 4 березня </description>
+    </item>
+    
     <item>
       <title>[9 клас] Мова програмування Python</title>
       <link>https://rrader.github.io/teach_posts/python/</link>
