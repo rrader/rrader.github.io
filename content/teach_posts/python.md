@@ -7,6 +7,8 @@ draft: false
 # Книги
  - Для повторення основ Python: Морзе, Барна "Інформатика 8 клас": https://drive.google.com/file/d/1qPFtN_AihyhUMa0ThRIljHha-e4dgeod/view?usp=sharing
    - §12, 13, 17, 18
+- Морзе, Барна "Інформатика 9 клас": https://drive.google.com/drive/folders/10EH_IQxRZ8qVZvoNnB_ihOBEX2VrcTKQ
+   - §11, 12, 13, 14
 
 # Теорія та практичні роботи
 
