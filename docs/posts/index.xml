@@ -6,17 +6,7 @@
     <description>Recent content in Posts on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Sep 2023 11:47:10 +0300</lastBuildDate><atom:link href="https://rrader.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study</title>
-      <link>https://rrader.github.io/posts/flubot-case-study/</link>
-      <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
-      
-      <guid>https://rrader.github.io/posts/flubot-case-study/</guid>
-      <description>Link to the detailed experiment results with jupyter notebooks: rrader.github.io/doh-flubot-detection/
-Attendance at the 48th IEEE Conference on Local Computer Networks Our paper on Detecting DoH-based data exfiltration was published at the 48th IEEE Conference on Local Computer Networks, which took place from October 1-5, 2023, in Daytona Beach, Florida, USA. Paper is authored by Roman Rader, Kamil Jerabek, Ondrej Rysavy.
-Introduction Our paper describes a case-study on detecting the FluBot, an Android banking Trojan active in 2021-2022.</description>
-    </item>
-    
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://rrader.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

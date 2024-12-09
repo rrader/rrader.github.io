@@ -6,6 +6,10 @@ title = "linkedin"
 url = "https://www.linkedin.com/in/roman-rader/"
 
 [[entries.entries]]
+title = "📩 contact me"
+url = "mailto:roman.rader@gmail.com"
+
+[[entries.entries]]
 title = "located at Kyiv, Ukraine 🇺🇦"
 
 [[entries.entries]]
@@ -24,13 +28,6 @@ title = "stack overflow"
 url = "https://stackoverflow.com/users/330406/antigluk"
 
 [[entries.entries]]
-title = "🎓 academic"
-
-[[entries.entries.entries]]
-title = "xrader00@vutbr.cz"
-url = "mailto:xrader00@vutbr.cz"
-
-[[entries.entries.entries]]
 title = "google scholar"
 url = "https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ"
 
@@ -45,7 +42,7 @@ show_more_text = "See archive..."
 show_more_url = "teach_posts"
 
 [[entries]]
-title = "study"
+title = "research"
 
 [entries.post_list]
 section = "study_posts"
