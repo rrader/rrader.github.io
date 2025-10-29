@@ -2,29 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://rrader.github.io/teach_posts/</loc>
+    <loc>http://localhost:1313/teach_posts/</loc>
+    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/teach_posts/cybersecurity-month-2025/</loc>
+    <lastmod>2025-10-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/teach_posts/method-ai-course/</loc>
     <lastmod>2024-12-09T23:57:00+03:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/teach_posts/method-ai-course/</loc>
-    <lastmod>2024-12-09T23:57:00+03:00</lastmod>
-  </url><url>
-    <loc>https://rrader.github.io/teach_posts/classroom-site/</loc>
+    <loc>http://localhost:1313/teach_posts/classroom-site/</loc>
     <lastmod>2023-09-26T16:03:47+03:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/study_posts/flubot-case-study/</loc>
+    <loc>http://localhost:1313/study_posts/flubot-case-study/</loc>
     <lastmod>2023-09-26T11:47:10+03:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/study_posts/</loc>
+    <loc>http://localhost:1313/study_posts/</loc>
     <lastmod>2023-09-26T11:47:10+03:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2023-01-01T10:28:10+08:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2022-08-25T21:30:04+08:00</lastmod>
   </url><url>
-    <loc>https://rrader.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>https://rrader.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
   </url>
 </urlset>

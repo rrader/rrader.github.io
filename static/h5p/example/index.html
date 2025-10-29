@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5P Example Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .button {
+            background: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #1976D2;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #c8e6c9;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✅ H5P Integration Test</h1>
+        <p>This is a placeholder H5P content to test the integration.</p>
+        
+        <div class="info">
+            <strong>📝 Note:</strong> Replace this with your actual H5P content by unzipping your .h5p file into the h5p directory.
+        </div>
+        
+        <h2>Interactive Example</h2>
+        <p>Click the button below to test interactivity:</p>
+        <button class="button" onclick="showResult()">Click Me!</button>
+        
+        <div id="result">
+            <strong>Success!</strong> H5P content is working correctly. 
+            You can now replace this with your actual H5P interactive content.
+        </div>
+    </div>
+    
+    <script>
+        function showResult() {
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+

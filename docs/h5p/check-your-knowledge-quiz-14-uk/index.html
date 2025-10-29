@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5P Activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/h5p-standalone@3.8.0/dist/styles/h5p.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        #h5p-container {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="h5p-container"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/h5p-standalone@3.8.0/dist/main.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const options = {
+                h5pJsonPath: '.',
+                frameJs: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.8.0/dist/frame.bundle.min.js',
+                frameCss: 'https://cdn.jsdelivr.net/npm/h5p-standalone@3.8.0/dist/styles/h5p.min.css',
+            };
+            
+            const el = document.getElementById('h5p-container');
+            
+            try {
+                new H5PStandalone.H5P(el, options);
+            } catch (error) {
+                console.error('H5P error:', error);
+                el.innerHTML = '<div style="padding: 20px; color: red;">Помилка завантаження: ' + error.message + '</div>';
+            }
+        });
+    </script>
+</body>
+</html>

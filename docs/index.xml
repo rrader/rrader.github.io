@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Roman Rader</title>
-    <link>https://rrader.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Dec 2024 23:57:00 +0300</lastBuildDate>
-    <atom:link href="https://rrader.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Місяць кібербезпеки 2025</title>
+      <link>http://localhost:1313/teach_posts/cybersecurity-month-2025/</link>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/teach_posts/cybersecurity-month-2025/</guid>
+      <description>Про місяць кібербезпеки Місяць кібербезпеки — це глобальна ініціатива, присвячена підвищенню обізнаності про важливість безпеки в цифровому світі. У жовтні 2025 року ми приєдналися до цієї ініціативи, пропонуючи серію інтерактивних вправ та тестів, які допоможуть вам краще зрозуміти основи цифрової безпеки, захисту персональних даних, безпечного користування інтернетом та соціальними мережами. Ці матеріали створені для того, щоб кожен міг навчитися захищати себе в онлайн-просторі та розвинути важливі цифрові навички.&#xA;Подяка Ці інтерактивні вправи базуються на матеріалах курсу Digital Skills: Security and Safety від Charles Sturt University (Австралія).</description>
+    </item>
     <item>
       <title>Методичні матеріали для курсу Інженерія ШІ</title>
-      <link>https://rrader.github.io/teach_posts/method-ai-course/</link>
+      <link>http://localhost:1313/teach_posts/method-ai-course/</link>
       <pubDate>Mon, 09 Dec 2024 23:57:00 +0300</pubDate>
-      <guid>https://rrader.github.io/teach_posts/method-ai-course/</guid>
+      <guid>http://localhost:1313/teach_posts/method-ai-course/</guid>
       <description>Вітаю!&#xA;На сайті https://class.rmn.pp.ua/method викладені методичні матеріали для курсу &amp;ldquo;Основи інженерії штучного інтелекту&amp;rdquo;.&#xA;Наприклад, ви зможете знайти:&#xA;Навчально-методичний посібник Постер &amp;ldquo;5 великих ідей штучного інтелекту&amp;rdquo; українською мовою З найкращими побажаннями, Роман Ілліч Радер</description>
     </item>
     <item>
       <title>Навчальні матеріали для уроків з інформатики</title>
-      <link>https://rrader.github.io/teach_posts/classroom-site/</link>
+      <link>http://localhost:1313/teach_posts/classroom-site/</link>
       <pubDate>Tue, 26 Sep 2023 16:03:47 +0300</pubDate>
-      <guid>https://rrader.github.io/teach_posts/classroom-site/</guid>
+      <guid>http://localhost:1313/teach_posts/classroom-site/</guid>
       <description>Вітаю!&#xA;На сайті https://class.rmn.pp.ua/ ви зможете знайти навчальні матеріали, призначені для підготовки до контрольних та практичних робіт з інформатики.&#xA;З найкращими побажаннями, Роман Ілліч Радер</description>
     </item>
     <item>
       <title>[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study</title>
-      <link>https://rrader.github.io/study_posts/flubot-case-study/</link>
+      <link>http://localhost:1313/study_posts/flubot-case-study/</link>
       <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
-      <guid>https://rrader.github.io/study_posts/flubot-case-study/</guid>
+      <guid>http://localhost:1313/study_posts/flubot-case-study/</guid>
       <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.&#xA;Attendance at the 48th IEEE Conference on Local Computer Networks Our paper on Detecting DoH-based data exfiltration was published at the 48th IEEE Conference on Local Computer Networks, which took place from October 1-5, 2023, in Daytona Beach, Florida, USA.</description>
     </item>
   </channel>

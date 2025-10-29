@@ -1,0 +1,15 @@
+{{- $name := .Get "name" -}}
+{{- $height := .Get "height" | default "600px" -}}
+{{- $width := .Get "width" | default "100%" -}}
+
+<div class="h5p-container" style="max-width: {{ $width }}; margin: 1rem auto;">
+    <iframe 
+        src="/h5p/{{ $name }}/index.html" 
+        style="width: 100%; height: {{ $height }}; border: 1px solid #ccc; border-radius: 4px;"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; fullscreen; geolocation; microphone; camera; midi; encrypted-media"
+        title="H5P Content: {{ $name }}">
+    </iframe>
+</div>
+
