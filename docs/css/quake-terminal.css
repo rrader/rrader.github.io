@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=VT323&display=swap');
+
+:root {
+  --bg-color: #0b0f0e;
+  --bg-panel: #111816;
+  --text-color: #00ff66;
+  --text-dim: #00b347;
+  --text-bright: #66ff99;
+  --accent-color: #00ff99;
+  --glow-color: rgba(0, 255, 102, 0.4);
+  --border-color: #004d1f;
+  --prompt-color: #00ff66;
+  --error-color: #ff3366;
+  --link-color: #33ffff;
+  --link-hover: #ffffff;
+  --font-main: 'Fira Code', monospace;
+  --font-retro: 'VT323', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.5;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* CRT Container & Screen Vignette */
+.crt-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(circle at center, var(--bg-panel) 0%, var(--bg-color) 100%);
+}
+
+/* CRT Scanlines Layer */
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.gfx-off .crt-scanlines {
+  opacity: 0 !important;
+}
+
+/* CRT Screen Glow Flicker */
+.crt-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.7);
+  animation: crtFlicker 0.15s infinite;
+  opacity: 0.15;
+}
+
+.gfx-off .crt-glow {
+  display: none;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.12; }
+  50% { opacity: 0.18; }
+  100% { opacity: 0.14; }
+}
+
+/* Header Bar */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid var(--border-color);
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-bright);
+  text-shadow: 0 0 8px var(--glow-color);
+}
+
+.header-title .quake-logo {
+  font-size: 18px;
+  color: var(--accent-color);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ctrl-btn {
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  font-family: var(--font-main);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-shadow: 0 0 5px var(--glow-color);
+}
+
+.ctrl-btn:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+.ctrl-btn.active {
+  border-color: var(--text-bright);
+  box-shadow: 0 0 6px var(--glow-color);
+}
+
+/* Terminal Body */
+.terminal-container {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.terminal-container::-webkit-scrollbar {
+  width: 6px;
+}
+.terminal-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.terminal-output {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.output-line {
+  word-break: break-word;
+  white-space: pre-wrap;
+  text-shadow: 0 0 4px var(--glow-color);
+  animation: lineAppear 0.1s ease-out;
+}
+
+.output-line.system {
+  color: var(--text-bright);
+}
+
+.output-line.error {
+  color: var(--error-color);
+  text-shadow: 0 0 6px rgba(255, 51, 102, 0.4);
+}
+
+.output-line.command-echo {
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.output-line a {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.output-line a:hover {
+  color: var(--link-hover);
+  text-shadow: 0 0 8px var(--link-color);
+}
+
+/* Quick Action Pills */
+.quick-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 15px 0;
+}
+
+.pill-btn {
+  background: rgba(0, 255, 102, 0.08);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 0 0 4px var(--glow-color);
+}
+
+.pill-btn:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+  border-color: var(--text-color);
+  box-shadow: 0 0 10px var(--glow-color);
+}
+
+/* Input Line */
+.input-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.prompt-symbol {
+  color: var(--prompt-color);
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 0 8px var(--glow-color);
+}
+
+.cmd-input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cmd-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-bright);
+  font-family: var(--font-main);
+  font-size: 15px;
+  font-weight: 600;
+  text-shadow: 0 0 6px var(--glow-color);
+  caret-color: var(--text-bright);
+}
+
+/* Matrix Overlay Canvas */
+#matrix-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  display: none;
+}
+
+/* Banner ASCII */
+.ascii-banner {
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--accent-color);
+  text-shadow: 0 0 8px var(--glow-color);
+  white-space: pre;
+  margin-bottom: 12px;
+  overflow-x: auto;
+}
+
+@keyframes lineAppear {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  html, body {
+    font-size: 13px;
+  }
+  .header-bar {
+    padding: 8px 10px;
+  }
+  .header-title {
+    font-size: 13px;
+  }
+  .ctrl-btn {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+  .terminal-container {
+    padding: 12px;
+  }
+  .ascii-banner {
+    font-size: 12px;
+  }
+}

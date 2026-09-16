@@ -4,3 +4,5 @@ title = 'Roman Rader'
 theme = "nostyleplease"
 publishDir = "docs"
 googleAnalytics = "G-8H1V8F8PHP"
+relativeURLs = true
+

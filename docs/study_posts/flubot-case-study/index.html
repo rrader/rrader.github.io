@@ -25,11 +25,11 @@ if (!doNotTrack) {
 </script>
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
   
   
   
-  <link rel="stylesheet" href="/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
    <script>
   MathJax = {
     tex: {
@@ -56,7 +56,7 @@ if (!doNotTrack) {
 <body a="auto">
         <main class="page-content" aria-label="Content">
             <div class="w">
-<a href="/">..</a>
+<a href="../../">..</a>
 
 <article>
     <p class="post-meta">
@@ -69,14 +69,14 @@ if (!doNotTrack) {
 
     <p>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.</p>
 <h1 id="attendance-at-the-48th-ieee-conference-on-local-computer-networks">Attendance at the 48th IEEE Conference on Local Computer Networks</h1>
-<p><img src="/flubot/lcn2023_banner.png" alt="Conference Banner"></p>
+<p><img src="../../flubot/lcn2023_banner.png" alt="Conference Banner"></p>
 <p>Our paper on Detecting DoH-based data exfiltration was published at the 48th IEEE Conference on <a href="https://www.ieeelcn.org/index.html">Local Computer Networks</a>, which took place from October 1-5, 2023, in Daytona Beach, Florida, USA. Paper is authored by Roman Rader, Kamil Jerabek, Ondrej Rysavy.</p>
 <h2 id="introduction">Introduction</h2>
 <p>Paper describes a case-study on detecting the FluBot, an Android banking Trojan active in 2021-2022. Prior work on DoH malware detection has focused on machine learning classifiers to detect malware flows within DoH traffic. Our paper introduces a two-layer detection method.</p>
 <h2 id="two-layered-doh-malware-detection">Two-Layered DoH Malware Detection</h2>
 <p>This approach allows the same malware detection algorithm to be used for different encrypted DNS protocols (e.g., DNS-over-TLS, DoQ) by <strong>plugging in different classifiers to the first layer</strong>.</p>
 <p>Also, now we can apply malware-detection algorithms originally designed for the plaintext DNS to the DoH traffic <strong>by plugging in detection algorithms to the second layer</strong>.</p>
-<p><img src="/flubot/two-layers-rev.drawio.png" alt="Two layers">
+<p><img src="../../flubot/two-layers-rev.drawio.png" alt="Two layers">
 Application of Plaintext DNS malware detection algorithm to the encrypted DNS using DoH classification model.</p>
 <h2 id="algorithm-details">Algorithm Details</h2>
 <ul>
@@ -92,11 +92,11 @@ Application of Plaintext DNS malware detection algorithm to the encrypted DNS us
 <p>To enhance accuracy of DoH flows detection, we reduce the impact of initial TLS handshake packets, which often reflect server deployment rather than actual traffic. As seen on the figure, <strong>we have applied weights to the first few packets based on their position</strong> in the handshake sequence to account for TLS handshake varying length and ensure that no important information is lost.</p>
 </li>
 </ul>
-<p><img src="/flubot/elimination.drawio.png" alt="Elimination of TLS">
+<p><img src="../../flubot/elimination.drawio.png" alt="Elimination of TLS">
 TLS Handshake influence elimination by applying lower weights to~the~first N, M &lt;= 6 packets.</p>
 <h2 id="experimental-setup">Experimental Setup</h2>
 <p>We created a sandbox network of three Android x86 emulators and one Linux instance to simulate the malware detection method. We connected these machines via an OpenWRT router with <strong>ipfixprobe tool</strong> to collect IPFIX flows to capture network traffic at the border.</p>
-<p><img src="/flubot/network.dio.drawio.png" alt="Network">
+<p><img src="../../flubot/network.dio.drawio.png" alt="Network">
 Sandbox network used to collect FluBot malware traffic, as well as benign traffic from other Android devices.</p>
 <h2 id="results-of-two-experiments">Results of Two Experiments</h2>
 <ul>
@@ -107,7 +107,7 @@ Sandbox network used to collect FluBot malware traffic, as well as benign traffi
 <p>In Experiment 2 (Real-World Scenario), we infected one Android VM with malware and scripted it to generate benign traffic at the same time <strong>to test our method&rsquo;s ability to detect the infected machine amidst normal browsing interference</strong>. We have applied an ARIMA-based outlier detection using confidence intervals based on the user&rsquo;s typical behavior (see figure).</p>
 </li>
 </ul>
-<p><img src="/flubot/fig-real-world-flubot-detection-1-output-2.png" alt="Results ARIMA">
+<p><img src="../../flubot/fig-real-world-flubot-detection-1-output-2.png" alt="Results ARIMA">
 The moment of infection of an Android with FluBot. The value of~$\ln \rho(a)$ rises above the confidence interval after infection -&gt; IoC.</p>
 <h2 id="conclusions">Conclusions</h2>
 <p>We introduced a two-layer classification method to detect FluBot malware exploiting DoH covert channels. Future research will focus on enhancing detection accuracy and extending the model to other DNS-based covert channels like DoH, DoT, and DoQ.</p>

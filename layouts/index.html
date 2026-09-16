@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="green">
 <head>
-	<meta name="generator" content="Hugo 0.123.8">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Roman Rader // Quake Terminal</title>
   <meta name="description" content="Personal Web Terminal of Roman Rader - Cybersecurity Researcher & AI Educator in Kyiv, Ukraine." />
 
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+  {{ with .Site.Params.googleAnalytics | default "G-8H1V8F8PHP" }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+    gtag('config', '{{ . }}', { 'anonymize_ip': false });
   </script>
-  
+  {{ end }}
 
   <link rel="stylesheet" href="css/quake-terminal.css" />
 </head>
@@ -25,7 +24,7 @@
     <div class="crt-glow"></div>
     <canvas id="matrix-canvas"></canvas>
 
-    
+    <!-- Top Header Bar -->
     <header class="header-bar">
       <div class="header-title">
         <span class="quake-logo">⚡</span>
@@ -37,11 +36,11 @@
       </div>
     </header>
 
-    
+    <!-- Terminal Main Body -->
     <main class="terminal-container">
       <div id="terminal-output" class="terminal-output"></div>
 
-      
+      <!-- Quick Action Buttons -->
       <div class="quick-pills">
         <button class="pill-btn" data-cmd="bio">bio</button>
         <button class="pill-btn" data-cmd="research">research</button>
@@ -51,7 +50,7 @@
         <button class="pill-btn" data-cmd="clear">clear</button>
       </div>
 
-      
+      <!-- Interactive Prompt Line -->
       <div class="input-line">
         <span class="prompt-symbol">[guest@rmn.pp.ua ~]$</span>
         <div class="cmd-input-wrapper">
