@@ -12,7 +12,7 @@ Off-the-shelf broom clips and generic hardware store wall mounts don't work:
 2. **Scratch risk:** rigid spring steel clamps or hard molded plastic jaws quickly scratch the anodized finish on the aluminum tube.
 3. **Fatigue of all-rigid snap clips:** 3D prints made entirely from PETG or PLA with flexure arms eventually suffer from layer fatigue, creep, or layer splitting under repeated snap cycles.
 
-To solve this properly, I designed a hybrid dual-material wall bracket in Autodesk Fusion 360: a rigid, dimensionally stable PETG base bracket combined with a flexible TPU retention strap.
+So I took the solid concept of an Everbilt rail broom clip and modified it in Fusion 360 to fit the exact width and oval contour of the Philips tube: widening the rigid PETG base bracket and reshaping the flexible TPU strap with proper tension.
 
 * **MakerWorld Model:** [Vacuum tube holder for Phillips 8000 Aqua Plus (Model 2871355)](https://makerworld.com/en/models/2871355-vacuum-tube-holder-for-phillips-8000-aqua-plus#profileId-3205806)
 * **Origin Inspiration:** Everbilt rail broom clip concept ([Printables 1214566](https://www.printables.com/model/1214566-broom-mop-attachments-for-everbilt-rail))
