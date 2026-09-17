@@ -21,17 +21,17 @@ So I took the solid concept of an Everbilt rail broom clip and modified it in Fu
 
 ---
 
-## 1. Tube Dimensions & Caliper Measurements
+## 1. Holder Geometry and Engineered Sizing
+ 
+Keep in mind that the figures below are not merely raw caliper readings of the bare tube (which can vary slightly depending on measurement point or manufacturing tolerances), but rather the tuned functional dimensions of the bracket itself, designed for smooth clearance, positive retention, and material elasticity:
 
-Before opening CAD, I took accurate caliper measurements of the tube profile and the mounting surface:
-
-| Dimension | Value | Notes |
+| Model Parameter | Value | Engineered Purpose & Fit |
 |---|---|---|
-| **Tube Width** | 42.5 mm | Width of the oval aluminum section (cradle inner span ~44.8 mm with clearance) |
-| **Tube Depth** | 32.0 mm | Profile thickness front-to-back (cradle saddle depth ~32.5 mm) |
-| **Max Throat Opening** | 50.0 mm | Sized so the tube won't fall out even when the latch is open |
-| **Hole Center Spacing** | 30.0 mm | Compact spacing between wall-mounting screw holes (holes centered at X = ±15 mm) |
-| **Screw Hole Diameter** | 4.5 mm | Sized for 3.5–4.0 mm wood screws or M4 fasteners (mounting wall thickness 3.0 mm) |
+| **Cradle Inner Width** | ~44.8 mm | Optimized clearance for the ~42.5 mm oval tube section |
+| **Cradle Saddle Depth** | ~32.5 mm | Sized for the ~32.0 mm tube profile thickness |
+| **Throat Opening Clearance** | 50.0 mm | Smooth entry: tube pops in easily without falling out forward |
+| **Hole Center Spacing** | 30.0 mm | Compact mounting base for cabinet walls (holes centered at X = ±15 mm) |
+| **Screw Hole Diameter** | 4.5 mm | Sized for 3.5–4.0 mm wood screws or M4 bolts (3.0 mm back wall thickness) |
 | **TPU Pre-tension Offset** | ~15–20 mm | Strap is slightly shorter than the arc for positive clamping tension |
 
 ---
