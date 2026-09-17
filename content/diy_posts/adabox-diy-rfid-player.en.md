@@ -50,9 +50,7 @@ All pushbuttons are wired directly from GPIO to `GND`, leveraging the ESP32 inte
 
 ## 2. Card Architecture & File System Design
 
-Most DIY audio projects store an internal index or lookup table matching Card UID to Track Number. If you swap SD cards, modify folders, or add new songs, card associations frequently break.
-
-In AdaBox, **the RFID card stores the full file path directly within its internal EEPROM memory blocks** (e.g. `/MUSIC/00003.mp3`).
+In AdaBox, **the RFID card stores the full file path directly within its internal EEPROM memory sectors** (e.g. `/MUSIC/00003.mp3`). When a card is scanned over SPI, the ESP32 reads this path and commands the DY-SV5W audio module over UART — keeping the firmware simple and completely stateless without maintaining lookup tables on the microcontroller.
 
 The SD card is formatted as FAT32 (MBR) with a clean directory layout:
 ```text

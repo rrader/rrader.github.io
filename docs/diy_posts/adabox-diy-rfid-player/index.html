@@ -123,8 +123,7 @@ if (!doNotTrack) {
 </ul>
 <hr>
 <h2 id="2-card-architecture--file-system-design">2. Card Architecture &amp; File System Design</h2>
-<p>Most DIY audio projects store an internal index or lookup table matching Card UID to Track Number. If you swap SD cards, modify folders, or add new songs, card associations frequently break.</p>
-<p>In AdaBox, <strong>the RFID card stores the full file path directly within its internal EEPROM memory blocks</strong> (e.g. <code>/MUSIC/00003.mp3</code>).</p>
+<p>In AdaBox, <strong>the RFID card stores the full file path directly within its internal EEPROM memory sectors</strong> (e.g. <code>/MUSIC/00003.mp3</code>). When a card is scanned over SPI, the ESP32 reads this path and commands the DY-SV5W audio module over UART — keeping the firmware simple and completely stateless without maintaining lookup tables on the microcontroller.</p>
 <p>The SD card is formatted as FAT32 (MBR) with a clean directory layout:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/MUSIC/
 </span></span><span style="display:flex;"><span>  00001.mp3   ← regular music: auto-advances to the next song when done
