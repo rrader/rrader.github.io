@@ -30,7 +30,7 @@ The overarching design goal was **complete autonomy, simplicity, and child safet
 |---|---|---|
 | **Microcontroller** | ESP32-WROOM-32D | Core logic, RFID handling, hardware UART to player, WS2812B LED animations |
 | **Audio Module** | DY-SV5W (SV5W) | Dedicated hardware MP3/WAV decoding from MicroSD, built-in 5W Class-D amplifier |
-| **Speaker** | 4Ω, 5W (rubber surround) | Warm, punchy audio without distortion in a compact volume |
+| **Speaker** | 4Ω, 5W | Clear, loud enough audio for a kid's room |
 | **RFID Reader** | RC522 (13.56 MHz SPI) | Reads contactless Mifare Classic cards/keyfobs |
 | **Visual Feedback** | WS2812B 16-LED Ring | Status indication, volume visualization, interactive programming feedback |
 | **Controls** | KY-040 Encoder + 3 buttons | Big rotary volume knob + Play/Pause, Next, Prev buttons |
