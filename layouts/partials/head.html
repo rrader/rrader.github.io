@@ -23,6 +23,8 @@
   {{ $sass := resources.Get "css/main.scss" }}
   {{ $style := $sass | resources.ToCSS $options | resources.Fingerprint "sha512" }}
   <link rel="stylesheet" href="{{ $style.Permalink | relURL }}" integrity="{{ $style.Data.Integrity }}" />
-  <link rel="stylesheet" href="{{ "css/terminal-doc.css" | relURL }}" />
+  {{ $docOpts := dict "targetPath" "css/terminal-doc.css" "outputStyle" "compressed" }}
+  {{ $docCSS := resources.Get "scss/terminal-doc.scss" | toCSS $docOpts }}
+  <link rel="stylesheet" href="{{ $docCSS.RelPermalink }}" />
   {{ if .Params.mathjax }} {{ partial "mathjax.html" . }} {{ end }}
 </head>

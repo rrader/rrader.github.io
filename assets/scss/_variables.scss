@@ -1,0 +1,46 @@
+// =============================================================================
+// SHARED DESIGN TOKENS & PALETTE
+// =============================================================================
+
+// --- Typography ---
+$font-main: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+$font-retro: 'VT323', monospace;
+
+// --- Dark Terminal & Workstation Theme ---
+$bg-color: #0b0f0e;
+$bg-panel: #111816;
+$border-color: #004d1f;
+$border-subtle: #1a2f23;
+$text-color: #00ff66;
+$text-dim: #00b347;
+$text-bright: #66ff99;
+$accent-color: #00ff99;
+$accent-cyan: #00ddbb;
+$glow-color: rgba(0, 255, 102, 0.4);
+$glow-subtle: rgba(0, 204, 85, 0.25);
+$error-color: #ff3366;
+$link-color: #33ffff;
+$link-hover: #ffffff;
+
+// --- Window Controls ---
+$win-close: #ff5f56;
+$win-min: #ffbd2e;
+$win-max: #27c93f;
+
+// --- Light Paper Reader Theme ---
+$paper-bg: #ffffff;
+$paper-text: #171b19;
+$paper-muted: #596961;
+$paper-border: #e0e8e3;
+$paper-code-bg: #eef4f0;
+$paper-code-text: #05662a;
+$paper-accent: #00883a;
+$paper-link: #007733;
+$paper-link-hover: #00aa4a;
+$paper-hr: #dbe4de;
+
+// --- Code Blocks Inside Paper Reader ---
+$term-pre-bg: #0c1210;
+$term-pre-border: #1a3023;
+$term-pre-text: #e2f0e8;
+$term-pre-green: #00ff66;

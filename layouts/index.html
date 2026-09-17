@@ -16,7 +16,9 @@
   </script>
   {{ end }}
 
-  <link rel="stylesheet" href="{{ "css/quake-terminal.css" | relURL }}" />
+  {{ $quakeOpts := dict "targetPath" "css/quake-terminal.css" "outputStyle" "compressed" }}
+  {{ $quakeCSS := resources.Get "scss/quake-terminal.scss" | toCSS $quakeOpts }}
+  <link rel="stylesheet" href="{{ $quakeCSS.RelPermalink }}" />
 </head>
 <body>
   <div class="crt-wrapper">

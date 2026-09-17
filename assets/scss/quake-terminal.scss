@@ -1,26 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=VT323&display=swap');
+// =============================================================================
+// QUAKE TERMINAL STYLESHEET (Homepage)
+// Retro CRT Hacker Terminal
+// =============================================================================
+
+@import "common";
 
 :root {
-  --bg-color: #0b0f0e;
-  --bg-panel: #111816;
-  --text-color: #00ff66;
-  --text-dim: #00b347;
-  --text-bright: #66ff99;
-  --accent-color: #00ff99;
-  --glow-color: rgba(0, 255, 102, 0.4);
-  --border-color: #004d1f;
-  --prompt-color: #00ff66;
-  --error-color: #ff3366;
-  --link-color: #33ffff;
-  --link-hover: #ffffff;
-  --font-main: 'Fira Code', monospace;
-  --font-retro: 'VT323', monospace;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  --bg-color: #{$bg-color};
+  --bg-panel: #{$bg-panel};
+  --text-color: #{$text-color};
+  --text-dim: #{$text-dim};
+  --text-bright: #{$text-bright};
+  --accent-color: #{$accent-color};
+  --glow-color: #{$glow-color};
+  --border-color: #{$border-color};
+  --prompt-color: #{$text-color};
+  --error-color: #{$error-color};
+  --link-color: #{$link-color};
+  --link-hover: #{$link-hover};
+  --font-main: #{$font-main};
+  --font-retro: #{$font-retro};
 }
 
 html, body {
@@ -117,11 +116,11 @@ html, body {
   letter-spacing: 1px;
   color: var(--text-bright);
   text-shadow: 0 0 8px var(--glow-color);
-}
 
-.header-title .quake-logo {
-  font-size: 18px;
-  color: var(--accent-color);
+  .quake-logo {
+    font-size: 18px;
+    color: var(--accent-color);
+  }
 }
 
 .header-controls {
@@ -148,27 +147,29 @@ html, body {
   text-shadow: 0 0 5px var(--glow-color);
   text-decoration: none;
   user-select: none;
+
+  &:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--glow-color);
+    text-decoration: none;
+  }
+
+  &.active {
+    border-color: var(--text-bright);
+    box-shadow: 0 0 6px var(--glow-color);
+  }
 }
 
-.ctrl-btn:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
-  box-shadow: 0 0 10px var(--glow-color);
-  text-decoration: none;
-}
+.lang-btn {
+  &:not(.active) {
+    opacity: 0.7;
+  }
 
-.ctrl-btn.active {
-  border-color: var(--text-bright);
-  box-shadow: 0 0 6px var(--glow-color);
-}
-
-.lang-btn:not(.active) {
-  opacity: 0.7;
-}
-
-.lang-btn.active {
-  background: rgba(0, 255, 102, 0.12);
-  border-color: var(--text-bright);
+  &.active {
+    background: rgba(0, 255, 102, 0.12);
+    border-color: var(--text-bright);
+  }
 }
 
 /* Terminal Body */
@@ -179,16 +180,7 @@ html, body {
   z-index: 5;
   display: flex;
   flex-direction: column;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-color) transparent;
-}
-
-.terminal-container::-webkit-scrollbar {
-  width: 6px;
-}
-.terminal-container::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 3px;
+  @include terminal-scrollbar(var(--border-color));
 }
 
 .terminal-output {
@@ -203,31 +195,31 @@ html, body {
   white-space: pre-wrap;
   text-shadow: 0 0 4px var(--glow-color);
   animation: lineAppear 0.1s ease-out;
-}
 
-.output-line.system {
-  color: var(--text-bright);
-}
+  &.system {
+    color: var(--text-bright);
+  }
 
-.output-line.error {
-  color: var(--error-color);
-  text-shadow: 0 0 6px rgba(255, 51, 102, 0.4);
-}
+  &.error {
+    color: var(--error-color);
+    text-shadow: 0 0 6px rgba(255, 51, 102, 0.4);
+  }
 
-.output-line.command-echo {
-  color: var(--text-dim);
-  font-weight: 600;
-}
+  &.command-echo {
+    color: var(--text-dim);
+    font-weight: 600;
+  }
 
-.output-line a {
-  color: var(--link-color);
-  text-decoration: underline;
-  transition: color 0.2s ease;
-}
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.2s ease;
 
-.output-line a:hover {
-  color: var(--link-hover);
-  text-shadow: 0 0 8px var(--link-color);
+    &:hover {
+      color: var(--link-hover);
+      text-shadow: 0 0 8px var(--link-color);
+    }
+  }
 }
 
 /* Quick Action Pills */
@@ -250,13 +242,13 @@ html, body {
   cursor: pointer;
   transition: all 0.2s ease;
   text-shadow: 0 0 4px var(--glow-color);
-}
 
-.pill-btn:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
-  border-color: var(--text-color);
-  box-shadow: 0 0 10px var(--glow-color);
+  &:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+    border-color: var(--text-color);
+    box-shadow: 0 0 10px var(--glow-color);
+  }
 }
 
 /* Input Line */
@@ -317,11 +309,6 @@ html, body {
   white-space: pre;
   margin-bottom: 12px;
   overflow-x: auto;
-}
-
-@keyframes lineAppear {
-  from { opacity: 0; transform: translateY(2px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 600px) {

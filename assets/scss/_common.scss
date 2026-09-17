@@ -1,0 +1,49 @@
+// =============================================================================
+// SHARED BASE, MIXINS & ANIMATIONS
+// =============================================================================
+
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap');
+
+// Prevent unwanted filter inversions from upstream themes
+html, body, body[a="dark"], body[a="auto"] {
+  filter: none !important;
+}
+img, img.ioda {
+  filter: none !important;
+}
+
+// Reset box sizing
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Cursor blinking animation
+@keyframes blinkCursor {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+// Line appearance animation
+@keyframes lineAppear {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Terminal scrollbar mixin
+@mixin terminal-scrollbar($thumb-color: $border-color, $track-color: transparent) {
+  scrollbar-width: thin;
+  scrollbar-color: $thumb-color $track-color;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 3px;
+  }
+}
