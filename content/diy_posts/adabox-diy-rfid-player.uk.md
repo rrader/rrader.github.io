@@ -16,6 +16,7 @@ tags: ["diy", "esp32", "3d-printing", "maker", "hardware"]
 
 * **Код прошивки:** [github.com/rrader/adabox](https://github.com/rrader/adabox) (або репозиторій [Jukebox](https://github.com/rrader/Jukebox))
 * **3D-модель корпусу:** [Printables: AdaBox (Model 1829062)](https://www.printables.com/model/1829062-adabox)
+* **Відео збірки:** [YouTube: Процес виготовлення AdaBox](https://www.youtube.com/watch?v=pISqipbEETM)
 
 ![Зібраний корпус AdaBox із RFID-сканером, аркадними кнопками та підсвіткою динаміка](/images/adabox/adabox-assembled.webp)
 
@@ -91,6 +92,11 @@ tags: ["diy", "esp32", "3d-printing", "maker", "hardware"]
 2. **Стійкість до ударів:** друк із міцного PETG пластику із заповненням 25% та 4 периметрами.
 3. **Ергономіка для дитячих рук:** радіуси скруглення кутів збільшено, на дно встановлено м'які гумові ніжки (10×5 мм).
 4. **Різьбові вставки:** для надійності замість саморізів у пластик впаяні латунні різьбові вставки M3 (heat inserts) — корпус можна розбирати й збирати скільки завгодно разів без злизування різьби.
+
+### Відео збірки
+Повний процес збирання, паяння та монтажу компонентів у корпус:
+
+{{< youtube pISqipbEETM >}}
 
 ---
 
