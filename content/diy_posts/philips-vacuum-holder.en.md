@@ -5,7 +5,7 @@ draft: false
 tags: ["diy", "3d-printing", "fusion360", "maker", "hardware"]
 ---
 
-The cordless **Philips 8000 Series Aqua Plus** is great for quick daily cleanups, but storing its long aluminum extension tube and accessories neatly on a wall or inside a utility closet is surprisingly awkward.
+The cordless **Philips 8000 Series Aqua Plus** is great for quick daily cleanups, but in our cabinet shelf there simply isn't enough vertical height to store the vacuum fully assembled. While the motor unit sits nicely on its original charging dock, the long aluminum extension tube and crevice nozzle have to be detached and parked on the wall right next to it.
 
 Off-the-shelf broom clips and generic hardware store wall mounts don't work:
 1. **Unusual oval cross-section:** the aluminum tube measures **42.5 × 32 mm**, whereas standard utility clips are designed for 25–30 mm round broom handles.
