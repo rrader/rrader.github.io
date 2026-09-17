@@ -5,14 +5,14 @@ draft: false
 tags: ["diy", "esp32", "3d-printing", "maker", "hardware"]
 ---
 
-When my daughter turned one, I started looking into music players for her. Commercial products like **Toniebox** are popular globally, but come with significant drawbacks:
+When our daughter turned one, my wife started looking into kid-friendly music players for her. Commercial products like **Toniebox** are widely popular, but come with significant drawbacks:
 1. **Walled garden ecosystem:** every single album or fairy tale requires buying a proprietary $15–$20 figurine.
 2. **Cloud dependence:** activation, sync, and downloads rely entirely on company servers.
-3. **Content limitations:** localized folk stories or specific music collections are almost nonexistent in official catalogs.
+3. **Content limitations:** Ukrainian fairy tales, lullabies, or local audio collections are practically nonexistent in their official catalogs.
 
-So I decided to build an open, standalone alternative: the toddler taps a card — the music or bedtime story plays. No screens, no mobile apps, no cloud lock-in.
+Researching DIY alternatives, I came across the German [Tonuino](https://www.tonuino.de) and [ESPuino](https://github.com/biologist79/ESPuino) projects. Both are great concepts, but I decided to make my own build: using slightly different, readily available components from local suppliers and assembling everything directly without custom printed circuit boards (PCBs).
 
-The build was inspired by the [ESPuino](https://github.com/biologist79/ESPuino) and [Tonuino](https://www.tonuino.de) communities, but tailored to custom requirements, streamlined firmware, and components readily accessible from local suppliers.
+The core principle remains simple and magical for a toddler: tap an RFID card on the top plate — the bedtime story or song immediately starts playing. No screens, no mobile apps, no cloud lock-in.
 
 * **Firmware Code:** [github.com/rrader/adabox](https://github.com/rrader/adabox) (or [Jukebox repository](https://github.com/rrader/Jukebox))
 * **3D Enclosure Model:** [Printables: AdaBox (Model 1829062)](https://www.printables.com/model/1829062-adabox)

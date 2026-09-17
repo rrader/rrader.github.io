@@ -20,7 +20,7 @@
       <link>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</link>
       <pubDate>Thu, 17 Sep 2026 12:00:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</guid>
-      <description>When my daughter turned one, I started looking into music players for her. Commercial products like Toniebox are popular globally, but come with significant drawbacks:&#xA;Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: localized folk stories or specific music collections are almost nonexistent in official catalogs. So I decided to build an open, standalone alternative: the toddler taps a card — the music or bedtime story plays.</description>
+      <description>When our daughter turned one, my wife started looking into kid-friendly music players for her. Commercial products like Toniebox are widely popular, but come with significant drawbacks:&#xA;Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: Ukrainian fairy tales, lullabies, or local audio collections are practically nonexistent in their official catalogs. Researching DIY alternatives, I came across the German Tonuino and ESPuino projects.</description>
     </item>
   </channel>
 </rss>
