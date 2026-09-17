@@ -27,12 +27,12 @@ Before opening CAD, I took accurate caliper measurements of the tube profile and
 
 | Dimension | Value | Notes |
 |---|---|---|
-| **Tube Width** | 42.5 mm | Width of the oval aluminum section |
-| **Tube Depth** | 32.0 mm | Profile thickness front-to-back |
+| **Tube Width** | 42.5 mm | Width of the oval aluminum section (cradle inner span ~44.8 mm with clearance) |
+| **Tube Depth** | 32.0 mm | Profile thickness front-to-back (cradle saddle depth ~32.5 mm) |
 | **Max Throat Opening** | 50.0 mm | Sized so the tube won't fall out even when the latch is open |
-| **Hole Center Spacing** | 65.0 mm | Spacing between wall-mounting countersunk screw holes |
-| **Counterbore Hole Depth** | 12.0 mm | Fully recesses the drywall screw heads |
-| **TPU Pre-tension Offset** | -20.0 mm | Strap is 20 mm shorter than the arc for positive clamping tension |
+| **Hole Center Spacing** | 30.0 mm | Compact spacing between wall-mounting screw holes (holes centered at X = ±15 mm) |
+| **Screw Hole Diameter** | 4.5 mm | Sized for 3.5–4.0 mm wood screws or M4 fasteners (mounting wall thickness 3.0 mm) |
+| **TPU Pre-tension Offset** | ~15–20 mm | Strap is slightly shorter than the arc for positive clamping tension |
 
 ---
 
@@ -46,17 +46,17 @@ The assembly consists of three parts:
 
 1. **Wall Bracket (PETG):**
    * Features a U-shaped saddle contoured to the radius of the Philips 8000 tube.
-   * Two countersunk screw holes spaced at **65 mm** on the backplate (12 mm deep) for wall mounting.
-   * Forward-projecting hinge lugs with through-holes to receive the locking pins.
+   * Two 4.5 mm screw holes spaced at **30 mm** on the base plate (3 mm back wall thickness, fully accessible through the open cradle cavity).
+   * Forward-projecting hinge lugs with through-holes to receive the locking pins (overall bracket width is 89 mm).
 2. **Flexible Retention Strap (TPU 95A):**
    * Printed flat on the build plate.
    * Eyelets on both ends slip into the bracket lugs, while ribbed gripping ridges on the inner contact surface prevent the aluminum tube from sliding vertically.
    * Length is pre-tensioned so it stretches slightly when pressing the tube into the cradle, snapping it firmly into place.
 3. **Locking Hinge Pins (PETG, 2 pcs):**
-   * Flanged cylindrical pins that push through the bracket lugs and strap eyelets from above.
+   * Flanged cylindrical pins (⌀4 mm, 25 mm length) that push through the bracket lugs and strap eyelets from above.
    * Eliminates the need for metal nuts, bolts, or hinge hardware.
 
-![Fusion 360 top-angle view showing 65 mm screw mounting holes and hinge lugs](/images/vacuum-holder/cad-model-bracket-top.webp)
+![Fusion 360 top-angle view showing 30 mm screw mounting holes and hinge lugs](/images/vacuum-holder/cad-model-bracket-top.webp)
 
 ---
 
