@@ -219,12 +219,42 @@ body.workstation-body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  display: inline-block;
-  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
 
-  &.win-close { background: #{$win-close}; box-shadow: 0 0 4px rgba(255, 95, 86, 0.5); }
-  &.win-min   { background: #{$win-min}; box-shadow: 0 0 4px rgba(255, 189, 46, 0.5); }
-  &.win-max   { background: #{$win-max}; box-shadow: 0 0 4px rgba(39, 201, 63, 0.5); }
+  &.win-close {
+    background: #{$win-close};
+    box-shadow: 0 0 4px rgba(255, 95, 86, 0.6);
+    color: transparent;
+    cursor: pointer;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+      color: rgba(0, 0, 0, 0.75);
+      transform: scale(1.15);
+      box-shadow: 0 0 8px rgba(255, 95, 86, 0.9);
+    }
+  }
+
+  &.win-min,
+  &.win-max,
+  &.is-inactive {
+    opacity: 0.3;
+    cursor: not-allowed;
+    filter: grayscale(0.5);
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  &.win-min { background: #{$win-min}; }
+  &.win-max { background: #{$win-max}; }
 }
 
 .term-window-title {
