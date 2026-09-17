@@ -1,17 +1,55 @@
 {{ define "main" }}
-{{ partial "back_link.html" .}}
-
 <article>
-    <p class="post-meta">
-        <time datetime="{{ .Date }}">
-            {{ .Date | time.Format site.Params.theme_config.date_format }}
-        </time>
-    </p>
+  <!-- Interactive CLI Command Prompt (Breadcrumb) -->
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="{{ "/" | relURL }}">~</a>{{ with .Section }}/<a href="{{ printf "/%s" . | relURL }}">{{ . }}</a>{{ end }}]$</span>
+    <span class="cli-prompt-cmd">cat {{ if .File }}{{ .File.LogicalName }}{{ else }}post.md{{ end }}</span>
+    <span class="cli-cursor">_</span>
+  </div>
 
-    <h1>{{ .Title }}</h1>
+  <!-- TTY File Metadata Header Card -->
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="{{ .Date }}">{{ .Date.Format "2006-01-02" }}</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> {{ .WordCount }}</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~{{ math.Max 1 (math.Round (div (float .WordCount) 180.0)) }}m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    {{ with .Params.tags }}
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      {{ range . }}
+        <span class="tty-tag-pill">#{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
 
-    {{ partial "translations.html" . }}
+  <!-- Main Document Title -->
+  <h1 class="post-title">{{ .Title }}</h1>
 
+  <!-- Translations if available -->
+  {{ partial "translations.html" . }}
+
+  <!-- Article Markdown Content -->
+  <div class="post-content">
     {{ .Content }}
+  </div>
+
+  <!-- Terminal End-of-File Marker -->
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: {{ if .File }}{{ .File.LogicalName }}{{ else }}post.md{{ end }}] ---</span>
+  </div>
+
+  <!-- Terminal Footer Navigation -->
+  <div class="post-footer-nav">
+    <a href="{{ "/" | relURL }}" class="cli-btn">
+      <span>⚡</span> [cd ~] {{ if eq .Language.Lang "uk" }}Головний термінал{{ else }}Main Terminal{{ end }}
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] {{ if eq .Language.Lang "uk" }}Вгору{{ else }}Scroll to Top{{ end }}
+    </a>
+  </div>
 </article>
 {{ end }}

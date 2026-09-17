@@ -7,7 +7,7 @@
 
   <title>
     
-      404 Page not found
+      404 Page not found // rmn.pp.ua
     
   </title>
 
@@ -25,19 +25,91 @@ if (!doNotTrack) {
 
 
   <link rel="shortcut icon" type="image/x-icon" href="../" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
   
   
   
   <link rel="stylesheet" href="../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  <link rel="stylesheet" href="../css/terminal-doc.css" />
   
 </head>
-<body a="auto">
-        <main class="page-content" aria-label="Content">
-            <div class="w"><a href="../">..</a><header>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../404.html" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../uk/404.html" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <span class="win-btn win-close" title="Close"></span>
+            <span class="win-btn win-min" title="Minimize"></span>
+            <span class="win-btn win-max" title="Maximize"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: 404 Page not found</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas"><a href="../">..</a><header>
     <h1>404 Not Found</h1>
 </header>
 
-            </div>
-        </main>
-    </body>
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">index</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
 </html>

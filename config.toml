@@ -13,7 +13,7 @@ relativeURLs = true
     weight = 1
     title = 'Roman Rader'
     [languages.en.params.theme_config]
-      appearance = "auto"
+      appearance = "light"
       back_home_text = ".."
       date_format = "2006-01-02"
 
@@ -23,6 +23,6 @@ relativeURLs = true
     weight = 2
     title = 'Роман Радер'
     [languages.uk.params.theme_config]
-      appearance = "auto"
+      appearance = "light"
       back_home_text = ".."
       date_format = "2006-01-02"

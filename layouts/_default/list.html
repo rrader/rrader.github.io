@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article>
+  <!-- Interactive CLI Command Prompt (Breadcrumb) -->
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="{{ "/" | relURL }}">~</a>{{ with .Section }}/<a href="{{ printf "/%s" . | relURL }}">{{ . }}</a>{{ end }}]$</span>
+    <span class="cli-prompt-cmd">ls -la {{ with .Section }}--sort=time {{ . }}/{{ end }}</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  <h1 class="post-title">{{ .Title }}</h1>
+
+  {{ with .Content }}
+  <div class="post-content" style="margin-bottom: 2rem;">
+    {{ . }}
+  </div>
+  {{ end }}
+
+  <div class="post-content">
+    {{ partial "post_list.html" (dict "context" . "section" .Section) }}
+  </div>
+
+  <!-- Terminal End-of-List Marker -->
+  <div class="eof-marker">
+    <span class="eof-line">--- [TOTAL: {{ len .Pages }} entries] ---</span>
+  </div>
+
+  <!-- Terminal Footer Navigation -->
+  <div class="post-footer-nav">
+    <a href="{{ "/" | relURL }}" class="cli-btn">
+      <span>⚡</span> [cd ~] {{ if eq .Language.Lang "uk" }}Головний термінал{{ else }}Main Terminal{{ end }}
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] {{ if eq .Language.Lang "uk" }}Вгору{{ else }}Scroll to Top{{ end }}
+    </a>
+  </div>
+</article>
+{{ end }}

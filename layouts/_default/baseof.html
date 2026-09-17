@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode }}">
+{{- partial "head.html" . -}}
+<body class="workstation-body" a="light">
+  <!-- Desktop Workstation Canvas -->
+  <div class="workstation-wrapper">
+
+    <!-- Top Desktop Status Bar -->
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="{{ "/" | relURL }}" class="ws-logo" title="{{ if eq $.Site.Language.Lang "uk" }}Головний термінал{{ else }}Home Terminal{{ end }}">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        <!-- Quick Language Switcher -->
+        {{- range .AllTranslations }}
+        <a href="{{ .RelPermalink }}" class="ws-btn lang-btn{{ if eq .Language.Lang $.Language.Lang }} active{{ end }}">
+          {{ if eq .Language.Lang "uk" }}🇺🇦 UA{{ else }}🇬🇧 EN{{ end }}
+        </a>
+        {{- end }}
+        <!-- Back to home terminal -->
+        <a href="{{ "/" | relURL }}" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    <!-- Floating Window Container -->
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        <!-- Window Chrome / Titlebar -->
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <span class="win-btn win-close" title="Close"></span>
+            <span class="win-btn win-min" title="Minimize"></span>
+            <span class="win-btn win-max" title="Maximize"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: {{ if .IsPage }}{{ if .File }}{{ .File.Path }}{{ else }}{{ .Title }}{{ end }}{{ else }}{{ .Title }}{{ end }}</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        <!-- Document Light Reading Canvas -->
+        <div class="term-window-body">
+          <div class="document-canvas">
+            {{- block "main" . }}{{- end }}
+          </div>
+        </div>
+
+        <!-- Terminal Window Bottom Statusbar -->
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">{{ if .IsPage }}{{ if .File }}{{ .File.LogicalName }}{{ else }}document.md{{ end }}{{ else }}index{{ end }}</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            {{ if .IsPage }}<span class="status-item">{{ .WordCount }} words</span>{{ end }}
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="{{ "/" | relURL }}" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
