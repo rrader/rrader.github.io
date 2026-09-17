@@ -92,4 +92,4 @@ The sink has transformed our daily routine:
 * **Practical capacity:** a single 5-liter clean water swap lasts 4–5 days of active toddler handwashing and brushing.
 * **Clean & dry:** by keeping the counter depth to just 22 cm and adding the perimeter splash rim, clothes and bathroom floors stay dry.
 
-Combining 3D CAD modeling (**Autodesk Fusion 360** for the sink assembly and parametric **build123d** for the custom threaded funnel) with desktop 3D printing enabled creating a truly bespoke, child-scaled piece of functional furniture that is impossible to buy off the shelf.
+We simply made what was practical for our toddler and fit our bathroom space: modeled it in Fusion 360 and build123d, 3D-printed it, and it just works great every day.
