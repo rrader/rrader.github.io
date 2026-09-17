@@ -122,23 +122,28 @@ if (!doNotTrack) {
 <li><strong>RC522 SPI:</strong> SCK → <code>GPIO 25</code>, MISO → <code>GPIO 26</code>, MOSI → <code>GPIO 27</code>, SDA(SS) → <code>GPIO 5</code>, RST → <code>GPIO 22</code></li>
 </ul>
 <hr>
-<h2 id="2-card-architecture--file-system-design">2. Card Architecture &amp; File System Design</h2>
-<p>In AdaBox, <strong>the RFID card stores the full file path directly within its internal EEPROM memory sectors</strong> (e.g. <code>/MUSIC/00003.mp3</code>). When a card is scanned over SPI, the ESP32 reads this path and commands the DY-SV5W audio module over UART — keeping the firmware simple and completely stateless without maintaining lookup tables on the microcontroller.</p>
-<p>The SD card is formatted as FAT32 (MBR) with a clean directory layout:</p>
+<h2 id="2-playback-logic-dedicated-scenarios-for-music-vs-bedtime-stories">2. Playback Logic: Dedicated Scenarios for Music vs Bedtime Stories</h2>
+<p>The core feature born directly out of parenting reality is <strong>a clear distinction between two completely different use cases: daytime dancing/music and bedtime fairy tales</strong>.</p>
+<p>The MicroSD card is structured into two root folders, and the controller treats each with distinct playback and lighting rules:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/MUSIC/
-</span></span><span style="display:flex;"><span>  00001.mp3   ← regular music: auto-advances to the next song when done
+</span></span><span style="display:flex;"><span>  00001.mp3   ← Music: continuous auto-advance playback, bright vibrant animation
 </span></span><span style="display:flex;"><span>  00002.mp3
 </span></span><span style="display:flex;"><span>/OTHER/
-</span></span><span style="display:flex;"><span>  00001.mp3   ← stories/podcasts: plays single selection and stops
+</span></span><span style="display:flex;"><span>  00001.mp3   ← Bedtime stories: plays a single track and stops
 </span></span><span style="display:flex;"><span>  00002.mp3
-</span></span></code></pre></div><h3 id="programming-cards-on-the-fly-zero-computer-needed">Programming Cards on the Fly (Zero Computer Needed)</h3>
-<ol>
-<li>Use Next/Prev buttons to navigate to whatever track you want to assign.</li>
-<li>Hold <strong>Next + Prev</strong> together and tap a blank RFID card to the top plate.</li>
-<li>The ESP32 writes the active file path to the open Mifare data sectors.</li>
-<li>The LED ring flashes solid green — card programmed and ready!</li>
+</span></span></code></pre></div><ol>
+<li><strong>&ldquo;Music&rdquo; Mode (<code>/MUSIC/</code>):</strong> Daytime mode. Songs continuously advance to the next track automatically, while the LED ring runs at full brightness (90 out of 255) with dynamic rainbow spinner animations.</li>
+<li><strong>&ldquo;Bedtime Stories&rdquo; Mode (<code>/OTHER/</code>):</strong> Once a fairy tale finishes, playback stops immediately so the child can fall asleep in quiet peace. Additionally, the LED ring brightness is automatically dimmed to roughly a third (down to 35) — turning the player into a gentle, non-intrusive nightlight that won&rsquo;t glare in a dark bedroom.</li>
 </ol>
-<p>Child-proofing is also built-in: switching root browse folders (MUSIC ↔ OTHER) requires holding the Next button for 5 continuous seconds during playback pause.</p>
+<p>To prevent accidental kid fingers from switching modes mid-play, changing the active folder category (MUSIC ↔ OTHER) requires holding the Next button for 5 seconds while playback is paused.</p>
+<h3 id="programming-cards-on-the-fly-zero-computer-needed">Programming Cards on the Fly (Zero Computer Needed)</h3>
+<p>Linking new cards is effortless and doesn&rsquo;t require a computer:</p>
+<ol>
+<li>Use the Next / Prev buttons to navigate to the desired audio track.</li>
+<li>Hold <strong>Next + Prev</strong> together and tap a blank RFID card to the top panel.</li>
+<li>The ESP32 writes the direct file path (e.g. <code>/OTHER/00002.mp3</code>) straight into the Mifare Classic card sectors.</li>
+<li>The LED ring flashes solid green — the card is programmed and immediately ready to use!</li>
+</ol>
 <hr>
 <h2 id="3-ws2812b-led-ring-interaction-design">3. WS2812B LED Ring Interaction Design</h2>
 <p>For a toddler, clear visual feedback transforms a gadget into a toy with personality:</p>

@@ -48,27 +48,32 @@ All pushbuttons are wired directly from GPIO to `GND`, leveraging the ESP32 inte
 
 ---
 
-## 2. Card Architecture & File System Design
+## 2. Playback Logic: Dedicated Scenarios for Music vs Bedtime Stories
 
-In AdaBox, **the RFID card stores the full file path directly within its internal EEPROM memory sectors** (e.g. `/MUSIC/00003.mp3`). When a card is scanned over SPI, the ESP32 reads this path and commands the DY-SV5W audio module over UART — keeping the firmware simple and completely stateless without maintaining lookup tables on the microcontroller.
+The core feature born directly out of parenting reality is **a clear distinction between two completely different use cases: daytime dancing/music and bedtime fairy tales**.
 
-The SD card is formatted as FAT32 (MBR) with a clean directory layout:
+The MicroSD card is structured into two root folders, and the controller treats each with distinct playback and lighting rules:
+
 ```text
 /MUSIC/
-  00001.mp3   ← regular music: auto-advances to the next song when done
+  00001.mp3   ← Music: continuous auto-advance playback, bright vibrant animation
   00002.mp3
 /OTHER/
-  00001.mp3   ← stories/podcasts: plays single selection and stops
+  00001.mp3   ← Bedtime stories: plays a single track and stops
   00002.mp3
 ```
 
-### Programming Cards on the Fly (Zero Computer Needed)
-1. Use Next/Prev buttons to navigate to whatever track you want to assign.
-2. Hold **Next + Prev** together and tap a blank RFID card to the top plate.
-3. The ESP32 writes the active file path to the open Mifare data sectors.
-4. The LED ring flashes solid green — card programmed and ready!
+1. **"Music" Mode (`/MUSIC/`):** Daytime mode. Songs continuously advance to the next track automatically, while the LED ring runs at full brightness (90 out of 255) with dynamic rainbow spinner animations.
+2. **"Bedtime Stories" Mode (`/OTHER/`):** Once a fairy tale finishes, playback stops immediately so the child can fall asleep in quiet peace. Additionally, the LED ring brightness is automatically dimmed to roughly a third (down to 35) — turning the player into a gentle, non-intrusive nightlight that won't glare in a dark bedroom.
 
-Child-proofing is also built-in: switching root browse folders (MUSIC ↔ OTHER) requires holding the Next button for 5 continuous seconds during playback pause.
+To prevent accidental kid fingers from switching modes mid-play, changing the active folder category (MUSIC ↔ OTHER) requires holding the Next button for 5 seconds while playback is paused.
+
+### Programming Cards on the Fly (Zero Computer Needed)
+Linking new cards is effortless and doesn't require a computer:
+1. Use the Next / Prev buttons to navigate to the desired audio track.
+2. Hold **Next + Prev** together and tap a blank RFID card to the top panel.
+3. The ESP32 writes the direct file path (e.g. `/OTHER/00002.mp3`) straight into the Mifare Classic card sectors.
+4. The LED ring flashes solid green — the card is programmed and immediately ready to use!
 
 ---
 
