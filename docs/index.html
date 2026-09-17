@@ -17,7 +17,7 @@
   </script>
   
 
-  <link rel="stylesheet" href="css/quake-terminal.css" />
+  <link rel="stylesheet" href="./css/quake-terminal.css" />
 </head>
 <body>
   <div class="crt-wrapper">
@@ -32,6 +32,12 @@
         <span>rmn.pp.ua</span>
       </div>
       <div class="header-controls">
+        <a href="./" class="ctrl-btn lang-btn active" title="English">
+          🇬🇧 EN
+        </a>
+        <a href="./uk/" class="ctrl-btn lang-btn" title="Українська">
+          🇺🇦 UA
+        </a>
         <button id="sfx-btn" class="ctrl-btn active" title="Toggle Sound Effects">🔊 SFX: ON</button>
         <button id="gfx-btn" class="ctrl-btn active" title="Toggle CRT Scanline Effects">📺 GFX: ON</button>
       </div>
@@ -44,6 +50,8 @@
       
       <div class="quick-pills">
         <button class="pill-btn" data-cmd="bio">bio</button>
+        <button class="pill-btn" data-cmd="posts">posts</button>
+        <button class="pill-btn" data-cmd="diy">diy</button>
         <button class="pill-btn" data-cmd="research">research</button>
         <button class="pill-btn" data-cmd="teaching">teaching</button>
         <button class="pill-btn" data-cmd="contact">contact</button>
@@ -61,6 +69,59 @@
     </main>
   </div>
 
-  <script src="js/quake-terminal.js"></script>
+  <script>
+    window.__HUGO_POSTS__ = [
+      {
+        title: "The Imitation Game: Running a Hands-On Turing Test in the Informatics Classroom",
+        section: "teach_posts",
+        lang: "en",
+        url: "/teach_posts/turing-test-classroom-imitation-game/",
+        date: "2026-09-17"
+      },
+      {
+        title: "Autonomous Toddler Montessori Sink: From Plywood and Sheet Metal to 3D Printing",
+        section: "diy_posts",
+        lang: "en",
+        url: "/diy_posts/montessori-3d-printed-sink/",
+        date: "2026-09-17"
+      },
+      {
+        title: "AdaBox — DIY Toddler Music Player on ESP32 with RFID",
+        section: "diy_posts",
+        lang: "en",
+        url: "/diy_posts/adabox-diy-rfid-player/",
+        date: "2026-09-17"
+      },
+      {
+        title: "Cybersecurity Awareness Month 2025",
+        section: "teach_posts",
+        lang: "en",
+        url: "/teach_posts/cybersecurity-month-2025/",
+        date: "2025-10-29"
+      },
+      {
+        title: "Methodological Materials for AI Engineering Course",
+        section: "teach_posts",
+        lang: "en",
+        url: "/teach_posts/method-ai-course/",
+        date: "2024-12-09"
+      },
+      {
+        title: "Learning Materials for Informatics Classes",
+        section: "teach_posts",
+        lang: "en",
+        url: "/teach_posts/classroom-site/",
+        date: "2023-09-26"
+      },
+      {
+        title: "[The 49th IEEE LCN Conference] Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study",
+        section: "study_posts",
+        lang: "en",
+        url: "/study_posts/flubot-case-study/",
+        date: "2023-09-26"
+      },
+    ];
+  </script>
+  <script src="./js/quake-terminal.js"></script>
 </body>
 </html>

@@ -6,28 +6,35 @@
     <description>Recent content in Teaching posts on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 13:00:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/teach_posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Місяць кібербезпеки 2025</title>
+      <title>The Imitation Game: Running a Hands-On Turing Test in the Informatics Classroom</title>
+      <link>https://rrader.github.io/teach_posts/turing-test-classroom-imitation-game/</link>
+      <pubDate>Thu, 17 Sep 2026 13:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/teach_posts/turing-test-classroom-imitation-game/</guid>
+      <description>When introducing students to artificial intelligence, conversations inevitably lead back to Alan Turing’s seminal 1950 question: “Can machines think?”&#xA;In traditional textbooks, the Turing Test (originally described as The Imitation Game) is frequently treated as an abstract historical anecdote: an interrogator asks questions through a teletype terminal to a hidden human and machine, trying to distinguish between the two. Simply reading a paragraph about it seldom leaves a lasting impression.</description>
+    </item>
+    <item>
+      <title>Cybersecurity Awareness Month 2025</title>
       <link>https://rrader.github.io/teach_posts/cybersecurity-month-2025/</link>
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://rrader.github.io/teach_posts/cybersecurity-month-2025/</guid>
-      <description>Про місяць кібербезпеки Місяць кібербезпеки — це глобальна ініціатива, присвячена підвищенню обізнаності про важливість безпеки в цифровому світі. У жовтні 2025 року ми приєдналися до цієї ініціативи, пропонуючи серію інтерактивних вправ та тестів, які допоможуть вам краще зрозуміти основи цифрової безпеки, захисту персональних даних, безпечного користування інтернетом та соціальними мережами. Ці матеріали створені для того, щоб кожен міг навчитися захищати себе в онлайн-просторі та розвинути важливі цифрові навички.&#xA;Подяка Ці інтерактивні вправи базуються на матеріалах курсу Digital Skills: Security and Safety від Charles Sturt University (Австралія).</description>
+      <description>About Cybersecurity Awareness Month Cybersecurity Awareness Month is a global initiative dedicated to raising awareness about the importance of security in the digital world. In October 2025, we joined this initiative by offering a series of interactive activities and quizzes designed to help students better understand the fundamentals of digital safety, personal data protection, and secure web browsing.&#xA;Acknowledgements These interactive activities are based on the course materials from Digital Skills: Security and Safety by Charles Sturt University (Australia).</description>
     </item>
     <item>
-      <title>Методичні матеріали для курсу Інженерія ШІ</title>
+      <title>Methodological Materials for AI Engineering Course</title>
       <link>https://rrader.github.io/teach_posts/method-ai-course/</link>
       <pubDate>Mon, 09 Dec 2024 23:57:00 +0300</pubDate>
       <guid>https://rrader.github.io/teach_posts/method-ai-course/</guid>
-      <description>Вітаю!&#xA;На сайті https://class.rmn.pp.ua/method викладені методичні матеріали для курсу &amp;ldquo;Основи інженерії штучного інтелекту&amp;rdquo;.&#xA;Наприклад, ви зможете знайти:&#xA;Навчально-методичний посібник Постер &amp;ldquo;5 великих ідей штучного інтелекту&amp;rdquo; українською мовою З найкращими побажаннями, Роман Ілліч Радер</description>
+      <description>Hello!&#xA;Methodological resources for the &amp;ldquo;Fundamentals of Artificial Intelligence Engineering&amp;rdquo; course are available at https://class.rmn.pp.ua/method.&#xA;Available materials include:&#xA;Curriculum study guide and course textbook &amp;ldquo;5 Big Ideas of Artificial Intelligence&amp;rdquo; poster translated into Ukrainian Best regards,&#xA;Roman Rader</description>
     </item>
     <item>
-      <title>Навчальні матеріали для уроків з інформатики</title>
+      <title>Learning Materials for Informatics Classes</title>
       <link>https://rrader.github.io/teach_posts/classroom-site/</link>
       <pubDate>Tue, 26 Sep 2023 16:03:47 +0300</pubDate>
       <guid>https://rrader.github.io/teach_posts/classroom-site/</guid>
-      <description>Вітаю!&#xA;На сайті https://class.rmn.pp.ua/ ви зможете знайти навчальні матеріали, призначені для підготовки до контрольних та практичних робіт з інформатики.&#xA;З найкращими побажаннями, Роман Ілліч Радер</description>
+      <description>Hello!&#xA;On the website https://class.rmn.pp.ua/ you can find learning materials designed to prepare for quizzes, exams, and practical coursework in informatics.&#xA;Best regards,&#xA;Roman Rader</description>
     </item>
   </channel>
 </rss>

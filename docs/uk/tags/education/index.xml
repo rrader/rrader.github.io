@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Education on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/education/</link>
+    <description>Recent content in Education on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Thu, 17 Sep 2026 13:00:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/education/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Гра в імітацію: як ми проводили тест Тюрінга на уроці інформатики</title>
+      <link>https://rrader.github.io/uk/teach_posts/turing-test-classroom-imitation-game/</link>
+      <pubDate>Thu, 17 Sep 2026 13:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/teach_posts/turing-test-classroom-imitation-game/</guid>
+      <description>Коли ми пояснюємо учням поняття «штучний інтелект», розмова неминуче доходить до класичного запитання Алана Тюрінга з його роботи 1950 року: «Чи можуть машини мислити?»&#xA;У підручниках тест Тюрінга (або «Гра в імітацію» / The Imitation Game) зазвичай подають як сухий теоретичний факт: є суддя, є людина і машина за ширмою, суддя ставить запитання через текстовий канал і намагається вгадати, хто є хто. Але просто прочитати про це в параграфі — нудно.</description>
+    </item>
+  </channel>
+</rss>

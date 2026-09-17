@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="green">
+<html lang="{{ .Language.Lang }}" data-theme="green">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Roman Rader // Quake Terminal</title>
+  <title>{{ .Site.Title }} // Quake Terminal</title>
   <meta name="description" content="Personal Web Terminal of Roman Rader - Cybersecurity Researcher & AI Educator in Kyiv, Ukraine." />
 
   {{ with .Site.Params.googleAnalytics | default "G-8H1V8F8PHP" }}
@@ -16,7 +16,7 @@
   </script>
   {{ end }}
 
-  <link rel="stylesheet" href="css/quake-terminal.css" />
+  <link rel="stylesheet" href="{{ "css/quake-terminal.css" | relURL }}" />
 </head>
 <body>
   <div class="crt-wrapper">
@@ -31,6 +31,11 @@
         <span>rmn.pp.ua</span>
       </div>
       <div class="header-controls">
+        {{- range .AllTranslations }}
+        <a href="{{ .RelPermalink }}" class="ctrl-btn lang-btn{{ if eq .Language.Lang $.Language.Lang }} active{{ end }}" title="{{ .Language.LanguageName }}">
+          {{ if eq .Language.Lang "uk" }}🇺🇦 UA{{ else }}🇬🇧 EN{{ end }}
+        </a>
+        {{- end }}
         <button id="sfx-btn" class="ctrl-btn active" title="Toggle Sound Effects">🔊 SFX: ON</button>
         <button id="gfx-btn" class="ctrl-btn active" title="Toggle CRT Scanline Effects">📺 GFX: ON</button>
       </div>
@@ -43,6 +48,8 @@
       <!-- Quick Action Buttons -->
       <div class="quick-pills">
         <button class="pill-btn" data-cmd="bio">bio</button>
+        <button class="pill-btn" data-cmd="posts">posts</button>
+        <button class="pill-btn" data-cmd="diy">diy</button>
         <button class="pill-btn" data-cmd="research">research</button>
         <button class="pill-btn" data-cmd="teaching">teaching</button>
         <button class="pill-btn" data-cmd="contact">contact</button>
@@ -54,12 +61,25 @@
       <div class="input-line">
         <span class="prompt-symbol">[guest@rmn.pp.ua ~]$</span>
         <div class="cmd-input-wrapper">
-          <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" autofocus placeholder="type command..." />
+          <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" autofocus placeholder="{{ if eq .Language.Lang "uk" }}введіть команду...{{ else }}type command...{{ end }}" />
         </div>
       </div>
     </main>
   </div>
 
-  <script src="js/quake-terminal.js"></script>
+  <script>
+    window.__HUGO_POSTS__ = [
+      {{- range where site.RegularPages "Section" "in" (slice "diy_posts" "teach_posts" "study_posts") }}
+      {
+        title: {{ .Title }},
+        section: {{ .Section }},
+        lang: {{ .Language.Lang }},
+        url: {{ .RelPermalink }},
+        date: {{ .Date.Format "2006-01-02" }}
+      },
+      {{- end }}
+    ];
+  </script>
+  <script src="{{ "js/quake-terminal.js" | relURL }}"></script>
 </body>
 </html>

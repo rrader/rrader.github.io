@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and wiping faces.
+Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial products on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.">  
+
+  <title>
+    
+      Autonomous Toddler Montessori Sink: From Plywood and Sheet Metal to 3D Printing
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="../../">..</a>
+
+<article>
+    <p class="post-meta">
+        <time datetime="2026-09-17 12:30:00 &#43;0300 EEST">
+            2026-09-17
+        </time>
+    </p>
+
+    <h1>Autonomous Toddler Montessori Sink: From Plywood and Sheet Metal to 3D Printing</h1>
+
+    <div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 Read in other languages:</span><a href="../../uk/study_posts/montessori-3d-printed-sink/" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">🇺🇦 Українська</a></div>
+
+    <p>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and wiping faces.</p>
+<p>Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial products on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</p>
+<p>I set out to design and construct a <strong>compact, fully autonomous running-water toddler sink</strong>, sized precisely for an ~80 cm tall child.</p>
+<p>Along the way, the project went through a complete engineering lifecycle across three distinct manufacturing methods: <strong>CNC-routed birch plywood → laser-cut sheet metal → modular PETG 3D printing</strong>. Here is the breakdown of the design constraints, plumbing hydraulics, and hard-earned engineering lessons.</p>
+<hr>
+<h2 id="1-ergonomic-envelope--hard-constraints">1. Ergonomic Envelope &amp; Hard Constraints</h2>
+<p>Key dimensions established during initial planning:</p>
+<ul>
+<li><strong>Countertop height:</strong> 390 mm from the floor (ideal for an 80 cm tall toddler). Screw-adjustable legs allow raising the deck to 460 mm as she grows.</li>
+<li><strong>Deck width:</strong> 500 mm.</li>
+<li><strong>Deck depth:</strong> 220 mm. <em>The most critical constraint is keeping depth shallow</em> — if the counter is too deep, a small child has to lean across the deck on their stomach to reach the stream of water.</li>
+<li><strong>Basin:</strong> standard stainless steel gastro container GN 1/4 (262×158 mm, 35 mm deep). Durable, food-safe, cheap, and easily replaceable.</li>
+</ul>
+<hr>
+<h2 id="2-material-iterations-wood--sheet-metal--3d-print">2. Material Iterations: Wood → Sheet Metal → 3D Print</h2>
+<h3 id="attempt-1-parametric-plywood-cnc-routing-cadquery">Attempt 1: Parametric Plywood CNC Routing (CadQuery)</h3>
+<p>The first countertop design was parametric CadQuery code (<code>sink/plywood-sink/</code>) intended for 18 mm waterproof birch plywood:</p>
+<ul>
+<li>Accounted for end-mill bit diameter (6 mm) and inside corner dog-bones.</li>
+<li>Computed toolpaths, multi-pass depths of cut (DOC 6 mm), and holding tabs.</li>
+</ul>
+<p><strong>Why I pivoted:</strong>
+Local CNC workshops were reluctant to take single-part custom jobs with tight turnaround times. Furthermore, even with marine varnishes, exposed plywood end-grain in a high-splash wet zone eventually delaminates.</p>
+<h3 id="attempt-2-folded-stainless-sheet-metal-aisi-304">Attempt 2: Folded Stainless Sheet Metal (AISI 304)</h3>
+<p>The second approach was a 1.0 mm stainless sheet metal counter with stiffening edge flanges (<code>sink/metal-sink/</code>):</p>
+<ul>
+<li>Calculated sheet metal bend allowances ($K=0.33$, inner radius 1.5 mm).</li>
+<li>Generated DXF flat blanks with corner tear-relief notches.</li>
+</ul>
+<p><strong>Why I pivoted:</strong>
+Raw sheet metal is cold to toddler touch, sharp exposed edges pose safety hazards, and bending/tig-welding thin stainless for a one-off home prototype was economically impractical.</p>
+<h3 id="attempt-3-modular-petg-3d-printing-the-winner">Attempt 3: Modular PETG 3D Printing (The Winner)</h3>
+<p>3D printing with <strong>PETG</strong> solved every design requirement:</p>
+<ul>
+<li>Food-safe, impact-resistant, and entirely immune to moisture and standing water.</li>
+<li>Allows integrating custom snap-fittings, cable ducts, seal grooves, and exact mounting flanges directly into the model.</li>
+</ul>
+<hr>
+<h2 id="3-engineering-challenges-in-large-scale-3d-printing">3. Engineering Challenges in Large-Scale 3D Printing</h2>
+<p>Because a 500×220 mm deck exceeds standard print beds (e.g. 256×256 mm), the countertop was split into interlocking modular segments:</p>
+<ol>
+<li><strong>Strict No-Support Geometry:</strong>
+All downward surfaces feature 45° chamfers or horizontal bridging geometry, eliminating support cleanup.</li>
+<li><strong>Interlocking Alignment Pegs:</strong>
+Male/female alignment pins were modeled with 0.5 mm lead-in chamfers and <strong>+0.2 mm</strong> clearance on depth to ensure seam-tight alignment without binding.</li>
+<li><strong>Brass Heat-Set Inserts (M3/M4):</strong>
+Never drive machine screws directly into printed plastic. Every joint and leg flange fastens into brass threaded inserts melted into pilot holes with a soldering iron.</li>
+<li><strong>Waterproofing &amp; Sealing:</strong>
+Parting seams were buttered with neutral sanitary silicone before tightening down with stainless hardware and blue threadlocker (Loctite). The exterior was coated in odorless water-based acrylic lacquer.</li>
+</ol>
+<hr>
+<h2 id="4-closed-loop-plumbing-architecture">4. Closed-Loop Plumbing Architecture</h2>
+<p>All hydraulics are housed inside the lower envelope under the counter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[ Clean Water Canister (5L) ] ---&gt; (ViO E11 Dispenser Pump) ---&gt; [ Faucet Outlet ]
+</span></span><span style="display:flex;"><span>                                                                        |
+</span></span><span style="display:flex;"><span>                                                                        v
+</span></span><span style="display:flex;"><span>[ Dirty Water Canister (5L DIN 45) ] &lt;--- (1¼&#34; Sanitary Trap) &lt;--- [ Stainless Pan ]
+</span></span></code></pre></div><h3 id="water-delivery">Water Delivery:</h3>
+<ul>
+<li>Driven by a rechargeable <strong>ViO E11</strong> electric water pump. It runs off an internal lithium battery charged via USB-C every few months.</li>
+<li>A custom cylindrical 3D-printed adapter secures the pump flush against the deck, with a rigid feed tube extending down into the 5.5 cm neck of the clean water tank.</li>
+<li>The child taps the top touch sensor once to start the stream and taps again to shut it off — zero grip strength required.</li>
+</ul>
+<h3 id="drainage--custom-din-45-funnel">Drainage &amp; Custom DIN 45 Funnel:</h3>
+<ul>
+<li>Fitted with a standard compact 1¼&quot; bathroom siphon with an integrated brass/plastic strainer.</li>
+<li>To safely direct wastewater into an airtight jerrycan, I modeled a custom screw-on funnel in <a href="https://build123d.readthedocs.io/">build123d</a> (<code>sink/din45_funnel/</code>). It threads directly onto the <strong>DIN 45</strong> container neck using buttress KS threads, seating the siphon tube without leaks or odor.</li>
+</ul>
+<hr>
+<h2 id="5-real-world-results">5. Real-World Results</h2>
+<p>The sink has transformed our morning routine:</p>
+<ul>
+<li>Complete independence: no stepping stools, no lifting, no falling risk.</li>
+<li>A single 5-liter water swap lasts 4–5 days of active toddler handwashing.</li>
+<li>By restricting depth to 22 cm, sleeves and shirts stay completely dry.</li>
+</ul>
+<p>The project demonstrated that combining parametric code-based CAD (CadQuery and build123d) with modern desktop 3D printing enables creating bespoke functional furniture that outperforms off-the-shelf alternatives.</p>
+
+</article>
+
+            </div>
+        </main>
+    </body>
+</html>

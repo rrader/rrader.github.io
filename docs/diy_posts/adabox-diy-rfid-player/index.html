@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="When my daughter turned one, I started looking into music players for her. Commercial products like Toniebox are popular globally, but come with significant drawbacks:
+Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: localized folk stories or specific music collections are almost nonexistent in official catalogs. So I decided to build an open, standalone alternative: the toddler taps a card — the music or bedtime story plays.">  
+
+  <title>
+    
+      AdaBox — DIY Toddler Music Player on ESP32 with RFID
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="../../">..</a>
+
+<article>
+    <p class="post-meta">
+        <time datetime="2026-09-17 12:00:00 &#43;0300 EEST">
+            2026-09-17
+        </time>
+    </p>
+
+    <h1>AdaBox — DIY Toddler Music Player on ESP32 with RFID</h1>
+
+    <div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 Read in other languages:</span><a href="../../uk/diy_posts/adabox-diy-rfid-player/" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">🇺🇦 Українська</a></div>
+
+    <p>When my daughter turned one, I started looking into music players for her. Commercial products like <strong>Toniebox</strong> are popular globally, but come with significant drawbacks:</p>
+<ol>
+<li><strong>Walled garden ecosystem:</strong> every single album or fairy tale requires buying a proprietary $15–$20 figurine.</li>
+<li><strong>Cloud dependence:</strong> activation, sync, and downloads rely entirely on company servers.</li>
+<li><strong>Content limitations:</strong> localized folk stories or specific music collections are almost nonexistent in official catalogs.</li>
+</ol>
+<p>So I decided to build an open, standalone alternative: the toddler taps a card — the music or bedtime story plays. No screens, no mobile apps, no cloud lock-in.</p>
+<p>The build was inspired by the <a href="https://github.com/biologist79/ESPuino">ESPuino</a> and <a href="https://www.tonuino.de">Tonuino</a> communities, but tailored to custom requirements, streamlined firmware, and components readily accessible from local suppliers.</p>
+<ul>
+<li><strong>Firmware Code:</strong> <a href="https://github.com/rrader/adabox">github.com/rrader/adabox</a> (or <a href="https://github.com/rrader/Jukebox">Jukebox repository</a>)</li>
+<li><strong>3D Enclosure Model:</strong> <a href="https://www.printables.com/model/1829062-adabox">Printables: AdaBox (Model 1829062)</a></li>
+</ul>
+<hr>
+<h2 id="1-hardware-architecture--component-selection">1. Hardware Architecture &amp; Component Selection</h2>
+<p>The overarching design goal was <strong>complete autonomy, simplicity, and child safety</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Part</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Microcontroller</strong></td>
+<td>ESP32-WROOM-32D</td>
+<td>Core logic, RFID handling, hardware UART to player, WS2812B LED animations</td>
+</tr>
+<tr>
+<td><strong>Audio Module</strong></td>
+<td>DY-SV5W (SV5W)</td>
+<td>Dedicated hardware MP3/WAV decoding from MicroSD, built-in 5W Class-D amplifier</td>
+</tr>
+<tr>
+<td><strong>Speaker</strong></td>
+<td>4Ω, 5W (rubber surround)</td>
+<td>Warm, punchy audio without distortion in a compact volume</td>
+</tr>
+<tr>
+<td><strong>RFID Reader</strong></td>
+<td>RC522 (13.56 MHz SPI)</td>
+<td>Reads contactless Mifare Classic cards/keyfobs</td>
+</tr>
+<tr>
+<td><strong>Visual Feedback</strong></td>
+<td>WS2812B 16-LED Ring</td>
+<td>Status indication, volume visualization, interactive programming feedback</td>
+</tr>
+<tr>
+<td><strong>Controls</strong></td>
+<td>KY-040 Encoder + 3 buttons</td>
+<td>Big rotary volume knob + Play/Pause, Next, Prev buttons</td>
+</tr>
+<tr>
+<td><strong>Power Management</strong></td>
+<td>2×18650 UPS Module (Type-C)</td>
+<td>Wireless battery operation + seamless safe charging via standard USB-C</td>
+</tr>
+</tbody>
+</table>
+<h3 id="esp32-pin-mapping">ESP32 Pin Mapping</h3>
+<p>All pushbuttons are wired directly from GPIO to <code>GND</code>, leveraging the ESP32 internal <code>INPUT_PULLUP</code>:</p>
+<ul>
+<li><strong>DY-SV5W UART:</strong> RXD → <code>GPIO 17</code>, TXD → <code>GPIO 16</code>, BUSY → <code>GPIO 15</code></li>
+<li><strong>WS2812B Ring Data:</strong> <code>GPIO 4</code></li>
+<li><strong>Buttons:</strong> Play/Stop → <code>GPIO 12</code>, Next → <code>GPIO 13</code>, Prev → <code>GPIO 14</code></li>
+<li><strong>KY-040 Encoder:</strong> CLK → <code>GPIO 18</code>, DT → <code>GPIO 19</code></li>
+<li><strong>RC522 SPI:</strong> SCK → <code>GPIO 25</code>, MISO → <code>GPIO 26</code>, MOSI → <code>GPIO 27</code>, SDA(SS) → <code>GPIO 5</code>, RST → <code>GPIO 22</code></li>
+</ul>
+<hr>
+<h2 id="2-card-architecture--file-system-design">2. Card Architecture &amp; File System Design</h2>
+<p>Most DIY audio projects store an internal index or lookup table matching Card UID to Track Number. If you swap SD cards, modify folders, or add new songs, card associations frequently break.</p>
+<p>In AdaBox, <strong>the RFID card stores the full file path directly within its internal EEPROM memory blocks</strong> (e.g. <code>/MUSIC/00003.mp3</code>).</p>
+<p>The SD card is formatted as FAT32 (MBR) with a clean directory layout:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/MUSIC/
+</span></span><span style="display:flex;"><span>  00001.mp3   ← regular music: auto-advances to the next song when done
+</span></span><span style="display:flex;"><span>  00002.mp3
+</span></span><span style="display:flex;"><span>/OTHER/
+</span></span><span style="display:flex;"><span>  00001.mp3   ← stories/podcasts: plays single selection and stops
+</span></span><span style="display:flex;"><span>  00002.mp3
+</span></span></code></pre></div><h3 id="programming-cards-on-the-fly-zero-computer-needed">Programming Cards on the Fly (Zero Computer Needed)</h3>
+<ol>
+<li>Use Next/Prev buttons to navigate to whatever track you want to assign.</li>
+<li>Hold <strong>Next + Prev</strong> together and tap a blank RFID card to the top plate.</li>
+<li>The ESP32 writes the active file path to the open Mifare data sectors.</li>
+<li>The LED ring flashes solid green — card programmed and ready!</li>
+</ol>
+<p>Child-proofing is also built-in: switching root browse folders (MUSIC ↔ OTHER) requires holding the Next button for 5 continuous seconds during playback pause.</p>
+<hr>
+<h2 id="3-ws2812b-led-ring-interaction-design">3. WS2812B LED Ring Interaction Design</h2>
+<p>For a toddler, clear visual feedback transforms a gadget into a toy with personality:</p>
+<ul>
+<li><strong>Idle:</strong> gentle breathing blue glow.</li>
+<li><strong>Playing:</strong> rainbow spinner smoothly rotating around the ring.</li>
+<li><strong>Play / Stop:</strong> immediate green or red burst.</li>
+<li><strong>Track navigation:</strong> cyan comet sweep clockwise for Next, yellow counter-clockwise for Prev.</li>
+<li><strong>Volume adjustment:</strong> color-coded arc filling from soft green up to bright red at maximum volume.</li>
+</ul>
+<hr>
+<h2 id="4-3d-printing--physical-ergonomics">4. 3D Printing &amp; Physical Ergonomics</h2>
+<p>The physical shell was adapted from the <a href="https://forum.espuino.de/t/biobox-3d/3130">BioBox 3D</a> model, reworked for standard off-the-shelf hardware:</p>
+<ol>
+<li><strong>Magnetic card retention:</strong> small neodymium magnets are embedded flush into the top panel beneath the card cradle. Cards equipped with a small washer or coin snap securely into position and won&rsquo;t dislodge when carried around.</li>
+<li><strong>Impact durability:</strong> printed in PETG with 25% infill and 4 perimeters to withstand accidental drops.</li>
+<li><strong>Child-friendly ergonomics:</strong> rounded chamfers on all corners, recessed buttons, and grippy rubber feet (10×5 mm) on the base.</li>
+<li><strong>Brass threaded inserts:</strong> all screw mounts use heat-set M3 brass inserts melted into the plastic rather than tapping self-tapping screws. The enclosure can be opened and serviced indefinitely.</li>
+</ol>
+<hr>
+<h2 id="5-experience--v2-roadmap">5. Experience &amp; V2 Roadmap</h2>
+<p>The player has been in daily use for several months. My daughter grasped the card interaction in minutes, recognizing songs by pictures glued onto the cards and turning the big rotary knob independently.</p>
+<p>Planned upgrades for Version 2:</p>
+<ul>
+<li><strong>Exposed dual-purpose USB port:</strong> route ESP32 data lines alongside power to the chassis so firmware can be flashed without opening the case.</li>
+<li><strong>I2S DAC migration (MAX98357A):</strong> replace the serial DY-SV5W module with a direct I2S DAC, allowing the ESP32 to stream audio, perform soft crossfades, and provide an over-the-air web management UI.</li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body>
+</html>

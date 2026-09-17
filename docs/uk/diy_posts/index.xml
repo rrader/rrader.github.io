@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DIY та Мейкерство on Роман Радер</title>
+    <link>https://rrader.github.io/uk/diy_posts/</link>
+    <description>Recent content in DIY та Мейкерство on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Thu, 17 Sep 2026 12:30:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/diy_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Автономна дитяча Монтессорі-раковина: шлях від фанери та металу до 3D-друку</title>
+      <link>https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/</link>
+      <pubDate>Thu, 17 Sep 2026 12:30:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/</guid>
+      <description>Коли дитині виповнюється рік-півтора, одна з найважливіших навичок за методикою Монтессорі — самостійність у гігієні: миття рук, чищення зубів, вмивання.&#xA;Звичайний дорослий умивальник для цього не підходить: навіть зі сходинкою дитині важко дотягтися до крана, є ризик впасти, а вода хлюпає по всій підлозі. Більшість покупних рішень — це або іграшкові пластикові кухні без нормального протоку води, або масивні дерев&amp;rsquo;яні конструкції, які займають пів кімнати.&#xA;Було вирішено спроєктувати та зібрати компактну, автономну раковину зі справжньою проточною водою, ідеально адаптовану під зріст дитини (~80 см).</description>
+    </item>
+    <item>
+      <title>AdaBox — саморобний музичний плеєр на ESP32 з RFID для дитини</title>
+      <link>https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/</link>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/</guid>
+      <description>Коли доньці виповнився рік, постало питання музичного плеєра. Комерційні рішення на кшталт Toniebox популярні у світі, але мають суттєві мінуси:&#xA;Закрита екосистема: кожна нова казка чи альбом прив’язані до фірмової фігурки за $15–20. Залежність від хмари: активація та синхронізація через фірмові сервери. Обмеження контенту: українських пісень чи казок в офіційному каталозі практично немає. Тому виникла ідея зробити власний відкритий варіант: дитина прикладає картку — грає трек чи казка. Без хмари, без додатків, без екранів.</description>
+    </item>
+  </channel>
+</rss>

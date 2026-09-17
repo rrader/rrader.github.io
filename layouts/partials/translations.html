@@ -1,0 +1,10 @@
+{{- if .IsTranslated -}}
+<div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 {{ if eq .Language.Lang "uk" }}Читати іншими мовами:{{ else }}Read in other languages:{{ end }}</span>
+    {{- range .Translations -}}
+        <a href="{{ .RelPermalink }}" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">
+            {{- if eq .Language.Lang "en" }}🇬🇧 English{{ else if eq .Language.Lang "uk" }}🇺🇦 Українська{{ else }}{{ .Language.LanguageName }}{{ end -}}
+        </a>
+    {{- end -}}
+</div>
+{{- end -}}

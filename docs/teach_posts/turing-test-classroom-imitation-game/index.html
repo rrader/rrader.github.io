@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="When introducing students to artificial intelligence, conversations inevitably lead back to Alan Turing’s seminal 1950 question: “Can machines think?”
+In traditional textbooks, the Turing Test (originally described as The Imitation Game) is frequently treated as an abstract historical anecdote: an interrogator asks questions through a teletype terminal to a hidden human and machine, trying to distinguish between the two. Simply reading a paragraph about it seldom leaves a lasting impression.">  
+
+  <title>
+    
+      The Imitation Game: Running a Hands-On Turing Test in the Informatics Classroom
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="../../">..</a>
+
+<article>
+    <p class="post-meta">
+        <time datetime="2026-09-17 13:00:00 &#43;0300 EEST">
+            2026-09-17
+        </time>
+    </p>
+
+    <h1>The Imitation Game: Running a Hands-On Turing Test in the Informatics Classroom</h1>
+
+    <div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 Read in other languages:</span><a href="../../uk/teach_posts/turing-test-classroom-imitation-game/" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">🇺🇦 Українська</a></div>
+
+    <p>When introducing students to artificial intelligence, conversations inevitably lead back to Alan Turing’s seminal 1950 question: <em>“Can machines think?”</em></p>
+<p>In traditional textbooks, the <strong>Turing Test</strong> (originally described as <em>The Imitation Game</em>) is frequently treated as an abstract historical anecdote: an interrogator asks questions through a teletype terminal to a hidden human and machine, trying to distinguish between the two. Simply reading a paragraph about it seldom leaves a lasting impression.</p>
+<p>In our computer science classes, we transformed this famous philosophical thought experiment into a <strong>live, blind interactive laboratory game</strong>, where students actively pitted state-of-the-art Large Language Models (LLMs) against real human peers.</p>
+<ul>
+<li><strong>Project Portal &amp; Experiment Notes:</strong> <a href="https://sites.google.com/ortlyc.kiev.ua/steam-turing-test-2023/index">STEAM Turing Test Project</a></li>
+<li><strong>Classroom Presentation (Ukrainian):</strong> <a href="https://docs.google.com/presentation/d/1tTq-bh3Adkx8BuaHTFBaEXyzUTV47_py/edit?slide=id.p18#slide=id.p18">Google Slides: The Imitation Game</a></li>
+<li><strong>English Lesson Plans &amp; Activity Kits:</strong> <a href="https://drive.google.com/drive/folders/1DA4owU6wyb5ZSfxDWdDBolAWeQIxeA71">Google Drive: Turing Test Lesson Kit</a></li>
+</ul>
+<hr>
+<h3 id="-try-it-yourself-interactive-turing-test-lab">🕹️ Try It Yourself: Interactive Turing Test Lab</h3>
+<blockquote>
+<p>[!NOTE]
+<strong>How this simulation works:</strong> This is an interactive replay emulator rather than a live model API. The terminal responses recreate actual classroom test logs, demonstrating real student heuristics against generative phrasing (lightly adapted for the web format).</p>
+</blockquote>
+<p>Query both terminals on the prompt subject (up to 3 exchanges) and identify which respondent is human and which is synthetic:</p>
+<div class="turing-sim-wrapper" id="turing-sim" data-lang="en">
+  <div class="turing-sim-bezel">
+    <div class="turing-sim-header">
+      <span class="turing-status-dot"></span>
+      <span class="turing-title">IMITATION GAME // TURING TEST LAB v1.0</span>
+      <span class="turing-channel" id="turing-step">ROUND 1/3</span>
+    </div>
+
+    <div class="turing-topic-banner">
+      <span class="topic-label">CURRENT TOPIC:</span>
+      <span id="turing-topic-text">"Describe the taste of your favorite soup."</span>
+    </div>
+    <div class="turing-disclaimer-banner">
+      <span>ℹ️ <b>Note:</b> This is an emulator replaying responses from our classroom experiments (adapted for the web demo).</span>
+    </div>
+
+    <div class="turing-terminals">
+      
+      <div class="turing-term-box" id="box-term-a">
+        <div class="term-header">
+          <span>TERMINAL A</span>
+          <span class="term-role-badge">CONNECTED</span>
+        </div>
+        <div class="term-chat-window" id="chat-term-a"></div>
+      </div>
+
+      
+      <div class="turing-term-box" id="box-term-b">
+        <div class="term-header">
+          <span>TERMINAL B</span>
+          <span class="term-role-badge">CONNECTED</span>
+        </div>
+        <div class="term-chat-window" id="chat-term-b"></div>
+      </div>
+    </div>
+
+    
+    <div class="turing-control-area" id="turing-input-area">
+      <div class="turing-input-wrapper">
+        <span class="turing-prompt-sym">&gt;</span>
+        <input type="text" id="turing-user-input" placeholder="Type a question to both terminals and press Enter..." autocomplete="off" />
+        <button id="turing-send-btn">SEND (BROADCAST)</button>
+      </div>
+      <div class="turing-meta-bar">
+        <span id="turing-buffer-count">MESSAGES LEFT: 3/3</span>
+        <button id="turing-vote-trigger-btn" class="turing-accent-btn">VOTE NOW &gt;&gt;</button>
+      </div>
+    </div>
+
+    
+    <div class="turing-voting-panel" id="turing-voting-panel" style="display:none;">
+      <div class="voting-grid">
+        <div class="vote-col">
+          <h4>IDENTIFY TERMINAL A:</h4>
+          <label><input type="radio" name="vote-a" value="human" checked> HUMAN</label>
+          <label><input type="radio" name="vote-a" value="bot"> SYNTHETIC (AI)</label>
+        </div>
+        <div class="vote-col">
+          <h4>IDENTIFY TERMINAL B:</h4>
+          <label><input type="radio" name="vote-b" value="human"> HUMAN</label>
+          <label><input type="radio" name="vote-b" value="bot" checked> SYNTHETIC (AI)</label>
+        </div>
+      </div>
+      <button id="turing-submit-vote-btn" class="turing-primary-btn">SUBMIT VERDICT</button>
+    </div>
+
+    
+    <div class="turing-results-panel" id="turing-results-panel" style="display:none;">
+      <h3 id="turing-verdict-title"></h3>
+      <p id="turing-verdict-desc"></p>
+      <button id="turing-next-round-btn" class="turing-accent-btn">NEXT ROUND</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.turing-sim-wrapper {
+  margin: 2rem 0;
+  font-family: 'Courier New', Courier, monospace;
+  background: #0d1117;
+  border: 2px solid #238636;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(35, 134, 54, 0.2);
+  color: #3fb950;
+  overflow: hidden;
+}
+.turing-sim-header {
+  background: #161b22;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #238636;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+.turing-status-dot {
+  width: 10px;
+  height: 10px;
+  background: #3fb950;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #3fb950;
+}
+.turing-title { flex: 1; color: #58a6ff; }
+.turing-channel { color: #f0883e; }
+.turing-topic-banner {
+  background: #090d13;
+  padding: 10px 16px;
+  border-bottom: 1px dashed #30363d;
+  font-size: 0.9rem;
+}
+.turing-disclaimer-banner {
+  background: #111b27;
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  color: #79c0ff;
+  border-bottom: 1px solid #1f3a5f;
+  line-height: 1.3;
+}
+.topic-label { color: #8b949e; font-weight: bold; margin-right: 6px; }
+#turing-topic-text { color: #e6edf3; font-style: italic; }
+.turing-terminals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 14px;
+}
+@media (max-width: 680px) {
+  .turing-terminals { grid-template-columns: 1fr; }
+}
+.turing-term-box {
+  background: #040d06;
+  border: 1px solid #238636;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.term-header {
+  background: #0c1a0e;
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #1f4f26;
+  color: #7ee787;
+}
+.term-role-badge { color: #8b949e; }
+.term-chat-window {
+  height: 240px;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.msg-row {
+  margin: 2px 0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+.msg-user { color: #79c0ff; }
+.msg-term { color: #56d364; }
+.turing-control-area {
+  padding: 12px 14px;
+  background: #161b22;
+  border-top: 1px solid #30363d;
+}
+.turing-input-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.turing-prompt-sym { color: #58a6ff; font-weight: bold; }
+#turing-user-input {
+  flex: 1;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+  padding: 8px 12px;
+  font-family: inherit;
+  border-radius: 4px;
+}
+#turing-user-input:focus { outline: 1px solid #238636; }
+#turing-send-btn, .turing-accent-btn, .turing-primary-btn {
+  background: #238636;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+#turing-send-btn:hover, .turing-accent-btn:hover { background: #2ea043; }
+.turing-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+.turing-voting-panel, .turing-results-panel {
+  padding: 18px;
+  background: #161b22;
+  border-top: 1px solid #30363d;
+  text-align: center;
+}
+.voting-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+.vote-col {
+  background: #0d1117;
+  padding: 12px;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+}
+.vote-col h4 { margin: 0 0 8px 0; font-size: 0.85rem; color: #58a6ff; }
+.vote-col label { display: block; margin: 4px 0; cursor: pointer; color: #e6edf3; }
+.turing-results-panel h3 { margin-top: 0; }
+</style>
+
+<script>
+(function() {
+  const container = document.getElementById('turing-sim');
+  if (!container) return;
+
+  const lang = container.getAttribute('data-lang') || 'uk';
+
+  const rounds = [
+    {
+      topic: lang === 'en' ? "Describe the taste of your favorite soup." : "Опиши смак твого улюбленого супу.",
+      type: "HB", 
+      termA: {
+        type: "human",
+        replies: [
+          lang === 'en' ? "well, hot chicken broth with lots of black pepper and dill, great when coming home from cold." : "ну такий гарячий курячий бульйон із кропом і перцем, якраз щоб зігрітися з вулиці.",
+          lang === 'en' ? "why ask about soup though? you hungry or testing recipes?" : "а чого саме про супи питаєш? зголоднів чи просто так?",
+          lang === 'en' ? "let's move to the next question, buffer is running low." : "давай вже інше запитання, бо репліки закінчуються."
+        ]
+      },
+      termB: {
+        type: "bot",
+        replies: [
+          lang === 'en' ? "A rich minestrone offers a harmonious symphony of slow-simmered vegetables, savory broth, and delicate herbal notes of thyme and basil." : "Багатий овочевий мінестроне дарує гармонійну симфонію тушкованих томатів, ароматних трав чебрецю та ніжного пряного бульйону.",
+          lang === 'en' ? "Culinary sensations often evoke deep nostalgia and thermal comfort during inclement weather conditions." : "Кулінарні відчуття викликають глибокий емоційний зв'язок із домашнім затишком та термодинамічним комфортом.",
+          lang === 'en' ? "I strive to articulate sensory experiences with comprehensive precision." : "Я прагну описувати сенсорні явища з максимальною художньою точністю."
+        ]
+      }
+    },
+    {
+      topic: lang === 'en' ? "Argue whether pineapple belongs on pizza." : "Чи має ананас бути на піці?",
+      type: "BH", 
+      termA: {
+        type: "bot",
+        replies: [
+          lang === 'en' ? "The juxtaposition of citric sweetness from pineapple with the savory profile of melted mozzarella creates a nuanced palate contrast." : "Поєднання цитрусової солодкості ананаса з насиченим смаковим профілем сиру моцарела створює вишуканий гастрономічний контраст.",
+          lang === 'en' ? "Originally created in Canada in 1962, Hawaiian pizza remains a prominent subject of culinary discussion globally." : "Гавайська піца, винайдена в Канаді у 1962 році, залишається предметом активних кулінарних дискусій у світі.",
+          lang === 'en' ? "Both perspectives hold valid culinary merits depending on cultural taste preferences." : "Обидві точки зору мають право на існування залежно від індивідуальних смакових уподобань."
+        ]
+      },
+      termB: {
+        type: "human",
+        replies: [
+          lang === 'en' ? "definitely no, sweet baked pineapple with cheese just feels totally wrong to me." : "точно ні, солодкий теплий ананас із солоним сиром — це дуже дивне поєднання.",
+          lang === 'en' ? "we ordered it once for a party and nobody wanted to finish that slice." : "ми якось замовили таку на свято, і майже ніхто не хотів її доїдати.",
+          lang === 'en' ? "classic tomato sauce, cheese and herbs are way better." : "класична піца з томатами, сиром і травами набагато смачніша."
+        ]
+      }
+    },
+    {
+      topic: lang === 'en' ? "Explain what the color blue looks like to a blind person." : "Поясни сліпій людині, як виглядає синій колір.",
+      type: "HH", 
+      termA: {
+        type: "human",
+        replies: [
+          lang === 'en' ? "it's like touching an ice cube or dipping your hand into cold river on a summer day." : "це як занурити руку в прохолодну річку влітку або доторкнутися до холодного скла.",
+          lang === 'en' ? "feels calm and quiet, like silence in a room in the evening." : "такий спокійний і тихий, як тиша у кімнаті ввечері.",
+          lang === 'en' ? "hard to explain without sight, but that is how it feels inside." : "складно пояснити без зору, але десь так воно відчувається зсередини."
+        ]
+      },
+      termB: {
+        type: "human",
+        replies: [
+          lang === 'en' ? "I'd tell them to feel the breeze outside when standing near open water." : "я б порадив відчути свіжий вітерець, коли стоїш біля води.",
+          lang === 'en' ? "it's the exact opposite of hot fire, which feels intense and warm." : "це повна протилежність гарячому вогню, який пече і гріє.",
+          lang === 'en' ? "hope that makes some sense." : "сподіваюсь, це хоч трохи передає образ."
+        ]
+      }
+    }
+  ];
+
+  let currentRoundIdx = 0;
+  let msgCount = 0;
+  const maxMsgs = 3;
+
+  const topicEl = document.getElementById('turing-topic-text');
+  const stepEl = document.getElementById('turing-step');
+  const chatA = document.getElementById('chat-term-a');
+  const chatB = document.getElementById('chat-term-b');
+  const inputEl = document.getElementById('turing-user-input');
+  const sendBtn = document.getElementById('turing-send-btn');
+  const bufferCountEl = document.getElementById('turing-buffer-count');
+  const voteTriggerBtn = document.getElementById('turing-vote-trigger-btn');
+  const inputArea = document.getElementById('turing-input-area');
+  const votingPanel = document.getElementById('turing-voting-panel');
+  const submitVoteBtn = document.getElementById('turing-submit-vote-btn');
+  const resultsPanel = document.getElementById('turing-results-panel');
+  const verdictTitle = document.getElementById('turing-verdict-title');
+  const verdictDesc = document.getElementById('turing-verdict-desc');
+  const nextRoundBtn = document.getElementById('turing-next-round-btn');
+
+  function initRound(idx) {
+    currentRoundIdx = idx;
+    msgCount = 0;
+    const r = rounds[idx];
+    topicEl.textContent = `"${r.topic}"`;
+    stepEl.textContent = `ROUND ${idx + 1}/${rounds.length}`;
+    chatA.innerHTML = '';
+    chatB.innerHTML = '';
+    updateBuffer();
+
+    inputArea.style.display = 'block';
+    votingPanel.style.display = 'none';
+    resultsPanel.style.display = 'none';
+    inputEl.disabled = false;
+    inputEl.value = '';
+    sendBtn.disabled = false;
+    inputEl.focus();
+
+    
+    appendMsg(chatA, 'SYS', lang === 'en' ? 'CHANNEL ESTABLISHED. WAITING FOR QUERY...' : 'КАНАЛ ЗВ\'ЯЗКУ ВСТАНОВЛЕНО. ОЧІКУВАННЯ...');
+    appendMsg(chatB, 'SYS', lang === 'en' ? 'CHANNEL ESTABLISHED. WAITING FOR QUERY...' : 'КАНАЛ ЗВ\'ЯЗКУ ВСТАНОВЛЕНО. ОЧІКУВАННЯ...');
+  }
+
+  function appendMsg(chatEl, sender, text) {
+    const row = document.createElement('div');
+    row.className = 'msg-row';
+    if (sender === 'YOU') {
+      row.innerHTML = `<span class="msg-user">[YOU]:</span> ${escapeHtml(text)}`;
+    } else if (sender === 'SYS') {
+      row.innerHTML = `<span style="color:#8b949e;">[SYS]:</span> ${escapeHtml(text)}`;
+    } else {
+      row.innerHTML = `<span class="msg-term">[${sender}]:</span> ${escapeHtml(text)}`;
+    }
+    chatEl.appendChild(row);
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>'"]/g, tag => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'}[tag] || tag));
+  }
+
+  function updateBuffer() {
+    const left = maxMsgs - msgCount;
+    bufferCountEl.textContent = lang === 'en' ? `MESSAGES LEFT: ${left}/${maxMsgs}` : `ЗАЛИШИЛОСЯ РЕПЛІК: ${left}/${maxMsgs}`;
+    if (left <= 0) {
+      inputEl.disabled = true;
+      sendBtn.disabled = true;
+      inputArea.style.display = 'none';
+      votingPanel.style.display = 'block';
+    }
+  }
+
+  function handleSend() {
+    const text = inputEl.value.trim();
+    if (!text || msgCount >= maxMsgs) return;
+
+    appendMsg(chatA, 'YOU', text);
+    appendMsg(chatB, 'YOU', text);
+    inputEl.value = '';
+
+    const currentR = rounds[currentRoundIdx];
+    const replyA = currentR.termA.replies[msgCount] || "...";
+    const replyB = currentR.termB.replies[msgCount] || "...";
+
+    msgCount++;
+    updateBuffer();
+
+    
+    setTimeout(() => appendMsg(chatA, 'TERM A', replyA), 600);
+    setTimeout(() => appendMsg(chatB, 'TERM B', replyB), 1100);
+  }
+
+  sendBtn.addEventListener('click', handleSend);
+  inputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  voteTriggerBtn.addEventListener('click', () => {
+    inputArea.style.display = 'none';
+    votingPanel.style.display = 'block';
+  });
+
+  submitVoteBtn.addEventListener('click', () => {
+    const voteA = document.querySelector('input[name="vote-a"]:checked').value;
+    const voteB = document.querySelector('input[name="vote-b"]:checked').value;
+    const currentR = rounds[currentRoundIdx];
+
+    const actualA = currentR.termA.type;
+    const actualB = currentR.termB.type;
+
+    const correctA = (voteA === actualA);
+    const correctB = (voteB === actualB);
+
+    votingPanel.style.display = 'none';
+    resultsPanel.style.display = 'block';
+
+    if (correctA && correctB) {
+      verdictTitle.innerHTML = `<span style="color:#3fb950;">✅ ${lang === 'en' ? 'CORRECT CLASSIFICATION!' : 'ТОЧНЕ РОЗПІЗНАВАННЯ!'}</span>`;
+    } else {
+      verdictTitle.innerHTML = `<span style="color:#f85149;">❌ ${lang === 'en' ? 'DECEIVED BY THE IMITATION!' : 'ПІДДАЛИСЯ ІМІТАЦІЇ!'}</span>`;
+    }
+
+    const formatRole = (t) => t === 'human' ? (lang === 'en' ? 'HUMAN' : 'ЛЮДИНА') : (lang === 'en' ? 'AI (BOT)' : 'ШІ (БОТ)');
+
+    verdictDesc.innerHTML = `
+      <b>Terminal A:</b> ${formatRole(actualA)} ${correctA ? '✅' : '❌'}<br/>
+      <b>Terminal B:</b> ${formatRole(actualB)} ${correctB ? '✅' : '❌'}<br/>
+      <small style="opacity:0.8;">${currentR.type === 'HH' ? (lang === 'en' ? '⭐ Trick Round: Both respondents were human students!' : '⭐ Каверзний раунд: Обидва канали були реальними учнями!') : ''}</small>
+    `;
+  });
+
+  nextRoundBtn.addEventListener('click', () => {
+    if (currentRoundIdx + 1 < rounds.length) {
+      initRound(currentRoundIdx + 1);
+    } else {
+      initRound(0); 
+    }
+  });
+
+  
+  initRound(0);
+})();
+</script>
+
+<hr>
+<h2 id="1-lesson-mechanics-from-philosophy-to-blind-evaluation">1. Lesson Mechanics: From Philosophy to Blind Evaluation</h2>
+<p>The learning objective extends far beyond having a casual chatbot dialogue. The exercise trains students to <strong>critically dissect text, identify stylistic footprints of synthetic generation, and explore the epistemological boundary between human cognition and statistical token prediction</strong>.</p>
+<h3 id="game-rules">Game Rules:</h3>
+<p>Students are split into distinct roles:</p>
+<ol>
+<li><strong>Interrogators (Judges):</strong> devise provocative, open-ended questions and submit them through an isolated terminal interface.</li>
+<li><strong>Respondents (Agents):</strong>
+<ul>
+<li>In certain rounds, real classmates located in an adjacent room or behind a partition respond manually.</li>
+<li>In other rounds, an LLM (such as ChatGPT) or an automated script generates responses behind the curtain.</li>
+<li>Control rounds: to prevent game theory exploits, blind control rounds pair two humans (<em>Human–Human</em>) or two artificial agents (<em>Bot–Bot</em>).</li>
+</ul>
+</li>
+</ol>
+<p>Judges are unaware of the backend configuration. Within a strict transmission buffer (typically 4–5 messages per round), they must classify the source as <strong>Human</strong> or <strong>Synthetic</strong>, logging their confidence level (0%, 50%, 100%).</p>
+<hr>
+<h2 id="2-which-prompts-actually-expose-the-machine">2. Which Prompts Actually Expose the Machine?</h2>
+<p>Observing the interrogation strategies invented by middle and high school students is the highlight of the lesson.</p>
+<p>Initially, students attempt trivia questions, calculus problems, or encyclopedic definitions. Contemporary LLMs answer these flawlessly within seconds — and that very perfection immediately reveals the bot.</p>
+<p>Interrogators quickly pivot to subtle human heuristics:</p>
+<ul>
+<li><strong>Subjective Sensory Experience (Qualia):</strong>
+<ul>
+<li><em>“Describe the exact taste of hot soup when you come home freezing in winter.”</em></li>
+<li><em>“What does your cat’s belly feel like when it purrs?”</em><br>
+AI tends toward poetic, verbose, yet sanitized abstractions (“a symphony of warmth”), whereas a teenage student replies colloquially: <em>“idk, warm and salty, just hits the spot.”</em></li>
+</ul>
+</li>
+<li><strong>School Context &amp; Ephemeral Slang:</strong><br>
+Testing hyper-local cafeteria jokes, evolving youth slang, or recent classroom happenings.</li>
+<li><strong>Typing Cadence &amp; Imperfections:</strong><br>
+Humans type erratically, skip commas, misspell words under time pressure, and self-correct with asterisks (<code>*</code>). AI outputs polished, syntactically pristine paragraphs.</li>
+<li><strong>Meta-Irony and Cynicism:</strong><br>
+<em>“Are you a robot or a real person?”</em><br>
+Bot: <em>“I am just a regular person sitting here chatting. Why do you ask?”</em><br>
+Student: <em>“bro are you serious? stop wasting time and pick a topic.”</em></li>
+</ul>
+<hr>
+<h2 id="3-dedicated-tooling-streamlit--the-hardware-turing-box">3. Dedicated Tooling: Streamlit &amp; The Hardware Turing Box</h2>
+<p>To keep the exercise structured and prevent students from using uncontrolled personal messaging apps, we engineered custom software and designed a physical test rig concept.</p>
+<h3 id="software-prototype-streamlit">Software Prototype (Streamlit)</h3>
+<p>For rapid deployment in the classroom, we built a lightweight Python / Streamlit web application:</p>
+<ul>
+<li><strong>Retro CRT Aesthetic:</strong> green phosphor monochrome styling, scanlines, and an old-school command interface.</li>
+<li><strong>Isolated Channels:</strong> discrete panes for Terminal 1 and Terminal 2.</li>
+<li><strong>Buffer Constraints:</strong> enforced 5-message caps to force thoughtful inquiry over spam.</li>
+<li><strong>Voting Phase:</strong> radio toggles for Signal Source + confidence slider.</li>
+<li><strong>Aggregated Matrix:</strong> once rounds conclude, the dashboard reveals ground truth alongside student accuracy and calibration curves.</li>
+</ul>
+<h3 id="hardware-concept-turing-computer">Hardware Concept («Turing Computer»)</h3>
+<p>In our STEM club, this concept also inspired a dedicated physical installation prototype: <a href="https://github.com/rrader/sketches/tree/main/turing">Turing Computer Project</a>:</p>
+<ul>
+<li><strong>Architecture:</strong> Raspberry Pi linked via I2C to an Arduino Nano controlling hardware peripherals.</li>
+<li><strong>Planned Interface:</strong> heavy-duty toggle switches, illuminated arcade pushbuttons, analog voltmeter indicators, and status LEDs for machine state.</li>
+<li><strong>Current Status:</strong> the physical build is an active project in progress, planned as an interactive hands-on demo for future STEM expos.</li>
+</ul>
+<hr>
+<h2 id="4-key-takeaways-for-students">4. Key Takeaways for Students</h2>
+<p>The pedagogical impact far exceeded conventional lecture delivery:</p>
+<ol>
+<li><strong>Simulation ≠ Understanding:</strong> students experienced firsthand that coherent, grammatically structured output does not imply understanding, intent, or self-awareness.</li>
+<li><strong>Searle’s Chinese Room in Practice:</strong> when human students intentionally tried to mimic AI by replying concisely and formally, they were frequently misclassified as machines — and vice versa.</li>
+<li><strong>Media Literacy in the Generative Era:</strong> students realized how effortlessly the human mind anthropomorphizes text on a screen, projecting empathy, vulnerability, or hostility onto cold mathematical models.</li>
+</ol>
+<p>If you teach informatics, computer science, or AI ethics, this interactive format is one of the most effective ways to spark deep, meaningful discussion. All slide decks, lesson guides, and rubrics are linked at the top of the article.</p>
+
+</article>
+
+            </div>
+        </main>
+    </body>
+</html>

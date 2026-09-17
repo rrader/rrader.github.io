@@ -32,6 +32,16 @@ title = "google scholar"
 url = "https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ"
 
 [[entries]]
+title = "diy & hardware"
+
+[entries.post_list]
+section = "diy_posts"
+limit = 5
+show_more = true
+show_more_text = "See archive..."
+show_more_url = "diy_posts"
+
+[[entries]]
 title = "teaching"
 
 [entries.post_list]

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DIY &amp; Hardware on Roman Rader</title>
+    <link>https://rrader.github.io/diy_posts/</link>
+    <description>Recent content in DIY &amp; Hardware on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Sep 2026 12:30:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/diy_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autonomous Toddler Montessori Sink: From Plywood and Sheet Metal to 3D Printing</title>
+      <link>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</link>
+      <pubDate>Thu, 17 Sep 2026 12:30:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</guid>
+      <description>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and wiping faces.&#xA;Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial products on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</description>
+    </item>
+    <item>
+      <title>AdaBox — DIY Toddler Music Player on ESP32 with RFID</title>
+      <link>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</link>
+      <pubDate>Thu, 17 Sep 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</guid>
+      <description>When my daughter turned one, I started looking into music players for her. Commercial products like Toniebox are popular globally, but come with significant drawbacks:&#xA;Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: localized folk stories or specific music collections are almost nonexistent in official catalogs. So I decided to build an open, standalone alternative: the toddler taps a card — the music or bedtime story plays.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Дослідження on Роман Радер</title>
+    <link>https://rrader.github.io/uk/study_posts/</link>
+    <description>Recent content in Дослідження on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Tue, 26 Sep 2023 11:47:10 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/study_posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[49-а конференція IEEE LCN] Виявлення ексфільтрації даних через DoH: дослідження шкідливого ПЗ FluBot</title>
+      <link>https://rrader.github.io/uk/study_posts/flubot-case-study/</link>
+      <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/flubot-case-study/</guid>
+      <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.&#xA;Участь у 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN) Наша наукова стаття щодо виявлення витоку (ексфільтрації) даних через протокол DoH була опублікована на 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN), що проходила з 1 по 5 жовтня 2023 року в Дейтона-Біч, Флорида, США.</description>
+    </item>
+  </channel>
+</rss>

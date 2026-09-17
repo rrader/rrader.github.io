@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="green">
+<head>
+	<meta name="generator" content="Hugo 0.123.8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Роман Радер // Quake Terminal</title>
+  <meta name="description" content="Personal Web Terminal of Roman Rader - Cybersecurity Researcher & AI Educator in Kyiv, Ukraine." />
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+  </script>
+  
+
+  <link rel="stylesheet" href="../css/quake-terminal.css" />
+</head>
+<body>
+  <div class="crt-wrapper">
+    <div class="crt-scanlines"></div>
+    <div class="crt-glow"></div>
+    <canvas id="matrix-canvas"></canvas>
+
+    
+    <header class="header-bar">
+      <div class="header-title">
+        <span class="quake-logo">⚡</span>
+        <span>rmn.pp.ua</span>
+      </div>
+      <div class="header-controls">
+        <a href="../" class="ctrl-btn lang-btn" title="English">
+          🇬🇧 EN
+        </a>
+        <a href="../uk/" class="ctrl-btn lang-btn active" title="Українська">
+          🇺🇦 UA
+        </a>
+        <button id="sfx-btn" class="ctrl-btn active" title="Toggle Sound Effects">🔊 SFX: ON</button>
+        <button id="gfx-btn" class="ctrl-btn active" title="Toggle CRT Scanline Effects">📺 GFX: ON</button>
+      </div>
+    </header>
+
+    
+    <main class="terminal-container">
+      <div id="terminal-output" class="terminal-output"></div>
+
+      
+      <div class="quick-pills">
+        <button class="pill-btn" data-cmd="bio">bio</button>
+        <button class="pill-btn" data-cmd="posts">posts</button>
+        <button class="pill-btn" data-cmd="diy">diy</button>
+        <button class="pill-btn" data-cmd="research">research</button>
+        <button class="pill-btn" data-cmd="teaching">teaching</button>
+        <button class="pill-btn" data-cmd="contact">contact</button>
+        <button class="pill-btn" data-cmd="help">help</button>
+        <button class="pill-btn" data-cmd="clear">clear</button>
+      </div>
+
+      
+      <div class="input-line">
+        <span class="prompt-symbol">[guest@rmn.pp.ua ~]$</span>
+        <div class="cmd-input-wrapper">
+          <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" autofocus placeholder="введіть команду..." />
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    window.__HUGO_POSTS__ = [
+      {
+        title: "Гра в імітацію: як ми проводили тест Тюрінга на уроці інформатики",
+        section: "teach_posts",
+        lang: "uk",
+        url: "/uk/teach_posts/turing-test-classroom-imitation-game/",
+        date: "2026-09-17"
+      },
+      {
+        title: "Автономна дитяча Монтессорі-раковина: шлях від фанери та металу до 3D-друку",
+        section: "diy_posts",
+        lang: "uk",
+        url: "/uk/diy_posts/montessori-3d-printed-sink/",
+        date: "2026-09-17"
+      },
+      {
+        title: "AdaBox — саморобний музичний плеєр на ESP32 з RFID для дитини",
+        section: "diy_posts",
+        lang: "uk",
+        url: "/uk/diy_posts/adabox-diy-rfid-player/",
+        date: "2026-09-17"
+      },
+      {
+        title: "Місяць кібербезпеки 2025",
+        section: "teach_posts",
+        lang: "uk",
+        url: "/uk/teach_posts/cybersecurity-month-2025/",
+        date: "2025-10-29"
+      },
+      {
+        title: "Методичні матеріали для курсу Інженерія ШІ",
+        section: "teach_posts",
+        lang: "uk",
+        url: "/uk/teach_posts/method-ai-course/",
+        date: "2024-12-09"
+      },
+      {
+        title: "Навчальні матеріали для уроків з інформатики",
+        section: "teach_posts",
+        lang: "uk",
+        url: "/uk/teach_posts/classroom-site/",
+        date: "2023-09-26"
+      },
+      {
+        title: "[49-а конференція IEEE LCN] Виявлення ексфільтрації даних через DoH: дослідження шкідливого ПЗ FluBot",
+        section: "study_posts",
+        lang: "uk",
+        url: "/uk/study_posts/flubot-case-study/",
+        date: "2023-09-26"
+      },
+    ];
+  </script>
+  <script src="../js/quake-terminal.js"></script>
+</body>
+</html>

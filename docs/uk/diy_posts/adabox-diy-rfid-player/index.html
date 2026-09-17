@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Коли доньці виповнився рік, постало питання музичного плеєра. Комерційні рішення на кшталт Toniebox популярні у світі, але мають суттєві мінуси:
+Закрита екосистема: кожна нова казка чи альбом прив’язані до фірмової фігурки за $15–20. Залежність від хмари: активація та синхронізація через фірмові сервери. Обмеження контенту: українських пісень чи казок в офіційному каталозі практично немає. Тому виникла ідея зробити власний відкритий варіант: дитина прикладає картку — грає трек чи казка. Без хмари, без додатків, без екранів.">  
+
+  <title>
+    
+      AdaBox — саморобний музичний плеєр на ESP32 з RFID для дитини
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="../../../">..</a>
+
+<article>
+    <p class="post-meta">
+        <time datetime="2026-09-17 12:00:00 &#43;0300 EEST">
+            2026-09-17
+        </time>
+    </p>
+
+    <h1>AdaBox — саморобний музичний плеєр на ESP32 з RFID для дитини</h1>
+
+    <div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 Читати іншими мовами:</span><a href="../../../diy_posts/adabox-diy-rfid-player/" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">🇬🇧 English</a></div>
+
+    <p>Коли доньці виповнився рік, постало питання музичного плеєра. Комерційні рішення на кшталт <strong>Toniebox</strong> популярні у світі, але мають суттєві мінуси:</p>
+<ol>
+<li><strong>Закрита екосистема:</strong> кожна нова казка чи альбом прив’язані до фірмової фігурки за $15–20.</li>
+<li><strong>Залежність від хмари:</strong> активація та синхронізація через фірмові сервери.</li>
+<li><strong>Обмеження контенту:</strong> українських пісень чи казок в офіційному каталозі практично немає.</li>
+</ol>
+<p>Тому виникла ідея зробити власний відкритий варіант: дитина прикладає картку — грає трек чи казка. Без хмари, без додатків, без екранів.</p>
+<p>Проєкт натхненний спільнотами <a href="https://github.com/biologist79/ESPuino">ESPuino</a> та <a href="https://www.tonuino.de">Tonuino</a>, але написаний під власні вимоги та зібраний на деталях, які можна без проблем купити в Україні.</p>
+<ul>
+<li><strong>Код прошивки:</strong> <a href="https://github.com/rrader/adabox">github.com/rrader/adabox</a> (або репозиторій <a href="https://github.com/rrader/Jukebox">Jukebox</a>)</li>
+<li><strong>3D-модель корпусу:</strong> <a href="https://www.printables.com/model/1829062-adabox">Printables: AdaBox (Model 1829062)</a></li>
+</ul>
+<hr>
+<h2 id="1-архітектура-та-вибір-заліза">1. Архітектура та вибір заліза</h2>
+<p>Головний принцип архітектури: <strong>автономність, простота та безпека</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Вузол</th>
+<th>Компонент</th>
+<th>Призначення</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Мікроконтролер</strong></td>
+<td>ESP32-WROOM-32D</td>
+<td>Керування логікою, зчитування RFID, UART-команди плеєру, анімація LED</td>
+</tr>
+<tr>
+<td><strong>Аудіомодуль</strong></td>
+<td>DY-SV5W (SV5W)</td>
+<td>Апаратне декодування MP3/WAV з MicroSD, вбудований підсилювач 5 Вт (Class D)</td>
+</tr>
+<tr>
+<td><strong>Динамік</strong></td>
+<td>4 Ом, 5 Вт (гумовий підвіс)</td>
+<td>Якісний звук без хрипів при компактних габаритах</td>
+</tr>
+<tr>
+<td><strong>RFID-зчитувач</strong></td>
+<td>RC522 (13.56 МГц)</td>
+<td>Сканування карток / брелоків Mifare</td>
+</tr>
+<tr>
+<td><strong>Світлова індикація</strong></td>
+<td>Кільце WS2812B (16 LED)</td>
+<td>Індикація режимів, гучності, процесу запису карток</td>
+</tr>
+<tr>
+<td><strong>Керування</strong></td>
+<td>Енкодер KY-040 + 3 кнопки</td>
+<td>Гучність (енкодер) + Play/Pause, Next, Prev</td>
+</tr>
+<tr>
+<td><strong>Живлення</strong></td>
+<td>Плата резервного живлення 2×18650 (Type-C)</td>
+<td>Автономна робота на акумуляторах + безпечне заряджання</td>
+</tr>
+</tbody>
+</table>
+<h3 id="схема-підключення-пінів-esp32">Схема підключення пінів (ESP32)</h3>
+<p>Всі кнопки підключені безпосередньо на землю (<code>GND</code>) із задіянням внутрішнього <code>INPUT_PULLUP</code> мікроконтролера:</p>
+<ul>
+<li><strong>DY-SV5W UART:</strong> RXD → <code>GPIO 17</code>, TXD → <code>GPIO 16</code>, BUSY → <code>GPIO 15</code></li>
+<li><strong>WS2812B Data:</strong> <code>GPIO 4</code></li>
+<li><strong>Кнопки:</strong> Play/Stop → <code>GPIO 12</code>, Next → <code>GPIO 13</code>, Prev → <code>GPIO 14</code></li>
+<li><strong>Енкодер KY-040:</strong> CLK → <code>GPIO 18</code>, DT → <code>GPIO 19</code></li>
+<li><strong>RC522 SPI:</strong> SCK → <code>GPIO 25</code>, MISO → <code>GPIO 26</code>, MOSI → <code>GPIO 27</code>, SDA(SS) → <code>GPIO 5</code>, RST → <code>GPIO 22</code></li>
+</ul>
+<hr>
+<h2 id="2-як-влаштоване-читання-карток-та-файлова-система">2. Як влаштоване читання карток та файлова система</h2>
+<p>Більшість подібних DIY-проєктів просто прив&rsquo;язують номер карти до порядкового номера треку в пам&rsquo;яті контролера. Якщо переставити флешку або змінити порядок треків — все збивається.</p>
+<p>В AdaBox застосовано інший підхід: <strong>RFID-картка зберігає повний шлях до файлу прямо у своїх блоках пам&rsquo;яті</strong> (наприклад, <code>/MUSIC/00003.mp3</code>).</p>
+<p>Флешка форматується у FAT32 і має просту структуру:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>/MUSIC/
+</span></span><span style="display:flex;"><span>  00001.mp3   ← звичайні пісні: грають по черзі (auto-advance)
+</span></span><span style="display:flex;"><span>  00002.mp3
+</span></span><span style="display:flex;"><span>/OTHER/
+</span></span><span style="display:flex;"><span>  00001.mp3   ← казки/подкасти: грає вибраний трек і зупиняється
+</span></span><span style="display:flex;"><span>  00002.mp3
+</span></span></code></pre></div><h3 id="програмування-картки-прямо-з-пристрою-без-компютера">Програмування картки прямо з пристрою (без комп&rsquo;ютера!)</h3>
+<ol>
+<li>Кнопками Next / Prev обираємо трек, який зараз лунає.</li>
+<li>Затискаємо комбінацію <strong>Next + Prev</strong> і підносимо порожню картку до верхньої панелі.</li>
+<li>ESP32 записує шлях поточного файлу у відкриті сектори картки Mifare Classic.</li>
+<li>Кільце світлодіодів спалахує зеленим — картка готова!</li>
+</ol>
+<p>Також реалізовано захист від дітей: перемикання між категоріями папок (MUSIC ↔ OTHER) виконується тривалим утриманням (5 секунд) кнопки Next під час паузи.</p>
+<hr>
+<h2 id="3-світлові-ефекти-та-зворотний-звязок-ws2812b">3. Світлові ефекти та зворотний зв&rsquo;язок (WS2812B)</h2>
+<p>Для маленької дитини дуже важливий візуальний фідбек. Кільце з 16 адресованих світлодіодів оживляє плеєр:</p>
+<ul>
+<li><strong>Очікування (Idle):</strong> плавне синє «дихання» (breathing effect).</li>
+<li><strong>Відтворення:</strong> райдужний спінер, що крутиться по колу зі швидкістю бітрейту.</li>
+<li><strong>Play / Pause:</strong> короткий зелений або червоний сплеск.</li>
+<li><strong>Перемикання треків:</strong> комета (блакитна за годинниковою стрілкою при Next, жовта проти — при Prev).</li>
+<li><strong>Регулювання гучності:</strong> секторне заповнення кільця від зеленого до червоного кольору.</li>
+</ul>
+<hr>
+<h2 id="4-корпус-та-3d-друк">4. Корпус та 3D-друк</h2>
+<p>За основу було взято модель <a href="https://forum.espuino.de/t/biobox-3d/3130">BioBox 3D</a>, але повністю перероблено під наявні компоненти:</p>
+<ol>
+<li><strong>Магнітна фіксація карток:</strong> у верхню кришку під посадкове місце картки вклеєно невеликі неодимові магніти. Картка з наклеєною монетою або металевою пластинкою клацає на місце і не злітає, коли дитина несе плеєр за ручку.</li>
+<li><strong>Стійкість до ударів:</strong> друк із міцного PETG пластику із заповненням 25% та 4 периметрами.</li>
+<li><strong>Ергономіка для дитячих рук:</strong> радіуси скруглення кутів збільшено, на дно встановлено м&rsquo;які гумові ніжки (10×5 мм).</li>
+<li><strong>Різьбові вставки:</strong> для надійності замість саморізів у пластик впаяні латунні різьбові вставки M3 (heat inserts) — корпус можна розбирати й збирати скільки завгодно разів без злизування різьби.</li>
+</ol>
+<hr>
+<h2 id="5-досвід-експлуатації-та-плани-на-v2">5. Досвід експлуатації та плани на V2</h2>
+<p>Плеєр у щоденному користуванні вже кілька місяців. Дитина розібралася з картками за кілька хвилин: пізнає пісні за малюнками, наклеєними на картки, сама крутить велику ручку гучності.</p>
+<p>Що планується покращити у версії V2:</p>
+<ul>
+<li><strong>Винести порт прошивки:</strong> зараз для оновлення скетчу треба розкручувати корпус; у V2 Type-C порт буде спареним (живлення + дані).</li>
+<li><strong>Спробувати I2S DAC (MAX98357A):</strong> замінити модуль DY-SV5W на чистий I2S-декодер, щоб звук синтезувався безпосередньо ядром ESP32 (це дозволить додати голосові підказки та вебінтерфейс через Wi-Fi).</li>
+</ul>
+
+</article>
+
+            </div>
+        </main>
+    </body>
+</html>

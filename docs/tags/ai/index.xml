@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ai on Roman Rader</title>
+    <link>https://rrader.github.io/tags/ai/</link>
+    <description>Recent content in Ai on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Sep 2026 13:00:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Imitation Game: Running a Hands-On Turing Test in the Informatics Classroom</title>
+      <link>https://rrader.github.io/teach_posts/turing-test-classroom-imitation-game/</link>
+      <pubDate>Thu, 17 Sep 2026 13:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/teach_posts/turing-test-classroom-imitation-game/</guid>
+      <description>When introducing students to artificial intelligence, conversations inevitably lead back to Alan Turing’s seminal 1950 question: “Can machines think?”&#xA;In traditional textbooks, the Turing Test (originally described as The Imitation Game) is frequently treated as an abstract historical anecdote: an interrogator asks questions through a teletype terminal to a hidden human and machine, trying to distinguish between the two. Simply reading a paragraph about it seldom leaves a lasting impression.</description>
+    </item>
+  </channel>
+</rss>

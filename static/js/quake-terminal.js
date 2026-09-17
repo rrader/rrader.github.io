@@ -103,62 +103,57 @@
     } catch (e) {}
   }
 
+  const isUk = (document.documentElement.lang || '').startsWith('uk') || window.location.pathname.includes('/uk/');
+  const currentLang = isUk ? 'uk' : 'en';
+
   // --- Commands Registry ---
   const COMMANDS = {
     help: {
-      desc: 'Display available terminal commands',
+      desc: isUk ? 'Показати список доступних команд' : 'Display available terminal commands',
       action: () => printHelp()
     },
     bio: {
-      desc: 'Show bio summary, location, and core focus',
-      action: () => printBio()
-    },
-    about: {
-      desc: 'Alias for bio',
+      desc: isUk ? 'Коротка біографія, локація та ключові напрями' : 'Show bio summary, location, and core focus',
       action: () => printBio()
     },
     contact: {
-      desc: 'Show email and social/academic profile links',
+      desc: isUk ? 'Контакти, пошта та посилання на профілі' : 'Show email and social/academic profile links',
       action: () => printContact()
     },
-    research: {
-      desc: 'Show cybersecurity research focus and Google Scholar profile',
-      action: () => printResearch()
+    posts: {
+      desc: isUk ? 'Список усіх публікацій (DIY, навчання, дослідження)' : 'List all articles across DIY, teaching, and research',
+      action: () => printAllPosts()
     },
-    publications: {
-      desc: 'Alias for research',
-      action: () => printResearch()
+    diy: {
+      desc: isUk ? 'DIY-проєкти, 3D-друк, мікроконтролери та мейкерство' : 'Show DIY hardware, 3D printing & maker projects',
+      action: () => printDiy()
     },
     teaching: {
-      desc: 'Show educational initiatives and teaching materials links',
+      desc: isUk ? 'Освітні матеріали та курси з інженерії ШІ для школи' : 'Show educational initiatives and teaching materials links',
       action: () => printTeaching()
     },
-    courses: {
-      desc: 'Alias for teaching',
-      action: () => printTeaching()
+    research: {
+      desc: isUk ? 'Дослідження кібербезпеки та профіль у Google Scholar' : 'Show cybersecurity research focus and Google Scholar profile',
+      action: () => printResearch()
     },
     clear: {
-      desc: 'Clear terminal screen',
-      action: () => clearScreen()
-    },
-    cls: {
-      desc: 'Alias for clear',
+      desc: isUk ? 'Очистити екран термінала' : 'Clear terminal screen',
       action: () => clearScreen()
     },
     sfx: {
-      desc: 'Toggle sound effects (usage: sfx [on|off])',
+      desc: isUk ? 'Увімкнути/вимкнути звукові ефекти (sfx [on|off])' : 'Toggle sound effects (usage: sfx [on|off])',
       action: (args) => toggleSfxCmd(args[0])
     },
     gfx: {
-      desc: 'Toggle CRT scanlines & glow effects (usage: gfx [on|off])',
+      desc: isUk ? 'Увімкнути/вимкнути ЕПТ-ефекти (gfx [on|off])' : 'Toggle CRT scanlines & glow effects (usage: gfx [on|off])',
       action: (args) => toggleGfxCmd(args[0])
     },
     date: {
-      desc: 'Display current system date & time',
+      desc: isUk ? 'Поточна дата та час' : 'Display current system date & time',
       action: () => printLine(`System Date: ${new Date().toLocaleString()}`, 'system')
     },
     matrix: {
-      desc: 'Toggle Matrix digital rain overlay',
+      desc: isUk ? 'Ефект матричного дощу (matrix)' : 'Toggle Matrix digital rain overlay',
       action: () => toggleMatrix()
     }
   };
@@ -217,33 +212,50 @@
   }
 
   function printWelcome() {
-    printLine(`[SYSTEM READY] Roman Rader — Personal Web Node`, 'system');
-    printLine(`Location: Kyiv, Ukraine 🇺🇦`);
-    printLine(`Focus: Software Engineering & AI Engineering Education (K-12)`);
-    printLine(`Type <b style="color: var(--text-bright)">help</b> to list commands, or tap the action pills above.\n`);
+    if (isUk) {
+      printLine(`[СИСТЕМА ГОТОВА] Роман Радер — Персональний веб-вузол`, 'system');
+      printLine(`Локація: Київ, Україна 🇺🇦`);
+      printLine(`Напрям: Програмна інженерія та навчання інженерії ШІ у школі (10–11 класи)`);
+      printLine(`Введіть <b style="color: var(--text-bright)">help</b> для списку команд або оберіть дію з кнопок вище.\n`);
+    } else {
+      printLine(`[SYSTEM READY] Roman Rader — Personal Web Node`, 'system');
+      printLine(`Location: Kyiv, Ukraine 🇺🇦`);
+      printLine(`Focus: Software Engineering & AI Engineering Education (K-12)`);
+      printLine(`Type <b style="color: var(--text-bright)">help</b> to list commands, or tap the action pills above.\n`);
+    }
   }
 
   function printHelp() {
-    printLine(`<b>AVAILABLE COMMANDS:</b>`, 'system');
+    printLine(`<b>${isUk ? 'ДОСТУПНІ КОМАНДИ:' : 'AVAILABLE COMMANDS:'}</b>`, 'system');
     printLine(`--------------------------------------------------`);
     Object.keys(COMMANDS).forEach(cmd => {
       const info = COMMANDS[cmd];
       printLine(`  <b style="color: var(--accent-color); min-width: 120px; display: inline-block;">${cmd}</b> : ${info.desc}`);
     });
     printLine(`--------------------------------------------------`);
-    printLine(`Tip: Use <b style="color: var(--text-bright)">TAB</b> for autocomplete & <b style="color: var(--text-bright)">UP/DOWN</b> for history.`);
+    printLine(isUk 
+      ? `Підказка: використовуйте <b style="color: var(--text-bright)">TAB</b> для автодоповнення та <b style="color: var(--text-bright)">UP/DOWN</b> для історії.`
+      : `Tip: Use <b style="color: var(--text-bright)">TAB</b> for autocomplete & <b style="color: var(--text-bright)">UP/DOWN</b> for history.`);
   }
 
   function printBio() {
-    printLine(`<b>[BIO / ABOUT ME]</b>`, 'system');
-    printLine(`• <b>Full Name:</b> Roman Rader / Роман Ілліч Радер`);
-    printLine(`• <b>Location:</b> Kyiv, Ukraine 🇺🇦`);
-    printLine(`• <b>Focus Areas:</b> Software Engineering & AI Engineering Education (K-12)`);
-    printLine(`• <b>Summary:</b> Dedicated software engineer and educator developing AI engineering course methodologies, informatics study materials, and interactive learning platforms for K-12 education.`);
+    if (isUk) {
+      printLine(`<b>[ПРО МЕНЕ / БІОГРАФІЯ]</b>`, 'system');
+      printLine(`• <b>Повне ім'я:</b> Роман Ілліч Радер / Roman Rader`);
+      printLine(`• <b>Локація:</b> Київ, Україна 🇺🇦`);
+      printLine(`• <b>Напрям діяльності:</b> Програмна інженерія та методика навчання інженерії ШІ у школі (10–11 класи)`);
+      printLine(`• <b>Опис:</b> Інженер-програміст та педагог. Розробляю методики курсів з інженерії штучного інтелекту, навчальні матеріали з інформатики та інтерактивні навчальні платформи.`);
+    } else {
+      printLine(`<b>[BIO / ABOUT ME]</b>`, 'system');
+      printLine(`• <b>Full Name:</b> Roman Rader / Роман Ілліч Радер`);
+      printLine(`• <b>Location:</b> Kyiv, Ukraine 🇺🇦`);
+      printLine(`• <b>Focus Areas:</b> Software Engineering & AI Engineering Education (K-12)`);
+      printLine(`• <b>Summary:</b> Dedicated software engineer and educator developing AI engineering course methodologies, informatics study materials, and interactive learning platforms for K-12 education.`);
+    }
   }
 
   function printContact() {
-    printLine(`<b>[CONTACT & PROFILES]</b>`, 'system');
+    printLine(`<b>${isUk ? '[КОНТАКТИ ТА ПРОФІЛІ]' : '[CONTACT & PROFILES]'}</b>`, 'system');
     printLine(`• <b>Email:</b> <a href="mailto:roman.rader@gmail.com">roman.rader@gmail.com</a>`);
     printLine(`• <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/roman-rader/" target="_blank">linkedin.com/in/roman-rader</a>`);
     printLine(`• <b>GitHub:</b> <a href="https://github.com/rrader/" target="_blank">github.com/rrader</a>`);
@@ -252,19 +264,89 @@
     printLine(`• <b>Geektastic:</b> <a href="https://app.geektastic.com/profile/public/ofUqjZqr-oppQOlOhROsCg" target="_blank">Geektastic Profile</a>`);
   }
 
+  function getDynamicPosts(sectionFilter) {
+    const raw = window.__HUGO_POSTS__ || [];
+    const sectionPosts = raw.filter(p => !sectionFilter || p.section === sectionFilter);
+    const langPosts = sectionPosts.filter(p => p.lang === currentLang);
+    return langPosts.length > 0 ? langPosts : sectionPosts.filter(p => p.lang === 'en');
+  }
+
   function printResearch() {
-    printLine(`<b>[RESEARCH & SCHOLARLY WORK]</b>`, 'system');
-    printLine(`• <b>Primary Focus:</b> Software Engineering, Encrypted Traffic Analysis, and Applied AI in K-12 Education.`);
-    printLine(`• <b>Academic Publications & Citation Index:</b>`);
-    printLine(`  Visit Google Scholar for peer-reviewed papers:`);
-    printLine(`  👉 <a href="https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ" target="_blank">https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ</a>`);
+    printLine(`<b>${isUk ? '[ДОСЛІДЖЕННЯ ТА НАУКОВА РОБОТА]' : '[RESEARCH & SCHOLARLY WORK]'}</b>`, 'system');
+    printLine(isUk 
+      ? `• <b>Ключовий фокус:</b> Програмна інженерія, аналіз шифрованого трафіку та прикладний ШІ у шкільній освіті.`
+      : `• <b>Primary Focus:</b> Software Engineering, Encrypted Traffic Analysis, and Applied AI in K-12 Education.`);
+    printLine(`• <b>${isUk ? 'Академічні публікації та профіль:' : 'Academic Publications & Citation Index:'}</b>`);
+    printLine(`  - Google Scholar: <a href="https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ" target="_blank">Google Scholar Profile</a>`);
+    
+    const posts = getDynamicPosts("study_posts");
+    if (posts.length > 0) {
+      printLine(`• <b>${isUk ? 'Статті та дослідження:' : 'Articles & Research Notes:'}</b>`);
+      posts.forEach(p => {
+        printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+    const secUrl = isUk ? '/uk/study_posts/' : '/study_posts/';
+    printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all research posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
+  }
+
+  function printDiy() {
+    printLine(`<b>${isUk ? '[DIY, 3D-ДРУК ТА HARDWARE]' : '[DIY, 3D PRINTING & HARDWARE]'}</b>`, 'system');
+    printLine(isUk
+      ? `• <b>Напрями:</b> Функціональний 3D-друк (PETG), вбудовані системи ESP32 / Arduino, параметричний CAD (CadQuery, build123d).`
+      : `• <b>Focus Areas:</b> Functional 3D printing (PETG), ESP32 / Arduino embedded systems, parametric CAD (CadQuery, build123d).`);
+    
+    const posts = getDynamicPosts("diy_posts");
+    if (posts.length > 0) {
+      printLine(`• <b>${isUk ? 'Проєкти та лоґи збірки:' : 'Featured Projects & Build Logs:'}</b>`);
+      posts.forEach(p => {
+        printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+    const secUrl = isUk ? '/uk/diy_posts/' : '/diy_posts/';
+    printLine(`  - <b>${isUk ? 'Всі DIY публікації:' : 'View all DIY posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
   }
 
   function printTeaching() {
-    printLine(`<b>[TEACHING & K-12 EDUCATION]</b>`, 'system');
-    printLine(`• <b>Focus Areas:</b> AI Engineering Education (K-12), Informatics Curriculum, and Cybersecurity Awareness.`);
-    printLine(`• <b>Educational Portal:</b> <a href="https://class.rmn.pp.ua/" target="_blank">https://class.rmn.pp.ua/</a>`);
-    printLine(`• <b>AI Engineering Methodological Materials:</b> <a href="https://class.rmn.pp.ua/method" target="_blank">https://class.rmn.pp.ua/method</a>`);
+    printLine(`<b>${isUk ? '[ВИКЛАДАННЯ ТА ШКІЛЬНА ІНФОРМАТИКА]' : '[TEACHING & K-12 EDUCATION]'}</b>`, 'system');
+    printLine(isUk
+      ? `• <b>Напрями:</b> Інженерія штучного інтелекту у школі (10–11 класи), навчальна програма з інформатики, кібербезпека.`
+      : `• <b>Focus Areas:</b> AI Engineering Education (K-12), Informatics Curriculum, and Cybersecurity Awareness.`);
+    printLine(`• <b>${isUk ? 'Освітні портали:' : 'Educational Portals:'}</b>`);
+    printLine(`  - <a href="https://class.rmn.pp.ua/" target="_blank">https://class.rmn.pp.ua/</a> (Classroom Portal)`);
+    printLine(`  - <a href="https://class.rmn.pp.ua/method" target="_blank">https://class.rmn.pp.ua/method</a> (AI Methodological Guide)`);
+    
+    const posts = getDynamicPosts("teach_posts");
+    if (posts.length > 0) {
+      printLine(`• <b>${isUk ? 'Статті та педагогічні кейси:' : 'Articles & Case Studies:'}</b>`);
+      posts.forEach(p => {
+        printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+    const secUrl = isUk ? '/uk/teach_posts/' : '/teach_posts/';
+    printLine(`  - <b>${isUk ? 'Всі освітні публікації:' : 'View all teaching posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
+  }
+
+  function printAllPosts() {
+    printLine(`<b>${isUk ? '[ВСІ ПУБЛІКАЦІЇ ТА СТАТТІ]' : '[ALL ARTICLES & POSTS]'}</b>`, 'system');
+    printLine(`--------------------------------------------------`);
+    
+    const sections = [
+      { id: "diy_posts", title: isUk ? "🛠️ DIY та мейкерство" : "🛠️ DIY & Hardware" },
+      { id: "teach_posts", title: isUk ? "🎓 Викладання та інформатика" : "🎓 Teaching & Informatics" },
+      { id: "study_posts", title: isUk ? "🔬 Дослідження" : "🔬 Research" }
+    ];
+
+    sections.forEach(sec => {
+      const posts = getDynamicPosts(sec.id);
+      if (posts.length > 0) {
+        printLine(`<b>${sec.title}:</b>`);
+        posts.forEach(p => {
+          printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+        });
+      }
+    });
+    printLine(`--------------------------------------------------`);
   }
 
   function clearScreen() {

@@ -1,8 +1,28 @@
 baseURL = 'https://rrader.github.io/'
-languageCode = 'en-us'
-title = 'Roman Rader'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
 theme = "nostyleplease"
 publishDir = "docs"
 googleAnalytics = "G-8H1V8F8PHP"
 relativeURLs = true
 
+[languages]
+  [languages.en]
+    languageCode = 'en-us'
+    languageName = 'English'
+    weight = 1
+    title = 'Roman Rader'
+    [languages.en.params.theme_config]
+      appearance = "auto"
+      back_home_text = ".."
+      date_format = "2006-01-02"
+
+  [languages.uk]
+    languageCode = 'uk-ua'
+    languageName = 'Українська'
+    weight = 2
+    title = 'Роман Радер'
+    [languages.uk.params.theme_config]
+      appearance = "auto"
+      back_home_text = ".."
+      date_format = "2006-01-02"

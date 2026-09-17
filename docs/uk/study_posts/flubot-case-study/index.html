@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.
+Участь у 48-й конференції IEEE з локальних комп&rsquo;ютерних мереж (LCN) Наша наукова стаття щодо виявлення витоку (ексфільтрації) даних через протокол DoH була опублікована на 48-й конференції IEEE з локальних комп&rsquo;ютерних мереж (LCN), що проходила з 1 по 5 жовтня 2023 року в Дейтона-Біч, Флорида, США.">  
+
+  <title>
+    
+      [49-а конференція IEEE LCN] Виявлення ексфільтрації даних через DoH: дослідження шкідливого ПЗ FluBot
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+   <script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+ 
+</head>
+<body a="auto">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+<a href="../../../">..</a>
+
+<article>
+    <p class="post-meta">
+        <time datetime="2023-09-26 11:47:10 &#43;0300 EEST">
+            2023-09-26
+        </time>
+    </p>
+
+    <h1>[49-а конференція IEEE LCN] Виявлення ексфільтрації даних через DoH: дослідження шкідливого ПЗ FluBot</h1>
+
+    <div class="translations" style="margin-bottom: 1.2rem; font-size: 0.95em;">
+    <span style="opacity: 0.8;">🌐 Читати іншими мовами:</span><a href="../../../study_posts/flubot-case-study/" style="margin-left: 0.5rem; text-decoration: underline; font-weight: bold;">🇬🇧 English</a></div>
+
+    <p>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.</p>
+<h1 id="участь-у-48-й-конференції-ieee-з-локальних-компютерних-мереж-lcn">Участь у 48-й конференції IEEE з локальних комп&rsquo;ютерних мереж (LCN)</h1>
+<p><img alt="Conference Banner" src="../../../flubot/lcn2023_banner.png"></p>
+<p>Наша наукова стаття щодо виявлення витоку (ексфільтрації) даних через протокол DoH була опублікована на 48-й конференції IEEE з <a href="https://www.ieeelcn.org/index.html">локальних комп&rsquo;ютерних мереж (LCN)</a>, що проходила з 1 по 5 жовтня 2023 року в Дейтона-Біч, Флорида, США. Автори статті: Роман Радер, Каміл Єржабек, Ондржей Ришавий.</p>
+<h2 id="вступ">Вступ</h2>
+<p>У статті описано практичне дослідження (case study) виявлення FluBot — банківського трояна для Android, активного у 2021–2022 роках. Попередні дослідження з виявлення шкідливого трафіку в DoH здебільшого фокусувалися на навчанні класифікаторів машинного навчання безпосередньо для виявлення шкідливих потоків усередині DoH. Наша робота пропонує двошаровий метод виявлення.</p>
+<h2 id="двошарове-виявлення-шкідливого-пз-у-doh">Двошарове виявлення шкідливого ПЗ у DoH</h2>
+<p>Цей підхід дозволяє використовувати один і той самий алгоритм виявлення шкідливого ПЗ для різних протоколів шифрованого DNS (наприклад, DNS-over-TLS, DoQ) шляхом <strong>підключення різних класифікаторів на першому рівні</strong>.</p>
+<p>Крім того, це дає змогу застосовувати алгоритми аналізу, спочатку розроблені для відкритого (plaintext) DNS, до трафіку DoH <strong>шляхом підключення алгоритмів виявлення на другому рівні</strong>.</p>
+<p><img alt="Two layers" src="../../../flubot/two-layers-rev.drawio.png">
+Застосування алгоритму виявлення шкідливого ПЗ відкритого DNS до шифрованого DNS за допомогою класифікаційної моделі DoH.</p>
+<h2 id="деталі-алгоритму">Деталі алгоритму</h2>
+<ul>
+<li><strong>Рівень 1</strong>: Модель для виявлення DNS-over-HTTPS тренувалася на великому датасеті DoH-трафіку [1]. Рівень 1 дозволяє нам застосовувати раніше створені алгоритми аналізу незашифрованого DNS до шифрованого трафіку DoH.</li>
+<li><strong>Рівень 2</strong>: Ми використали модифікований метод із [2], який обчислює співвідношення DNS-запитів до кількості унікальних IP-адрес для кожного вузла в локальній мережі для виявлення аномальної активності: $\ln~\rho(a)~=~\ln {\frac{\delta(a)}{\pi(a) + 1}}$. Тут $\delta(a)$ — кількість DNS-запитів, згенерованих вузлом $a$, $\pi(a)$ — кількість унікальних IP-адрес, до яких звертався вузол $a$. Двошаровий підхід також дозволяє підключати будь-які інші методи виявлення загроз у відкритому DNS.</li>
+</ul>
+<h2 id="оптимізація-детекції-doh">Оптимізація детекції DoH</h2>
+<ul>
+<li>Модель Random Forest показала найкращі результати порівняно з Histogram-based Gradient Boosting та Logistic Regression. <strong>Ознаки (features):</strong> стандартне відхилення, середнє значення та дисперсія розмірів пакетів і часових інтервалів між ними (інтервали згруповано за вхідними, вихідними та комбінованими пакетами).</li>
+<li>Для підвищення точності класифікації DoH-потоків ми зменшили вплив початкових пакетів рукостискання TLS (handshake), які часто відображають параметри розгортання сервера, а не реальний трафік. Як показано на схемі, <strong>ми застосували вагові коефіцієнти до перших кількох пакетів залежно від їхньої позиції</strong> у послідовності handshake, щоб урахувати різну довжину TLS handshake та не втратити важливу інформацію.</li>
+</ul>
+<p><img alt="Elimination of TLS" src="../../../flubot/elimination.drawio.png">
+Зменшення впливу TLS Handshake шляхом присвоєння меншої ваги першим N, M &lt;= 6 пакетам.</p>
+<h2 id="експериментальний-стенд">Експериментальний стенд</h2>
+<p>Ми створили тестову пісочницю з трьох емуляторів Android x86 та одного інстансу Linux. Ці машини були з&rsquo;єднані через маршрутизатор OpenWRT з утилітою <strong>ipfixprobe</strong> для збору потоків IPFIX на межі мережі.</p>
+<p><img alt="Network" src="../../../flubot/network.dio.drawio.png">
+Мережа-пісочниця для збору трафіку шкідливого ПЗ FluBot та легітимного трафіку інших Android-пристроїв.</p>
+<h2 id="результати-двох-експериментів">Результати двох експериментів</h2>
+<ul>
+<li>В <strong>Експерименті 1 (Ізольована лабораторія)</strong> одна віртуальна машина Android була інфікована шкідливим ПЗ, тоді як дві інші залишалися чистими. Чисті машини за скриптом відвідували звичайні вебсайти. Значення $\ln \rho(a)$ розраховувалося для всіх машин для валідації алгоритму.</li>
+<li>В <strong>Експерименті 2 (Реалістичний сценарій)</strong> ми інфікували віртуальну машину Android та одночасно запустили скрипт генерації нормального трафіку вебсерфінгу, <strong>щоб перевірити здатність методу виявляти заражений вузол на фоні повсякденної активності користувача</strong>. Ми застосували аналіз викидів на базі ARIMA з довірчими інтервалами типової поведінки (див. рисунок).</li>
+</ul>
+<p><img alt="Results ARIMA" src="../../../flubot/fig-real-world-flubot-detection-1-output-2.png">
+Момент зараження Android вірусом FluBot. Значення $\ln \rho(a)$ перевищує довірчий інтервал після зараження -&gt; індикатор компрометації (IoC).</p>
+<h2 id="висновки">Висновки</h2>
+<p>Ми запропонували двошаровий метод класифікації для виявлення шкідливого ПЗ FluBot, яке експлуатує приховані канали DoH. Подальші дослідження будуть спрямовані на підвищення точності виявлення та розширення моделі на інші протоколи прихованих каналів DNS, такі як DoH, DoT і DoQ.</p>
+<hr>
+<ul>
+<li><a href="https://rrader.github.io/doh-flubot-detection/">Експериментальні jupyter ноутбуки</a></li>
+<li>DOI <a href="https://doi.org/10.1109/LCN58197.2023.10223341">10.1109/LCN58197.2023.10223341</a></li>
+<li>Посилання для цитування:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bibtex" data-lang="bibtex"><span style="display:flex;"><span><span style="color:#a6e22e">@INPROCEEDINGS</span>{10223341,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span>=<span style="color:#e6db74">{Rader, Roman and Jerabek, Kamil and Rysavy, Ondrej}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">booktitle</span>=<span style="color:#e6db74">{2023 IEEE 48th Conference on Local Computer Networks (LCN)}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title</span>=<span style="color:#e6db74">{Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study}</span>, 
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">year</span>=<span style="color:#e6db74">{2023}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">volume</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">number</span>=<span style="color:#e6db74">{}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">pages</span>=<span style="color:#e6db74">{1-4}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">doi</span>=<span style="color:#e6db74">{10.1109/LCN58197.2023.10223341}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ISSN</span>=<span style="color:#e6db74">{2832-1421}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">month</span>=<span style="color:#e6db74">{Oct}</span>,}
+</span></span></code></pre></div><hr>
+<p>Література:</p>
+<ul>
+<li>[1] K. Jeřábek, K. Hynek, T. Čejka, and O. Ryšavỳ, “Collection of datasets with dns over https traffic,” Data in Brief, vol. 42, p. 108310, 2022.</li>
+<li>[2] M. Grill, I. Nikolaev, V. Valeros, and M. Rehak, “Detecting dga malware using netflow,” in 2015 IFIP/IEEE International Symposium on Integrated Network Management (IM), pp. 1304–1309, IEEE, 2015.</li>
+<li>[3] H. Salsabila, S. Mardhiyah, and R. B. Hadiprakoso, “Flubot malware hybrid analysis on android operating system,” in 2022 International Conference on Informatics, Multimedia, Cyber and Information System (ICIMCIS), pp. 202–206, IEEE, 2022.</li>
+</ul>
+<p>Робота підтримана Технологічним агентством Чеської Республіки в межах проєкту FW03010099: «Контекстний аналіз зашифрованого трафіку на основі даних потоків».</p>
+
+</article>
+
+            </div>
+        </main>
+    </body>
+</html>
