@@ -1,5 +1,5 @@
 ---
-title: "Hybrid Wall Mount for Philips 8000 Aqua Plus Vacuum (PETG + TPU)"
+title: "Wall Mount for Philips 8000 Aqua Plus Vacuum (PETG + TPU)"
 date: 2026-05-31T18:00:00+03:00
 draft: false
 tags: ["diy", "3d-printing", "fusion360", "maker", "hardware"]
