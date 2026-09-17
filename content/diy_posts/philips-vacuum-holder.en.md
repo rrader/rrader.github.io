@@ -17,6 +17,8 @@ To solve this properly, I designed a hybrid dual-material wall bracket in Autode
 * **MakerWorld Model:** [Vacuum tube holder for Phillips 8000 Aqua Plus (Model 2871355)](https://makerworld.com/en/models/2871355-vacuum-tube-holder-for-phillips-8000-aqua-plus#profileId-3205806)
 * **Origin Inspiration:** Everbilt rail broom clip concept ([Printables 1214566](https://www.printables.com/model/1214566-broom-mop-attachments-for-everbilt-rail))
 
+![Philips 8000 Series Aqua Plus extension tube docked inside a closet next to the vacuum motor unit](/images/vacuum-holder/vacuum-installed-in-closet.webp)
+
 ---
 
 ## 1. Tube Dimensions & Caliper Measurements
@@ -38,13 +40,13 @@ Before opening CAD, I took accurate caliper measurements of the tube profile and
 
 The model went through several test fits (`bracket-v9` being the final iteration) to dial in the snap feel and clamping force:
 
-![Rigid PETG wall bracket and two locking hinge pins](/images/vacuum-holder/bracket-and-pins.png)
+![Fusion 360 3D model of the wall bracket and flexible retention strap](/images/vacuum-holder/cad-model-overview.webp)
 
 The assembly consists of three parts:
 
 1. **Wall Bracket (PETG):**
    * Features a U-shaped saddle contoured to the radius of the Philips 8000 tube.
-   * Two countersunk screw holes spaced at **65 mm** on the backplate for wall mounting.
+   * Two countersunk screw holes spaced at **65 mm** on the backplate (12 mm deep) for wall mounting.
    * Forward-projecting hinge lugs with through-holes to receive the locking pins.
 2. **Flexible Retention Strap (TPU 95A):**
    * Printed flat on the build plate.
@@ -54,9 +56,7 @@ The assembly consists of three parts:
    * Flanged cylindrical pins that push through the bracket lugs and strap eyelets from above.
    * Eliminates the need for metal nuts, bolts, or hinge hardware.
 
-![Flexible TPU retention strap with ribbed gripping surface](/images/vacuum-holder/tpu-strap.png)
-
-![Top view of bracket showing 65 mm screw spacing and hinge lugs](/images/vacuum-holder/bracket-top-view.png)
+![Fusion 360 top-angle view showing 65 mm screw mounting holes and hinge lugs](/images/vacuum-holder/cad-model-bracket-top.webp)
 
 ---
 
@@ -78,4 +78,8 @@ The project `.3mf` file is pre-configured into two build plates:
 
 ## 4. In Use
 
-The bracket is mounted to the wall with two screws. To dock the vacuum or tube, simply push it into the cradle — the TPU strap stretches, wraps around the profile, and holds it firmly with zero play. To release, just pull the tube forward. Zero scratches, zero wobble, and simple single-hand operation.
+The bracket is screwed onto the closet panel with two wood screws. The black PETG body provides solid structural anchoring, while the white flexible TPU strap stretches smoothly around the tube to hold it in place.
+
+![Assembled mount installed on the wall: black PETG bracket with white TPU strap and locking pins](/images/vacuum-holder/bracket-assembled-on-wall.webp)
+
+Docking and releasing is a simple single-handed operation: push the tube in to clip, pull forward to release. Zero wobble, zero scratches on the anodized finish, and completely rattle-free.
