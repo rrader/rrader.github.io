@@ -10,7 +10,7 @@ When our daughter turned one, my wife started looking into kid-friendly music pl
 2. **Cloud dependence:** activation, sync, and downloads rely entirely on company servers.
 3. **Content limitations:** Ukrainian fairy tales, lullabies, or local audio collections are practically nonexistent in their official catalogs.
 
-Researching DIY alternatives, I came across the German [Tonuino](https://www.tonuino.de) and [ESPuino](https://github.com/biologist79/ESPuino) projects. Both are great concepts, but I decided to make my own build: using slightly different, readily available components from local suppliers and assembling everything directly without custom printed circuit boards (PCBs).
+Researching DIY alternatives, I came across the German [Tonuino](https://www.tonuino.de) and [ESPuino](https://github.com/biologist79/ESPuino) projects. Both are great concepts, but I decided to make my own build: using slightly different, readily available components from local suppliers and assembling everything directly without custom printed circuit boards (PCBs). On the software side, with modern AI coding tools, writing lean custom firmware from scratch for my exact pinout and logic felt significantly simpler and faster than forking and wrestling with someone else's complex codebase.
 
 The core principle remains simple and magical for a toddler: tap an RFID card on the top plate — the bedtime story or song immediately starts playing. No screens, no mobile apps, no cloud lock-in.
 
