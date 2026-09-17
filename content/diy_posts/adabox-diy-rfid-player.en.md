@@ -94,7 +94,7 @@ The physical shell was adapted from the [BioBox 3D](https://forum.espuino.de/t/b
 1. **Magnetic card retention:** small neodymium magnets are embedded flush into the top panel beneath the card cradle. Cards equipped with a small washer or coin snap securely into position and won't dislodge when carried around.
 2. **Impact durability:** printed in PETG with 25% infill and 4 perimeters to withstand accidental drops.
 3. **Child-friendly ergonomics:** rounded chamfers on all corners, recessed buttons, and grippy rubber feet (10×5 mm) on the base.
-4. **Brass threaded inserts:** all screw mounts use heat-set M3 brass inserts melted into the plastic rather than tapping self-tapping screws. The enclosure can be opened and serviced indefinitely.
+4. **Brass threaded inserts:** all screw mounts use heat-set M4 brass inserts melted into the plastic rather than tapping self-tapping screws. The enclosure can be opened and serviced indefinitely.
 
 ### Assembly Video
 Watch the full physical assembly, internal wiring, and hardware testing:
