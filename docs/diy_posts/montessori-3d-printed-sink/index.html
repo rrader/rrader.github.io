@@ -51,7 +51,7 @@ if (!doNotTrack) {
 
     <p>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.</p>
 <p>Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</p>
-<p>I set out to design and build a <strong>compact, fully autonomous running-water toddler sink</strong>, sized precisely for an ~80 cm tall child — entirely engineered for <strong>desktop 3D printing with PETG</strong>.</p>
+<p>I set out to design and build a <strong>compact, fully autonomous running-water toddler sink</strong>, sized precisely for an ~80 cm tall child — modeled in <strong>Autodesk Fusion 360</strong> and engineered for <strong>desktop 3D printing with PETG</strong>.</p>
 <p><img alt="Assembled toddler sink in bathroom" src="../../images/sink/sink-assembled-bathroom.jpg"></p>
 <hr>
 <h2 id="1-ergonomic-envelope--hard-constraints">1. Ergonomic Envelope &amp; Hard Constraints</h2>
@@ -67,14 +67,14 @@ if (!doNotTrack) {
 </ul>
 <p><img alt="Full CAD model assembly" src="../../images/sink/sink-cad-full-assembly.jpg"></p>
 <hr>
-<h2 id="2-6-part-modular-countertop--heat-set-inserts">2. 6-Part Modular Countertop &amp; Heat-Set Inserts</h2>
+<h2 id="2-6-part-modular-countertop--m4-heat-set-inserts">2. 6-Part Modular Countertop &amp; M4 Heat-Set Inserts</h2>
 <p>Because a 500×220 mm deck exceeds standard print beds (e.g. 256×256 mm on modern desktop printers), the countertop was split into <strong>6 interlocking modular segments</strong> (3 front sections, 3 rear sections).</p>
 <p><img alt="Underside view showing 6 interlocking segments, alignment pockets, and screw hole pattern" src="../../images/sink/sink-cad-underside-joints.jpg"></p>
 <h3 id="mechanical-joining--heat-set-inserts">Mechanical Joining &amp; Heat-Set Inserts</h3>
 <ul>
 <li><strong>Tongue-and-Groove Alignment:</strong> each segment features matching tongue-and-groove joints and alignment tabs with +0.2 mm clearance, preventing any shear displacement or misalignment along the seams.</li>
-<li><strong>Brass Heat-Set Threaded Inserts (M3/M4):</strong> machine screws should never be threaded directly into 3D-printed plastic. Every mating joint and leg mounting pad features blind pilot holes into which brass knurled heat inserts are melted using a soldering iron.</li>
-<li><strong>Under-Deck Clamping:</strong> matching flange pockets on the underside allow stainless M3/M4 hex screws to pull adjacent segments tightly against each other.</li>
+<li><strong>Brass Heat-Set Threaded Inserts (M4):</strong> machine screws should never be threaded directly into 3D-printed plastic. Every mating joint and leg mounting pad features blind pilot holes into which brass knurled <strong>M4 heat inserts</strong> are melted using a soldering iron. Standardizing on M4 across the entire build ensures solid mechanical stiffness.</li>
+<li><strong>Under-Deck Clamping:</strong> matching flange pockets on the underside allow stainless M4 hex socket screws to pull adjacent segments tightly against each other.</li>
 <li><strong>Watertight Sealing:</strong> neutral sanitary silicone was applied along all seam interfaces prior to torquing the screws down, ensuring zero capillary leakage between parts.</li>
 </ul>
 <table>
@@ -95,7 +95,7 @@ if (!doNotTrack) {
 <h2 id="3-modular-threaded-3d-printed-legs">3. Modular Threaded 3D-Printed Legs</h2>
 <p>The legs are also <strong>100% 3D printed</strong> from durable PETG, engineered as a modular threaded system:</p>
 <ol>
-<li><strong>Top Flange Mount:</strong> a square 4-hole mounting bracket screws into brass heat inserts embedded in the underside of the countertop. It features a heavy-duty male buttress thread at the bottom.</li>
+<li><strong>Top Flange Mount:</strong> a square 4-hole mounting bracket screws into brass M4 heat inserts embedded in the underside of the countertop. It features a heavy-duty male buttress thread at the bottom.</li>
 <li><strong>Threaded Extension Cylinders:</strong> modular hollow leg segments screw directly into one another. As the child grows, additional threaded sections can be printed and screwed in, raising the deck from 390 mm to 460 mm and beyond.</li>
 </ol>
 <table>
@@ -130,6 +130,7 @@ if (!doNotTrack) {
 <li>Fitted with a standard compact 1¼&quot; bathroom siphon with an integrated strainer basket.</li>
 <li>To safely direct wastewater into an airtight jerrycan, I modeled a custom screw-on funnel in <a href="https://build123d.readthedocs.io/">build123d</a>. It threads directly onto the <strong>DIN 45</strong> container neck using buttress KS threads, seating the siphon tube without leaks or odor.</li>
 </ul>
+<p><img alt="Custom 3D-printed DIN 45 threaded funnel modeled in build123d" src="../../images/sink/sink-cad-din45-funnel.png"></p>
 <hr>
 <h2 id="5-real-world-results">5. Real-World Results</h2>
 <p>The sink has transformed our daily routine:</p>
@@ -138,7 +139,7 @@ if (!doNotTrack) {
 <li><strong>Practical capacity:</strong> a single 5-liter clean water swap lasts 4–5 days of active toddler handwashing and brushing.</li>
 <li><strong>Clean &amp; dry:</strong> by keeping the counter depth to just 22 cm and adding the perimeter splash rim, clothes and bathroom floors stay dry.</li>
 </ul>
-<p>Combining code-based CAD (<a href="https://cadquery.readthedocs.io/">CadQuery</a> and <a href="https://build123d.readthedocs.io/">build123d</a>) with desktop 3D printing enabled creating a truly bespoke, child-scaled piece of functional furniture that is impossible to buy off the shelf.</p>
+<p>Combining 3D CAD modeling (<strong>Autodesk Fusion 360</strong> for the sink assembly and parametric <strong>build123d</strong> for the custom threaded funnel) with desktop 3D printing enabled creating a truly bespoke, child-scaled piece of functional furniture that is impossible to buy off the shelf.</p>
 
 </article>
 

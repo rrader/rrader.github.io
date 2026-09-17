@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Maker on Роман Радер</title>
-    <link>https://rrader.github.io/uk/tags/maker/</link>
-    <description>Recent content in Maker on Роман Радер</description>
+    <title>Fusion360 on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/fusion360/</link>
+    <description>Recent content in Fusion360 on Роман Радер</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>uk-ua</language>
     <lastBuildDate>Thu, 17 Sep 2026 12:30:00 +0300</lastBuildDate>
-    <atom:link href="https://rrader.github.io/uk/tags/maker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://rrader.github.io/uk/tags/fusion360/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Автономний дитячий Монтессорі-умивальник: модульна конструкція на 3D-принтері</title>
       <link>https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/</link>
       <pubDate>Thu, 17 Sep 2026 12:30:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/</guid>
       <description>Коли дитині виповнюється рік-півтора, одна з найважливіших навичок за методикою Монтессорі — самостійність у щоденній гігієні: миття рук, чищення зубів, вмивання.&#xA;Звичайний дорослий умивальник для дитини не підходить: навіть зі сходинкою дотягтися до крана складно, рівновага хитка, а вода летить на підлогу та рукава. Більшість фабричних рішень на ринку — це або іграшкові пластикові кухні без нормального протоку води, або масивні дерев&amp;rsquo;яні конструкції, які займають пів кімнати.&#xA;Було вирішено спроєктувати та зібрати компактний, повністю автономний дитячий умивальник зі справжньою проточною водою, ідеально адаптований під зріст дитини (~80 см) — змодельований в Autodesk Fusion 360 та повністю надрукований на звичайному 3D-принтері з міцного PETG.</description>
-    </item>
-    <item>
-      <title>AdaBox — саморобний музичний плеєр на ESP32 з RFID для дитини</title>
-      <link>https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/</link>
-      <pubDate>Thu, 17 Sep 2026 12:00:00 +0300</pubDate>
-      <guid>https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/</guid>
-      <description>Коли доньці виповнився рік, постало питання музичного плеєра. Комерційні рішення на кшталт Toniebox популярні у світі, але мають суттєві мінуси:&#xA;Закрита екосистема: кожна нова казка чи альбом прив’язані до фірмової фігурки за $15–20. Залежність від хмари: активація та синхронізація через фірмові сервери. Обмеження контенту: українських пісень чи казок в офіційному каталозі практично немає. Тому виникла ідея зробити власний відкритий варіант: дитина прикладає картку — грає трек чи казка. Без хмари, без додатків, без екранів.</description>
     </item>
   </channel>
 </rss>

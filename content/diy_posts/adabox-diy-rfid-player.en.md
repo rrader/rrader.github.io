@@ -17,6 +17,8 @@ The build was inspired by the [ESPuino](https://github.com/biologist79/ESPuino) 
 * **Firmware Code:** [github.com/rrader/adabox](https://github.com/rrader/adabox) (or [Jukebox repository](https://github.com/rrader/Jukebox))
 * **3D Enclosure Model:** [Printables: AdaBox (Model 1829062)](https://www.printables.com/model/1829062-adabox)
 
+![Assembled AdaBox with RFID reader, illuminated arcade buttons, and speaker LED ring](/images/adabox/adabox-assembled.webp)
+
 ---
 
 ## 1. Hardware Architecture & Component Selection

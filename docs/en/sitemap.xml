@@ -158,19 +158,6 @@
                 href="https://rrader.github.io/tags/build123d/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/cadquery/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/cadquery/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/cadquery/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/tags/diy/</loc>
     <lastmod>2026-09-17T12:30:00+03:00</lastmod>
     <xhtml:link
@@ -195,6 +182,19 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/diy_posts/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/fusion360/</loc>
+    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/fusion360/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/fusion360/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/maker/</loc>

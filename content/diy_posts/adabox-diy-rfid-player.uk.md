@@ -17,6 +17,8 @@ tags: ["diy", "esp32", "3d-printing", "maker", "hardware"]
 * **Код прошивки:** [github.com/rrader/adabox](https://github.com/rrader/adabox) (або репозиторій [Jukebox](https://github.com/rrader/Jukebox))
 * **3D-модель корпусу:** [Printables: AdaBox (Model 1829062)](https://www.printables.com/model/1829062-adabox)
 
+![Зібраний корпус AdaBox із RFID-сканером, аркадними кнопками та підсвіткою динаміка](/images/adabox/adabox-assembled.webp)
+
 ---
 
 ## 1. Архітектура та вибір заліза

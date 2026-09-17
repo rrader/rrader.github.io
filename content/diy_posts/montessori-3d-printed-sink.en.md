@@ -2,14 +2,14 @@
 title: "Autonomous Toddler Montessori Sink: 100% 3D-Printed Modular Design"
 date: 2026-09-17T12:30:00+03:00
 draft: false
-tags: ["diy", "3d-printing", "cadquery", "build123d", "parenting", "maker"]
+tags: ["diy", "3d-printing", "fusion360", "build123d", "parenting", "maker"]
 ---
 
 Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.
 
 Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.
 
-I set out to design and build a **compact, fully autonomous running-water toddler sink**, sized precisely for an ~80 cm tall child — entirely engineered for **desktop 3D printing with PETG**.
+I set out to design and build a **compact, fully autonomous running-water toddler sink**, sized precisely for an ~80 cm tall child — modeled in **Autodesk Fusion 360** and engineered for **desktop 3D printing with PETG**.
 
 ![Assembled toddler sink in bathroom](/images/sink/sink-assembled-bathroom.jpg)
 
@@ -30,7 +30,7 @@ Key dimensions established during initial planning:
 
 ---
 
-## 2. 6-Part Modular Countertop & Heat-Set Inserts
+## 2. 6-Part Modular Countertop & M4 Heat-Set Inserts
 
 Because a 500×220 mm deck exceeds standard print beds (e.g. 256×256 mm on modern desktop printers), the countertop was split into **6 interlocking modular segments** (3 front sections, 3 rear sections).
 
@@ -38,8 +38,8 @@ Because a 500×220 mm deck exceeds standard print beds (e.g. 256×256 mm on mode
 
 ### Mechanical Joining & Heat-Set Inserts
 * **Tongue-and-Groove Alignment:** each segment features matching tongue-and-groove joints and alignment tabs with +0.2 mm clearance, preventing any shear displacement or misalignment along the seams.
-* **Brass Heat-Set Threaded Inserts (M3/M4):** machine screws should never be threaded directly into 3D-printed plastic. Every mating joint and leg mounting pad features blind pilot holes into which brass knurled heat inserts are melted using a soldering iron.
-* **Under-Deck Clamping:** matching flange pockets on the underside allow stainless M3/M4 hex screws to pull adjacent segments tightly against each other.
+* **Brass Heat-Set Threaded Inserts (M4):** machine screws should never be threaded directly into 3D-printed plastic. Every mating joint and leg mounting pad features blind pilot holes into which brass knurled **M4 heat inserts** are melted using a soldering iron. Standardizing on M4 across the entire build ensures solid mechanical stiffness.
+* **Under-Deck Clamping:** matching flange pockets on the underside allow stainless M4 hex socket screws to pull adjacent segments tightly against each other.
 * **Watertight Sealing:** neutral sanitary silicone was applied along all seam interfaces prior to torquing the screws down, ensuring zero capillary leakage between parts.
 
 | Left Segment with Pump Mount | Right Segment with Corrugated Drainboard |
@@ -52,7 +52,7 @@ Because a 500×220 mm deck exceeds standard print beds (e.g. 256×256 mm on mode
 
 The legs are also **100% 3D printed** from durable PETG, engineered as a modular threaded system:
 
-1. **Top Flange Mount:** a square 4-hole mounting bracket screws into brass heat inserts embedded in the underside of the countertop. It features a heavy-duty male buttress thread at the bottom.
+1. **Top Flange Mount:** a square 4-hole mounting bracket screws into brass M4 heat inserts embedded in the underside of the countertop. It features a heavy-duty male buttress thread at the bottom.
 2. **Threaded Extension Cylinders:** modular hollow leg segments screw directly into one another. As the child grows, additional threaded sections can be printed and screwed in, raising the deck from 390 mm to 460 mm and beyond.
 
 | Top Flange Mount | Threaded Leg Extension Segment |
@@ -81,6 +81,8 @@ All hydraulics and canisters are self-contained in the lower envelope beneath th
 * Fitted with a standard compact 1¼" bathroom siphon with an integrated strainer basket.
 * To safely direct wastewater into an airtight jerrycan, I modeled a custom screw-on funnel in [build123d](https://build123d.readthedocs.io/). It threads directly onto the **DIN 45** container neck using buttress KS threads, seating the siphon tube without leaks or odor.
 
+![Custom 3D-printed DIN 45 threaded funnel modeled in build123d](/images/sink/sink-cad-din45-funnel.png)
+
 ---
 
 ## 5. Real-World Results
@@ -90,4 +92,4 @@ The sink has transformed our daily routine:
 * **Practical capacity:** a single 5-liter clean water swap lasts 4–5 days of active toddler handwashing and brushing.
 * **Clean & dry:** by keeping the counter depth to just 22 cm and adding the perimeter splash rim, clothes and bathroom floors stay dry.
 
-Combining code-based CAD ([CadQuery](https://cadquery.readthedocs.io/) and [build123d](https://build123d.readthedocs.io/)) with desktop 3D printing enabled creating a truly bespoke, child-scaled piece of functional furniture that is impossible to buy off the shelf.
+Combining 3D CAD modeling (**Autodesk Fusion 360** for the sink assembly and parametric **build123d** for the custom threaded funnel) with desktop 3D printing enabled creating a truly bespoke, child-scaled piece of functional furniture that is impossible to buy off the shelf.
