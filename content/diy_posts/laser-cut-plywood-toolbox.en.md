@@ -27,7 +27,7 @@ The organizer is split down the middle by a vertical structural divider into two
    * **Deep Bottom Drawer:** Houses bulkier and heavier gear — hot glue gun, reinforced tape rolls, soldering equipment, and hardware fasteners.
    * **Top Drawer:** Dedicated to smaller hand tools, multimeter, measuring tapes, and consumables.
    * **Finger-Pull Holes:** Rather than protruding hardware handles that could hit the closet door, clean circular finger-pull holes are cut directly into the front panels.
-   * **Hardware-Free Slides:** Traditional ball-bearing slides would waste 25–30 mm of internal width. Instead, horizontal guide channels are laser-cut directly into the drawer side panels, sliding smoothly over 3D-printed cylindrical guide pins (`rail_cylinder.stl`).
+   * **Hardware-Free Slides:** Traditional ball-bearing slides would waste 25–30 mm of internal width. Instead, horizontal guide channels are laser-cut directly into the drawer side panels, sliding over 3D-printed cylindrical guide pins (`rail_cylinder.stl`). It doesn't glide with buttery smoothness and can catch a bit, but it works and gets the job done without losing drawer width.
 
 2. **Right Bay (Open Quick-Access Tool Compartment):**
    * **Tall Open Niche:** Holds tall vertical tools without opening drawers — hammer, torpedo level, quick-clamps, and lubricant/WD-40 spray cans.
@@ -76,9 +76,9 @@ Manufacturing interlocking plywood assemblies on a laser cutter involves several
 
 ## 4. Assembly & Real-World Use
 
-The frame is assembled using standard D3 PVA wood glue. Thanks to precision laser cutting and interlocking finger joints, the entire box self-squares at 90 degrees during dry fit without requiring bulky framing clamps.
+The frame was glued together using standard D3 PVA wood glue.
 
 In everyday use, the unit completely transforms the closet shelf:
 * **Zero Wasted Space:** Full utilization of the 52 cm cabinet depth.
 * **Instant Grab-and-Go:** High-frequency tools (hammer, level, screwdrivers, pliers) are instantly accessible in the right bay without pulling out any drawers.
-* **Organized Storage:** The bottom drawer conceals bulky power accessories and adhesives, while the top drawer organizes precision tools and fasteners.
+* **Organized Storage:** The bottom drawer holds bulkier tools, while the top drawer stores small precision items and consumables. Everything fits, and day-to-day access is quick and practical.
