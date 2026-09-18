@@ -5,9 +5,9 @@ draft: false
 tags: ["diy", "woodworking", "laser-cutting", "cadquery", "python", "3d-printing", "organization"]
 ---
 
-Organizing hand tools in an apartment closet is always an exercise in frustrating trade-offs. Off-the-shelf plastic toolboxes and generic storage bins are bulky, awkward, and notoriously inefficient inside standard cabinetry. A typical closet shelf is deep (>50 cm), but most commercial organizers are shallow (wasting valuable front or rear space) or require digging through stacked tool layers like an archaeological excavation.
+Tools were just lying around on the closet shelf in a messy pile, and grabbing anything was constantly annoying. Standard plastic storage bins don't work well on a 50+ cm deep shelf: either they are too small and waste half the space, or everything ends up jumbled together again. I simply wanted a solid organizer built to the exact shelf dimensions (`467 × 525 × 280 mm`), so every tool has its spot and is within immediate reach.
 
-To maximize every cubic centimeter of a dedicated closet shelf (`467 × 525 × 280 mm`), I designed a custom **modular birch plywood tool organizer**. The project combines **code-based parametric CAD (Python + CadQuery)**, precision **CNC laser cutting**, and auxiliary **3D-printed PETG hardware**.
+To make it, I designed a **modular birch plywood organizer** combining **code-based parametric CAD (Python + CadQuery)**, precision **laser cutting**, and **3D-printed PETG parts**.
 
 * **Project Repository:** [rrader/cad-projects/laser_box](https://github.com/rrader/cad-projects/tree/main/laser_box)
 * **Material:** 4 mm (or 6 mm) Baltic birch plywood, laser-cut with kerf compensation (`kerf = 0.2 mm`).
