@@ -5,7 +5,9 @@ draft: false
 tags: ["diy", "woodworking", "laser-cutting", "cadquery", "python", "3d-printing", "organization"]
 ---
 
-Tools were just lying around on the closet shelf in a messy pile, and grabbing anything was constantly annoying. Standard plastic storage bins don't work well on a 50+ cm deep shelf: either they are too small and waste half the space, or everything ends up jumbled together again. I simply wanted a solid organizer built to the exact shelf dimensions (`467 × 525 × 280 mm`), so every tool has its spot and is within immediate reach.
+Storing tools in the closet was inconvenient, so I decided to make a custom organizer.
+
+Standard plastic storage bins don't work well on a 50+ cm deep shelf: either they are too small and waste half the space, or everything ends up in a jumbled pile. I wanted an organizer built to the exact shelf dimensions (`467 × 525 × 280 mm`), so every tool has its spot and is within immediate reach.
 
 To make it, I designed a **modular birch plywood organizer** combining **code-based parametric CAD (Python + CadQuery)**, precision **laser cutting**, and **3D-printed PETG parts**.
 
