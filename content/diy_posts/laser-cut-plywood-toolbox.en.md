@@ -79,6 +79,6 @@ Manufacturing interlocking plywood assemblies on a laser cutter involves several
 The frame was glued together using standard D3 PVA wood glue.
 
 In everyday use, the unit completely transforms the closet shelf:
-* **Zero Wasted Space:** Full utilization of the 52 cm cabinet depth.
-* **Instant Grab-and-Go:** High-frequency tools (hammer, level, screwdrivers, pliers) are instantly accessible in the right bay without pulling out any drawers.
-* **Organized Storage:** The bottom drawer holds bulkier tools, while the top drawer stores small precision items and consumables. Everything fits, and day-to-day access is quick and practical.
+* Full utilization of the 52 cm cabinet depth.
+* High-frequency tools (hammer, level, screwdrivers, pliers) are instantly accessible in the right bay without pulling out any drawers.
+* The bottom drawer holds bulkier tools, while the top drawer stores small precision items and consumables. Everything fits, and day-to-day access is quick and practical.
