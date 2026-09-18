@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Organizing hand tools in an apartment closet is always an exercise in frustrating trade-offs. Off-the-shelf plastic toolboxes and generic storage bins are bulky, awkward, and notoriously inefficient inside standard cabinetry. A typical closet shelf is deep (&gt;50 cm), but most commercial organizers are shallow (wasting valuable front or rear space) or require digging through stacked tool layers like an archaeological excavation.
+To maximize every cubic centimeter of a dedicated closet shelf (467 × 525 × 280 mm), I designed a custom modular birch plywood tool organizer.">  
+
+  <title>
+    
+      Parametric Laser-Cut Plywood Tool Organizer: CadQuery and 3D-Printed Hardware // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../diy_posts/laser-cut-plywood-toolbox/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/diy_posts/laser-cut-plywood-toolbox/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/laser-cut-plywood-toolbox.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat laser-cut-plywood-toolbox.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2026-06-01 12:00:00 &#43;0300 EEST">2026-06-01</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 824</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~5m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#woodworking</span>
+      
+        <span class="tty-tag-pill">#laser-cutting</span>
+      
+        <span class="tty-tag-pill">#cadquery</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#3d-printing</span>
+      
+        <span class="tty-tag-pill">#organization</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Parametric Laser-Cut Plywood Tool Organizer: CadQuery and 3D-Printed Hardware</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/diy_posts/laser-cut-plywood-toolbox/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>Organizing hand tools in an apartment closet is always an exercise in frustrating trade-offs. Off-the-shelf plastic toolboxes and generic storage bins are bulky, awkward, and notoriously inefficient inside standard cabinetry. A typical closet shelf is deep (&gt;50 cm), but most commercial organizers are shallow (wasting valuable front or rear space) or require digging through stacked tool layers like an archaeological excavation.</p>
+<p>To maximize every cubic centimeter of a dedicated closet shelf (<code>467 × 525 × 280 mm</code>), I designed a custom <strong>modular birch plywood tool organizer</strong>. The project combines <strong>code-based parametric CAD (Python + CadQuery)</strong>, precision <strong>CNC laser cutting</strong>, and auxiliary <strong>3D-printed PETG hardware</strong>.</p>
+<ul>
+<li><strong>Project Repository:</strong> <a href="https://github.com/rrader/cad-projects/tree/main/laser_box">rrader/cad-projects/laser_box</a></li>
+<li><strong>Material:</strong> 4 mm (or 6 mm) Baltic birch plywood, laser-cut with kerf compensation (<code>kerf = 0.2 mm</code>).</li>
+<li><strong>Hybrid Hardware:</strong> 3D-printed drawer guide cylinders, pegboard wall standoffs, and custom J-hooks.</li>
+</ul>
+<p><img alt="Parametric laser-cut plywood tool organizer installed in the closet shelf" src="../../images/laser-box/organizer-installed-in-closet.webp"></p>
+<hr>
+<h2 id="1-layout--internal-architecture">1. Layout &amp; Internal Architecture</h2>
+<p>The organizer is split down the middle by a vertical structural divider into two distinct functional zones:</p>
+<ol>
+<li>
+<p><strong>Left Bay (Two Slide-Out Drawers):</strong></p>
+<ul>
+<li><strong>Deep Bottom Drawer:</strong> Houses bulkier and heavier gear — hot glue gun, reinforced tape rolls, soldering equipment, and hardware fasteners.</li>
+<li><strong>Top Drawer:</strong> Dedicated to smaller hand tools, multimeter, measuring tapes, and consumables.</li>
+<li><strong>Finger-Pull Holes:</strong> Rather than protruding hardware handles that could hit the closet door, clean circular finger-pull holes are cut directly into the front panels.</li>
+<li><strong>Hardware-Free Slides:</strong> Traditional ball-bearing slides would waste 25–30 mm of internal width. Instead, horizontal guide channels are laser-cut directly into the drawer side panels, sliding smoothly over 3D-printed cylindrical guide pins (<code>rail_cylinder.stl</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Right Bay (Open Quick-Access Tool Compartment):</strong></p>
+<ul>
+<li><strong>Tall Open Niche:</strong> Holds tall vertical tools without opening drawers — hammer, torpedo level, quick-clamps, and lubricant/WD-40 spray cans.</li>
+<li><strong>Integrated Tool Rack:</strong> A floating shelf near the upper rear features precision slots and circular cutouts of varying diameters to hold screwdrivers, pliers, wire strippers, and utility knives upright.</li>
+<li><strong>Built-in Pegboard Wall:</strong> The right exterior panel features an integrated 7×7 mm square/round hole matrix on a 25 mm pitch.</li>
+<li><strong>Wall Standoffs (<code>pegboard_spacer.stl</code>):</strong> Four 6 mm cylindrical spacers on the outside of the right wall offset the cabinet slightly from the closet interior, providing the clearance needed to insert and remove 3D-printed pegboard hooks (<code>pegboard_hook.stl</code>).</li>
+</ul>
+</li>
+</ol>
+<p><img alt="3D CAD assembly render of the parametric closet tool organizer" src="../../images/laser-box/cad-assembly-render.webp"></p>
+<hr>
+<h2 id="2-parametric-cad-in-code-cadquery--python">2. Parametric CAD in Code: CadQuery &amp; Python</h2>
+<p>Instead of drawing individual static parts in GUI-based CAD software (where changing plywood thickness from 4 mm to 6 mm would require manually adjusting hundreds of finger joints and slot widths), the entire model is written procedurally in Python using <strong>CadQuery</strong> and <code>cq-warehouse</code> (<code>makeFingerJoints</code>).</p>
+<p>All primary dimensions and fit tolerances are isolated in a single configuration file, <a href="https://github.com/rrader/cad-projects/blob/main/laser_box/params.py"><code>params.py</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Functional Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SHELF_W, SHELF_D, SHELF_H</code></td>
+<td>467 × 525 × 280 mm</td>
+<td>Measured clear opening of the closet shelf</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>4.0 mm</td>
+<td>Plywood stock thickness</td>
+</tr>
+<tr>
+<td><code>KERF</code></td>
+<td>0.20 mm</td>
+<td>Laser cut width compensation (tight joint friction)</td>
+</tr>
+<tr>
+<td><code>BOX_GAP</code></td>
+<td>2.0 mm</td>
+<td>Outer installation clearance from cabinet walls</td>
+</tr>
+<tr>
+<td><code>SPACER_DEPTH</code></td>
+<td>6.0 mm</td>
+<td>Standoff offset for pegboard hook clearance</td>
+</tr>
+<tr>
+<td><code>DRAWER_GAP</code></td>
+<td>0.8 mm</td>
+<td>Horizontal clearance per drawer side for smooth sliding</td>
+</tr>
+<tr>
+<td><code>DRAWER_V_GAP</code></td>
+<td>5.0 mm</td>
+<td>Vertical clearance above each drawer</td>
+</tr>
+<tr>
+<td><code>PBOARD_GRID</code></td>
+<td>25.0 mm</td>
+<td>Pegboard hole matrix spacing (7.0 mm hole diameter)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="algorithmic-highlights">Algorithmic Highlights</h3>
+<ul>
+<li><strong>Finger Joint Generation:</strong> Finger width defaults to <code>3 × T</code> (~12–18 mm). The algorithm calculates an odd number of interlocking tabs per edge, automatically offsetting alternating faces to prevent tab collisions at corners.</li>
+<li><strong>Dynamic Shelf Height (<code>_compute_shelf_z</code>):</strong> The height of the tool rack is dynamically computed so that its mounting tabs in the central divider maintain at least 1.5 mm clearance from nearby finger joints, eliminating paper-thin bridges that could burn through during laser cutting.</li>
+</ul>
+<hr>
+<h2 id="3-cnc-laser-cutting-kerf--sheet-nesting">3. CNC Laser Cutting, Kerf &amp; Sheet Nesting</h2>
+<p>Manufacturing interlocking plywood assemblies on a laser cutter involves several critical details:</p>
+<ol>
+<li><strong>Kerf Offset:</strong> The laser beam vaporizes roughly 0.15–0.20 mm of wood. Without software compensation, finger joints fit loosely and require excessive glue. With <code>KERF = 0.20 mm</code>, tabs mate with a satisfying friction fit under gentle mallet taps.</li>
+<li><strong>Automated Nesting (MAXRECTS Bin Packing):</strong> The export script <a href="https://github.com/rrader/cad-projects/blob/main/laser_box/export.py"><code>export.py</code></a> flattens all 3D faces into 2D profiles and packs them onto a 1500 × 1500 mm sheet using a Maximal Rectangles Best Area Fit algorithm, while respecting plywood grain direction (<code>grain_lock</code>) for structural panels.</li>
+<li><strong>Coincident-Edge Protection:</strong> When an interior slot touches the outer boundary of a panel, it is merged into a continuous U-shaped notch (<code>_notch_outer_edge</code>). This prevents the laser from cutting the same line twice and charring the edges.</li>
+</ol>
+<p><img alt="Assembled raw birch plywood tool organizer showing finger joints and slide mechanisms" src="../../images/laser-box/assembled-plywood-organizer.webp"></p>
+<hr>
+<h2 id="4-assembly--real-world-use">4. Assembly &amp; Real-World Use</h2>
+<p>The frame is assembled using standard D3 PVA wood glue. Thanks to precision laser cutting and interlocking finger joints, the entire box self-squares at 90 degrees during dry fit without requiring bulky framing clamps.</p>
+<p>In everyday use, the unit completely transforms the closet shelf:</p>
+<ul>
+<li><strong>Zero Wasted Space:</strong> Full utilization of the 52 cm cabinet depth.</li>
+<li><strong>Instant Grab-and-Go:</strong> High-frequency tools (hammer, level, screwdrivers, pliers) are instantly accessible in the right bay without pulling out any drawers.</li>
+<li><strong>Organized Storage:</strong> The bottom drawer conceals bulky power accessories and adhesives, while the top drawer organizes precision tools and fasteners.</li>
+</ul>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: laser-cut-plywood-toolbox.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">laser-cut-plywood-toolbox.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">824 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

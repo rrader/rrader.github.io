@@ -120,7 +120,7 @@
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/3d-printing/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
+    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
@@ -130,97 +130,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/tags/3d-printing/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/diy_posts/montessori-3d-printed-sink/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/build123d/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/build123d/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/build123d/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/diy/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/diy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/diy/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/diy_posts/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/diy_posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/diy_posts/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/fusion360/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/fusion360/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/fusion360/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/maker/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/maker/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/maker/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/parenting/</loc>
-    <lastmod>2026-09-17T12:30:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/parenting/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/parenting/"
                 />
   </url><url>
     <loc>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</loc>
@@ -234,6 +143,32 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/diy_posts/adabox-diy-rfid-player/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/diy/</loc>
+    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/diy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/diy/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/diy_posts/</loc>
+    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/esp32/</loc>
@@ -262,17 +197,147 @@
                 href="https://rrader.github.io/tags/hardware/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/diy_posts/philips-vacuum-holder/</loc>
-    <lastmod>2026-05-31T18:00:00+03:00</lastmod>
+    <loc>https://rrader.github.io/tags/maker/</loc>
+    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/diy_posts/philips-vacuum-holder/"
+                href="https://rrader.github.io/uk/tags/maker/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/diy_posts/philips-vacuum-holder/"
+                href="https://rrader.github.io/tags/maker/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/cadquery/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/cadquery/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/cadquery/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/laser-cutting/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/laser-cutting/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/laser-cutting/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/organization/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/organization/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/organization/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/python/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/python/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/woodworking/</loc>
+    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/woodworking/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/woodworking/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/build123d/</loc>
+    <lastmod>2026-05-07T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/build123d/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/build123d/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/fusion360/</loc>
+    <lastmod>2026-05-07T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/fusion360/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/fusion360/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</loc>
+    <lastmod>2026-05-07T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/montessori-3d-printed-sink/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/montessori-3d-printed-sink/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/parenting/</loc>
+    <lastmod>2026-05-07T12:00:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/parenting/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/parenting/"
                 />
   </url><url>
     <loc>https://rrader.github.io/teach_posts/cybersecurity-month-2025/</loc>
@@ -286,6 +351,19 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/teach_posts/cybersecurity-month-2025/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/diy_posts/philips-vacuum-holder/</loc>
+    <lastmod>2025-03-04T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/philips-vacuum-holder/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/philips-vacuum-holder/"
                 />
   </url><url>
     <loc>https://rrader.github.io/teach_posts/method-ai-course/</loc>

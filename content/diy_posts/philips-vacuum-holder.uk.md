@@ -1,6 +1,6 @@
 ---
 title: "Настінний тримач для пилососа Philips 8000 Aqua Plus (PETG + TPU)"
-date: 2026-05-31T18:00:00+03:00
+date: 2025-03-04T12:00:00+02:00
 draft: false
 tags: ["diy", "3d-printing", "fusion360", "maker", "hardware"]
 ---

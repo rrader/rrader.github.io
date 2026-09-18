@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Woodworking on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/woodworking/</link>
+    <description>Recent content in Woodworking on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/woodworking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Параметричний органайзер для інструментів із фанери: CadQuery та лазерна різка</title>
+      <link>https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/</link>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/</guid>
+      <description>Зберігання ручного інструменту у квартирі — вічна проблема компромісів. Стандартні покупні валізи або пластикові ящики громіздкі й погано адаптовані до меблевих полиць. Глибина звичайної шафи становить понад 50 см, тоді як більшість ящиків або короткі (і перед ними/за ними утворюється мертва зона), або змушують складати інструменти шарами один на одного, перетворюючи пошук потрібної викрутки на археологічні розкопки.&#xA;Щоб раціонально використати кожен кубічний сантиметр полиці (467 × 525 × 280 мм), я спроєктував власний модульний органайзер із березової фанери, поєднавши параметричний код на Python (CadQuery), високоточну лазерну різку та допоміжні 3D-друковані деталі з PETG.</description>
+    </item>
+  </channel>
+</rss>

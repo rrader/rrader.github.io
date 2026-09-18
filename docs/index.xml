@@ -16,13 +16,6 @@
       <description>When introducing students to artificial intelligence, conversations inevitably lead back to Alan Turing’s seminal 1950 question: “Can machines think?”&#xA;In traditional textbooks, the Turing Test (originally described as The Imitation Game) is frequently treated as an abstract historical anecdote: an interrogator asks questions through a teletype terminal to a hidden human and machine, trying to distinguish between the two. Simply reading a paragraph about it seldom leaves a lasting impression.</description>
     </item>
     <item>
-      <title>Autonomous Toddler Montessori Sink: 100% 3D-Printed Modular Design</title>
-      <link>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</link>
-      <pubDate>Thu, 17 Sep 2026 12:30:00 +0300</pubDate>
-      <guid>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</guid>
-      <description>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.&#xA;Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</description>
-    </item>
-    <item>
       <title>AdaBox — DIY Toddler Music Player on ESP32 with RFID</title>
       <link>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</link>
       <pubDate>Thu, 17 Sep 2026 12:00:00 +0300</pubDate>
@@ -30,11 +23,18 @@
       <description>When our daughter turned one, my wife started looking into kid-friendly music players for her. Commercial products like Toniebox are widely popular, but come with significant drawbacks:&#xA;Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: Ukrainian fairy tales, lullabies, or local audio collections are practically nonexistent in their official catalogs. Researching DIY alternatives, I came across the German Tonuino and ESPuino projects.</description>
     </item>
     <item>
-      <title>Wall Mount for Philips 8000 Aqua Plus Vacuum (PETG &#43; TPU)</title>
-      <link>https://rrader.github.io/diy_posts/philips-vacuum-holder/</link>
-      <pubDate>Sun, 31 May 2026 18:00:00 +0300</pubDate>
-      <guid>https://rrader.github.io/diy_posts/philips-vacuum-holder/</guid>
-      <description>The cordless Philips 8000 Series Aqua Plus is great for quick daily cleanups, but in our cabinet shelf there simply isn&amp;rsquo;t enough vertical height to store the vacuum fully assembled. While the motor unit sits nicely on its original charging dock, the long aluminum extension tube and crevice nozzle have to be detached and parked on the wall right next to it.&#xA;Off-the-shelf broom clips and generic hardware store wall mounts don&amp;rsquo;t work:</description>
+      <title>Parametric Laser-Cut Plywood Tool Organizer: CadQuery and 3D-Printed Hardware</title>
+      <link>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</link>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</guid>
+      <description>Organizing hand tools in an apartment closet is always an exercise in frustrating trade-offs. Off-the-shelf plastic toolboxes and generic storage bins are bulky, awkward, and notoriously inefficient inside standard cabinetry. A typical closet shelf is deep (&amp;gt;50 cm), but most commercial organizers are shallow (wasting valuable front or rear space) or require digging through stacked tool layers like an archaeological excavation.&#xA;To maximize every cubic centimeter of a dedicated closet shelf (467 × 525 × 280 mm), I designed a custom modular birch plywood tool organizer.</description>
+    </item>
+    <item>
+      <title>Modular 3D-Printed Montessori Children&#39;s Handwashing Sink</title>
+      <link>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</link>
+      <pubDate>Thu, 07 May 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</guid>
+      <description>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.&#xA;Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</description>
     </item>
     <item>
       <title>Cybersecurity Awareness Month 2025</title>
@@ -42,6 +42,13 @@
       <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://rrader.github.io/teach_posts/cybersecurity-month-2025/</guid>
       <description>About Cybersecurity Awareness Month Cybersecurity Awareness Month is a global initiative dedicated to raising awareness about the importance of security in the digital world. In October 2025, we joined this initiative by offering a series of interactive activities and quizzes designed to help students better understand the fundamentals of digital safety, personal data protection, and secure web browsing.&#xA;Acknowledgements These interactive activities are based on the course materials from Digital Skills: Security and Safety by Charles Sturt University (Australia).</description>
+    </item>
+    <item>
+      <title>Wall Mount for Philips 8000 Aqua Plus Vacuum (PETG &#43; TPU)</title>
+      <link>https://rrader.github.io/diy_posts/philips-vacuum-holder/</link>
+      <pubDate>Tue, 04 Mar 2025 12:00:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/philips-vacuum-holder/</guid>
+      <description>The cordless Philips 8000 Series Aqua Plus is great for quick daily cleanups, but in our cabinet shelf there simply isn&amp;rsquo;t enough vertical height to store the vacuum fully assembled. While the motor unit sits nicely on its original charging dock, the long aluminum extension tube and crevice nozzle have to be detached and parked on the wall right next to it.&#xA;Off-the-shelf broom clips and generic hardware store wall mounts don&amp;rsquo;t work:</description>
     </item>
     <item>
       <title>Methodological Materials for AI Engineering Course</title>

@@ -6,15 +6,8 @@
     <description>Recent content in Diy on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2026 12:30:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 17 Sep 2026 12:00:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/diy/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Autonomous Toddler Montessori Sink: 100% 3D-Printed Modular Design</title>
-      <link>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</link>
-      <pubDate>Thu, 17 Sep 2026 12:30:00 +0300</pubDate>
-      <guid>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</guid>
-      <description>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.&#xA;Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</description>
-    </item>
     <item>
       <title>AdaBox — DIY Toddler Music Player on ESP32 with RFID</title>
       <link>https://rrader.github.io/diy_posts/adabox-diy-rfid-player/</link>
@@ -23,9 +16,23 @@
       <description>When our daughter turned one, my wife started looking into kid-friendly music players for her. Commercial products like Toniebox are widely popular, but come with significant drawbacks:&#xA;Walled garden ecosystem: every single album or fairy tale requires buying a proprietary $15–$20 figurine. Cloud dependence: activation, sync, and downloads rely entirely on company servers. Content limitations: Ukrainian fairy tales, lullabies, or local audio collections are practically nonexistent in their official catalogs. Researching DIY alternatives, I came across the German Tonuino and ESPuino projects.</description>
     </item>
     <item>
+      <title>Parametric Laser-Cut Plywood Tool Organizer: CadQuery and 3D-Printed Hardware</title>
+      <link>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</link>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</guid>
+      <description>Organizing hand tools in an apartment closet is always an exercise in frustrating trade-offs. Off-the-shelf plastic toolboxes and generic storage bins are bulky, awkward, and notoriously inefficient inside standard cabinetry. A typical closet shelf is deep (&amp;gt;50 cm), but most commercial organizers are shallow (wasting valuable front or rear space) or require digging through stacked tool layers like an archaeological excavation.&#xA;To maximize every cubic centimeter of a dedicated closet shelf (467 × 525 × 280 mm), I designed a custom modular birch plywood tool organizer.</description>
+    </item>
+    <item>
+      <title>Modular 3D-Printed Montessori Children&#39;s Handwashing Sink</title>
+      <link>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</link>
+      <pubDate>Thu, 07 May 2026 12:00:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/montessori-3d-printed-sink/</guid>
+      <description>Around 12 to 18 months of age, one of the central tenets of Montessori education is independence in everyday hygiene: washing hands, brushing teeth, and washing up after meals.&#xA;Standard bathroom sinks are fundamentally mismatched for toddlers: even with a stepping stool, reaching the faucet requires straining, balance is precarious, and water splashes everywhere. Most commercial alternatives on the market are either toy plastic play kitchens without real drainage or bulky wooden structures that consume half the room.</description>
+    </item>
+    <item>
       <title>Wall Mount for Philips 8000 Aqua Plus Vacuum (PETG &#43; TPU)</title>
       <link>https://rrader.github.io/diy_posts/philips-vacuum-holder/</link>
-      <pubDate>Sun, 31 May 2026 18:00:00 +0300</pubDate>
+      <pubDate>Tue, 04 Mar 2025 12:00:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/philips-vacuum-holder/</guid>
       <description>The cordless Philips 8000 Series Aqua Plus is great for quick daily cleanups, but in our cabinet shelf there simply isn&amp;rsquo;t enough vertical height to store the vacuum fully assembled. While the motor unit sits nicely on its original charging dock, the long aluminum extension tube and crevice nozzle have to be detached and parked on the wall right next to it.&#xA;Off-the-shelf broom clips and generic hardware store wall mounts don&amp;rsquo;t work:</description>
     </item>

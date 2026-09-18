@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Зберігання ручного інструменту у квартирі — вічна проблема компромісів. Стандартні покупні валізи або пластикові ящики громіздкі й погано адаптовані до меблевих полиць. Глибина звичайної шафи становить понад 50 см, тоді як більшість ящиків або короткі (і перед ними/за ними утворюється мертва зона), або змушують складати інструменти шарами один на одного, перетворюючи пошук потрібної викрутки на археологічні розкопки.
+Щоб раціонально використати кожен кубічний сантиметр полиці (467 × 525 × 280 мм), я спроєктував власний модульний органайзер із березової фанери, поєднавши параметричний код на Python (CadQuery), високоточну лазерну різку та допоміжні 3D-друковані деталі з PETG.">  
+
+  <title>
+    
+      Параметричний органайзер для інструментів із фанери: CadQuery та лазерна різка // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../diy_posts/laser-cut-plywood-toolbox/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/diy_posts/laser-cut-plywood-toolbox/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/laser-cut-plywood-toolbox.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat laser-cut-plywood-toolbox.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2026-06-01 12:00:00 &#43;0300 EEST">2026-06-01</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 757</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~4m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#woodworking</span>
+      
+        <span class="tty-tag-pill">#laser-cutting</span>
+      
+        <span class="tty-tag-pill">#cadquery</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#3d-printing</span>
+      
+        <span class="tty-tag-pill">#organization</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Параметричний органайзер для інструментів із фанери: CadQuery та лазерна різка</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../diy_posts/laser-cut-plywood-toolbox/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p>Зберігання ручного інструменту у квартирі — вічна проблема компромісів. Стандартні покупні валізи або пластикові ящики громіздкі й погано адаптовані до меблевих полиць. Глибина звичайної шафи становить понад 50 см, тоді як більшість ящиків або короткі (і перед ними/за ними утворюється мертва зона), або змушують складати інструменти шарами один на одного, перетворюючи пошук потрібної викрутки на археологічні розкопки.</p>
+<p>Щоб раціонально використати кожен кубічний сантиметр полиці (<code>467 × 525 × 280 мм</code>), я спроєктував власний <strong>модульний органайзер із березової фанери</strong>, поєднавши <strong>параметричний код на Python (CadQuery)</strong>, високоточну <strong>лазерну різку</strong> та допоміжні <strong>3D-друковані деталі з PETG</strong>.</p>
+<ul>
+<li><strong>Репозиторій проєкту:</strong> <a href="https://github.com/rrader/cad-projects/tree/main/laser_box">rrader/cad-projects/laser_box</a></li>
+<li><strong>Матеріал:</strong> березова фанера 4 мм (або 6 мм), лазерна різка з компенсацією пропилу (kerf = 0.2 мм).</li>
+<li><strong>Гібридні компоненти:</strong> напрямні ролики шухляд, дистанційні стійки та гачки пегборду — надруковані на 3D-принтері.</li>
+</ul>
+<p><img alt="Органайзер для інструментів із фанери, встановлений на полиці шафи" src="../../../images/laser-box/organizer-installed-in-closet.webp"></p>
+<hr>
+<h2 id="1-компонування-та-внутрішня-архітектура">1. Компонування та внутрішня архітектура</h2>
+<p>Внутрішній простір органайзера розділений центральною перегородкою на дві рівні функціональні зони:</p>
+<ol>
+<li>
+<p><strong>Ліва секція (2 висувні шухляди):</strong></p>
+<ul>
+<li><strong>Нижня глибока шухляда:</strong> призначена для важчих та об&rsquo;ємних речей — термоклейовий пістолет, мотки армованого та ізоляційного скотчу, клейові стрижні, паяльне приладдя, кріплення.</li>
+<li><strong>Верхня шухляда:</strong> для дрібного ручного інструменту, вимірювальних приладів та витратних матеріалів.</li>
+<li><strong>Інтегровані ручки:</strong> замість виступаючих меблевих ручок, які заважали б закриванню дверцят шафи, на передніх стінках вирізані зручні круглі отвори під палець.</li>
+<li><strong>Напрямні без металу:</strong> металеві телескопічні кулькові напрямні «з&rsquo;їли» б 25–30 мм корисної ширини. Замість них у бічних стінках шухляд прорізані напрямні пази, в яких ковзають невеликі 3D-друковані циліндри (<code>rail_cylinder.stl</code>). Шухляда рухається плавно і без заїдань.</li>
+</ul>
+</li>
+<li>
+<p><strong>Права секція (відкритий відсік швидкого доступу):</strong></p>
+<ul>
+<li><strong>Висока відкрита ніша:</strong> вміщує габаритні інструменти вертикально — молоток, будівельний рівень, ручні струбцини, балони WD-40 / мастило.</li>
+<li><strong>Інструментальна поличка:</strong> розташована у верхній задній частині відсіку. Має фрезеровані отвори різного діаметра та поздовжні прорізи під викрутки, пасатижі, кусачки та ножі.</li>
+<li><strong>Вбудований пегборд (бічна стінка):</strong> права зовнішня стінка містить регулярну сітку отворів 7×7 мм з кроком 25 мм.</li>
+<li><strong>3D-друковані спейсери (<code>pegboard_spacer.stl</code>):</strong> чотири кутові втулки товщиною 6 мм відсувають бічну стінку органайзера від внутрішньої стінки шафи, завдяки чому гачки пегборду (<code>pegboard_hook.stl</code>) можна легко вставляти й знімати.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="3D CAD-рендер параметричної збірки органайзера" src="../../../images/laser-box/cad-assembly-render.webp"></p>
+<hr>
+<h2 id="2-параметричний-cad-у-коді-cadquery-та-python">2. Параметричний CAD у коді: CadQuery та Python</h2>
+<p>Замість ручного креслення кожної грані у графічному CAD (де будь-яка зміна товщини фанери з 4 мм на 6 мм вимагає перемальовування сотень пазів), модель повністю описана на Python за допомогою бібліотеки <strong>CadQuery</strong> та розширення <code>cq-warehouse</code> для шипових з&rsquo;єднань (<code>makeFingerJoints</code>).</p>
+<p>Усі габарити та зазори винесені в єдиний конфігураційний файл <a href="https://github.com/rrader/cad-projects/blob/main/laser_box/params.py"><code>params.py</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Значення</th>
+<th>Призначення</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SHELF_W, SHELF_D, SHELF_H</code></td>
+<td>467 × 525 × 280 мм</td>
+<td>Фактичний розмір світлового отвору полиці шафи</td>
+</tr>
+<tr>
+<td><code>T</code></td>
+<td>4.0 мм</td>
+<td>Товщина листа фанери</td>
+</tr>
+<tr>
+<td><code>KERF</code></td>
+<td>0.20 мм</td>
+<td>Ширина лазерного пропилу (компенсація натягу шипів)</td>
+</tr>
+<tr>
+<td><code>BOX_GAP</code></td>
+<td>2.0 мм</td>
+<td>Технічний монтажний зазор корпусу від стінок полиці</td>
+</tr>
+<tr>
+<td><code>SPACER_DEPTH</code></td>
+<td>6.0 мм</td>
+<td>Відступ від стінки шафи під гачки пегборду</td>
+</tr>
+<tr>
+<td><code>DRAWER_GAP</code></td>
+<td>0.8 мм</td>
+<td>Бічний зазор між шухлядою та стінкою для вільного ковзання</td>
+</tr>
+<tr>
+<td><code>DRAWER_V_GAP</code></td>
+<td>5.0 мм</td>
+<td>Верхній зазор над шухлядою</td>
+</tr>
+<tr>
+<td><code>PBOARD_GRID</code></td>
+<td>25.0 мм</td>
+<td>Крок сітки отворів пегборду (діаметр 7.0 мм)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="особливості-геометричного-алгоритму">Особливості геометричного алгоритму</h3>
+<ul>
+<li><strong>Шипові з&rsquo;єднання (Finger Joints):</strong> ширина шипа задана як <code>3 × T</code> (~12–18 мм). Скрипт автоматично вираховує непарну кількість шипів на кожну грань, чергуючи пази та виступи з урахуванням компенсації лазерного пропилу.</li>
+<li><strong>Динамічний розрахунок полички (<code>_compute_shelf_z</code>):</strong> висота інструментальної полички обчислюється процедурно так, щоб пази кріплення в центральній стінці не наближалися до ліній шипових з&rsquo;єднань ближче ніж на 1.5 мм. Це унеможливлює пропали тонких перемичок лазером.</li>
+</ul>
+<hr>
+<h2 id="3-лазерна-різка-пропил-kerf-та-оптимізація-листа-nesting">3. Лазерна різка, пропил (Kerf) та оптимізація листа (Nesting)</h2>
+<p>Виробництво деталей з фанери на лазерному ЧПК має кілька неочевидних нюансів:</p>
+<ol>
+<li><strong>Компенсація різу (Kerf Compensation):</strong> лазерний промінь спалює смужку матеріалу шириною 0.15–0.20 мм. Якщо не скоригувати контур, шипи будуть бовтатися, і конструкцію доведеться заливати епоксидкою. При <code>KERF = 0.20 мм</code> шипи входять один в один «із натягом» під легким постукуванням киянки (friction fit).</li>
+<li><strong>Алгоритм пакування (Maximal Rectangles bin packer):</strong> утиліта <a href="https://github.com/rrader/cad-projects/blob/main/laser_box/export.py"><code>export.py</code></a> автоматично розгортає всі 3D-панелі на площину XY і щільно вкладає їх на стандартний формат листа (1500 × 1500 мм) за алгоритмом Best Area Fit з урахуванням напрямку волокон (<code>grain_lock</code>).</li>
+<li><strong>Чисті DXF-траєкторії:</strong> якщо паз збігається з відкритим краєм панелі, внутрішній замкнений контур автоматично трансформується у відкритий U-подібний виріз (<code>_notch_outer_edge</code>). Це запобігає подвійному проходу лазера по одній і тій самій лінії та обвуглюванню кутів.</li>
+</ol>
+<p><img alt="Зібраний каркас органайзера з шухлядами, поличкою та пегбордом" src="../../../images/laser-box/assembled-plywood-organizer.webp"></p>
+<hr>
+<h2 id="4-результат-та-експлуатація">4. Результат та експлуатація</h2>
+<p>Збірка каркаса відбувається на звичайний столярний клей ПВА (клас D3). Завдяки прецизійній лазерній різці та шиповим з&rsquo;єднанням корпус самоцентрується під кутом 90 градусів без потреби у спеціальних кутових струбцинах.</p>
+<p>Органайзер стоїть на полиці вже тривалий час:</p>
+<ul>
+<li><strong>Нуль мертвого простору:</strong> використовується вся 52-сантиметрова глибина шафи.</li>
+<li><strong>Швидкий доступ:</strong> молоток, рівень, плоскогубці та викрутки завжди на видноті у правому відсіку — їх можна вийняти за секунду, не відкриваючи шухляд.</li>
+<li><strong>Порядок у дрібницях:</strong> нижня шухляда вміщує важкі речі та балончики, верхня — дрібний ручний інструмент. Рух по 3D-друкованих штифтах приємний, легкий і надійний.</li>
+</ul>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: laser-cut-plywood-toolbox.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">laser-cut-plywood-toolbox.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">757 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

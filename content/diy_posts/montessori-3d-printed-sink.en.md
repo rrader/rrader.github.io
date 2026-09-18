@@ -1,6 +1,6 @@
 ---
-title: "Autonomous Toddler Montessori Sink: 100% 3D-Printed Modular Design"
-date: 2026-09-17T12:30:00+03:00
+title: "Modular 3D-Printed Montessori Children's Handwashing Sink"
+date: 2026-05-07T12:00:00+03:00
 draft: false
 tags: ["diy", "3d-printing", "fusion360", "build123d", "parenting", "maker"]
 ---
