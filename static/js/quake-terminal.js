@@ -136,6 +136,10 @@
       desc: isUk ? 'Дослідження кібербезпеки та профіль у Google Scholar' : 'Show cybersecurity research focus and Google Scholar profile',
       action: () => printResearch()
     },
+    rss: {
+      desc: isUk ? 'Посилання на RSS-стрічки сайту (загальна, DIY, навчання, дослідження)' : 'Show RSS feed URLs (Main, DIY, Teaching, Research)',
+      action: () => printRss()
+    },
     clear: {
       desc: isUk ? 'Очистити екран термінала' : 'Clear terminal screen',
       action: () => clearScreen()
@@ -346,6 +350,21 @@
         });
       }
     });
+    printLine(`--------------------------------------------------`);
+  }
+
+  function printRss() {
+    printLine(`<b>${isUk ? '[RSS-СТРІЧКИ САЙТУ]' : '[WEBSITE RSS FEEDS]'}</b>`, 'system');
+    printLine(isUk 
+      ? `Підпишіться через ваш улюблений RSS-рідер (Feedly, NetNewsWire, Miniflux тощо):`
+      : `Subscribe using your favorite RSS reader (Feedly, NetNewsWire, Miniflux, etc.):`);
+    printLine(`--------------------------------------------------`);
+    const baseUrl = window.location.origin;
+    printLine(`• <b>${isUk ? 'Головна стрічка (EN):' : 'Main Feed (English):'}</b> <a href="${baseUrl}/index.xml" target="_blank">${baseUrl}/index.xml</a>`);
+    printLine(`• <b>${isUk ? 'Головна стрічка (UA):' : 'Main Feed (Ukrainian):'}</b> <a href="${baseUrl}/uk/index.xml" target="_blank">${baseUrl}/uk/index.xml</a>`);
+    printLine(`• <b>DIY & Hardware:</b> <a href="${baseUrl}/diy_posts/index.xml" target="_blank">${baseUrl}/diy_posts/index.xml</a>`);
+    printLine(`• <b>Teaching & AI:</b> <a href="${baseUrl}/teach_posts/index.xml" target="_blank">${baseUrl}/teach_posts/index.xml</a>`);
+    printLine(`• <b>Research / Study:</b> <a href="${baseUrl}/study_posts/index.xml" target="_blank">${baseUrl}/study_posts/index.xml</a>`);
     printLine(`--------------------------------------------------`);
   }
 

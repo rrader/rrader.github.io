@@ -19,6 +19,8 @@
   {{ $quakeOpts := dict "targetPath" "css/quake-terminal.css" "outputStyle" "compressed" }}
   {{ $quakeCSS := resources.Get "scss/quake-terminal.scss" | toCSS $quakeOpts }}
   <link rel="stylesheet" href="{{ $quakeCSS.RelPermalink }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} (All Posts)" href="{{ "index.xml" | absURL }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} (Українська)" href="{{ "uk/index.xml" | absURL }}" />
 </head>
 <body>
   <div class="crt-wrapper">
@@ -55,6 +57,7 @@
         <button class="pill-btn" data-cmd="research">research</button>
         <button class="pill-btn" data-cmd="teaching">teaching</button>
         <button class="pill-btn" data-cmd="contact">contact</button>
+        <button class="pill-btn" data-cmd="rss">rss</button>
         <button class="pill-btn" data-cmd="help">help</button>
         <button class="pill-btn" data-cmd="clear">clear</button>
       </div>

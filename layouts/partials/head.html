@@ -15,6 +15,11 @@
   {{ template "_internal/google_analytics.html" . }}
 
   <link rel="shortcut icon" type="image/x-icon" href="{{ $.Site.Params.favicon | relURL }}" />
+  {{ with .OutputFormats.Get "RSS" }}
+  <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
+  {{ end }}
+  <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }} (All Posts)" href="{{ "index.xml" | absURL }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }} (Українська)" href="{{ "uk/index.xml" | absURL }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />

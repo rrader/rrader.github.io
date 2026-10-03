@@ -24,6 +24,10 @@
           {{ if eq .Language.Lang "uk" }}🇺🇦 UA{{ else }}🇬🇧 EN{{ end }}
         </a>
         {{- end }}
+        <!-- RSS Feed -->
+        <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ else }}{{ if eq $.Site.Language.Lang "uk" }}{{ "uk/index.xml" | relURL }}{{ else }}{{ "index.xml" | relURL }}{{ end }}{{ end }}" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
         <!-- Back to home terminal -->
         <a href="{{ "/" | relURL }}" class="ws-btn home-btn" title="Back to Quake Terminal">
           ↵ TERMINAL
