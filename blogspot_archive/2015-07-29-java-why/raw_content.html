@@ -1,0 +1,22 @@
+Просто два факта.<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://i.imgflip.com/otwfj.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="400" src="https://i.imgflip.com/otwfj.jpg" width="318" /></a></div>
+<br />
+1) У объектов java.net.URL методы hashCode и equals <a href="http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/net/URLStreamHandler.java#345">делают DNS Resolve</a> хостнейма указанного в адресе и (sic!) сравнивают два адреса используя их айпи адреса.<br />
+Таким образом,<br />
+<br />
+Из-за DNS-балансировщика <span style="font-family: &quot;Courier New&quot;,Courier,monospace;">new URL("http://google.com") <b>!=</b> new URL("http://google.com")&nbsp; //в разное время</span>,<br />
+<br />
+Два сайта на одном айпи <span style="font-family: &quot;Courier New&quot;,Courier,monospace;">new URL("http://example.com") <b>==</b> new URL("http://example.net")&nbsp;</span><br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmZ-J3KxKVCyOC2g5dZVWJriyzIQrxQJqG6Yd3ea0NzKPFX5fQcqQdRY7OlSFI_7DSgaPODrkZwE2iTQq3hy3lP0o-AqZuseESkDtffm5d-LH1CkaNSJy_nHe8R_HjLzRQ98JMIXGpCsQ/s1600/Screenshot+from+2015-07-29+20-13-06.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmZ-J3KxKVCyOC2g5dZVWJriyzIQrxQJqG6Yd3ea0NzKPFX5fQcqQdRY7OlSFI_7DSgaPODrkZwE2iTQq3hy3lP0o-AqZuseESkDtffm5d-LH1CkaNSJy_nHe8R_HjLzRQ98JMIXGpCsQ/s1600/Screenshot+from+2015-07-29+20-13-06.png" /></a></div>
+<br />
+<br />
+И самое смешное. В HashMap однажды добавленное значение по ключу URL(google.com) может быть никогда не получено, так как хешкод меняется. Особенно заметно когда URL сериализуется и отправляется на другой узел, тогда никакой dns-кеш на любом уровне не сработает и все весело упадет.<br />
+<br />
+<br />
+<br />
+2) Enum.hashCode() в джаве возвращает адрес в памяти. Те же приколы с сериализацией или даже запуском одного и того же кода в разных джава-машинах.<br />
+<br />
+Делая шардинг мапы на java, выбор ноды для хранения/поиска данных по хеш-коду, например.. веселого дебага.

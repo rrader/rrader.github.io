@@ -1,0 +1,319 @@
+Hi everyone<br />
+<br />
+It could be useful to quickly deploy LDAP server to check configuration of client. For example, for django-auth-ldap.<br />
+<br />
+Below listed configuration with 3 ldif files for authentication: base.ldif, group.ldif, passwd.ldif<br />
+<br />
+<br />
+$ tree<br />
+.<br />
+├── Vagrantfile<br />
+├── ldif<br />
+│ &nbsp; ├── base.ldif<br />
+│ &nbsp; ├── group.ldif<br />
+│ &nbsp; └── passwd.ldif<br />
+└── manifests<br />
+&nbsp; &nbsp; └── base.pp<br />
+<div>
+<br />
+<a name='more'></a><br /></div>
+<br />
+<br />
+<h2>
+Vagrant configuration</h2>
+<br />
+Here <b>Vagrantfile</b> for this:<br />
+<br />
+<span style="font-family: Verdana, sans-serif;"># -*- mode: ruby -*-</span><br />
+<span style="font-family: Verdana, sans-serif;"># vi: set ft=ruby :</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">Vagrant.configure("2") do |config|</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; config.vm.box = "centos"</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">&nbsp; config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/centos-64-x64-vbox4210.box"</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">&nbsp; config.vm.network :private_network, ip: "192.168.56.10", adapter: 2</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">&nbsp; config.vm.provider :virtualbox do |vb|</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; vb.gui = true</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; vb.customize ["modifyvm", :id, "--memory", "256", "--name", "LDAP"]</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; vb.customize ["modifyvm", :id, "--mouse", "usbtablet"]</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; vb.customize ["modifyvm", :id, "--cpuexecutioncap", "50", "--cpus", "1"]</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; end</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">&nbsp; config.vm.provision :puppet, :options =&gt; "--verbose --debug" do |puppet|</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; puppet.manifests_path = "manifests"</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; puppet.manifest_file &nbsp;= "base.pp"</span><br />
+<span style="font-family: Verdana, sans-serif;">&nbsp; end</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">end</span><br />
+<div>
+<br /></div>
+<div>
+<b>base.pp</b></div>
+<div>
+<br /></div>
+<div>
+<div>
+<span style="font-family: Verdana, sans-serif;">define line($file, $line, $ensure = 'present') {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; case $ensure {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; default : { err ( "unknown ensure value ${ensure}" ) }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; present: {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; exec { "/bin/echo '${line}' &gt;&gt; '${file}'":</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; unless =&gt; "/bin/grep -qFx '${line}' '${file}'"</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; absent: {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; exec { "/bin/grep -vFx '${line}' '${file}' | /usr/bin/tee '${file}' &gt; /dev/null 2&gt;&amp;1":</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; onlyif =&gt; "/bin/grep -qFx '${line}' '${file}'"</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # Use this resource instead if your platform's grep doesn't support -vFx;</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # note that this command has been known to have problems with lines containing quotes.</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # exec { "/usr/bin/perl -ni -e 'print unless /^\\Q${line}\\E\$/' '${file}'":</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # &nbsp; &nbsp; onlyif =&gt; "/bin/grep -qFx '${line}' '${file}'"</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">}</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">define replace($file, $pattern, $replacement) {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; exec { "/usr/bin/perl -pi -e 's/$pattern/$replacement/' '$file'":</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; onlyif =&gt; "/usr/bin/perl -ne 'BEGIN { \$ret = 1; } \$ret = 0 if</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">/$pattern/ &amp;&amp; ! /$replacement/ ; END { exit \$ret; }' '$file'",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">}</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">class ldap {</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; package {['openldap-servers', 'openldap-clients', 'openldap', 'migrationtools']:</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; ensure =&gt; present,</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; line { rootpw:</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; file =&gt; "/etc/openldap/slapd.d/cn=config/olcDatabase={0}config.ldif",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; line =&gt; "olcRootPW: 1111",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; require =&gt; Package['openldap-servers'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; notify =&gt; Service['slapd'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; line { managerpw:</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; file =&gt; "/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; line =&gt; "olcRootPW: 2222",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; require =&gt; Package['openldap-servers'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; notify =&gt; Service['slapd'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; replace { managersuffix:</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; file =&gt; "/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; pattern =&gt; "olcSuffix: .*",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; replacement =&gt; "olcSuffix: dc=example,dc=com",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; require =&gt; Package['openldap-servers'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; notify =&gt; Service['slapd'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; replace { managerdn:</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; file =&gt; "/etc/openldap/slapd.d/cn=config/olcDatabase={2}bdb.ldif",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; pattern =&gt; "olcRootDN: .*",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; replacement =&gt; "olcRootDN: cn=Manager,dc=example,dc=com",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; require =&gt; Package['openldap-servers'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; notify =&gt; Service['slapd'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; service {'slapd':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; ensure =&gt; running,</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; require =&gt; Package['openldap-servers'],</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; exec {'base':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; command =&gt; '/usr/bin/ldapadd -w 2222 -D "cn=Manager,dc=example,dc=com" -f /vagrant/ldif/base.ldif; true'</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; exec {'users':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; command =&gt; '/usr/bin/ldapadd -w 2222 -D "cn=Manager,dc=example,dc=com" -f /vagrant/ldif/passwd.ldif; true'</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; exec {'groups':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; command =&gt; '/usr/bin/ldapadd -w 2222 -D "cn=Manager,dc=example,dc=com" -f /vagrant/ldif/group.ldif; true'</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; service {'iptables':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; ensure =&gt; stopped,</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; file {'/etc/sysconfig/network-scripts/ifcfg-eth1':</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; ensure =&gt; file,</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; content =&gt; "DEVICE=eth1\nBOOTPROTO=dhcp\nMTU=1500\nNM_CONTROLLED=yes\nONBOOT=yes\nTYPE=Ethernet\n",</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">&nbsp; &nbsp; }</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">}</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;"><br /></span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">include ldap</span></div>
+<div style="font-family: inherit;">
+<br /></div>
+</div>
+<div style="font-family: inherit;">
+<br /></div>
+<div>
+<h2>
+<span style="font-family: inherit;"><b>LDIF files</b></span></h2>
+</div>
+<div>
+<span style="font-family: inherit;"><br /></span></div>
+<div>
+<span style="font-family: inherit;"><b>base.ldif</b></span><br />
+<br />
+<span style="font-family: Verdana, sans-serif;">dn: dc=example,dc=com</span><br />
+<span style="font-family: Verdana, sans-serif;">dc: example</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: top</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: domain</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">dn: ou=People,dc=example,dc=com</span><br />
+<span style="font-family: Verdana, sans-serif;">ou: People</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: top</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: organizationalUnit</span><br />
+<span style="font-family: Verdana, sans-serif;"><br /></span>
+<span style="font-family: Verdana, sans-serif;">dn: ou=Group,dc=example,dc=com</span><br />
+<span style="font-family: Verdana, sans-serif;">ou: Group</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: top</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: organizationalUnit</span><br />
+<div style="font-weight: bold;">
+<br /></div>
+<div style="font-weight: bold;">
+group.ldif</div>
+<div>
+<br /></div>
+<div>
+<div>
+<span style="font-family: Verdana, sans-serif;">dn: cn=users,ou=Group,dc=example,dc=com</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">objectClass: posixGroup</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">objectClass: top</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">cn:&nbsp;</span><span style="font-family: Verdana, sans-serif;">users</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">userPassword: 1111</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">gidNumber: 1000</span></div>
+<div>
+<span style="font-family: Verdana, sans-serif;">memberUid:&nbsp;</span><span style="font-family: Verdana, sans-serif;">ldap</span></div>
+<div style="font-weight: bold;">
+<br /></div>
+</div>
+<div style="font-weight: bold;">
+<br /></div>
+<div style="font-weight: bold;">
+passwd.ldif</div>
+</div>
+<br />
+<br />
+<span style="font-family: Verdana, sans-serif;">dn: uid=ldap,ou=People,dc=example,dc=com</span><br />
+<span style="font-family: Verdana, sans-serif;">uid:&nbsp;</span><span style="font-family: Verdana, sans-serif;">ldap</span><br />
+<span style="font-family: Verdana, sans-serif;">cn:&nbsp;</span><span style="font-family: Verdana, sans-serif;">ldap</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: account</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: posixAccount</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: top</span><br />
+<span style="font-family: Verdana, sans-serif;">objectClass: shadowAccount</span><br />
+<span style="font-family: Verdana, sans-serif;">userPassword: password</span><br />
+<span style="font-family: Verdana, sans-serif;">uidNumber: 1000</span><br />
+<span style="font-family: Verdana, sans-serif;">gidNumber: 1000</span><br />
+<span style="font-family: Verdana, sans-serif;">homeDirectory: /home/</span><span style="font-family: Verdana, sans-serif;">ldap</span><br />
+<div>
+<br />
+<br /></div>

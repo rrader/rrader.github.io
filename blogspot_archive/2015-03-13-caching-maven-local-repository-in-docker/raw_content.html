@@ -1,0 +1,18 @@
+I'm using Docker instances as Jenkins slaves and run my containers like<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># docker run -d --name="Chewbakka" antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name "Chewbakka"</span><br />
+<br />
+(actually, I do it using <a href="https://github.com/rrader/docker-jenkins-slave/">docker-jenkins-slave</a> )<br />
+<br />
+However, it doesn't make sense to keep maven local repository in every container. <br />
+<br />
+It can be done using <a href="https://docs.docker.com/userguide/dockervolumes/">Docker Data Volumes</a><br />
+We can mount host's directory into any directory inside container if we specify <b>-v</b> argument like this:<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">-v /tmp/docker-m2cache:/root/.m2:rw </span><br />
+<br />
+This will mount host's directory <i>/tmp/docker-m2cache</i> into container's <i>/root/.m2</i><br />
+<br />
+Resulting command will be<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># docker run -d --name="Chewbakka" </span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">-v /tmp/docker-m2cache:/root/.m2:rw </span> antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name "Chewbakka"</span>

@@ -1,0 +1,34 @@
+To enable Neutron on DevStack (on Ubuntu Precise)<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj01adlTpp7AkrGKtgMVzO4hIZ1WHZyUsHYCzgCFJte9TZPhn18a1_aqHUJZoe0KNarkQjE2b-Dxkim5J8rhusCDYU-d2jb9SJ9caE2U0a91hKCOJ-PU4DBCotD4K5CuiVDnQ19_llbM1w/s1600/170px-OpenStack.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj01adlTpp7AkrGKtgMVzO4hIZ1WHZyUsHYCzgCFJte9TZPhn18a1_aqHUJZoe0KNarkQjE2b-Dxkim5J8rhusCDYU-d2jb9SJ9caE2U0a91hKCOJ-PU4DBCotD4K5CuiVDnQ19_llbM1w/s1600/170px-OpenStack.png" /></a></div>
+<br />
+1) Add to localrc this lines<br />
+<span style="font-family: Courier New, Courier, monospace;"># Enable neutron</span><br />
+<span style="font-family: Courier New, Courier, monospace;">disable_service n-net</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-svc</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-agt</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-dhcp</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-l3</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-meta</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-lbaas</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service neutron</span><br />
+<br />
+If you don't need LBaaS, remove "enable_service q-lbaas" line.<br />
+<br />
+2) Do this set of commands<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; # https://www.mail-archive.com/openstack@lists.launchpad.net/msg21895.html</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; modprobe -r bridge || true</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; apt-get -y install openvswitch-switch openvswitch-controller openvswitch-brcompat</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; echo "blacklist bridge" &gt; /etc/modprobe.d/bridge.conf</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; echo "BRCOMPAT=yes" &gt;&gt; /etc/default/openvswitch-switch</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; # http://www.brucemartins.com/2013_10_01_archive.html</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; apt-get install -y openvswitch-datapath-source</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; module-assistant auto-install openvswitch-datapath --non-inter --quiet</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; modprobe -r bridge || true</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; service openvswitch-switch restart</span><br />
+<div>
+<br /></div>
+<div>
+3) Spin up devstack as usual (sudo -u stack ./stack.sh)</div>

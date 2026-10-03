@@ -1,0 +1,74 @@
+Task is to ensure that DB, Redis Cache, Worker on RQ (with django-redis-cache) works OK.<br />
+<br />
+Firstly, let's write test functions<br />
+<br />
+<h2>
+Test functions</h2>
+<h3>
+Web-tier</h3>
+Checking web-tier doesn't require logic, if we get response from app, then web tier works.<br />
+<span style="font-size: x-small;"><br /></span>
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">def check_web():<br />&nbsp;&nbsp;&nbsp; "Stub function to check web tier"<br />&nbsp;&nbsp;&nbsp; return True</span></span><br />
+<br />
+<h3>
+Checking django cache</h3>
+Test django cache and Redis connection. Just set and get some value. <br />
+<br />
+TEST_CACHE_KEY = 'key'<br />
+TEST_CACHE_VAL = 'value'<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">from django.core.cache import cache</span></span><br />
+<br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">def check_cache_set():<br />&nbsp;&nbsp;&nbsp; try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return cache.set(TEST_CACHE_KEY, TEST_CACHE_VAL)<br />&nbsp;&nbsp;&nbsp; except:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False<br /><br /><br />def check_cache_get():<br />&nbsp;&nbsp;&nbsp; try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data = cache.get(TEST_CACHE_KEY)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if data != TEST_CACHE_VAL:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; raise ValueError("invalid value")<br />&nbsp;&nbsp;&nbsp; except:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False<br />&nbsp;&nbsp;&nbsp; return True</span></span><br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;"><br />def check_cache():</span></span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">&nbsp;&nbsp;&nbsp; "Checks is cache works ok"<br />&nbsp;&nbsp;&nbsp; return check_cache_set() and check_cache_get() </span></span><br />
+<br />
+<h3>
+Database connection</h3>
+To check DB we can simply do some SQL request. Simpliest thing we can do is to retrieve list of tables:<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">def check_db():<br />&nbsp;&nbsp;&nbsp; from django.db import connection<br />&nbsp;&nbsp;&nbsp; try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; connection.introspection.table_names()<br />&nbsp;&nbsp;&nbsp; except:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False<br />&nbsp;&nbsp;&nbsp; return True</span></span><br />
+<br />
+<h3>
+Worker tier</h3>
+Checks RQ and Worker node<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">import time</span></span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">TIMEOUT = 5&nbsp; # seconds<br />def check_worker():<br />&nbsp;&nbsp;&nbsp; from </span></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">globalapp.tasks import ping_task<br />&nbsp;&nbsp;&nbsp; try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start = time.time()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; job = ping_task.delay("test")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while time.time() - start &lt; TIMEOUT:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if job.is_finished:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return job.result == 'tset'&nbsp; # reversed<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False<br />&nbsp;&nbsp;&nbsp; except:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return False</span></span><br />
+<br />
+Where ping_task is something like<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-size: x-small;">@job<br />def ping_task(say):<br />&nbsp;&nbsp;&nbsp; return say[::-1]</span></span><br />
+<br />
+<br />
+<h2>
+Running tests</h2>
+<br />
+Approach is to add special view that will run server-side checks. So, firstly add url:<br />
+<br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">urlpatterns += patterns(<br />&nbsp;&nbsp;&nbsp; '</span></span><span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">globalapp.views',<br />&nbsp;&nbsp;&nbsp; url(r'^status/(?P&lt;check&gt;[A-z0-9]+)/$', 'status_view', name='status'),<br />)</span></span><br />
+<br />
+<br />
+View is simply need to choose check-function in respect of 'check' argument and return response with True or False. Here Django REST Framework was used, but it's pretty simple to rewrite to general django app.<br />
+<br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">from rest_framework.generics import GenericAPIView<br /><br />import globalapp.checks as checks&nbsp; # here your module that contains check functions</span></span><br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">from rest_framework.response import Response<br />from rest_framework.permissions import IsAuthenticated<br />from rest_framework.authentication import TokenAuthentication<br />from rest_framework import status<br />from rest_framework.generics import GenericAPIView</span></span><span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span></span>
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">class StatusView(GenericAPIView):<br />&nbsp;&nbsp;&nbsp; permission_classes = (IsAuthenticated, )<br />&nbsp;&nbsp;&nbsp; authentication_classes = (TokenAuthentication, )<br /><br />&nbsp;&nbsp;&nbsp; def get(self, request, check):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resp = {'name': check}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stat = status.HTTP_200_OK<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; check_func = None<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; try:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; check_func = getattr(checks, 'check_{}'.format(check))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; except AttributeError:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stat = status.HTTP_400_BAD_REQUEST<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resp['error'] = 'Unknown check'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; resp['result'] = check_func()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Response(resp, status=stat)</span></span><br />
+<br />
+<h3>
+Testing framework</h3>
+To execute tests I use <i>nosetests</i>, it's pretty simple to use it and&nbsp; <br />
+<br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">class HerokuTest(TestCase):<br />&nbsp;&nbsp;&nbsp; def setUp(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; super().setUp()</span></span><br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.base_url = "http://example.com"</span></span><br />
+<span style="font-size: x-small;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.headers = {}<br /><br />&nbsp;&nbsp;&nbsp; def check(self, name):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; conn = requests.get('%s/status/%s/' % (self.base_url, name), headers=self.headers)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assert (conn.status_code == 200), "Failed %s tier test" % name<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r = json.loads(conn.content.decode())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assert 'result' in r, "External error"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assert r['result'], "%s not works" % name<br /><br />&nbsp;&nbsp;&nbsp; def test_web(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check('web')<br /><br />&nbsp;&nbsp;&nbsp; def test_db(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check('db')<br /><br />&nbsp;&nbsp;&nbsp; def test_cache(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check('web')<br /><br />&nbsp;&nbsp;&nbsp; def test_worker(self):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; self.check('worker')</span></span><br />
+Here it's very simple to add custom test.<br />
+<br />
+<h3>
+Integration to Jenkins </h3>
+It's pretty simple because nosetests can produce results in JUnit format<br />
+<br />
+Add shell command task<br />
+$ nosetests -v --with-xunit || true<br />
+<br />
+and add post-build task "Publish JUnit" and choose path to nosetests.xml file

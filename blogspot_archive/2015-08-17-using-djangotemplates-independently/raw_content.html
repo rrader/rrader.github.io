@@ -1,0 +1,5 @@
+To use and configure DjangoTemplate externally of Django itselt, independently of settings.py and all other stuff, instead of using Template object it's much better to instantiate own Engine with settings (settings are similar to settings.py). Example below:<br />
+
+<script src="https://gist.github.com/rrader/602459d44ff8473ad3b3.js"></script>
+
+This way, you can configure your own engine in the place you need with settings you want (I put custom loader, for example) and even reconfigure it on the fly.

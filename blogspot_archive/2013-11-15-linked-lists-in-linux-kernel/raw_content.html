@@ -1,0 +1,38 @@
+В ядре linux уже реализованы связные списки, так что при написании модулей ядра не надо писать свои велосипеды. Но интерфейс работы с ними немного неочевиден и отличается от классических списков. См. все операции в /usr/src/linux-*/include/linux/list.h<br />
+<br />
+Сначала необходимо объявить структуру на голову списка и проинициализировать:<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;">struct hlist_head inodes;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">INIT_HLIST_HEAD(&amp;inodes);</span><br />
+<br />
+Далее необходимо объявить структуру, которая будет элементами этого списка.<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;">struct ffs_inode_info {</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct inode vfs_inode;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct ffs_fd fd;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct hlist_node list_node;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct buffer_head *datablock;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">};</span><br />
+<br />
+<span style="font-family: inherit;">Чтобы структура могла стать частью связного списка, она должна содержать элемент struct hlist_node. Лично меня это немного сбило с толку поначалу, ведь обычно элементы связного списка хранят ссылки на элементы своего же типа.</span><br />
+<br />
+Для добавления элемента (finode) в голову списка (inodes):<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;">struct ffs_inode_info *finode;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">...</span><br />
+<span style="font-family: Courier New, Courier, monospace;">hlist_add_head(&amp;finode-&gt;list_node, &amp;inodes);</span><br />
+<br />
+Удалить элемент из списка:<br />
+<br />
+&nbsp; <span style="font-family: Courier New, Courier, monospace;">&nbsp; hlist_del(&amp;finode-&gt;list_node);</span><br />
+<br />
+Обойти все элементы списка (inodes) последовательно:<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct hlist_head *head = &amp;inodes;</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; struct ffs_inode_info *i;</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; hlist_for_each_entry(i, head, list_node) {</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; &nbsp; &nbsp; // some work with 'i' element</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp; &nbsp; }</span><br />
+<div>
+<br /></div>

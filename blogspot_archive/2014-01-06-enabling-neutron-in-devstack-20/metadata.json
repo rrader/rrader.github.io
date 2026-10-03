@@ -1,0 +1,16 @@
+{
+  "title": "Enabling Neutron in Devstack 2.0",
+  "published": "2014-01-06T22:52:00.001+02:00",
+  "updated": "2014-01-06T22:52:39.371+02:00",
+  "original_url": "https://antigluk.blogspot.com/2014/01/enabling-neutron-in-devstack-20.html",
+  "categories": [
+    "docker",
+    "english",
+    "linuxbridge",
+    "openstack",
+    "vagrant"
+  ],
+  "images": [
+    "images/image-01.png"
+  ]
+}

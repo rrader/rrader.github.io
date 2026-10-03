@@ -1,0 +1,45 @@
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div style="text-align: justify;">
+<a href="http://antigluk.blogspot.com/2015/01/msp430-interfacing-to-sim900a.html">Подключение MSP430 к SIM900</a><br />
+<br />
+При использовании UART, в целях отладки, мне было необходимо мониторить что посылает msp430 и что отвечает второе устройство (sim900).<br />
+<br />
+Для этого&nbsp; необходимо вынуть МК из LaunchPad и подключить независимо (например, на breadboard).<br />
+А сам LaunchPad подключить к компьютеру, чтобы мониторить UART.<br />
+<br />
+Схема подключения UART MSP430 -&gt; Device так, чтоб на компьютере можно было видеть ответы Device:</div>
+<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq4mbSDFUVnTOArNZ_KsngUBkeNwqiMrLqmVdF6kZ3im9wd9gkuwIgRFybZGY2iQ4wrYtdUxOW40Hs7JRCqQ0SuGGWoG6MMCAkYowKX3v80ogG_gYDkjReG9Y_USGBXH04eKcnsOOlgQ4/s1600/SIM900-Launchpad.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq4mbSDFUVnTOArNZ_KsngUBkeNwqiMrLqmVdF6kZ3im9wd9gkuwIgRFybZGY2iQ4wrYtdUxOW40Hs7JRCqQ0SuGGWoG6MMCAkYowKX3v80ogG_gYDkjReG9Y_USGBXH04eKcnsOOlgQ4/s1600/SIM900-Launchpad.png" />&nbsp;</a></div>
+<div class="separator" style="clear: both; text-align: justify;">
+<br /></div>
+<div class="separator" style="clear: both; text-align: justify;">
+На компьютере для чтения из UART я пользуюсь Serial Monitor в IDE Energia (подойдет любой другой способ читать из последовательного порта).</div>
+<div class="separator" style="clear: both; text-align: justify;">
+<br /></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBMKIdGkPT5KXXmDDulvyXQiXngkDL0ntH4NGD5nHc1v9VBCFtjoOMPq3v0Ywm8ceZC-9GN3RcuL1MB0FF-VJaSEoduFY2bSB7hW21G-2EXbJxkLV8aQIWoZ_zz9C3WhaW3QUDxlBYrmc/s1600/Screenshot+from+2015-01-15+03:00:38+(copy).png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBMKIdGkPT5KXXmDDulvyXQiXngkDL0ntH4NGD5nHc1v9VBCFtjoOMPq3v0Ywm8ceZC-9GN3RcuL1MB0FF-VJaSEoduFY2bSB7hW21G-2EXbJxkLV8aQIWoZ_zz9C3WhaW3QUDxlBYrmc/s1600/Screenshot+from+2015-01-15+03:00:38+(copy).png" />&nbsp;</a></div>
+<div class="separator" style="clear: both; text-align: left;">
+<br /></div>
+
+<!-- Blogger automated replacement: "https://images-blogger-opensocial.googleusercontent.com/gadgets/proxy?url=http%3A%2F%2F1.bp.blogspot.com%2F-BzxnSixNklk%2FVLo4iczPs0I%2FAAAAAAAAENk%2FKvUHFoZu7Hs%2Fs1600%2FSIM900-Launchpad.png&amp;container=blogger&amp;gadget=a&amp;rewriteMime=image%2F*" with "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgq4mbSDFUVnTOArNZ_KsngUBkeNwqiMrLqmVdF6kZ3im9wd9gkuwIgRFybZGY2iQ4wrYtdUxOW40Hs7JRCqQ0SuGGWoG6MMCAkYowKX3v80ogG_gYDkjReG9Y_USGBXH04eKcnsOOlgQ4/s1600/SIM900-Launchpad.png" -->

@@ -5,7 +5,7 @@ draft: false
 tags: ["projects", "python", "flask", "telegram", "homelab", "home-assistant"]
 ---
 
-During regular power grid disruptions and scheduled blackouts, knowing the exact operational state of the household electrical grid is critical. While battery backup systems (like EcoFlow stations or UPS units) keep network equipment online, knowing when main grid power (220V) disappears or returns is essential for managing heavy domestic loads (boilers, heaters, air conditioning) and planning daily routines.
+In our newly built apartment building, both my neighbors and I found it extremely helpful to know exactly when grid power was on and when it went out. Because my home router and home server are backed up by battery and never shut down during blackouts, I built a straightforward and reliable solution: an in-apartment probe that continuously pings devices plugged directly into raw 220V mains, automatically computing outage durations and notifying all neighbors via a dedicated Telegram channel.
 
 **Light-Bot** is an open-source, multi-component infrastructure monitoring solution designed to reliably detect 220V grid status, track outage/restoration statistics, provide a secure authenticated REST API, and broadcast live status updates to Telegram channels.
 

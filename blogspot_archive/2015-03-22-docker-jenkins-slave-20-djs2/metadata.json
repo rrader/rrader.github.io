@@ -1,0 +1,19 @@
+{
+  "title": "Docker-Jenkins-Slave 2.0 (DJS2)",
+  "published": "2015-03-22T15:56:00.003+02:00",
+  "updated": "2015-03-22T16:16:03.221+02:00",
+  "original_url": "https://antigluk.blogspot.com/2015/03/docker-jenkins-slave-20-djs2.html",
+  "categories": [
+    "containers",
+    "continuous integration",
+    "devops",
+    "docker jenkins slave",
+    "english",
+    "jenkins",
+    "vagrant"
+  ],
+  "images": [
+    "images/image-01.png",
+    "images/image-02.jpg"
+  ]
+}

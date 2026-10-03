@@ -1,0 +1,32 @@
+Today I pushed new Jenkins' slave template into <a href="https://github.com/rrader/docker-jenkins-slave">docker-jenkins-slave</a> named "centos7-java".<br />
+<br />
+It's based (thank you, Captain Obvious) on CentOS 7 and it's purpose is to build Maven projects, so image has maven preinstalled.<br />
+<br />
+It's pretty usual. But the news here is that new image doesn't contain awful SSH daemon that breaks Docker's philosophy to run single process in container. Now <span class="pl-k">ENTRYPOINT</span> in container is just running <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin">Swarm</a> jar itself:<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">ENTRYPOINT ["java", "-jar", "/root/swarm-client.jar", "-master", "http://172.17.42.1:8070", "-mode", "exclusive", "-executors", "1", "-fsroot", "/root"]</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">CMD ["-labels", "docker-centos7-java", "-name", "Chewbakka"]</span> <br />
+<br />
+<i>In order to start slave container previously steps were like this:</i><br />
+<br />
+1) Start container<br />
+2) Inspect it's IP<br />
+3) Connect by SSH using special keys that should be already inside Docker image<br />
+4) Run Swarm jar (by ssh)<br />
+<br />
+<i>Drawbacks of this approach:</i><br />
+1) You can't pass optional arguments to swarm (without editing start script)<br />
+2) It violates <a href="http://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/">Docker's philosophy</a><br />
+3) Overcomplicated start script that has to know container's IP address<br />
+<br />
+<i>So, what's new really:</i><br />
+1) You can pass <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions">Swarm arguments</a> to "docker run" command itself<br />
+2) Slave start script was reduced to<a href="https://github.com/rrader/docker-jenkins-slave/blob/master/centos7-java/add_slave.sh"> just one-liner script</a> without SSH/keys magic<br />
+3) Start script contains <a href="http://antigluk.blogspot.com/2015/03/caching-maven-local-repository-in-docker.html">maven caching volume</a> to share ".m2" local repositories between machines<br />
+<br />
+<h4>
+Links</h4>
+Dockerfile and scripts: <a href="https://github.com/rrader/docker-jenkins-slave/tree/master/centos7-java">https://github.com/rrader/docker-jenkins-slave/tree/master/centos7-java</a> <br />
+Why you don't need to run SSHd in your Docker containers: <a href="http://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/">http://blog.docker.com/2014/06/why-you-dont-need-to-run-sshd-in-docker/</a><br />
+Swarm Available Options: <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions">https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin#SwarmPlugin-AvailableOptions</a>

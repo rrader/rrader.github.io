@@ -1,0 +1,138 @@
+<i>Setting up devstack on vagrant machine with Docker hypervisor and Neutron enabled. In this article Neutron will be configured with Linux Bridge plugin.</i><br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibFU2gCasJWSWBQvjEc7mOsi63ZIHetjndJdvs3HWJ7iZHENhlpaQ6MQ6Z8exrzmciMcf4qvzCXhgy5P9uC5hCXmODQZu5F63dIWaymliy1AT4bBhx2nWBB4vpfxKqSwfB12ajqjT35zg/s1600/170px-OpenStack.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibFU2gCasJWSWBQvjEc7mOsi63ZIHetjndJdvs3HWJ7iZHENhlpaQ6MQ6Z8exrzmciMcf4qvzCXhgy5P9uC5hCXmODQZu5F63dIWaymliy1AT4bBhx2nWBB4vpfxKqSwfB12ajqjT35zg/s1600/170px-OpenStack.png" /></a></div>
+<br />
+My <a href="http://antigluk.blogspot.com/2014/01/enabling-neutron-in-devstack.html" target="_blank">previous article</a> about enabling neutron in devstack didn't take in account that I need to set up virtualbox machine and hypervisor will be Docker. Nova's Docker plugin doesn't work with openvswitch, so I had to turn back to linux bridge.<br />
+<br />
+So, let's configure our machine:<br />
+<h3>
+Vagrantfile</h3>
+Vagrantfile should have these lines:<br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp;config.vm.network :private_network, ip:"172.16.0.201", :netmask =&gt; "255.255.0.0"</span><br />
+<span style="font-family: Courier New, Courier, monospace;">&nbsp;config.vm.network :private_network, ip:"10.10.0.201", :netmask =&gt; "255.255.0.0"</span><br />
+<br />
+This will configure two host-only interfaces, one for internal network (provider network), second for external (floating IPs).<br />
+<br />
+<h3>
+localrc</h3>
+should containe these lines:<br />
+<br />
+<span style="font-family: Courier New, Courier, monospace;"># Use Docker hypervisor for Nova</span><br />
+<span style="font-family: Courier New, Courier, monospace;">VIRT_DRIVER=docker</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># IP of vagrant box (and Horizon)</span><br />
+<span style="font-family: Courier New, Courier, monospace;">HOST_IP=172.16.0.201</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># Networks</span><br />
+<span style="font-family: Courier New, Courier, monospace;">VLAN_INTERFACE=eth1</span><br />
+<span style="font-family: Courier New, Courier, monospace;">FLAT_INTERFACE=eth1</span><br />
+<span style="font-family: Courier New, Courier, monospace;">GUEST_INTERFACE=eth1</span><br />
+<span style="font-family: Courier New, Courier, monospace;">PUBLIC_INTERFACE=eth2</span><br />
+<span style="font-family: Courier New, Courier, monospace;">FIXED_RANGE=172.16.1.0/24</span><br />
+<span style="font-family: Courier New, Courier, monospace;">NETWORK_GATEWAY=172.16.1.1</span><br />
+<span style="font-family: Courier New, Courier, monospace;">FIXED_NETWORK_SIZE=256</span><br />
+<span style="font-family: Courier New, Courier, monospace;">FLOATING_RANGE=10.10.1.0/24</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># Enable Neutron</span><br />
+<span style="font-family: Courier New, Courier, monospace;">enable_service q-svc q-agt q-dhcp q-l3 q-meta q-lbaas neutron</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># Disable Cinder service</span><br />
+<span style="font-family: Courier New, Courier, monospace;">disable_service c-api c-sch c-vol</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># Disable security groups</span><br />
+<span style="font-family: Courier New, Courier, monospace;">Q_USE_SECGROUP=False</span><br />
+<span style="font-family: Courier New, Courier, monospace;">LIBVIRT_FIREWALL_DRIVER=nova.virt.firewall.NoopFirewallDriver</span><br />
+<span style="font-family: Courier New, Courier, monospace;"><br /></span>
+<span style="font-family: Courier New, Courier, monospace;"># neutron linuxbridge</span><br />
+<span style="font-family: Courier New, Courier, monospace;">Q_PLUGIN=linuxbridge</span><br />
+<span style="font-family: Courier New, Courier, monospace;">Q_AGENT=linuxbridge</span><br />
+<div>
+<br /></div>
+<h3>
+Bridge driver</h3>
+<div>
+Surely we don't need to replace bridge with brcompat in our case (we don't need OVS at all), so skip this step and leave as is (make sure in localrc you have&nbsp;<span style="font-family: 'Courier New', Courier, monospace;">Q_PLUGIN=linuxbridge</span>)</div>
+<div>
+<br /></div>
+<h3>
+VirtualBox configuration</h3>
+<div>
+Possibly you will need to configure VirtualBox host-only interfaces before spinning up vagrant, &nbsp;(you can skip this step - interfaces will be created automatically), you can use <a href="https://github.com/futuregrid/vagrant/blob/master/grizzly-devstack/vbox-create-networks.sh" target="_blank">this script</a></div>
+<div>
+<div>
+<br /></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">#!/bin/bash</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"># Private Network &nbsp;vboxnet0 (172.16.0.0/16)</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">VBoxManage hostonlyif create</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">VBoxManage hostonlyif ipconfig vboxnet0 --ip 172.16.0.254 --netmask 255.255.0.0</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"><br /></span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"># Public Network vboxnet1 (10.10.0.0/16)</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">VBoxManage hostonlyif create</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">VBoxManage hostonlyif ipconfig vboxnet1 --ip 10.10.0.1 --netmask 255.255.0.0</span></div>
+</div>
+<div>
+<br /></div>
+<h3>
+Final steps</h3>
+<div>
+Build devstack as usual (<span style="font-family: Courier New, Courier, monospace;">stack$ ./stack.sh</span>)</div>
+<div>
+To check all set up ok, go to Horizon interface (<a href="http://172.16.0.201/" target="_blank">http://172.16.0.201</a> if you followed this manual) and check if your router (under demo tenant) has two interfaces, private network and gateway.</div>
+<div>
+<br /></div>
+<div>
+Finally, push some images to registry and spin up instances.</div>
+<div>
+<br /></div>
+<div>
+Note, that you will no have ability to ping/get to instances from your global namespace, use&nbsp;</div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"># ip netns</span></div>
+<div>
+command to list all namespaces, and use</div>
+<div>
+<span style="font-family: 'Courier New', Courier, monospace;"># ip netns exec &lt;namespace id&gt; &lt;command&gt;</span></div>
+<div>
+Usually, all instances can be accessed from router namespace (qrouter-xxxxx namespace). For example, I have up instance with web server on 8000 port, on 10.10.1.2 .</div>
+<div>
+To access it I can do:</div>
+<div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;"># ip netns</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">qlbaas-1cd37d1d-a5c8-4dcc-8c78-4edb550e5159</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">...</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">7a078076c5c7dde649f53291ae7d7a9e698a262fe3225153c737b33725af40a1</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">...</span></div>
+<div>
+<span style="font-family: Courier New, Courier, monospace;">qrouter-0588fbc8-da2e-46b0-a093-0258a702a168</span></div>
+</div>
+<div>
+<br /></div>
+<div>
+<span style="font-family: 'Courier New', Courier, monospace;"># ip netns exec&nbsp;</span><span style="font-family: 'Courier New', Courier, monospace;">qrouter-0588fbc8-da2e-46b0-a093-0258a702a168</span><span style="font-family: 'Courier New', Courier, monospace;">&nbsp;wget 10.10.1.2</span></div>
+<div>
+<br /></div>
+Now all seems works, I still have no access to instances from external network though.<br />
+<br />
+<br />
+<ul>
+<li>To understand how namespaces works, I recommend this article - very well explained: Introducing Linux Network Namespaces:&nbsp;<a href="http://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/" target="_blank">http://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/</a></li>
+<li>Also good examples here&nbsp;<a href="https://code.google.com/p/coreemu/wiki/Namespaces" target="_blank">https://code.google.com/p/coreemu/wiki/Namespaces</a></li>
+<li>Vagrant+Devstack network configuration example:&nbsp;<a href="https://github.com/futuregrid/vagrant" target="_blank">https://github.com/futuregrid/vagrant</a></li>
+</ul>
+<br />
+<br />

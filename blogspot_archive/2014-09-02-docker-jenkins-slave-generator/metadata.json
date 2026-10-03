@@ -1,0 +1,21 @@
+{
+  "title": "Docker Jenkins Slave Generator",
+  "published": "2014-09-02T21:04:00.002+03:00",
+  "updated": "2015-03-13T14:11:25.824+02:00",
+  "original_url": "https://antigluk.blogspot.com/2014/09/docker-jenkins-slave-generator.html",
+  "categories": [
+    "continuous integration",
+    "devops",
+    "docker",
+    "docker jenkins slave",
+    "english",
+    "heroku",
+    "jenkins",
+    "virtualization",
+    "weekend project"
+  ],
+  "images": [
+    "images/image-01.png",
+    "images/image-02.png"
+  ]
+}

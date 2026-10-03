@@ -1,0 +1,21 @@
+Just a note how to enable debug mode in beeline (or any other) Hive client.<br />
+<br />
+To enable remote debugging, we need to pass "<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"</span> arguments to JVM.<br />
+<br />
+Tricky part is to find the place where JVM is being executed. It's file <span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$HADOOP_HOME/hive-client/bin/ext/beeline.sh</span> - in Hortonworks (HDP) installation it will be /usr/hdp/current/hive-client/bin/ext/beeline.sh <br />
+<br />
+On the line <br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span class="pl-s3">exec</span> <span class="pl-vo">$HADOOP</span> jar <span class="pl-vo">${beelineJarPath}</span> <span class="pl-vo">$CLASS</span> <span class="pl-vo">$HIVE_OPTS</span></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> <span class="pl-s1"><span class="pl-pds">"</span><span class="pl-vo">$@</span><span class="pl-pds">"</span></span></span><br />
+<br />
+<span style="font-family: inherit;"><span class="pl-s1"><span class="pl-pds">but -Xdebug option should be placed to HADOOP_CLIENT_OPTS variable:</span></span></span><br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span class="pl-s1"><span class="pl-pds">export HADOOP_CLIENT_OPTS="$HADOOP_CLIENT_OPTS -Dlog4j.configuration=beeline-log4j.properties -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"<br />&nbsp;</span></span></span><br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">-Xdebug</span> - enables remote debugging<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span class="pl-vo">-Xrunjdwp</span></span> - sets configuration properties, where<br />
+<u>server</u> - start server or try to connect to debugger (usually server=y to do remote debug via Idea)<br />
+<u>suspend</u> - freeze start of program and wait until debugger connects to it<br />
+<u>address</u> -&nbsp; port of server you will connect to<br />
+<br />
+Now if you just start # beeline<br />
+you'll see that debug server started on port 5005, and you can connect to it via Idea (or whatever).

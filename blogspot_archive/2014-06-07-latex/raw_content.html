@@ -1,0 +1,21 @@
+Для вставлення псевдокоду в латех документи є кілька пакетів, я працював із algorithm2e.<br />
+<br />
+Звісно псевдокод можна вставити як звичайний текст моноширинним шрифтом, але він виглядає набагато краще, коли він оформлений з підсвітлюванням синтаксису.<br />
+<br />
+Я не буду писати як загалом працювати із пакетом <b>algorithm2e</b>, тому що в мережі є <a href="http://en.wikibooks.org/wiki/LaTeX/Algorithms">детальні</a> <a href="http://blog.harrix.org/?p=648">інструкції</a>, <a href="http://blog.harrix.org/wp-content/uploads/2013/04/algorithm2e.pdf">документація</a>, та <a href="https://www.google.com.ua/search?q=algorithm2e+latex+examples">інше</a>.<br />
+<br />
+Для використання пакету в україномовних документах, потрібна локалізація для ключових слів та операторів. Викладаю свій переклад (потрібно додати в преамбулу документу): <br />
+<br />
+<div style="text-align: left;">
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;">\SetKwInput{KwData}{Вхідні параметри}<br />\SetKwInput{KwResult}{Результат}<br />\SetKwInput{KwIn}{Вхідні дані}<br />\SetKwInput{KwOut}{Вихідні данные}<br />\SetKwIF{If}{ElseIf}{Else}{якщо}{тоді}{інакше\ якщо}{інакше}{кінець\ умови}<br />\SetKwFor{While}{до\ тих\ пір,\ поки}{виконувати}{кінець\ циклу}<br />\SetKw{KwTo}{від}<br />\SetKw{KwRet}{повернути}<br />\SetKw{Return}{повернути}<br />\SetKwBlock{Begin}{початок\ блоку}{кінець\ блоку}<br />\SetKwSwitch{Switch}{Case}{Other}{Перевірити\ значення}{та\ виконати}{варіант}{інакше}{кінець\ варианту}{кінець\ перевірки\ значень}<br />\SetKwFor{For}{цикл}{виконувати}{кінець\ циклу}<br />\SetKwFor{ForEach}{для\ кожного}{виконувати}{кінець\ циклу}<br />\SetKwRepeat{Repeat}{повторювати}{до\ тих\ пір,\ поки}<br />\SetAlgorithmName{Алгоритм}{алгоритм}{Список алгоритмів}</span></div>
+<div style="text-align: left;">
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;"></span><br /></div>
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;"></span><br />
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;"></span><br />
+<span style="font-family: &quot;Courier New&quot;, Courier, monospace;"><br /></span>Було:<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg1ENMiOOQX7PImDR-Gs_lBgkoHPAczUrd98Z1R-PSWSnCDADworRF0JNz2QwgrMGoDSIc5eok2NqUgTy3lldxy_pTE_cLdmOvstn4T1bw0UZ9YTMd2W5bxwvgqOonWVQeEBobpYCRTeA/s1600/Screenshot+from+2014-06-07+22:09:46.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg1ENMiOOQX7PImDR-Gs_lBgkoHPAczUrd98Z1R-PSWSnCDADworRF0JNz2QwgrMGoDSIc5eok2NqUgTy3lldxy_pTE_cLdmOvstn4T1bw0UZ9YTMd2W5bxwvgqOonWVQeEBobpYCRTeA/s1600/Screenshot+from+2014-06-07+22:09:46.png" height="320" width="315" /></a></div>
+Стало:<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ2WmQR1bZMEUrFFIeDATjqb0yzlLrQReERjVP1bow5UYnTUt70BmG-2SyhLagg1f84GFoRtyF5lYdAz4lXXXyY1Lob0fyx6FJsM1k4QfmAALOdgZRTbLp2QBSsuLduVyb5XLAzRCDn5o/s1600/Screenshot+from+2014-06-07+22:10:21.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZ2WmQR1bZMEUrFFIeDATjqb0yzlLrQReERjVP1bow5UYnTUt70BmG-2SyhLagg1f84GFoRtyF5lYdAz4lXXXyY1Lob0fyx6FJsM1k4QfmAALOdgZRTbLp2QBSsuLduVyb5XLAzRCDn5o/s1600/Screenshot+from+2014-06-07+22:10:21.png" height="320" width="310" /></a></div>
+<br />

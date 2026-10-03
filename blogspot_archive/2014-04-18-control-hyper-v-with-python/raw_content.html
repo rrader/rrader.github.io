@@ -1,0 +1,40 @@
+<span class="short_text" id="result_box" lang="en" tabindex="-1"><span class="hps alt-edited">Collection of links</span></span> for writing Hyper-V script to control Hyper-V from Python <br />
+<br />
+To manage Hyper-V machines there's WMI API (in my case I'll use Python WMI. There's  also PowerShell version too, obviously) <br />
+<br />
+<ul>
+<li>Python 2.7 x64 bit&nbsp;</li>
+<li><a href="http://sourceforge.net/projects/pywin32/files/pywin32/Build%20218/pywin32-218.win-amd64-py2.7.exe/download">pywin32</a> - build 218 was latest on publication date</li>
+<li>WMI package - <a href="https://pypi.python.org/pypi/WMI/">https://pypi.python.org/pypi/WMI/</a>&nbsp;&nbsp;</li>
+</ul>
+When Windows 8 came out two versions of API appeared: <b>root\virtualization </b>and <b>root\virtualization\v2 </b><br />
+<br />
+I think code is the best documentation for API (at least when I wrote my scripts it was much more useful when I found code examples), so without any words, without tl;dr - read code of my scripts.<br />
+<br />
+<h3>
+Hyper-V WMI Provider Version 1</h3>
+Namespace: <b>root\virtualization</b> <br />
+My script:<br />
+<a href="https://github.com/rrader/hue-build/blob/master/sandbox/hyperv.py">https://github.com/rrader/hue-build/blob/master/sandbox/hyperv.py</a><br />
+<br />
+MSDN Documentation: <a href="http://msdn.microsoft.com/en-us/library/hh850319%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/hh850319%28v=vs.85%29.aspx </a><br />
+<br />
+Control Hyper-V VMs with Python - <a href="http://stackoverflow.com/questions/12970303/control-hyper-v-vms-with-python">http://stackoverflow.com/questions/12970303/control-hyper-v-vms-with-python</a> <br />
+<br />
+Most useful source is Nova (OpenStack) driver for Hyper-V<br />
+<a href="https://github.com/openstack/nova/tree/master/nova/virt/hyperv">https://github.com/openstack/nova/tree/master/nova/virt/hyperv</a><br />
+(all files <b>without</b> <i>v2 </i>suffix).<br />
+<h3>
+Hyper-V WMI Provider Version 2</h3>
+Namespace: <b>root\virtualization\v2</b><br />
+My script:<br />
+<a href="https://github.com/rrader/hue-build/blob/master/sandbox/hypervv2.py">https://github.com/rrader/hue-build/blob/master/sandbox/hypervv2.py</a> <br />
+<br />
+Also, most useful source is Nova (OpenStack) driver for Hyper-V<br />
+<a href="https://github.com/openstack/nova/tree/master/nova/virt/hyperv">https://github.com/openstack/nova/tree/master/nova/virt/hyperv</a><br />
+(all files <b>with</b> <i>v2 </i>suffix).<br />
+<br />
+Network operations:<br />
+<a href="https://github.com/petrutlucian94/nova_dev/blob/master/nova/virt/hyperv/networkutilsv2.py">https://github.com/petrutlucian94/nova_dev/blob/master/nova/virt/hyperv/networkutilsv2.py</a><br />
+<br />
+Attaching a VHD To A VM Using The Hyper-V WMI V2 Namespace - <a href="http://blogs.msdn.com/b/taylorb/archive/2013/08/12/attaching-a-vhd-to-a-vm-using-the-hyper-v-wmi-v2-namespace.aspx">http://blogs.msdn.com/b/taylorb/archive/2013/08/12/attaching-a-vhd-to-a-vm-using-the-hyper-v-wmi-v2-namespace.aspx</a>

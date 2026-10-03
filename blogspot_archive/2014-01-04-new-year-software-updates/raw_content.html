@@ -1,0 +1,35 @@
+<span style="font-family: inherit;">Всех с новым годом.</span><br />
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: inherit;">С праздником к нам весело прилетели обновления разных программ и пакетов, которые ломают скрипты. С чем столкнулся я:</span><br />
+<table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: right; margin-left: 1em; text-align: right;"><tbody>
+<tr><td style="text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieVQS75bPXxsQUbtM3qC0rYlhaQodMiOijJOsB3vn-3gfMlHA-9u2K33PImZMk_lVTYBvJ0mTdQK2C-QnQS8tfhzqHm2Ub8TzgQEsmbrNybcckc7qZmI_jRbJdZjbXVm060-a4YwHydbg/s1600/scary_video_games_by_vashperado-d5hsuay.jpg" imageanchor="1" style="clear: right; margin-bottom: 1em; margin-left: auto; margin-right: auto;"><img border="0" height="320" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieVQS75bPXxsQUbtM3qC0rYlhaQodMiOijJOsB3vn-3gfMlHA-9u2K33PImZMk_lVTYBvJ0mTdQK2C-QnQS8tfhzqHm2Ub8TzgQEsmbrNybcckc7qZmI_jRbJdZjbXVm060-a4YwHydbg/s320/scary_video_games_by_vashperado-d5hsuay.jpg" width="233" /></a></td></tr>
+<tr><td class="tr-caption" style="text-align: center;"><a href="http://vashperado.deviantart.com/art/scary-video-games-332229994" target="_blank">vashperado (c)</a></td></tr>
+</tbody></table>
+<span style="font-family: inherit;"><br /></span>
+<br />
+<h3>
+<span style="font-family: inherit;"><a href="https://pypi.python.org/pypi/virtualenv">virtualenv 1.11</a></span></h3>
+<span style="font-family: inherit;">Прилетел с поддержкой пакетов типа wheel (<a href="http://www.python.org/dev/peps/pep-0427/">pep-0427</a>), pip требует для этого типа пакетов setuptools &gt;=0.8 . Системы с старыми версиями setuptools как CentOS 6 (там 0.6) пролетают.</span><br />
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: inherit;"><u>Решение:</u></span><br />
+<span style="font-family: inherit;">Передавать параметр&nbsp;pip install&nbsp;<span style="background-color: white; line-height: 16.1200008392334px;">--</span><span style="background-color: white; line-height: 16.1200008392334px;">no</span><span style="background-color: white; line-height: 16.1200008392334px;">-use-</span><span style="background-color: white; line-height: 16.1200008392334px;">wheel virtualenv</span></span><br />
+<span style="font-family: inherit;"><span style="background-color: white; line-height: 16.1200008392334px;"><br /></span></span>
+<br />
+<h3>
+<span style="background-color: white; line-height: 16.1200008392334px;"><a href="https://pypi.python.org/pypi/cliff">cliff 1.5.2</a></span></h3>
+<div>
+Пока что не понял что именно сломали (исправили), но python-neutronclient (клиент Neutron для OpenStack) падает с ошибкой 'ExtensionManager' object does not support item assignment</div>
+<div>
+<br />
+p.s. neutronclient уже исправили</div>
+<div>
+<br />
+<h3>
+Docker&nbsp;0.7.3</h3>
+<div>
+2014-01-04</div>
+Недостаточно обновить пакет, если используете локальный реестр.<br />
+Надо еще перекачать образ docker-registry&nbsp;<a href="http://get.docker.io/images/openstack/docker-registry.tar.gz" target="_blank">http://get.docker.io/images/openstack/docker-registry.tar.gz</a><br />
+И еще там сломан push в реестр - на <i>некоторые </i>слои выдает "archive/tar: invalid tar header" -&nbsp;<a href="https://github.com/dotcloud/docker/issues/3434" target="_blank">https://github.com/dotcloud/docker/issues/3434</a><br />
+<br /></div>
+<span style="background-color: white; line-height: 16.1200008392334px;">Возможно список будет пополняться</span>

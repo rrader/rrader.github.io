@@ -1,0 +1,19 @@
+{
+  "title": "Один из вариантов топологии NAS: Комбинация отказоустойчивых и неотказоустойчивых хранилищ",
+  "published": "2015-01-12T02:42:00.000+02:00",
+  "updated": "2015-01-16T18:42:18.777+02:00",
+  "original_url": "https://antigluk.blogspot.com/2015/01/nas-topology-example.html",
+  "categories": [
+    "just for fun",
+    "linux",
+    "LVM",
+    "NAS",
+    "RAID",
+    "RAID1",
+    "russian",
+    "smarthouse"
+  ],
+  "images": [
+    "images/image-01.png"
+  ]
+}

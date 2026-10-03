@@ -1,0 +1,34 @@
+На Debian Wheezy (stable) по дефолту идет Apache 2.2. В моем случае мне понадобился mod_auth_form, который присутствует в 2.4+ версиях.<br />
+<br />
+Эта версия есть в jessy (testing) репозитории, который, на самом деле, вполне стабильный.<br />
+<br />
+1) Добавляем testing репозиторий в sources.list<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># echo "deb http://ftp.debian.org/debian testing main" &gt;&gt; /etc/apt/sources.list</span><br />
+В моем случае, содержимое стало таким: <br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># cat /etc/apt/sources.list</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">deb http://ftp.debian.org/debian wheezy main contrib non-free</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">deb http://security.debian.org wheezy/updates main contrib non-free</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">deb http://ftp.debian.org/debian testing main</span><br />
+<br />
+<a name='more'></a><br /><br />
+Далее, обновляем apache:<br />
+2)<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># apt-get update</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># apt-get install --only-upgrade apache2 </span><br />
+<br />
+3) Желательно убрать testing из /etc/apt/sources.list, чтоб не обновить ничего лишнего при апгрейде системы<br />
+<br />
+4) Перезапускаем, смотрим какие выдает ошибки (2.2 и 2.4 имеют отличия в названиях директив конфигурационных файлов)<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># service apache2 restart</span><br />
+<br />
+Исправляем ошибки, и<br />
+5) Finally, # service apache2 restart<br />
+<br />
+Всё должно работать.<br />
+<br />
+P.S. Включение mod_auth_form:<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># a2enmod session</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span class="st"># a2enmod session_cookie</span> </span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"># a2enmod auth_form</span><br />
+<span style="font-family: inherit;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-family: inherit;">Использование </span></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><span style="font-family: inherit;">mod_auth_form: <a href="http://melandri.net/2012/04/29/using-apache-mod-auth-form/">http://melandri.net/2012/04/29/using-apache-mod-auth-form/</a> </span></span>

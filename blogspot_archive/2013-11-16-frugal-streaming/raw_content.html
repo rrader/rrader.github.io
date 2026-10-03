@@ -1,0 +1,14 @@
+<div>
+Крутая <a href="http://blog.aggregateknowledge.com/2013/09/16/sketch-of-the-day-frugal-streaming/">статья</a> с... не сразу очевидными алгоритмами. Оно и вправду работает!</div>
+<div>
+<br /></div>
+Quote:<br />
+<blockquote class="tr_bq">
+Imagine you have a stream of names (“matt”, “timon”, “matt”, “matt”, “rob”, “ben”, …) and you wanted to know if any name appeared in more than half the stream. Boyer and Moore proposed the following:</blockquote>
+<blockquote class="tr_bq">
+<span style="font-family: Courier New, Courier, monospace;">count = 0<br />majority = ""<br />for val in stream:<br />&nbsp; &nbsp; if count == 0:<br />&nbsp; &nbsp; &nbsp; &nbsp; majority = val<br />&nbsp; &nbsp; &nbsp; &nbsp; count = 1<br />&nbsp; &nbsp; elif val == majority:<br />&nbsp; &nbsp; &nbsp; &nbsp; count += 1<br />&nbsp; &nbsp; else:<br />&nbsp; &nbsp; &nbsp; &nbsp; count -= 1<br />print majority if count &gt; 0 else "no majority!" &nbsp;</span></blockquote>
+<blockquote class="tr_bq">
+If you’re anything like me you will go through a few phases: “That can’t work!”, “Wait, that works?!”, “Nah, this data will break that”, “Holy sh*t that works!!”. If you think about it for a minute you realize that it HAS to work.</blockquote>
+<blockquote class="tr_bq">
+</blockquote>
+<a href="http://blog.aggregateknowledge.com/2013/09/16/sketch-of-the-day-frugal-streaming/">http://blog.aggregateknowledge.com/2013/09/16/sketch-of-the-day-frugal-streaming/</a>

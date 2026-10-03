@@ -1,0 +1,83 @@
+<br />
+Про подводные камни платы SIM900A Mini v3.4 <a class="markup--anchor markup--p-anchor" data-href="http://antigluk.blogspot.com/2015/01/sim900a-sim900-mini-v34-board.html" href="http://antigluk.blogspot.com/2015/01/sim900a-sim900-mini-v34-board.html" rel="nofollow" target="_blank">читать тут</a> <br />
+<br />
+Схема подключения UART простая: RX в TX, TX в RX.<br />
+Питания для SIM900A: для запуска мне хватило питания 3.3V от LaunchPad'a, но это нарушает даташит - необходимо 4V. Тем не менее, все работает.<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizmKY7Q6LXARfabYJXj3lHqwOHPrPHtFFuoO2thwFum7nDdACyrg_AvEz-XovICtgkuYZFef73Vjvc5x6s0oW4Hw-_fLUSaMjDuhnddSotsl00S-tSJteV8zpr2L8UKXSDpahS8vaxejg/s1600/SIM900.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizmKY7Q6LXARfabYJXj3lHqwOHPrPHtFFuoO2thwFum7nDdACyrg_AvEz-XovICtgkuYZFef73Vjvc5x6s0oW4Hw-_fLUSaMjDuhnddSotsl00S-tSJteV8zpr2L8UKXSDpahS8vaxejg/s1600/SIM900.png" /></a></div>
+<br />
+<br />
+<div class="separator" style="clear: both; text-align: left;">
+</div>
+<a name='more'></a><br />
+<br />
+<div class="separator" style="clear: both; text-align: left;">
+Изначально джамперы находятся в таком положении для преобразования UART через MAX232:</div>
+<div class="separator" style="clear: both; text-align: center;">
+<br /></div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEGmiT0G4dST02DQO5s9us78ihf1_F8CLCoF7doRNrTWvqzTIAEHUpwBreyB2fwun1bDlL5wcPSC5qiS371h_GaWz32_2x9RMmSd_iUzgZ1o6O22gIR8wJmVOQ3oLUHzQnsCpidIVJfN8/s1600/IMG_20150114_092715.jpg" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEGmiT0G4dST02DQO5s9us78ihf1_F8CLCoF7doRNrTWvqzTIAEHUpwBreyB2fwun1bDlL5wcPSC5qiS371h_GaWz32_2x9RMmSd_iUzgZ1o6O22gIR8wJmVOQ3oLUHzQnsCpidIVJfN8/s1600/IMG_20150114_092715.jpg" height="320" width="253" /></a></div>
+Но нам не нужно подключать плату к COM-порту компьютера, нам нужен непреобразованный UART-сигнал. Поэтому, переключаем джамперы так, чтоб они "висели" на одном пине, а во второе отверстие джампера подключаем кабеля:<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwg1LaDuCyoRta1l4Nmon_aj-t3u9ReP3OTf1n-8w1adY-weg9w4EpUszXZ-YJtNZHfeQWa8KdQVJ2wEN2Dlj9QwcNXxRVZscr8nGB0eIxg3crCqcywPgE_tMx2Pi3VKMOBEiL47ggZNo/s1600/IMG_20150115_015521.jpg" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwg1LaDuCyoRta1l4Nmon_aj-t3u9ReP3OTf1n-8w1adY-weg9w4EpUszXZ-YJtNZHfeQWa8KdQVJ2wEN2Dlj9QwcNXxRVZscr8nGB0eIxg3crCqcywPgE_tMx2Pi3VKMOBEiL47ggZNo/s1600/IMG_20150115_015521.jpg" height="320" width="294" /></a></div>
+<br />
+<br />
+На картинке, зеленый кабель - RX, белый - TX.<br />
+<br />
+<h3>
+Минимальная программа для Energia</h3>
+Задача минимум - отправлять комманду "AT" пока нам не ответят "OK". Это означает что мы синхронизировались по скорости передачи и можем отправлять более сложные команды.<br />
+<br />
+<pre name="code">int incomingByte = 0;
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(P1_6, OUTPUT);
+  pinMode(P1_7, OUTPUT);
+  digitalWrite(P1_6, LOW);
+  digitalWrite(P1_7, LOW);
+}
+
+int isOK() {
+  if (incomingByte == 'O') {
+    incomingByte = Serial.read();
+    if (incomingByte == 'K') {
+      return 1;
+    }
+  }
+  return 0;
+}
+
+void loop() {
+  boolean ok=false;
+  do {
+    do {
+      digitalWrite(P1_6, HIGH);
+      Serial.println("AT");
+      digitalWrite(P1_6, LOW);
+      delay(500);
+    } while (!Serial.available());
+    incomingByte = Serial.read();
+
+    // Skip garbage
+    while(Serial.available() &amp;&amp; incomingByte == 255)
+      incomingByte = Serial.read();
+    while(Serial.available()) {
+      if (isOK())
+        ok = true;
+      else
+        incomingByte = Serial.read();
+    }
+  } while (!ok);
+
+  while(1);
+}
+</pre>
+<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEip3Nj4q4vTWLG0PDCueuX2QscY5xy7-RKV0nuC1sWIQHzzrRHHMQPHCaGIX-jTGZo3CujJawteu44TbROPI9GWLr-7ZRoo36u7Hz1jtpuztd9s1STseLUE-1_zgJ3bSyRsuoO-oNhoNg0/s1600/IMG_20150115_015458.jpg" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEip3Nj4q4vTWLG0PDCueuX2QscY5xy7-RKV0nuC1sWIQHzzrRHHMQPHCaGIX-jTGZo3CujJawteu44TbROPI9GWLr-7ZRoo36u7Hz1jtpuztd9s1STseLUE-1_zgJ3bSyRsuoO-oNhoNg0/s1600/IMG_20150115_015458.jpg" height="480" width="640" /></a></div>

@@ -1,0 +1,15 @@
+{
+  "title": "New CentOS 7 Maven Slave in docker-jenkins-slave",
+  "published": "2015-03-13T23:40:00.000+02:00",
+  "updated": "2015-03-13T23:42:34.718+02:00",
+  "original_url": "https://antigluk.blogspot.com/2015/03/new-centos-7-maven-slave-in-docker.html",
+  "categories": [
+    "containers",
+    "docker",
+    "docker jenkins slave",
+    "english",
+    "jenkins",
+    "maven"
+  ],
+  "images": []
+}

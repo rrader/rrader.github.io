@@ -1,0 +1,36 @@
+Думаю о постройке домашнего NAS. Хочется обеспечить отказоустойчивость в какой-то мере, так как терять некоторые данные достаточно болезненно.<br />
+<br />
+Вряд ли у меня будет больше двух дисков, поэтому разные RAID5 или RAID10 не рассматриваются. А RAID1 использовать на весь массив - жаба душит, ведь получаю в 2 раза меньше пространства.<br />
+<br />
+Поэтому рабочий вариант такой: два диска делятся на 2 раздела: отказоустойчивый, поменьше, и общий - побольше.<br />
+<br />
+В отказоустойчивый раздел должна быть помещена сама система, и критичные к потере данные.<br />
+В общем разделе - собственно данные, которые потерять не жалко: фильмы, музыка, загрузки торрентов и т.д.<br />
+<br />
+Пришел к такой топологии (два диска по 20 гиг на виртуалке просто для того чтоб потестить):<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDkmGDSVB6jsygMdWrHTWZCk0t6rhjQJgLitYcNPqHBqEyMLwLxdALoXKCXI4Z0XsrqD6gF2atyoBmieQP_8-eYTv1XxYSXP5kddvvwsHAzDiYX6su5w49HIWMc414HQtm5VDwMuvSS24/s1600/Screenshot+from+2015-01-12+02:22:05.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDkmGDSVB6jsygMdWrHTWZCk0t6rhjQJgLitYcNPqHBqEyMLwLxdALoXKCXI4Z0XsrqD6gF2atyoBmieQP_8-eYTv1XxYSXP5kddvvwsHAzDiYX6su5w49HIWMc414HQtm5VDwMuvSS24/s1600/Screenshot+from+2015-01-12+02:22:05.png" height="336" width="640" /></a> </div>
+<br />
+<a name='more'></a><br /><br />
+То есть,<b> </b>на<b> первом уровне</b>:<br />
+Два физических диска, разделенных на 3 раздела:<br />
+<ul>
+<li>sda1/sdb1 - /boot, </li>
+<li>sda2/sdb2 - "безопасный", отказоустойчивый раздел</li>
+<li>sda3/sdb3 - общий раздел</li>
+</ul>
+<br />
+Далее, на <b>втором уровне</b>,<br />
+<ul>
+<li>sda1 и sdb1 объединены в RAID1 (<i>mdadm</i> --level=1) в устройство md0</li>
+<li>sda2 и sdb2 объединены в RAID1 в устройство md1</li>
+</ul>
+&nbsp;На <b>третьем уровне</b> с помощью LVM созданы разделы<br />
+<ul>
+<li>Для /boot на md0 (зеркалированые sda1 и sdb1)</li>
+<li>На md1 созданы два раздела, один для "/" - системы, второй для хранения безопасных данных (зеркалированные sda2 и sdb2)</li>
+<li>И в обход RAID, sda3 и sdb3 объединены в один LVM раздел для хранения общих данных (объемы разделов суммируются). </li>
+</ul>
+Полезные ссылки: <br />
+<a href="https://wiki.archlinux.org/index.php/Software_RAID_and_LVM">Software RAID and LVM</a><br />
+<a href="https://wiki.archlinux.org/index.php/RAID">RAID</a>

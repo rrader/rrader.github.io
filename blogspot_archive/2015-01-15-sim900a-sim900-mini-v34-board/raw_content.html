@@ -1,0 +1,111 @@
+<a href="http://antigluk.blogspot.com/2015/01/msp430-interfacing-to-sim900a.html">Подключение MSP430 к SIM900A</a> <br />
+<a href="http://antigluk.blogspot.com/2015/01/uart-uart.html">UART-монитор - наблюдение за передачей данных по UART</a><br />
+<br />
+Заказал я распаяный SIM900A на плате <i>SIM900A Mini v3.4</i>, не разобравшись до конца в чем отличие модификации SIM900A от SIM900. Основное отличие - SIM900A работает в dual-band диапазоне, а SIM900 - в quad-band. Казалось бы, для Украины dual-band должен подходить идеально. <b>Но нет.</b><br />
+<br />
+SIM900A имеет <b><a href="http://www.blog.zapro.dk/?p=368">региональную блокировку</a>.</b><br />
+Вот список стран, в которых можно использовать SIM900A: <br />
+<br />
+<a name='more'></a><br />
+<br />
+<style type="text/css">p { margin-bottom: 0.1in; line-height: 120%; }</style>
+
+
+<br />
+<table cellpadding="4" cellspacing="0" style="width: 100%px;">
+ <colgroup><col width="128*"></col>
+ <col width="128*"></col>
+ </colgroup><tbody>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: 1px solid #000000; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0.04in;" width="50%"><b>Country</b></td>
+  <td style="border: 1px solid #000000; padding: 0.04in;" width="50%"><b>Supported MCCs 
+   </b></td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">China</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">460 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">India</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">404/405 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Singapore</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">525 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Malaysia</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">502 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Thailand</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">520 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Indonesia</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">510 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Cambodia</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">456 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Vietnam</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">452 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Laos</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">457 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Burma</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">414 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Brunei</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">528 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">Philippines</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">515 
+   </td>
+ </tr>
+<tr valign="top">
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: none; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in; padding-top: 0in;" width="50%">East Timor</td>
+  <td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; border-top: none; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in; padding-top: 0in;" width="50%">514 
+   </td>
+ </tr>
+</tbody></table>
+<br />
+<br />
+<br />
+&nbsp;Пришла мне такая железка:<br />
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_vwC_E_0Z617fcktKav0kPEx4gG8Ls9ndhwLepq2iJXpF5b3EypM2DFMf5TTfDXZsiLd_xAuRKpcVeTOAT4r_oSlHYVdrHdl-zyXkDEyBNT4Nyr8p3xlMHJA7pLd3Zm9dqwEFDYHDE5E/s1600/IMG_20150114_092456.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_vwC_E_0Z617fcktKav0kPEx4gG8Ls9ndhwLepq2iJXpF5b3EypM2DFMf5TTfDXZsiLd_xAuRKpcVeTOAT4r_oSlHYVdrHdl-zyXkDEyBNT4Nyr8p3xlMHJA7pLd3Zm9dqwEFDYHDE5E/s1600/IMG_20150114_092456.jpg" height="240" width="320" /></a></div>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKAoRu9tZ4C9ISpuQRx9dCBWcWhNpjDK06HRH-4WKTF4U5woqWj9PEshaWThS1GvWWRk6EZyBWfes-0NmUPDBXRfXp9Xv2D9U2489JZcIQHEVJU6DTsCHgtJ5BI6WcQA2N78Q3ccSzPtM/s1600/IMG_20150114_092715.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKAoRu9tZ4C9ISpuQRx9dCBWcWhNpjDK06HRH-4WKTF4U5woqWj9PEshaWThS1GvWWRk6EZyBWfes-0NmUPDBXRfXp9Xv2D9U2489JZcIQHEVJU6DTsCHgtJ5BI6WcQA2N78Q3ccSzPtM/s1600/IMG_20150114_092715.jpg" height="240" width="320" /></a></div>
+Долго игрался с подключением, и когда в итоге получилось отправлять AT комманды, обнаружилось странное: девайс видит сети (поиск сети "AT+COPS=?" работает), видит симку и оператора симки. Но не регистрируется в сети:<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">AT+CREG?</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">+CREG: 1,0<br />OK</span><br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">AT+CPIN?</span><br />
+<span style="background-color: yellow;"><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">+CPIN: PH-NET PIN</span></span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">OK</span><br />
+<br />
+После гугления, выяснилось, что выделенный ответ означает, что девайс <b>залочен</b>.<br />
+<br />
+Поэтому, избегайте покупки чипов SIM900A, без буквы А - лучше.

@@ -1,0 +1,83 @@
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+Эта статья описывает использование контейнеров docker как&nbsp;отдельные ноды для&nbsp;системы непрерывной интеграции, в&nbsp;данном случае jenkins. Кому лень читать <a href="https://github.com/antigluk/docker-jenkins-slave">tl; dr</a>
+Для&nbsp;сборки нашего проекта в&nbsp;RPM и&nbsp;DEB пакеты мы используем Jenkins, на&nbsp;что&nbsp;выделена специальная машина.<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjESQimF7uSDXAxTXTSZMKTNg2HF3l_Wf5q-cW6T0tuWPq0ScrusLHs6MjLvBwP_hd7sa2Y93uu14Sfyd-uRjalie6e0pHY52MzBccyrIWVSL-hAPxdv5Fe0-TzKd6bUqPSAr11xYQdnhw/s1600/79213892e85d57177c0ba9864dd75cc6.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjESQimF7uSDXAxTXTSZMKTNg2HF3l_Wf5q-cW6T0tuWPq0ScrusLHs6MjLvBwP_hd7sa2Y93uu14Sfyd-uRjalie6e0pHY52MzBccyrIWVSL-hAPxdv5Fe0-TzKd6bUqPSAr11xYQdnhw/s1600/79213892e85d57177c0ba9864dd75cc6.png" height="165" width="200" /></a></div>
+<br />
+Сначала мы собирали наш проект только для&nbsp;CentOS 6. Далее добавилась поддержка CentOS 5, и&nbsp;оказалось что&nbsp;зависимости от&nbsp;конкретных версий библиотек не&nbsp;дают работать тем&nbsp;же бинарникам под&nbsp;разными версиями CentOS, понадобилась сборка разных RPM. Это было решено добавлением в&nbsp;jenkins ноды с&nbsp;CentOS 5, которой служила виртуалка на&nbsp;VirtualBox. Потом добавилась поддержка Suse, а&nbsp;потом и&nbsp;Debian.<br />
+<br />
+Количество оперативной памяти не&nbsp;резиновое, а&nbsp;использование виртуальных машин только для&nbsp;сборки это явный оверхед, и&nbsp;было решено переписать скрипты используя <a href="http://habrahabr.ru/post/174499/">Docker</a>.<br />
+<br />
+<a name='more'></a><br />
+<br />
+&nbsp; <br />
+<div>
+<a href="http://habr.habrastorage.org/post_images/238/732/769/238732769c1006e346364cbab93d6545.png" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img alt="" border="0" src="http://habr.habrastorage.org/post_images/238/732/769/238732769c1006e346364cbab93d6545.png" /></a></div>
+<div>
+<br /></div>
+<div>
+<br /></div>
+<div>
+&nbsp;
+Используя Jenkins для&nbsp;непрерывной интеграции можно подключить ноды с&nbsp;нужными операционками и&nbsp;назначить задачи на&nbsp;них, тут есть несколько вариантов:</div>
+<div>
+<br />
+<br />
+<ul>
+<li>Арендовать инстансы/компьютеры и&nbsp;использовать их&nbsp;как&nbsp;ноды</li>
+<li>Использовать стандартную виртуализацию (гипервизор)</li>
+<li>Контейнеры (lxc, jail etc)</li>
+</ul>
+Преимущества контейнеров перед&nbsp;виртуальными машинами очевидны в&nbsp;данном случае (оперативная память общая, динамически-меняющаяся, большое количество поднятых контейнеров не&nbsp;тормозит систему в&nbsp;отличии от&nbsp;виртуальных машин), а&nbsp;Docker добавляет к&nbsp;ним такие важные моменты как: 
+
+<br />
+<ul>
+<li>Для&nbsp;сборки проекта запускается собственно скрипт сборки, и&nbsp;больше ничего. Тогда как&nbsp;при&nbsp;использовании виртуальной машины будут запущены все системные процессы и&nbsp;демоны, что&nbsp;отъедает ресурсы хоста.</li>
+<li>«Дешевое» создание большого количества независимых клонов машин&nbsp;— иногда для&nbsp;сборки проекта нужна изолированная среда для&nbsp;сборки.</li>
+</ul>
+<h1>
+Docker как&nbsp;нода в&nbsp;jenkins</h1>
+Для&nbsp;jenkins-слейва нам нужны: 
+<br />
+<ol>
+<li>Java</li>
+<li>Точка входа&nbsp;— ssh</li>
+<li>Инструменты для&nbsp;сборки</li>
+</ol>
+Точка входа нужна для&nbsp;запуска процесса в&nbsp;docker-е и&nbsp;сохранении файловой системы внутри сессии сборки (LXC использует процесс init, но&nbsp;нам вся система ни&nbsp;к&nbsp;чему). Так как&nbsp;jenkins-у&nbsp;все равно понадобится SSH для&nbsp;общения с&nbsp;нодой, этот демон и&nbsp;будет точкой входа.<br />
+<br />
+Для&nbsp;сборки машины Docker предлагает использовать Dockerfile-файлы с&nbsp;инструкциями по&nbsp;сборке машины.<br />
+<br />
+В&nbsp;этом репозитории: <a href="https://github.com/antigluk/docker-jenkins-slave">https://github.com/antigluk/docker-jenkins-slave</a> сейчас доступны правила сборки для<br />
+<ul>
+<li>CentOS 5</li>
+<li>CentOS 6</li>
+<li>Suse 12</li>
+<li>Debian 6</li>
+</ul>
+Пулл-реквесты с&nbsp;новыми системами, и&nbsp;исправлениями в&nbsp;скриптах приветствуются:)
+
+<br />
+<h1>
+Сборка и&nbsp;использование</h1>
+Предполагается, что&nbsp;у&nbsp;вас установлен Docker и Jenkins<br />
+<br />
+1) Установите в&nbsp;Jenkins <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin">Swarm Plugin</a> (он позволяет слейвам добавляться в&nbsp;Jenkins автоматически используя API)
+<br />
+<pre>2)  $ git clone git@github.com:antigluk/docker-jenkins-slave.git; cd docker-jenkins-slave
+3) Перейдите в папку с правилами для нужной системы
+    $ cd centos6
+4)  $ sudo bash build.sh
+</pre>
+Когда соберется образ, вы сможете добавлять сколько угодно нод данного типа: 
+
+<br />
+<pre>    sudo bash add_slave.sh SlaveName
+</pre>
+После выполнения этой команды вы должны увидеть новую ноду на&nbsp;Jenkins-e.
+
+Теперь, для&nbsp;использования новой ноды достаточно указать в&nbsp;тегах для&nbsp;сборки нужной задачи «docker-tagname"&nbsp;— название тега это название системы с&nbsp;полной версией, список тегов можно посмотреть <a href="https://github.com/antigluk/docker-jenkins-slave/wiki/Tags" title="">на&nbsp;специальной странице в&nbsp;вики</a><br />
+<br />
+<hr />
+Пост был опубликован на Хабрахабре&nbsp;<a href="http://habrahabr.ru/post/200244/">http://habrahabr.ru/post/200244/</a></div>

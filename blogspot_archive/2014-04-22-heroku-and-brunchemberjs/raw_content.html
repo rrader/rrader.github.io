@@ -1,0 +1,48 @@
+<code>The goal is to build static files (with brunch) while heroku deploys application, and in runtime serve it statically with dynamic backend (Python/django in my case).</code><br />
+<code><br /></code>
+<code>To build brunch we need node.js, but for backend we need python buildpack. </code><br />
+<b><code>heroku-buildpack-multi </code></b><code>makes this possible to have several buildpacks simultaneously in one Heroku app. </code><br />
+<code><br /></code>
+<code>1.</code><code> We need to attach </code><code>heroku-buildpack-multi to our app:</code><br />
+<code> </code><br />
+<pre><code>&nbsp;</code></pre>
+<pre><code>$ heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git</code></pre>
+<pre><code>&nbsp;</code></pre>
+<code>2. In your repository add </code><code><b>.buildpacks</b> file</code><br />
+<br />
+<code>Add buildpacks one in each line. Let first be node.js, and second is your backend buildpack:</code><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code><br /></code></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code></code></span> <span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code></code></span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$ cat .buildpacks<br />https://github.com/heroku/heroku-buildpack-nodejs.git#v58<br />https://github.com/heroku/heroku-buildpack-python.git#v36</span></code></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code></code></span> <span style="font-family: &quot;Courier New&quot;,Courier,monospace;"></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code></code></span><br />
+<code><br /></code>
+<code>3. Configure your node.js app with <b>package.json</b></code><br />
+<code><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$ cat package.json <br />{<br />&nbsp; "name": "dnd",<br />&nbsp; "version": "0.0.1",<br />&nbsp; "description": "D&amp;D Character Generator",<br />&nbsp; "author": "Roman Rader",<br />&nbsp; "license": "BSD",<br />&nbsp; "dependencies": {<br />&nbsp;&nbsp;&nbsp; "brunch": "&gt;= 1.7.12",<br />&nbsp;&nbsp;&nbsp; "javascript-brunch": "&gt;= 1.0 &lt; 1.8",<br />&nbsp;&nbsp;&nbsp; "css-brunch": "&gt;= 1.0 &lt; 1.8",<br />&nbsp;&nbsp;&nbsp; "bower": "&gt;= 1.2.0",<br />&nbsp;&nbsp;&nbsp; "ember-precompiler-brunch": "&gt;= 1.5.0",<br />&nbsp;&nbsp;&nbsp; "less-brunch": "~1.7.1"<br />&nbsp; },<br />&nbsp; "scripts": {<br />&nbsp;&nbsp;&nbsp; "postinstall": "./postinstall.sh",<br />&nbsp; }<br />}</span></code><br />
+<br />
+<code>4. Here, <b>postinstall.sh</b> is script to install bower modules and build brunch</code><br />
+<code>$ cat postinstall.sh <br />./node_modules/bower/bin/bower install<br />./node_modules/.bin/brunch build</code><br />
+<br />
+<code>5. Configure bower dependencies with <b>bower.json</b></code><br />
+<br />
+<code><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$ cat bower.json <br />{<br />&nbsp; "name": "dnd-chargen",<br />&nbsp; "version": "0.0.1",<br />&nbsp; "license": "BSD",<br />&nbsp; "private": true,<br />&nbsp; "dependencies": {<br />&nbsp;&nbsp;&nbsp; "ember": "1.4.0",<br />&nbsp;&nbsp;&nbsp; "ember-data": "1.0.0-beta.5",<br />&nbsp;&nbsp;&nbsp; "handlebars": "~1.3.0",<br />&nbsp;&nbsp;&nbsp; "bootstrap": "3.0.x",<br />&nbsp;&nbsp;&nbsp; "moment": "~2.5.1"<br />&nbsp; }<br />}</span></code><br />
+<br />
+<code>6. And last thing, configure brunch with <b>config.coffee</b></code><br />
+<code><br /></code>
+<span style="font-family: inherit;"><code>It's pretty default config file, but importrant <i>heroku-dependent</i> thing:</code><code><code>&nbsp;</code></code></span><br />
+<span style="font-family: inherit;"><code><code><br /></code></code></span>
+<span style="font-family: inherit;"><code><code><code>Node.js files are in vendor/node directory on heroku side, so you have to ignore them from compilation</code>.</code></code></span><br />
+<br />
+<span style="font-family: inherit;"><i><code><code><code>javascripts-&gt;joinTo-&gt; </code></code></code></i></span><br />
+<span style="font-family: inherit;"><i><code><code><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'static/javascripts/vendor.js': /^bower_components|vendor\/(?!node)/</code> </code></code></i></span><br />
+<span style="font-family: inherit;"><code><br /></code></span>
+<span style="font-family: inherit;"><code>To specify directory to put compiled artifacts use <i>public</i> property:</code></span><br />
+<span style="font-family: inherit;"><i><code>public: 'public'</code></i></span><br />
+<span style="font-family: inherit;"><code><br /></code></span>
+<code><span style="font-family: inherit;">And all compiled stuff will be in /public directory</span></code><br />
+<code><br /></code>
+<code></code><br />
+<code></code><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><code><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$ cat config.coffee <br />exports.config =<br /><br />&nbsp; files:<br />&nbsp;&nbsp;&nbsp; javascripts:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaultExtension: 'js'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joinTo:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'static/javascripts/app.js': /^app/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'static/javascripts/vendor.js': /^bower_components|vendor\/(?!node)/<br /><br />&nbsp;&nbsp;&nbsp; stylesheets:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaultExtension: 'css'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joinTo: 'static/stylesheets/app.css': /^app/<br /><br />&nbsp;&nbsp;&nbsp; templates:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; precompile: true<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root: 'templates'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaultExtension: 'hbs'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; joinTo: 'static/javascripts/app.js' : /^app/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; paths:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jquery: 'bower_components/jquery/jquery.js'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handlebars: 'bower_components/handlebars/handlebars.js'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ember: 'bower_components/ember/ember.js'<br /><br />&nbsp; modules:<br />&nbsp;&nbsp;&nbsp; addSourceURLs: true<br /><br />&nbsp; paths:<br />&nbsp;&nbsp;&nbsp; public: 'public'</span></code></span><br />
+<code><br /></code>
+<span style="font-family: inherit;"><code>Now you can try to push stuff to heroku, everything should compile fine.&nbsp;&nbsp;</code></span><br />
+<span style="font-family: inherit;"><code>Of course, now app folder is empty (if exists), but brunch should compile well with at least bootstrap stuff.</code></span><span style="font-family: inherit;"><br /></span><br />
+<br />
+<span style="font-family: inherit;"><code>Put your application code to /app directory (and don't try to rename it :) doesn't work, it's kinda hardcoded)</code></span><br /><code><span style="font-family: inherit;"> </span></code>

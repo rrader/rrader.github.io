@@ -1,0 +1,25 @@
+{
+  "title": "Plotting live data from MSP430 ADC in Python",
+  "published": "2014-07-15T14:01:00.000+03:00",
+  "updated": "2014-08-21T16:26:39.693+03:00",
+  "original_url": "https://antigluk.blogspot.com/2014/07/plotting-live-data-from-msp430-adc-in.html",
+  "categories": [
+    "c",
+    "english",
+    "hardware",
+    "launchpad",
+    "matplotlib",
+    "msp430",
+    "programming",
+    "pyserial",
+    "python",
+    "serial",
+    "temperature",
+    "uart"
+  ],
+  "images": [
+    "images/image-01.png",
+    "images/image-02.png",
+    "images/image-03.png"
+  ]
+}

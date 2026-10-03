@@ -1,0 +1,16 @@
+{
+  "title": "Caching Maven Local Repository in Docker",
+  "published": "2015-03-13T14:10:00.001+02:00",
+  "updated": "2015-03-13T23:40:57.920+02:00",
+  "original_url": "https://antigluk.blogspot.com/2015/03/caching-maven-local-repository-in-docker.html",
+  "categories": [
+    "caching",
+    "docker",
+    "docker jenkins slave",
+    "english",
+    "java",
+    "jenkins",
+    "maven"
+  ],
+  "images": []
+}

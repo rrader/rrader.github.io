@@ -1,0 +1,20 @@
+I used to use a lot of running virtual machines simultaneously in VirtualBox.<br />
+Some of them are used for jenkins, others for testing some functionality. Anyway, I always have at least 2, and usually more, machines in running state.<br />
+<br />
+To ease SSH access to them, I configured NAT port forwarding so I need to remember port number.<br />
+<br />
+But keeping in mind all ports is not useful - it would be much more convenient to just choose machine and run inside.<br />
+<br />
+So, using VBoxManage utility I wrote script which works exactly as explained:<br />
+<br />
+&nbsp;&nbsp;&nbsp; $ sshvbox <br />
+&nbsp;&nbsp;&nbsp;&nbsp; 1) "CentOS 5" {5f877c2e-14a8-4aee-a467-8d9c369b2aec} &lt;52222&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp; 2) "SLES11" {c99f57bf-3a70-4c75-afbb-36f60b493865} &lt;2200&gt;<br />
+&nbsp;&nbsp;&nbsp;&nbsp; 3) "Hortonworks Sandbox 1.3" {6d0fda26-d42c-4ab2-9838-a02a8ed081c9} &lt;2222&gt;<br />
+&nbsp;&nbsp;&nbsp; select&gt; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br />
+&nbsp;&nbsp;&nbsp; root@localhost's password: <br />
+&nbsp;&nbsp;&nbsp; Last login: Fri Jul&nbsp; 5 13:20:28 2013 from 10.0.2.2<br />
+&nbsp;&nbsp;&nbsp; [root@vagrant-centos-5 ~]# <br />
+<br />
+<br />
+on github: <a href="https://github.com/rrader/sshvbox">https://github.com/rrader/sshvbox</a>

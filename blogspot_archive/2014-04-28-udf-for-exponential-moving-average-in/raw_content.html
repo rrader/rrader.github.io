@@ -1,0 +1,27 @@
+<br />
+Today I faced with the fact that there's no native way to calculate moving average in Pig.<br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRAykjKzs6Xpctg9Qo1J6xZ3QnsOmHKHNiiA9meoInCBQU3VbKhXnKglYhdENdjqth9bT5i45xqMXpF7Z4HgLILLYU3R0zZZzXI6fzxN9F4yM4YgaJrhJM-nSh-xQq0VD939TgvYo0ggc/s1600/pig-logo.gif" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRAykjKzs6Xpctg9Qo1J6xZ3QnsOmHKHNiiA9meoInCBQU3VbKhXnKglYhdENdjqth9bT5i45xqMXpF7Z4HgLILLYU3R0zZZzXI6fzxN9F4yM4YgaJrhJM-nSh-xQq0VD939TgvYo0ggc/s1600/pig-logo.gif" /></a></div>
+<br />
+For example:<br />
+<br />
+<span style="font-family: Arial,Helvetica,sans-serif;">A = {(5, 1), (2, 2), (7, 3), (4, 4)} </span><br />
+And we need to calculate <a href="http://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average">EMA</a> of first field, with weight of second field. <span style="font-family: Arial,Helvetica,sans-serif;">alpha=0.5</span>.<br />
+<br />
+<span style="font-family: Arial,Helvetica,sans-serif;">ema(A) = (5*1 + 2*0.5 + 7*0.25 + 4*0.125) / (1 + 0.5 + 0.25 + 0.125) = 4.4</span><br />
+<br />
+In Pig and Python UDF it will be like this:<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"><br /></span>
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">REGISTER 'python_udf.py' USING jython AS myfuncs;</span><br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">B = GROUP A ALL;</span><br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">C = FOREACH times {<br />&nbsp;&nbsp;&nbsp; GENERATE A as src,<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;myfuncs.EMA(A, 1, 3, 0.5) as ema;<br />}</span><br />
+<br />
+DUMP C;<br />
+<br />
+UDF:<br />
+<br />
+<span style="font-family: &quot;Courier New&quot;,Courier,monospace;">@outputSchema("value:double")<br />def EMA(D, weight_field, wmax, alpha):<br />&nbsp;&nbsp;&nbsp; """<br />&nbsp;&nbsp;&nbsp; Calculates exponential moving average<br />&nbsp;&nbsp;&nbsp; note: weights are reversed!<br />&nbsp;&nbsp;&nbsp; """<br />&nbsp;&nbsp;&nbsp; weights = [x for x in range(1, wmax+1)]<br />&nbsp;&nbsp;&nbsp; weights_values = {}<br />&nbsp;&nbsp;&nbsp; wv = 1.0<br />&nbsp;&nbsp;&nbsp; for w in weights:<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; weights_values[w] = wv<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; wv *= alpha<br />&nbsp;&nbsp;&nbsp; denom = sum(weights_values.values())<br />&nbsp;&nbsp;&nbsp; numer = 0.0<br />&nbsp;&nbsp;&nbsp; for weight in weights:<br />&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; numer += sum(1 for x in D if x[weight_field] == weight)*weights_values[weight]<br />&nbsp;&nbsp;&nbsp; return numer/denom</span><br />
+<br />
+Pretty straightforward, but it works. If you know more elegant way, please share it!<br />
+<br />

@@ -1,0 +1,16 @@
+{
+  "title": "Enabling Neutron in Devstack",
+  "published": "2014-01-04T12:41:00.001+02:00",
+  "updated": "2014-01-04T12:44:57.105+02:00",
+  "original_url": "https://antigluk.blogspot.com/2014/01/enabling-neutron-in-devstack.html",
+  "categories": [
+    "english",
+    "neutron",
+    "openstack",
+    "openvswitch",
+    "ubuntu"
+  ],
+  "images": [
+    "images/image-01.png"
+  ]
+}

@@ -1,0 +1,15 @@
+Interesting talk by <a href="http://www.jesshamrick.com/">Jess Hamrick</a> that helps to put in order knowledge about metaclasses<br />
+<br />
+<br />
+<iframe allowfullscreen="" frameborder="0" height="270" src="//www.youtube.com/embed/ZrUIRSVv1gw" width="480"></iframe>
+<br />
+<br />
+In questions there was one interesting note about how methods in Python are stored.<br />
+So, after instantiating class, every function becomes a method.<br />
+Method of class <i>is object (everything is object in Python :) ) </i>that is callable and has special useful attributes (not all listed here):<br />
+<ul>
+<li>im_func is the function object - it's actually original function </li>
+<li>im_self is the class instance object</li>
+<li>im_class is the class of im_self</li>
+</ul>
+Obviously, more details can be found in docs <a href="http://docs.python.org/2/reference/datamodel.html" target="_blank">http://docs.python.org/2/reference/datamodel.html</a>. 

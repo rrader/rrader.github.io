@@ -1,0 +1,16 @@
+Just found out it's possible to use C-style loops in bash, for example:<br />
+<br />
+&nbsp;&nbsp;&nbsp; for ((i=0; i&lt;10; i++)); do <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo $i;<br />
+&nbsp;&nbsp;&nbsp; done<br />
+<br />
+General form:<br />
+<br />
+&nbsp;&nbsp;&nbsp; for (( expr1 ; expr2 ; expr3 )) ; do list ; done<br />
+<br />
+It's extremely useful, and this feature works on bash&gt;=2.04, so it has to work on most environments.<br />
+<br />
+more info: <a href="http://www.softpanorama.org/Scripting/Shellorama/Control_structures/loops.shtml#C_style_for_loop">http://www.softpanorama.org/Scripting/Shellorama/Control_structures/loops.shtml#C_style_for_loop</a><br />
+<br />
+This message on my coderwall:<br />
+<a href="https://coderwall.com/p/fomutw">https://coderwall.com/p/fomutw</a>

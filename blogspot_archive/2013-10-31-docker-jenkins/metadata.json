@@ -1,0 +1,16 @@
+{
+  "title": "Использование Docker-контейнеров как Jenkins-нод",
+  "published": "2013-10-31T09:40:00.000+02:00",
+  "updated": "2014-01-04T13:24:21.263+02:00",
+  "original_url": "https://antigluk.blogspot.com/2013/10/docker-jenkins.html",
+  "categories": [
+    "docker",
+    "jenkins",
+    "linux",
+    "russian",
+    "virtualization"
+  ],
+  "images": [
+    "images/image-01.png"
+  ]
+}

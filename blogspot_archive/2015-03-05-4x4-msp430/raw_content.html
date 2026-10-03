@@ -1,0 +1,30 @@
+Сделал интерфейсную часть охранной системы.<br />
+Снятие и установка охраны будет производиться с помощью пароля, поэтому нужен способ ввести пароль и изменить его.<br />
+<br />
+MSP430G2553 содержит флеш-память, 4 сегмента данных по 64 байта. Там и будем хранить пароль.<br />
+<br />
+Также, на случай забывания пароля, необходим "суперпароль", который будет сбрасывать память на пароль по умолчанию. <br />
+<br />
+Для считывания нажатий клавиш с клавиатуры необходимо опрашивать периодически каждую кнопку. Кроме того, надо избавляться от дребезга.&nbsp; Библиотека для Arduino "Keypad" реализует защиту от дребезга и умеет опрашивать клавиши, а также отлично подходит для Energia.<br />
+<br />
+<h3>
+Доступные команды</h3>
+<br />
+Аутентификация: &lt;пароль&gt; + <b>#</b><br />
+Отмена ввода:&nbsp;<b>*</b><br />
+Сброс по суперпаролю: &lt;суперпароль&gt; + <b>D </b><br />
+Смена пароля: &lt;старый пароль&gt; + <b>D</b> + &lt;новый пароль&gt; + <b>D</b><br />
+<br />
+<h3>
+Видео работы</h3>
+<br />
+<div class="separator" style="clear: both; text-align: center;">
+</div>
+<div class="separator" style="clear: both; text-align: center;">
+<iframe allowfullscreen="" class="YOUTUBE-iframe-video" data-thumbnail-src="https://i.ytimg.com/vi/wLLoZa_CDJM/0.jpg" frameborder="0" height="266" src="http://www.youtube.com/embed/wLLoZa_CDJM?feature=player_embedded" width="320"></iframe></div>
+<br />
+Видео <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">https://www.youtube.com/watch?v=wLLoZa_CDJM</a><br />
+Библиотека Keypad <a href="http://playground.arduino.cc/Code/Keypad">http://playground.arduino.cc/Code/Keypad</a> <br />
+Исходный код <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a> <br />
+<br />
+<a href="http://playground.arduino.cc/Code/Keypad"></a>

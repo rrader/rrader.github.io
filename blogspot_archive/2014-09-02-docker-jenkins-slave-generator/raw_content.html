@@ -1,0 +1,55 @@
+<h2>
+</h2>
+<br />
+tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: <a href="http://docker-jenkins-slave.herokuapp.com/">http://docker-jenkins-slave.herokuapp.com/</a> . <br />
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvEKn5HXlAm3u1kIDkEmEQ3KJW8iF_Kjq-oDNizxfvAUvqXuYkOCS956eJ84MHYBE6RD4awbJakTdx470c4YvDJxds-mUFhYmTIzicvT-8S83e_Gi1BorL2n1HK-zDNPKKvlI1PuMQB_E/s1600/Screenshot+from+2014-09-02+20:59:19.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvEKn5HXlAm3u1kIDkEmEQ3KJW8iF_Kjq-oDNizxfvAUvqXuYkOCS956eJ84MHYBE6RD4awbJakTdx470c4YvDJxds-mUFhYmTIzicvT-8S83e_Gi1BorL2n1HK-zDNPKKvlI1PuMQB_E/s1600/Screenshot+from+2014-09-02+20:59:19.png" height="162" width="320" /></a></div>
+<br />
+<h2>
+Docker jenkins slave </h2>
+<br />
+<div class="GCUXF0KCCXB">
+<i>The beginning of story is here: <a href="http://antigluk.blogspot.com/2013/10/docker-jenkins.html">http://antigluk.blogspot.com/2013/10/docker-jenkins.html</a> [russian].</i></div>
+<div class="GCUXF0KCCXB">
+</div>
+<div class="GCUXF0KCCXB">
+<i>Abstract: If you want to build your project on different environments (e.g. Jenkins installed on Arch Linux, and you want to build RPM on CentOS 6) with jenkins, but you don't want to use virtual machines, which is inefficient wasting of RAM and CPU, using Docker is good idea.</i></div>
+<div class="GCUXF0KCCXB">
+<br />
+<a name='more'></a><br /></div>
+<div class="GCUXF0KCCXB">
+In this repository: <a href="https://github.com/rrader/docker-jenkins-slave">https://github.com/rrader/docker-jenkins-slave</a> now present build rules for<br />
+<ul>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht5Epi-OBaj2IiGAs36QsfziiJttLFftOWSM8ngYE19y2NFlVp8ox0CfYQA90aDbgJ4T5MhxVFamIYW3hDKbN2COkfB05kF8kB5Mqm1IyLHhkFDXe_eNMiLc5TEVqXnbAjKolfcMF4lrs/s1600/homepage-docker-logo.png" imageanchor="1" style="clear: right; float: right; margin-bottom: 1em; margin-left: 1em;"><img border="0" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEht5Epi-OBaj2IiGAs36QsfziiJttLFftOWSM8ngYE19y2NFlVp8ox0CfYQA90aDbgJ4T5MhxVFamIYW3hDKbN2COkfB05kF8kB5Mqm1IyLHhkFDXe_eNMiLc5TEVqXnbAjKolfcMF4lrs/s1600/homepage-docker-logo.png" height="165" width="200" /></a>
+<li>CentOS 5</li>
+<li>CentOS 6</li>
+<li>Suse 12</li>
+<li>Debian 6 </li>
+</ul>
+</div>
+<span class="" id="result_box" lang="en"><span class="hps">It is assumed that</span> <span class="hps">you have installed the</span> <span class="hps">Docker</span> <span class="hps">and</span> <span class="hps">Jenkins.</span> <br /><br /><span class="hps">1</span><span class="">) Install</span><span class="hps atn"> Swarm Plugin to your Jenkins (</span>it allows<span class="hps"> slave</span>s to be <span class="hps">added to</span> <span class="hps">Jenkins</span> <span class="hps">automatically</span> <span class="hps">using</span> <span class="hps">API)</span> <br /><br /><span class="hps">2</span><span class="">)<span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> $ git clone git@github.com:rrader/docker-jenkins-slave.git;</span></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> <span class="hps">cd docker-jenkins-slave</span></span> <br /><span class="hps">3)</span> Browse<span class="hps"> to the folder</span> <span class="hps">with the rules</span> <span class="hps">for the desired</span> <span class="hps">system</span> <br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">&nbsp;&nbsp; <span class="hps">$ cd centos6</span> </span><br /><span class="hps">4</span><span class="">)</span></span><span class="" id="result_box" lang="en"><span class=""><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> $ sudo bash build.sh</span></span> <br /><br /><span class="hps">Now you have</span> <span class="hps">the image</span>, <span class="hps">you can</span> <span class="hps">add as many</span> <span class="hps">nodes</span> <span class="hps">of this type</span> as you need: <br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">$ <span class="hps">sudo bash add_slave.sh SlaveName</span></span></span><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> </span><br />
+<br />
+After that, assign label for your jenkins job "docker-&lt;tagname&gt;", exact tagname for chosen slave OS you can see on wiki: <a href="https://github.com/rrader/docker-jenkins-slave/wiki/Tags">https://github.com/rrader/docker-jenkins-slave/wiki/Tags</a><br />
+<br />
+<ul class="task-list">
+<li>centos6 : <code>centos6.4</code>
+</li>
+<li>centos5 : <code>centos5.4</code>
+</li>
+<li>suse12 : <code>suse12.1</code>
+</li>
+<li>squeeze : <code>debian6&nbsp;</code>
+</li>
+</ul>
+<h2>
+Docker jenkins slave Generator</h2>
+Initial version of jenkins slave generator was released, it's purpose is to generate Dockerfile exactly for your needs, with preinstalled needed packages and other stuff.<br />
+<br />
+Right now only tiny amount of planned functionality implemented, you can customize username, home directory and root/user password.<br />
+<br />
+App is deployed here: <br />
+<a href="http://docker-jenkins-slave.herokuapp.com/">http://docker-jenkins-slave.herokuapp.com/ </a><br />
+<br />
+Source code of web service is on github: <a href="https://github.com/rrader/docker-jenkins-slave-service">https://github.com/rrader/docker-jenkins-slave-service</a><br />
+<br />
+Any suggestions, pull requests are welcomed!
