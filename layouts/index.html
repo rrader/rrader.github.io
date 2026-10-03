@@ -53,6 +53,7 @@
       <div class="quick-pills">
         <button class="pill-btn" data-cmd="bio">bio</button>
         <button class="pill-btn" data-cmd="posts">posts</button>
+        <button class="pill-btn" data-cmd="projects">projects</button>
         <button class="pill-btn" data-cmd="diy">diy</button>
         <button class="pill-btn" data-cmd="research">research</button>
         <button class="pill-btn" data-cmd="teaching">teaching</button>
@@ -74,7 +75,7 @@
 
   <script>
     window.__HUGO_POSTS__ = [
-      {{- range where site.RegularPages "Section" "in" (slice "diy_posts" "teach_posts" "study_posts") }}
+      {{- range where site.RegularPages "Section" "in" (slice "diy_posts" "teach_posts" "study_posts" "projects") }}
       {
         title: {{ .Title }},
         section: {{ .Section }},

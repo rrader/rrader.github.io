@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flask on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/flask/</link>
+    <description>Recent content in Flask on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sat, 04 Jul 2026 16:26:24 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/flask/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Light-Bot: Автономна система моніторингу електромережі 220V та Telegram-сповіщень</title>
+      <link>https://rrader.github.io/uk/projects/light-bot/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/projects/light-bot/</guid>
+      <description>В умовах регулярних відключень електроенергії та графіків обмежень точна інформація про наявність струму в мережі має вирішальне значення. Коли в оселі встановлено резервне живлення (зарядні станції EcoFlow або ДБЖ), інтернет і роутер продовжують працювати безперервно, тому постає неочевидне інженерне завдання: як автоматично дізнатися, що зникло або з&amp;rsquo;явилося саме зовнішнє живлення 220V?&#xA;Light-Bot — це комплексне open-source рішення для моніторингу міської електромережі, підрахунку тривалості відключень, надання захищеного REST API та автоматичної публікації сповіщень у Telegram-канал.</description>
+    </item>
+  </channel>
+</rss>

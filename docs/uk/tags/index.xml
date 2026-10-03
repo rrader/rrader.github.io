@@ -86,6 +86,48 @@
       <description></description>
     </item>
     <item>
+      <title>Flask</title>
+      <link>https://rrader.github.io/uk/tags/flask/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/flask/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Home-Assistant</title>
+      <link>https://rrader.github.io/uk/tags/home-assistant/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/home-assistant/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Homelab</title>
+      <link>https://rrader.github.io/uk/tags/homelab/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/homelab/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>https://rrader.github.io/uk/tags/projects/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>https://rrader.github.io/uk/tags/python/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Telegram</title>
+      <link>https://rrader.github.io/uk/tags/telegram/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/telegram/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Cadquery</title>
       <link>https://rrader.github.io/uk/tags/cadquery/</link>
       <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
@@ -104,13 +146,6 @@
       <link>https://rrader.github.io/uk/tags/organization/</link>
       <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/tags/organization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://rrader.github.io/uk/tags/python/</link>
-      <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
-      <guid>https://rrader.github.io/uk/tags/python/</guid>
       <description></description>
     </item>
     <item>
@@ -139,6 +174,20 @@
       <link>https://rrader.github.io/uk/tags/parenting/</link>
       <pubDate>Thu, 07 May 2026 12:00:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/tags/parenting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Raspberry-Pi</title>
+      <link>https://rrader.github.io/uk/tags/raspberry-pi/</link>
+      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
+      <guid>https://rrader.github.io/uk/tags/raspberry-pi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Retro</title>
+      <link>https://rrader.github.io/uk/tags/retro/</link>
+      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
+      <guid>https://rrader.github.io/uk/tags/retro/</guid>
       <description></description>
     </item>
   </channel>

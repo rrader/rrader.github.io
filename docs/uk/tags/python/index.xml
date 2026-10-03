@@ -6,14 +6,28 @@
     <description>Recent content in Python on Роман Радер</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>uk-ua</language>
-    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 16:26:24 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Light-Bot: Автономна система моніторингу електромережі 220V та Telegram-сповіщень</title>
+      <link>https://rrader.github.io/uk/projects/light-bot/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/projects/light-bot/</guid>
+      <description>В умовах регулярних відключень електроенергії та графіків обмежень точна інформація про наявність струму в мережі має вирішальне значення. Коли в оселі встановлено резервне живлення (зарядні станції EcoFlow або ДБЖ), інтернет і роутер продовжують працювати безперервно, тому постає неочевидне інженерне завдання: як автоматично дізнатися, що зникло або з&amp;rsquo;явилося саме зовнішнє живлення 220V?&#xA;Light-Bot — це комплексне open-source рішення для моніторингу міської електромережі, підрахунку тривалості відключень, надання захищеного REST API та автоматичної публікації сповіщень у Telegram-канал.</description>
+    </item>
     <item>
       <title>Параметричний органайзер для інструментів із фанери: CadQuery та лазерна різка</title>
       <link>https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/</link>
       <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/</guid>
       <description>Інструменти в шафі зберігати було незручно, тому я вирішив зробити органайзер.&#xA;Стандартні пластикові ящики під глибоку полицю (понад 50 см) не підходять: або вони замалі й залишають купу порожнього місця, або всередині все знову звалюється в одну купу. Хотілося зробити ящик точно під розмір полиці (467 × 525 × 280 мм), щоб усе стояло на своїх місцях і діставалося за секунду.&#xA;Для цього я спроєктував модульний органайзер із березової фанери, поєднавши параметричний код на Python (CadQuery), високоточну лазерну різку та 3D-друковані деталі з PETG.</description>
+    </item>
+    <item>
+      <title>zk_phone — Хакінг вінтажного таксофона на базі Raspberry Pi</title>
+      <link>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</link>
+      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</guid>
+      <description>Вінтажне індустріальне обладнання минулих десятиліть має неповторну тактильну привабливість. Важкий сталевий антивандальний корпус, механічний дзвін монет при падінні у скарбничку, масивна телефонна слухавка на броньованому шнурі та металева матрична клавіатура дарують відчуття, які не здатні відтворити сучасні сенсорні смартфони.&#xA;zk_phone — це апаратний пет-проєкт глибокої модернізації (retrofitting): перетворення автентичного монетоприймального вуличного таксофона на інтерактивний цифровий пристрій під керуванням Raspberry Pi та власного софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: Монетний таксофон, Raspberry Pi, матрична клавіатура, текстовий LCD (HD44780), важіль слухавки (Hook switch) 1.</description>
     </item>
   </channel>
 </rss>

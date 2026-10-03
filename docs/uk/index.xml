@@ -23,6 +23,13 @@
       <description>Коли нашій доньці виповнився рік, дружина почала шукати для неї дитячий музичний плеєр. Комерційні рішення на кшталт Toniebox популярні у світі, але мають суттєві мінуси:&#xA;Закрита екосистема: кожна нова казка чи альбом прив’язані до фірмової пластикової фігурки за $15–20. Залежність від хмари: активація, керування та завантаження зав&amp;rsquo;язані на сервери компанії. Обмеження контенту: українських казок, колискових чи пісень в офіційних каталогах практично немає. Шукаючи DIY-альтернативи, я натрапив на німецькі проєкти Tonuino та ESPuino.</description>
     </item>
     <item>
+      <title>Light-Bot: Автономна система моніторингу електромережі 220V та Telegram-сповіщень</title>
+      <link>https://rrader.github.io/uk/projects/light-bot/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/projects/light-bot/</guid>
+      <description>В умовах регулярних відключень електроенергії та графіків обмежень точна інформація про наявність струму в мережі має вирішальне значення. Коли в оселі встановлено резервне живлення (зарядні станції EcoFlow або ДБЖ), інтернет і роутер продовжують працювати безперервно, тому постає неочевидне інженерне завдання: як автоматично дізнатися, що зникло або з&amp;rsquo;явилося саме зовнішнє живлення 220V?&#xA;Light-Bot — це комплексне open-source рішення для моніторингу міської електромережі, підрахунку тривалості відключень, надання захищеного REST API та автоматичної публікації сповіщень у Telegram-канал.</description>
+    </item>
+    <item>
       <title>Параметричний органайзер для інструментів із фанери: CadQuery та лазерна різка</title>
       <link>https://rrader.github.io/uk/diy_posts/laser-cut-plywood-toolbox/</link>
       <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
@@ -70,6 +77,13 @@
       <pubDate>Tue, 26 Sep 2023 11:47:10 +0300</pubDate>
       <guid>https://rrader.github.io/uk/study_posts/flubot-case-study/</guid>
       <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.&#xA;Участь у 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN) Наша наукова стаття щодо виявлення витоку (ексфільтрації) даних через протокол DoH була опублікована на 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN), що проходила з 1 по 5 жовтня 2023 року в Дейтона-Біч, Флорида, США.</description>
+    </item>
+    <item>
+      <title>zk_phone — Хакінг вінтажного таксофона на базі Raspberry Pi</title>
+      <link>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</link>
+      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</guid>
+      <description>Вінтажне індустріальне обладнання минулих десятиліть має неповторну тактильну привабливість. Важкий сталевий антивандальний корпус, механічний дзвін монет при падінні у скарбничку, масивна телефонна слухавка на броньованому шнурі та металева матрична клавіатура дарують відчуття, які не здатні відтворити сучасні сенсорні смартфони.&#xA;zk_phone — це апаратний пет-проєкт глибокої модернізації (retrofitting): перетворення автентичного монетоприймального вуличного таксофона на інтерактивний цифровий пристрій під керуванням Raspberry Pi та власного софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: Монетний таксофон, Raspberry Pi, матрична клавіатура, текстовий LCD (HD44780), важіль слухавки (Hook switch) 1.</description>
     </item>
   </channel>
 </rss>

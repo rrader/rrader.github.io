@@ -42,6 +42,16 @@ show_more_text = "See archive..."
 show_more_url = "diy_posts"
 
 [[entries]]
+title = "projects & software"
+
+[entries.post_list]
+section = "projects"
+limit = 5
+show_more = true
+show_more_text = "See archive..."
+show_more_url = "projects"
+
+[[entries]]
 title = "teaching"
 
 [entries.post_list]

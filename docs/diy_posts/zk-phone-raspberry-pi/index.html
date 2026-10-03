@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="There is a unique tactile satisfaction in mechanical, industrial equipment from past decades. Heavy steel enclosures, satisfying mechanical coin drop chimes, robust rotary or matrix keypads, and substantial handset receivers with coiled cords offer a physical interaction that modern glass smartphones simply cannot replicate.
+zk_phone is a hardware retrofitting project: taking an authentic vintage public coin payphone and equipping it with a Raspberry Pi, custom interface logic, character LCD display, and Python runtime.">  
+
+  <title>
+    
+      zk_phone — Hacking a Vintage Coin Payphone with Raspberry Pi // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../diy_posts/zk-phone-raspberry-pi/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/diy_posts/zk-phone-raspberry-pi/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/zk-phone-raspberry-pi.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat zk-phone-raspberry-pi.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2017-09-14 10:12:42 &#43;0000 UTC">2017-09-14</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 445</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#hardware</span>
+      
+        <span class="tty-tag-pill">#raspberry-pi</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#retro</span>
+      
+        <span class="tty-tag-pill">#maker</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">zk_phone — Hacking a Vintage Coin Payphone with Raspberry Pi</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/diy_posts/zk-phone-raspberry-pi/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>There is a unique tactile satisfaction in mechanical, industrial equipment from past decades. Heavy steel enclosures, satisfying mechanical coin drop chimes, robust rotary or matrix keypads, and substantial handset receivers with coiled cords offer a physical interaction that modern glass smartphones simply cannot replicate.</p>
+<p><strong>zk_phone</strong> is a hardware retrofitting project: taking an authentic vintage public coin payphone and equipping it with a Raspberry Pi, custom interface logic, character LCD display, and Python runtime.</p>
+<ul>
+<li><strong>Source Code:</strong> <a href="https://github.com/rrader/zk_phone">github.com/rrader/zk_phone</a></li>
+<li><strong>Hardware:</strong> Vintage Coin Payphone, Raspberry Pi, Matrix Keypad, HD44780 LCD, Hook Switch</li>
+</ul>
+<p><img alt="Authentic Coin Payphone Retrofitted with Raspberry Pi" src="../../images/zk_phone/phone1.jpg"></p>
+<hr>
+<h2 id="1-hardware-architecture--reverse-engineering">1. Hardware Architecture &amp; Reverse Engineering</h2>
+<p>The original payphone was an electromechanical unit built to withstand vandalism and continuous public abuse. To make it smart, several core subsystems were reverse-engineered and interfaced with the Raspberry Pi GPIO:</p>
+<ol>
+<li>
+<p><strong>The Hook Switch (Handset Cradle):</strong></p>
+<ul>
+<li>Detects whether the heavy handset is resting on the cradle or has been lifted off-hook.</li>
+<li>Connected as a digital input with internal pull-up resistors and debouncing.</li>
+<li>Acts as the primary state machine trigger: lifting the handset powers on the LCD backlight and initializes the dialing prompt.</li>
+</ul>
+</li>
+<li>
+<p><strong>The Numeric Matrix Keypad:</strong></p>
+<ul>
+<li>The industrial metal keypad uses a multiplexed row-and-column matrix.</li>
+<li>Polled in real time via an event-driven GPIO scanning loop.</li>
+<li>Key presses trigger audio feedback tones and buffer digits in memory.</li>
+</ul>
+</li>
+<li>
+<p><strong>Character LCD Display (HD44780):</strong></p>
+<ul>
+<li>Installed behind the viewing window to provide visual status, dialed numbers, and system diagnostics.</li>
+<li>Configured with custom diagnostic shortcuts: for example, dialing <code>*1#</code> prints the current local IP addresses of the Raspberry Pi directly onto the screen.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coin Drop Mechanism &amp; Relay:</strong></p>
+<ul>
+<li>The mechanical coin channel validates and signals coin insertions through microswitches.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-software-architecture">2. Software Architecture</h2>
+<p>The software is written in Python, structured around a finite state machine (FSM) implemented in <code>zk_phone/app.py</code>:</p>
+<pre tabindex="0"><code>           ┌──────────────────────┐
+           │     Idle / On Hook   │
+           └──────────┬───────────┘
+                      │ Handset Lifted
+                      ▼
+           ┌──────────────────────┐
+           │  HandsetPut / Active │ ◄──── Dialing Buffer &amp; Keypad Events
+           └──────────┬───────────┘
+                      │
+           ┌──────────┴───────────┐
+           ▼                      ▼
+    [ Service Codes ]      [ Audio / Call Engine ]
+      (e.g. *1# IP)
+</code></pre><h3 id="state-machine-lifecycle">State Machine Lifecycle:</h3>
+<ul>
+<li><strong><code>HandsetPut</code> State:</strong> Initialized when the receiver is picked up. Clears the LCD buffer, displays a welcome prompt, and listens for matrix key presses.</li>
+<li><strong>Buffer Management:</strong> Digits are appended into an internal keyboard buffer and echoed to the LCD screen in real time.</li>
+<li><strong>Special Codes:</strong> Secret dial codes trigger maintenance and system functions (e.g., query network configuration, reboot, test coin solenoids).</li>
+</ul>
+<hr>
+<h2 id="3-reflections-on-hardware-hacking">3. Reflections on Hardware Hacking</h2>
+<p>Retrofitting vintage equipment with modern single-board computers is one of the most rewarding branches of hardware making:</p>
+<ul>
+<li>Preserving the weighty, indestructible industrial aesthetic of the 20th century.</li>
+<li>Combining mechanical relays and switches with modern high-level Python code.</li>
+<li>Building a conversation piece that bridges analog tactile nostalgia with digital capabilities.</li>
+</ul>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: zk-phone-raspberry-pi.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">zk-phone-raspberry-pi.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">445 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -124,6 +124,10 @@
       desc: isUk ? 'Список усіх публікацій (DIY, навчання, дослідження)' : 'List all articles across DIY, teaching, and research',
       action: () => printAllPosts()
     },
+    projects: {
+      desc: isUk ? 'Програмні проєкти, бекенд, автоматизація та інструменти' : 'Show software, backend, automation & developer projects',
+      action: () => printProjects()
+    },
     diy: {
       desc: isUk ? 'DIY-проєкти, 3D-друк, мікроконтролери та мейкерство' : 'Show DIY hardware, 3D printing & maker projects',
       action: () => printDiy()
@@ -294,6 +298,23 @@
     printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all research posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
   }
 
+  function printProjects() {
+    printLine(`<b>${isUk ? '[ПРОЄКТИ ТА РОЗРОБКА]' : '[PROJECTS & SOFTWARE]'}</b>`, 'system');
+    printLine(isUk 
+      ? `• <b>Напрями:</b> Бекенд-системи, автоматизація інфраструктури, моніторинг, боти та відкритий код.`
+      : `• <b>Focus Areas:</b> Backend systems, infrastructure automation, monitoring bots, and open-source software.`);
+    
+    const posts = getDynamicPosts("projects");
+    if (posts.length > 0) {
+      printLine(`• <b>${isUk ? 'Проєкти та огляди:' : 'Featured Projects & Articles:'}</b>`);
+      posts.forEach(p => {
+        printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+    const secUrl = isUk ? '/uk/projects/' : '/projects/';
+    printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all projects:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
+  }
+
   function printDiy() {
     printLine(`<b>${isUk ? '[DIY, 3D-ДРУК ТА HARDWARE]' : '[DIY, 3D PRINTING & HARDWARE]'}</b>`, 'system');
     printLine(isUk
@@ -336,6 +357,7 @@
     printLine(`--------------------------------------------------`);
     
     const sections = [
+      { id: "projects", title: isUk ? "💻 Проєкти та софт" : "💻 Projects & Software" },
       { id: "diy_posts", title: isUk ? "🛠️ DIY та мейкерство" : "🛠️ DIY & Hardware" },
       { id: "teach_posts", title: isUk ? "🎓 Викладання та інформатика" : "🎓 Teaching & Informatics" },
       { id: "study_posts", title: isUk ? "🔬 Дослідження" : "🔬 Research" }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Telegram on Roman Rader</title>
+    <link>https://rrader.github.io/tags/telegram/</link>
+    <description>Recent content in Telegram on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 04 Jul 2026 16:26:24 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/telegram/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Light-Bot: Resilient Grid Power Monitoring &amp; Telegram Notification Engine</title>
+      <link>https://rrader.github.io/projects/light-bot/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/projects/light-bot/</guid>
+      <description>During regular power grid disruptions and scheduled blackouts, knowing the exact operational state of the household electrical grid is critical. While battery backup systems (like EcoFlow stations or UPS units) keep network equipment online, knowing when main grid power (220V) disappears or returns is essential for managing heavy domestic loads (boilers, heaters, air conditioning) and planning daily routines.&#xA;Light-Bot is an open-source, multi-component infrastructure monitoring solution designed to reliably detect 220V grid status, track outage/restoration statistics, provide a secure authenticated REST API, and broadcast live status updates to Telegram channels.</description>
+    </item>
+  </channel>
+</rss>

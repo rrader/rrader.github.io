@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="During regular power grid disruptions and scheduled blackouts, knowing the exact operational state of the household electrical grid is critical. While battery backup systems (like EcoFlow stations or UPS units) keep network equipment online, knowing when main grid power (220V) disappears or returns is essential for managing heavy domestic loads (boilers, heaters, air conditioning) and planning daily routines.
+Light-Bot is an open-source, multi-component infrastructure monitoring solution designed to reliably detect 220V grid status, track outage/restoration statistics, provide a secure authenticated REST API, and broadcast live status updates to Telegram channels.">  
+
+  <title>
+    
+      Light-Bot: Resilient Grid Power Monitoring &amp; Telegram Notification Engine // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../projects/light-bot/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/projects/light-bot/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: projects/light-bot.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../projects">projects</a>]$</span>
+    <span class="cli-prompt-cmd">cat light-bot.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2026-07-04 16:26:24 &#43;0300 EEST">2026-07-04</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 555</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~3m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#projects</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#flask</span>
+      
+        <span class="tty-tag-pill">#telegram</span>
+      
+        <span class="tty-tag-pill">#homelab</span>
+      
+        <span class="tty-tag-pill">#home-assistant</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Light-Bot: Resilient Grid Power Monitoring &amp; Telegram Notification Engine</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/projects/light-bot/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>During regular power grid disruptions and scheduled blackouts, knowing the exact operational state of the household electrical grid is critical. While battery backup systems (like EcoFlow stations or UPS units) keep network equipment online, knowing when main grid power (220V) disappears or returns is essential for managing heavy domestic loads (boilers, heaters, air conditioning) and planning daily routines.</p>
+<p><strong>Light-Bot</strong> is an open-source, multi-component infrastructure monitoring solution designed to reliably detect 220V grid status, track outage/restoration statistics, provide a secure authenticated REST API, and broadcast live status updates to Telegram channels.</p>
+<ul>
+<li><strong>Source Code:</strong> <a href="https://github.com/rrader/light-bot">github.com/rrader/light-bot</a></li>
+<li><strong>Stack:</strong> Python 3, Flask, Telegram Bot API, Docker, Systemd, Shell scripting</li>
+</ul>
+<hr>
+<h2 id="1-system-architecture">1. System Architecture</h2>
+<p>The core challenge of grid monitoring with an uninterrupted power supply is simple: <strong>if your router and server never lose power, how do you know the grid went down?</strong></p>
+<p>Light-Bot solves this through a split architecture:</p>
+<pre tabindex="0"><code>[ Unbacked 220V Device ] (e.g. Air Conditioner / Wall Plug)
+         │
+         │ (ICMP Ping / Heartbeat)
+         ▼
+[ Local Router / Probe ] ──(HTTPS + Token)──► [ Remote Cloud VPS ]
+                                                      │
+                       ┌──────────────────────────────┴──────────────────────────────┐
+                       ▼                                                             ▼
+             [ Telegram Channel ]                                          [ Home Assistant ]
+             (Live Alerts &amp; Stats)                                         (Automations / REST Sensor)
+</code></pre><ol>
+<li>
+<p><strong>Local Edge Probe (<code>monitor.sh</code>):</strong></p>
+<ul>
+<li>Runs directly on the local router or a low-power home server backed by battery.</li>
+<li>Pings one or more specific IP addresses on the local subnet belonging to devices that are plugged straight into raw wall mains without battery backup (e.g. smart plugs or AC units).</li>
+<li>Uses consecutive check debouncing (e.g., 3 consecutive failures over 15 seconds) to prevent false positives from transient network jitter.</li>
+<li>When a state transition occurs, it dispatches an authenticated HTTPS payload to the remote server.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cloud/VPS Service (<code>main.py</code>):</strong></p>
+<ul>
+<li>Runs on a high-availability remote VPS or cloud instance independent of local power outages.</li>
+<li>Hosts a multi-threaded Flask REST API protected by a pre-shared 256-bit bearer token.</li>
+<li>Maintains state persistence on disk (<code>power_status.txt</code>) to survive service restarts without losing state history.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="2-telegram-notifications--duration-tracking">2. Telegram Notifications &amp; Duration Tracking</h2>
+<p>When the power state transitions between <code>ON</code> and <code>OFF</code>, the bot formats a structured message and broadcasts it to the designated Telegram channel.</p>
+<p>Key capabilities:</p>
+<ul>
+<li><strong>Outage Duration:</strong> When electricity returns, the bot computes the exact duration the grid was offline (e.g. <code>4h 12m</code>) and highlights it in the notification.</li>
+<li><strong>Uptime Duration:</strong> When an outage begins, the bot logs how long the power had remained stable prior to the cut.</li>
+<li><strong>Reliability:</strong> Built with retry mechanisms to ensure Telegram API limits or momentary connection drops don&rsquo;t lose state transition alerts.</li>
+</ul>
+<hr>
+<h2 id="3-secure-rest-api--smart-home-integration">3. Secure REST API &amp; Smart Home Integration</h2>
+<p>Beyond Telegram broadcasts, Light-Bot exposes clean REST endpoints:</p>
+<ul>
+<li><code>GET /health</code> — Public health check endpoint for uptime monitors.</li>
+<li><code>GET /power-status</code> — Returns the current power state, timestamp, and duration:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;on&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#ae81ff">1720100784</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;formatted_time&#34;</span>: <span style="color:#e6db74">&#34;2026-07-04 16:26:24&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;duration_minutes&#34;</span>: <span style="color:#ae81ff">252</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></li>
+<li><code>POST /power-status</code> — Ingests state transitions from authorized local monitoring scripts via <code>Authorization: Bearer &lt;API_TOKEN&gt;</code>.</li>
+</ul>
+<h3 id="home-assistant-integration">Home Assistant Integration</h3>
+<p>The REST API allows external systems like Home Assistant to ingest real-time grid telemetry without complex MQTT brokers. In Home Assistant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">binary_sensor</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">platform</span>: <span style="color:#ae81ff">rest</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Grid Power Status&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#34;https://your-server.com/power-status&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">GET</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">headers</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Authorization</span>: !<span style="color:#ae81ff">secret light_bot_token</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">User-Agent</span>: <span style="color:#e6db74">&#34;HomeAssistant/2026.9&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">device_class</span>: <span style="color:#ae81ff">power</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">value_template</span>: <span style="color:#e6db74">&#34;{{ value_json.status == &#39;on&#39; }}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scan_interval</span>: <span style="color:#ae81ff">15</span>
+</span></span></code></pre></div><p>This sensor seamlessly drives automated power-saving scenes: shedding heavy heater loads when the grid cuts out, and safely queuing appliance restarts once 220V stabilizes.</p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: light-bot.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">light-bot.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">555 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

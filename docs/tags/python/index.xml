@@ -6,14 +6,28 @@
     <description>Recent content in Python on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jun 2026 12:00:00 +0300</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jul 2026 16:26:24 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Light-Bot: Resilient Grid Power Monitoring &amp; Telegram Notification Engine</title>
+      <link>https://rrader.github.io/projects/light-bot/</link>
+      <pubDate>Sat, 04 Jul 2026 16:26:24 +0300</pubDate>
+      <guid>https://rrader.github.io/projects/light-bot/</guid>
+      <description>During regular power grid disruptions and scheduled blackouts, knowing the exact operational state of the household electrical grid is critical. While battery backup systems (like EcoFlow stations or UPS units) keep network equipment online, knowing when main grid power (220V) disappears or returns is essential for managing heavy domestic loads (boilers, heaters, air conditioning) and planning daily routines.&#xA;Light-Bot is an open-source, multi-component infrastructure monitoring solution designed to reliably detect 220V grid status, track outage/restoration statistics, provide a secure authenticated REST API, and broadcast live status updates to Telegram channels.</description>
+    </item>
     <item>
       <title>Parametric Laser-Cut Plywood Tool Organizer: CadQuery and 3D-Printed Hardware</title>
       <link>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</link>
       <pubDate>Mon, 01 Jun 2026 12:00:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/</guid>
       <description>Storing tools in the closet was inconvenient, so I decided to make a custom organizer.&#xA;Standard plastic storage bins don&amp;rsquo;t work well on a 50+ cm deep shelf: either they are too small and waste half the space, or everything ends up in a jumbled pile. I wanted an organizer built to the exact shelf dimensions (467 × 525 × 280 mm), so every tool has its spot and is within immediate reach.</description>
+    </item>
+    <item>
+      <title>zk_phone — Hacking a Vintage Coin Payphone with Raspberry Pi</title>
+      <link>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</link>
+      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
+      <guid>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</guid>
+      <description>There is a unique tactile satisfaction in mechanical, industrial equipment from past decades. Heavy steel enclosures, satisfying mechanical coin drop chimes, robust rotary or matrix keypads, and substantial handset receivers with coiled cords offer a physical interaction that modern glass smartphones simply cannot replicate.&#xA;zk_phone is a hardware retrofitting project: taking an authentic vintage public coin payphone and equipping it with a Raspberry Pi, custom interface logic, character LCD display, and Python runtime.</description>
     </item>
   </channel>
 </rss>

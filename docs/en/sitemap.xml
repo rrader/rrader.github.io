@@ -210,6 +210,110 @@
                 href="https://rrader.github.io/tags/maker/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/tags/flask/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/flask/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/flask/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/home-assistant/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/home-assistant/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/home-assistant/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/homelab/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/homelab/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/homelab/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/projects/light-bot/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/projects/light-bot/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/projects/light-bot/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/projects/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/projects/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/projects/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/projects/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/python/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/python/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/telegram/</loc>
+    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/telegram/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/telegram/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/tags/cadquery/</loc>
     <lastmod>2026-06-01T12:00:00+03:00</lastmod>
     <xhtml:link
@@ -260,19 +364,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/diy_posts/laser-cut-plywood-toolbox/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/python/</loc>
-    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/python/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/python/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/woodworking/</loc>
@@ -432,6 +523,45 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/raspberry-pi/</loc>
+    <lastmod>2017-09-14T10:12:42+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/raspberry-pi/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/raspberry-pi/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/retro/</loc>
+    <lastmod>2017-09-14T10:12:42+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/retro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/retro/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</loc>
+    <lastmod>2017-09-14T10:12:42+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/"
                 />
   </url><url>
     <loc>https://rrader.github.io/categories/</loc>
