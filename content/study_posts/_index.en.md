@@ -1,3 +1,3 @@
 ---
-title: "Study posts"
+title: "Study"
 ---

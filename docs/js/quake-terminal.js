@@ -220,9 +220,13 @@
       desc: isUk ? 'Освітні матеріали та курси з інженерії ШІ для школи' : 'Show educational initiatives and teaching materials links',
       action: () => printTeaching()
     },
+    study: {
+      desc: isUk ? 'Матеріали з навчання, досліджень та Google Scholar' : 'Show study notes, research focus, and Google Scholar profile',
+      action: () => printStudy()
+    },
     research: {
-      desc: isUk ? 'Дослідження кібербезпеки та профіль у Google Scholar' : 'Show cybersecurity research focus and Google Scholar profile',
-      action: () => printResearch()
+      desc: isUk ? 'Аліас для команди study' : 'Alias for study command',
+      action: () => printStudy()
     },
     rss: {
       desc: isUk ? 'Посилання на RSS-стрічки сайту (загальна, DIY, навчання, дослідження)' : 'Show RSS feed URLs (Main, DIY, Teaching, Research)',
@@ -369,24 +373,25 @@
     return langPosts.length > 0 ? langPosts : sectionPosts.filter(p => p.lang === 'en');
   }
 
-  function printResearch() {
-    printLine(`<b>${isUk ? '[ДОСЛІДЖЕННЯ ТА НАУКОВА РОБОТА]' : '[RESEARCH & SCHOLARLY WORK]'}</b>`, 'system');
+  function printStudy() {
+    printLine(`<b>${isUk ? '[НАВЧАННЯ ТА ДОСЛІДЖЕННЯ]' : '[STUDY & RESEARCH]'}</b>`, 'system');
     printLine(isUk 
-      ? `• <b>Ключовий фокус:</b> Програмна інженерія, аналіз шифрованого трафіку та прикладний ШІ у шкільній освіті.`
-      : `• <b>Primary Focus:</b> Software Engineering, Encrypted Traffic Analysis, and Applied AI in K-12 Education.`);
+      ? `• <b>Ключовий фокус:</b> Програмна інженерія, аналіз шифрованого трафіку, алгоритми та прикладний ШІ у шкільній освіті.`
+      : `• <b>Primary Focus:</b> Software Engineering, Encrypted Traffic Analysis, Algorithms, and Applied AI in K-12 Education.`);
     printLine(`• <b>${isUk ? 'Академічні публікації та профіль:' : 'Academic Publications & Citation Index:'}</b>`);
     printLine(`  - Google Scholar: <a href="https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ" target="_blank">Google Scholar Profile</a>`);
     
     const posts = getDynamicPosts("study_posts");
     if (posts.length > 0) {
-      printLine(`• <b>${isUk ? 'Статті та дослідження:' : 'Articles & Research Notes:'}</b>`);
+      printLine(`• <b>${isUk ? 'Статті та матеріали:' : 'Articles & Study Notes:'}</b>`);
       posts.forEach(p => {
         printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
       });
     }
     const secUrl = isUk ? '/uk/study_posts/' : '/study_posts/';
-    printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all research posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
+    printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all study posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
   }
+  const printResearch = printStudy;
 
   function printProjects() {
     printLine(`<b>${isUk ? '[ПРОЄКТИ ТА РОЗРОБКА]' : '[PROJECTS & SOFTWARE]'}</b>`, 'system');
@@ -468,7 +473,7 @@
       { id: "engineering", title: isUk ? "⚙️ Інженерія" : "⚙️ Engineering" },
       { id: "diy_posts", title: isUk ? "🛠️ DIY та мейкерство" : "🛠️ DIY & Hardware" },
       { id: "teach_posts", title: isUk ? "🎓 Викладання та інформатика" : "🎓 Teaching & Informatics" },
-      { id: "study_posts", title: isUk ? "🔬 Дослідження" : "🔬 Research" }
+      { id: "study_posts", title: isUk ? "📚 Навчання" : "📚 Study" }
     ];
 
     sections.forEach(sec => {
@@ -496,7 +501,7 @@
     printLine(`• <b>Projects:</b> <a href="${baseUrl}/projects/index.xml" target="_blank">${baseUrl}/projects/index.xml</a>`);
     printLine(`• <b>DIY & Hardware:</b> <a href="${baseUrl}/diy_posts/index.xml" target="_blank">${baseUrl}/diy_posts/index.xml</a>`);
     printLine(`• <b>Teaching & AI:</b> <a href="${baseUrl}/teach_posts/index.xml" target="_blank">${baseUrl}/teach_posts/index.xml</a>`);
-    printLine(`• <b>Research / Study:</b> <a href="${baseUrl}/study_posts/index.xml" target="_blank">${baseUrl}/study_posts/index.xml</a>`);
+    printLine(`• <b>Study:</b> <a href="${baseUrl}/study_posts/index.xml" target="_blank">${baseUrl}/study_posts/index.xml</a>`);
     printLine(`--------------------------------------------------`);
   }
 
@@ -595,8 +600,9 @@
     diy_posts: { section: 'diy_posts', aliasOf: 'diy' },
     teaching: { section: 'teach_posts', desc: isUk ? 'Матеріали з інформатики та курси ШІ' : 'Informatics & AI course materials' },
     teach_posts: { section: 'teach_posts', aliasOf: 'teaching' },
-    research: { section: 'study_posts', desc: isUk ? 'Дослідження безпеки та публікації' : 'Cybersecurity research & papers' },
-    study_posts: { section: 'study_posts', aliasOf: 'research' }
+    study: { section: 'study_posts', desc: isUk ? 'Матеріали з навчання, досліджень та публікації' : 'Study notes & research papers' },
+    study_posts: { section: 'study_posts', aliasOf: 'study' },
+    research: { section: 'study_posts', aliasOf: 'study' }
   };
 
   const VFS_FILES = {
@@ -708,7 +714,7 @@
     }
 
     // Case 2: default ls in current home directory ~
-    const dirs = ['projects/', 'diy/', 'teaching/', 'research/'];
+    const dirs = ['projects/', 'engineering/', 'diy/', 'teaching/', 'study/'];
     const regularFiles = ['README.md', 'bio.txt', 'contact.txt', 'rss.xml'];
     const execFiles = ['sl*'];
     const hiddenFiles = ['.', '..', '.bashrc', '.profile'];
