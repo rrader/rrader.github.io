@@ -219,6 +219,34 @@
       <description></description>
     </item>
     <item>
+      <title>Asyncio</title>
+      <link>https://rrader.github.io/uk/tags/asyncio/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/asyncio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Benchmark</title>
+      <link>https://rrader.github.io/uk/tags/benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/benchmark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Conference</title>
+      <link>https://rrader.github.io/uk/tags/conference/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/conference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Threading</title>
+      <link>https://rrader.github.io/uk/tags/threading/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/threading/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Embedded</title>
       <link>https://rrader.github.io/uk/tags/embedded/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
@@ -300,6 +328,55 @@
       <link>https://rrader.github.io/uk/tags/matplotlib/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Academic</title>
+      <link>https://rrader.github.io/uk/tags/academic/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/academic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithms</title>
+      <link>https://rrader.github.io/uk/tags/algorithms/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Latex</title>
+      <link>https://rrader.github.io/uk/tags/latex/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pseudocode</title>
+      <link>https://rrader.github.io/uk/tags/pseudocode/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/pseudocode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kernel</title>
+      <link>https://rrader.github.io/uk/tags/kernel/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://rrader.github.io/uk/tags/linux/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Low-Level</title>
+      <link>https://rrader.github.io/uk/tags/low-level/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/low-level/</guid>
       <description></description>
     </item>
   </channel>

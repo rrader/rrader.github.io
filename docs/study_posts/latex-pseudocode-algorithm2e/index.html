@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="There are several packages for typesetting pseudocode in LaTeX documents; I worked with algorithm2e.
+Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.
+I won&rsquo;t cover general usage of algorithm2e here, as detailed guides are readily available (Wikibooks, Harrix blog, PDF documentation).
+To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:">  
+
+  <title>
+    
+      Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e) // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../study_posts/latex-pseudocode-algorithm2e/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/study_posts/latex-pseudocode-algorithm2e/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: study_posts/latex-pseudocode-algorithm2e.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../study_posts">study_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat latex-pseudocode-algorithm2e.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2014-06-07 22:12:00 &#43;0300 EEST">2014-06-07</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 120</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#latex</span>
+      
+        <span class="tty-tag-pill">#algorithms</span>
+      
+        <span class="tty-tag-pill">#pseudocode</span>
+      
+        <span class="tty-tag-pill">#academic</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/study_posts/latex-pseudocode-algorithm2e/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>There are several packages for typesetting pseudocode in LaTeX documents; I worked with <strong>algorithm2e</strong>.</p>
+<p>Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.</p>
+<p>I won&rsquo;t cover general usage of <strong>algorithm2e</strong> here, as detailed guides are readily available (<a href="http://en.wikibooks.org/wiki/LaTeX/Algorithms">Wikibooks</a>, <a href="http://blog.harrix.org/?p=648">Harrix blog</a>, <a href="http://blog.harrix.org/wp-content/uploads/2013/04/algorithm2e.pdf">PDF documentation</a>).</p>
+<p>To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwInput</span>{KwData}{Вхідні параметри}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwInput</span>{KwResult}{Результат}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwInput</span>{KwIn}{Вхідні дані}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwInput</span>{KwOut}{Вихідні дані}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwIF</span>{If}{ElseIf}{Else}{якщо}{тоді}{інакше<span style="color:#66d9ef">\ </span>якщо}{інакше}{кінець<span style="color:#66d9ef">\ </span>умови}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwFor</span>{While}{до<span style="color:#66d9ef">\ </span>тих<span style="color:#66d9ef">\ </span>пір,<span style="color:#66d9ef">\ </span>поки}{виконувати}{кінець<span style="color:#66d9ef">\ </span>циклу}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKw</span>{KwTo}{від}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKw</span>{KwRet}{повернути}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKw</span>{Return}{повернути}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwBlock</span>{Begin}{початок<span style="color:#66d9ef">\ </span>блоку}{кінець<span style="color:#66d9ef">\ </span>блоку}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwSwitch</span>{Switch}{Case}{Other}{Перевірити<span style="color:#66d9ef">\ </span>значення}{та<span style="color:#66d9ef">\ </span>виконати}{варіант}{інакше}{кінець<span style="color:#66d9ef">\ </span>варіанту}{кінець<span style="color:#66d9ef">\ </span>перевірки<span style="color:#66d9ef">\ </span>значень}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwFor</span>{For}{цикл}{виконувати}{кінець<span style="color:#66d9ef">\ </span>циклу}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwFor</span>{ForEach}{для<span style="color:#66d9ef">\ </span>кожного}{виконувати}{кінець<span style="color:#66d9ef">\ </span>циклу}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetKwRepeat</span>{Repeat}{повторювати}{до<span style="color:#66d9ef">\ </span>тих<span style="color:#66d9ef">\ </span>пір,<span style="color:#66d9ef">\ </span>поки}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\SetAlgorithmName</span>{Алгоритм}{алгоритм}{Список алгоритмів}
+</span></span></code></pre></div><h3 id="before">Before:</h3>
+<p><img alt="Before localization" src="../../images/latex-pseudocode/image-01.png"></p>
+<h3 id="after">After:</h3>
+<p><img alt="After localization" src="../../images/latex-pseudocode/image-02.png"></p>
+<hr>
+<p><em>Migrated from legacy blog <a href="https://antigluk.blogspot.com/2014/06/latex.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: latex-pseudocode-algorithm2e.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">latex-pseudocode-algorithm2e.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">120 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

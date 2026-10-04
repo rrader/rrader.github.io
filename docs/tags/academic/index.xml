@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Academic on Roman Rader</title>
+    <link>https://rrader.github.io/tags/academic/</link>
+    <description>Recent content in Academic on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jun 2014 22:12:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</title>
+      <link>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</guid>
+      <description>There are several packages for typesetting pseudocode in LaTeX documents; I worked with algorithm2e.&#xA;Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.&#xA;I won&amp;rsquo;t cover general usage of algorithm2e here, as detailed guides are readily available (Wikibooks, Harrix blog, PDF documentation).&#xA;To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:</description>
+    </item>
+  </channel>
+</rss>

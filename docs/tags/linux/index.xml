@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Roman Rader</title>
+    <link>https://rrader.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Nov 2013 01:37:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linked Lists in Linux Kernel</title>
+      <link>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</guid>
+      <description>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.&#xA;In typical algorithms coursework, a generic list node points to payload data (node-&amp;gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.</description>
+    </item>
+  </channel>
+</rss>

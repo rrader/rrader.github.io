@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Academic on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/academic/</link>
+    <description>Recent content in Academic on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sat, 07 Jun 2014 22:12:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/academic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Оформлення псевдокоду в LaTeX українською</title>
+      <link>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</guid>
+      <description>Для вставлення псевдокоду в латех документи є кілька пакетів, я працював із algorithm2e.&#xA;Звісно, псевдокод можна вставити як звичайний текст моноширинним шрифтом, але він виглядає набагато краще, коли він оформлений з підсвітлюванням синтаксису.&#xA;Я не буду писати як загалом працювати із пакетом algorithm2e, тому що в мережі є детальні інструкції, документація, та інше.&#xA;Для використання пакету в україномовних документах потрібна локалізація для ключових слів та операторів. Викладаю свій переклад (потрібно додати в преамбулу документу):</description>
+    </item>
+  </channel>
+</rss>

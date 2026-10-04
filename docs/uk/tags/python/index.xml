@@ -30,6 +30,13 @@
       <description>zk_phone — це пет-проєкт програмування вуличного таксофона на базі Raspberry Pi та софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: таксофон, Raspberry Pi, символьний LCD-дисплей (HD44780), матрична клавіатура, герконовий перемикач важеля слухавки (reed switch) 1. Як влаштована логіка Програма написана на Python і побудована на базі простого автомата станів (State Machine) у модулі zk_phone/app.py.&#xA;Стан 1: Трубка лежить на важелі (HandsetPut) На дисплеї світиться привітання: Hello!. Працюють сервісні коди з клавіатури: *1# — виводить на LCD поточні локальні IP-адреси Raspberry Pi.</description>
     </item>
     <item>
+      <title>LvivPy #4: Threading vs asyncio — бенчмарк перемикання контексту</title>
+      <link>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
+      <description>Слайди презентації та відеозапис мого бліц-доповіді з конференції LvivPy #4 (30 травня 2015 року) про порівняння швидкості перемикання контексту між потоками ОС (threading) та асинхронним подієвим циклом (asyncio) у Python.&#xA;Відео доповіді Слайди презентації Презентація доступна на SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Записи та матеріали конференції: lvivpy.org.ua.&#xA;Дякую організаторам за чудову подію та теплу львівську спільноту Python!&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>

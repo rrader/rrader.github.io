@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Asyncio on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/asyncio/</link>
+    <description>Recent content in Asyncio on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sat, 27 Jun 2015 15:46:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/asyncio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LvivPy #4: Threading vs asyncio — бенчмарк перемикання контексту</title>
+      <link>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
+      <description>Слайди презентації та відеозапис мого бліц-доповіді з конференції LvivPy #4 (30 травня 2015 року) про порівняння швидкості перемикання контексту між потоками ОС (threading) та асинхронним подієвим циклом (asyncio) у Python.&#xA;Відео доповіді Слайди презентації Презентація доступна на SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Записи та матеріали конференції: lvivpy.org.ua.&#xA;Дякую організаторам за чудову подію та теплу львівську спільноту Python!&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+  </channel>
+</rss>

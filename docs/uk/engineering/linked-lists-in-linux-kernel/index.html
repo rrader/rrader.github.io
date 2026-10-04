@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="У ядрі Linux уже давно реалізовані готові зв&rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі include/linux/list.h.
+Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (node-&gt;data = my_data). В ядрі Linux усе зроблено навпаки: службова структура списку (struct hlist_node або struct list_head) інкапсулюється всередину вашої структури даних як одне з її полів.">  
+
+  <title>
+    
+      Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel) // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../engineering/linked-lists-in-linux-kernel/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/engineering/linked-lists-in-linux-kernel/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../uk/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: engineering/linked-lists-in-linux-kernel.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat linked-lists-in-linux-kernel.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2013-11-15 01:37:00 &#43;0200 EET">2013-11-15</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 253</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#c</span>
+      
+        <span class="tty-tag-pill">#kernel</span>
+      
+        <span class="tty-tag-pill">#linux</span>
+      
+        <span class="tty-tag-pill">#low-level</span>
+      
+        <span class="tty-tag-pill">#algorithms</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel)</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../engineering/linked-lists-in-linux-kernel/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p>У ядрі Linux уже давно реалізовані готові зв&rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі <code>include/linux/list.h</code>.</p>
+<p>Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (<code>node-&gt;data = my_data</code>). В ядрі Linux усе зроблено навпаки: службова структура списку (<code>struct hlist_node</code> або <code>struct list_head</code>) інкапсулюється <strong>всередину</strong> вашої структури даних як одне з її полів. Завдяки макросу <code>container_of</code> (обчислення зміщення структури в пам&rsquo;яті через <code>offsetof</code>) ядро знаходить адресу батьківської структури без зайвих виділень пам&rsquo;яті під вузли-обгортки.</p>
+<p>Спочатку оголошуємо та ініціалізуємо голову списку (хеш-списку <code>hlist</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head inodes;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">INIT_HLIST_HEAD</span>(<span style="color:#f92672">&amp;</span>inodes);
+</span></span></code></pre></div><p>Далі оголошуємо структуру, екземпляри якої будуть елементами цього списку:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> inode vfs_inode;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> ffs_fd fd;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hlist_node list_node;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> buffer_head <span style="color:#f92672">*</span>datablock;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Щоб структура могла стати частиною списку, вона обов&rsquo;язково повинна містити поле типу <code>struct hlist_node</code>. Спочатку це може спантеличити, адже зазвичай очікуєш, що елементи зв&rsquo;язного списку зберігають вказівники на елементи свого ж типу.</p>
+<h3 id="додавання-елемента-в-голову-списку">Додавання елемента в голову списку</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>finode;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* ... виділення пам&#39;яті та ініціалізація finode ... */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_add_head</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node, <span style="color:#f92672">&amp;</span>inodes);
+</span></span></code></pre></div><h3 id="видалення-елемента-зі-списку">Видалення елемента зі списку</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">hlist_del</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node);
+</span></span></code></pre></div><h3 id="ітерування-по-списку">Ітерування по списку</h3>
+<p>Для проходження по всіх елементах списку використовується макрос <code>hlist_for_each_entry</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head <span style="color:#f92672">*</span>head <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>inodes;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_for_each_entry</span>(i, head, list_node) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* обробка поточного елемента i */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Такий підхід забезпечує максимальну ефективність кешу процесора та усуває накладні витрати на динамічне виділення пам&rsquo;яті під службові вузли.</p>
+<hr>
+<p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2013/11/linked-lists-in-linux-kernel.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: linked-lists-in-linux-kernel.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">linked-lists-in-linux-kernel.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">253 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

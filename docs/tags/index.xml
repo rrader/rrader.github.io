@@ -219,6 +219,34 @@
       <description></description>
     </item>
     <item>
+      <title>Asyncio</title>
+      <link>https://rrader.github.io/tags/asyncio/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/asyncio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Benchmark</title>
+      <link>https://rrader.github.io/tags/benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/benchmark/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Conference</title>
+      <link>https://rrader.github.io/tags/conference/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/conference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Threading</title>
+      <link>https://rrader.github.io/tags/threading/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/threading/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Embedded</title>
       <link>https://rrader.github.io/tags/embedded/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
@@ -300,6 +328,55 @@
       <link>https://rrader.github.io/tags/matplotlib/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Academic</title>
+      <link>https://rrader.github.io/tags/academic/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/academic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithms</title>
+      <link>https://rrader.github.io/tags/algorithms/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Latex</title>
+      <link>https://rrader.github.io/tags/latex/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pseudocode</title>
+      <link>https://rrader.github.io/tags/pseudocode/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/pseudocode/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kernel</title>
+      <link>https://rrader.github.io/tags/kernel/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/kernel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://rrader.github.io/tags/linux/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Low-Level</title>
+      <link>https://rrader.github.io/tags/low-level/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/low-level/</guid>
       <description></description>
     </item>
   </channel>

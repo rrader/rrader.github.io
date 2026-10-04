@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Asyncio on Roman Rader</title>
+    <link>https://rrader.github.io/tags/asyncio/</link>
+    <description>Recent content in Asyncio on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jun 2015 15:46:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/asyncio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LvivPy #4: Threading vs asyncio — Context Switch Benchmark</title>
+      <link>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
+      <description>Slides and video recording of my lightning talk from the LvivPy #4 Python conference (May 30, 2015), comparing context switching overhead between OS threads (threading) and event loops (asyncio) in Python.&#xA;Talk Video Presentation Slides Slides are available on SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Conference talks archive: lvivpy.org.ua.&#xA;Thanks again to the organizers for an awesome event and a great community!&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
+    </item>
+  </channel>
+</rss>

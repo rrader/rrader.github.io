@@ -30,6 +30,13 @@
       <description>zk_phone is a pet project of programming a physical payphone using a Raspberry Pi and Python.&#xA;Source Code: github.com/rrader/zk_phone Hardware: Payphone chassis, Raspberry Pi, HD44780 character LCD, matrix keypad, hook switch (reed switch) 1. How the Logic Works The software is written in Python and structured around a simple state machine in zk_phone/app.py.&#xA;State 1: Handset on Hook (HandsetPut) The LCD displays a greeting: Hello!. Service keypad codes are available while on hook: *1# — prints the local IP addresses of the Raspberry Pi to the LCD.</description>
     </item>
     <item>
+      <title>LvivPy #4: Threading vs asyncio — Context Switch Benchmark</title>
+      <link>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
+      <description>Slides and video recording of my lightning talk from the LvivPy #4 Python conference (May 30, 2015), comparing context switching overhead between OS threads (threading) and event loops (asyncio) in Python.&#xA;Talk Video Presentation Slides Slides are available on SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Conference talks archive: lvivpy.org.ua.&#xA;Thanks again to the organizers for an awesome event and a great community!&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Plotting Live Data from MSP430 ADC in Python</title>
       <link>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>

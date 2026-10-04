@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithms on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/algorithms/</link>
+    <description>Recent content in Algorithms on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sat, 07 Jun 2014 22:12:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Оформлення псевдокоду в LaTeX українською</title>
+      <link>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</guid>
+      <description>Для вставлення псевдокоду в латех документи є кілька пакетів, я працював із algorithm2e.&#xA;Звісно, псевдокод можна вставити як звичайний текст моноширинним шрифтом, але він виглядає набагато краще, коли він оформлений з підсвітлюванням синтаксису.&#xA;Я не буду писати як загалом працювати із пакетом algorithm2e, тому що в мережі є детальні інструкції, документація, та інше.&#xA;Для використання пакету в україномовних документах потрібна локалізація для ключових слів та операторів. Викладаю свій переклад (потрібно додати в преамбулу документу):</description>
+    </item>
+    <item>
+      <title>Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel)</title>
+      <link>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</guid>
+      <description>У ядрі Linux уже давно реалізовані готові зв&amp;rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі include/linux/list.h.&#xA;Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (node-&amp;gt;data = my_data). В ядрі Linux усе зроблено навпаки: службова структура списку (struct hlist_node або struct list_head) інкапсулюється всередину вашої структури даних як одне з її полів.</description>
+    </item>
+  </channel>
+</rss>

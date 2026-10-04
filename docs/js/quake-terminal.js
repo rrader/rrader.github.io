@@ -208,6 +208,10 @@
       desc: isUk ? 'Програмні проєкти, бекенд, автоматизація та інструменти' : 'Show software, backend, automation & developer projects',
       action: () => printProjects()
     },
+    engineering: {
+      desc: isUk ? 'Системна та програмна інженерія, алгоритми та ядро Linux' : 'Systems & software engineering, algorithms, and Linux kernel',
+      action: () => printEngineering()
+    },
     diy: {
       desc: isUk ? 'DIY-проєкти, 3D-друк, мікроконтролери та мейкерство' : 'Show DIY hardware, 3D printing & maker projects',
       action: () => printDiy()
@@ -401,6 +405,23 @@
     printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all projects:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
   }
 
+  function printEngineering() {
+    printLine(`<b>${isUk ? '[СИСТЕМНА ТА ПРОГРАМНА ІНЖЕНЕРІЯ]' : '[SYSTEMS & SOFTWARE ENGINEERING]'}</b>`, 'system');
+    printLine(isUk 
+      ? `• <b>Напрями:</b> Ядро Linux, низькорівнева C-розробка, структури даних, системна архітектура та оптимізації.`
+      : `• <b>Focus Areas:</b> Linux kernel internals, low-level C programming, data structures, systems architecture, and optimization.`);
+    
+    const posts = getDynamicPosts("engineering");
+    if (posts.length > 0) {
+      printLine(`• <b>${isUk ? 'Статті та інженерні нотатки:' : 'Articles & Engineering Notes:'}</b>`);
+      posts.forEach(p => {
+        printLine(`  • <a href="${p.url}" target="_blank">${p.title}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+    const secUrl = isUk ? '/uk/engineering/' : '/engineering/';
+    printLine(`  - <b>${isUk ? 'Всі публікації розділу:' : 'View all engineering posts:'}</b> <a href="${secUrl}" target="_blank">${secUrl}</a>`);
+  }
+
   function printDiy() {
     printLine(`<b>${isUk ? '[DIY, 3D-ДРУК ТА HARDWARE]' : '[DIY, 3D PRINTING & HARDWARE]'}</b>`, 'system');
     printLine(isUk
@@ -444,6 +465,7 @@
     
     const sections = [
       { id: "projects", title: isUk ? "💻 Проєкти та софт" : "💻 Projects & Software" },
+      { id: "engineering", title: isUk ? "⚙️ Інженерія" : "⚙️ Engineering" },
       { id: "diy_posts", title: isUk ? "🛠️ DIY та мейкерство" : "🛠️ DIY & Hardware" },
       { id: "teach_posts", title: isUk ? "🎓 Викладання та інформатика" : "🎓 Teaching & Informatics" },
       { id: "study_posts", title: isUk ? "🔬 Дослідження" : "🔬 Research" }
@@ -470,6 +492,8 @@
     const baseUrl = window.location.origin;
     printLine(`• <b>${isUk ? 'Головна стрічка (EN):' : 'Main Feed (English):'}</b> <a href="${baseUrl}/index.xml" target="_blank">${baseUrl}/index.xml</a>`);
     printLine(`• <b>${isUk ? 'Головна стрічка (UA):' : 'Main Feed (Ukrainian):'}</b> <a href="${baseUrl}/uk/index.xml" target="_blank">${baseUrl}/uk/index.xml</a>`);
+    printLine(`• <b>Engineering:</b> <a href="${baseUrl}/engineering/index.xml" target="_blank">${baseUrl}/engineering/index.xml</a>`);
+    printLine(`• <b>Projects:</b> <a href="${baseUrl}/projects/index.xml" target="_blank">${baseUrl}/projects/index.xml</a>`);
     printLine(`• <b>DIY & Hardware:</b> <a href="${baseUrl}/diy_posts/index.xml" target="_blank">${baseUrl}/diy_posts/index.xml</a>`);
     printLine(`• <b>Teaching & AI:</b> <a href="${baseUrl}/teach_posts/index.xml" target="_blank">${baseUrl}/teach_posts/index.xml</a>`);
     printLine(`• <b>Research / Study:</b> <a href="${baseUrl}/study_posts/index.xml" target="_blank">${baseUrl}/study_posts/index.xml</a>`);
@@ -566,6 +590,7 @@
   // --- Virtual File System & Commands (ls, cat, grep, sl) ---
   const VFS_DIRS = {
     projects: { section: 'projects', desc: isUk ? 'Програмні проєкти та розробка' : 'Software projects & dev' },
+    engineering: { section: 'engineering', desc: isUk ? 'Системна та програмна інженерія' : 'Systems & software engineering' },
     diy: { section: 'diy_posts', desc: isUk ? 'DIY, 3D-друк та апаратні проєкти' : 'DIY, 3D printing & hardware' },
     diy_posts: { section: 'diy_posts', aliasOf: 'diy' },
     teaching: { section: 'teach_posts', desc: isUk ? 'Матеріали з інформатики та курси ШІ' : 'Informatics & AI course materials' },

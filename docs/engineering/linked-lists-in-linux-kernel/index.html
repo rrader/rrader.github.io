@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.
+In typical algorithms coursework, a generic list node points to payload data (node-&gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.">  
+
+  <title>
+    
+      Linked Lists in Linux Kernel // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../engineering/linked-lists-in-linux-kernel/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/engineering/linked-lists-in-linux-kernel/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: engineering/linked-lists-in-linux-kernel.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat linked-lists-in-linux-kernel.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2013-11-15 01:37:00 &#43;0200 EET">2013-11-15</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 270</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#c</span>
+      
+        <span class="tty-tag-pill">#kernel</span>
+      
+        <span class="tty-tag-pill">#linux</span>
+      
+        <span class="tty-tag-pill">#low-level</span>
+      
+        <span class="tty-tag-pill">#algorithms</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Linked Lists in Linux Kernel</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/engineering/linked-lists-in-linux-kernel/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in <code>include/linux/list.h</code>.</p>
+<p>In typical algorithms coursework, a generic list node points to payload data (<code>node-&gt;data = payload</code>). The Linux kernel turns this upside down: the list node structure (<code>struct hlist_node</code> or <code>struct list_head</code>) is embedded directly <strong>inside</strong> your own data structure. Using the <code>container_of</code> macro (which computes memory offsets using <code>offsetof</code>), the kernel recovers the parent struct pointer without any separate dynamic memory allocations for wrapper nodes.</p>
+<p>First, declare and initialize the list head (for hash lists, <code>hlist</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head inodes;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">INIT_HLIST_HEAD</span>(<span style="color:#f92672">&amp;</span>inodes);
+</span></span></code></pre></div><p>Next, define the struct that will be an element of this list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> inode vfs_inode;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> ffs_fd fd;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hlist_node list_node;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> buffer_head <span style="color:#f92672">*</span>datablock;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>To become part of the linked list, the struct must contain an embedded <code>struct hlist_node</code>. This can be confusing at first, as one typically expects list nodes to point to instances of their own type.</p>
+<h3 id="adding-an-element-to-the-head">Adding an element to the head</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>finode;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* ... allocate and populate finode ... */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_add_head</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node, <span style="color:#f92672">&amp;</span>inodes);
+</span></span></code></pre></div><h3 id="removing-an-element-from-the-list">Removing an element from the list</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">hlist_del</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node);
+</span></span></code></pre></div><h3 id="iterating-through-the-list">Iterating through the list</h3>
+<p>To traverse all entries in the list, use the <code>hlist_for_each_entry</code> macro:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head <span style="color:#f92672">*</span>head <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>inodes;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>i;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_for_each_entry</span>(i, head, list_node) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* work with &#39;i&#39; */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This intrusive list design yields great cache locality and completely eliminates separate allocation overhead for list management.</p>
+<hr>
+<p><em>Migrated from legacy blog <a href="https://antigluk.blogspot.com/2013/11/linked-lists-in-linux-kernel.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: linked-lists-in-linux-kernel.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">linked-lists-in-linux-kernel.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">270 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

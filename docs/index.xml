@@ -93,6 +93,13 @@
       <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module Electrical schematic of the alarm system (clickable):&#xA;What turned out in the end:&#xA;(Video: YouTube)&#xA;More photos:&#xA;Exterior Perspective Side Angle Internal Board Placement Wiring Loom &amp;amp; Screw Terminals Hand-Soldered Controller PCB Keypad Ribbon Routing This post was migrated from the legacy blog antigluk.</description>
     </item>
     <item>
+      <title>LvivPy #4: Threading vs asyncio — Context Switch Benchmark</title>
+      <link>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
+      <description>Slides and video recording of my lightning talk from the LvivPy #4 Python conference (May 30, 2015), comparing context switching overhead between OS threads (threading) and event loops (asyncio) in Python.&#xA;Talk Video Presentation Slides Slides are available on SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Conference talks archive: lvivpy.org.ua.&#xA;Thanks again to the organizers for an awesome event and a great community!&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</title>
       <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
@@ -126,6 +133,20 @@
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</guid>
       <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;Firmware Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a &amp;ldquo;handshake&amp;rdquo; - receive start symbol from computer.</description>
+    </item>
+    <item>
+      <title>Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</title>
+      <link>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</link>
+      <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</guid>
+      <description>There are several packages for typesetting pseudocode in LaTeX documents; I worked with algorithm2e.&#xA;Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.&#xA;I won&amp;rsquo;t cover general usage of algorithm2e here, as detailed guides are readily available (Wikibooks, Harrix blog, PDF documentation).&#xA;To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:</description>
+    </item>
+    <item>
+      <title>Linked Lists in Linux Kernel</title>
+      <link>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</link>
+      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</guid>
+      <description>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.&#xA;In typical algorithms coursework, a generic list node points to payload data (node-&amp;gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.</description>
     </item>
   </channel>
 </rss>
