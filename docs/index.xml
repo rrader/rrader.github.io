@@ -174,7 +174,7 @@
       <link>https://rrader.github.io/study_posts/telecom-anomaly-detection/</link>
       <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
       <guid>https://rrader.github.io/study_posts/telecom-anomaly-detection/</guid>
-      <description>A new issue of the KPI Bulletin on Computer Engineering was published featuring my research paper:&#xA;Bulletin of NTUU &amp;ldquo;KPI&amp;rdquo;. Informatics, Operation and Computer Science: Collection of Scientific Papers. – Kyiv: Vek+, 2013. – No. 59. – 134 p.&#xA;Issue: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk Issue PDF This post was migrated from the old blog antigluk.blogspot.com.</description>
+      <description>A new issue of the KPI Bulletin on Computer Engineering was published featuring my research paper (co-authored with P. N. Malyukov):&#xA;Malyukov P. N., Rader R. I. Anomaly Detection System for Telephone Network Subscribers.&#xA;Bulletin of NTUU &amp;ldquo;KPI&amp;rdquo;. Informatics, Control and Computer Science: Collection of Scientific Papers. – Kyiv: Vek+, 2013. – No. 59. – pp. 106–110.&#xA;Abstract An algorithm and system for detecting anomalous behavior of subscribers considering group behavior changes are proposed.</description>
     </item>
     <item>
       <title>Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</title>

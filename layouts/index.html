@@ -16,6 +16,10 @@
   </script>
   {{ end }}
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
   {{ $quakeOpts := dict "targetPath" "css/quake-terminal.css" "outputStyle" "compressed" }}
   {{ $quakeCSS := resources.Get "scss/quake-terminal.scss" | toCSS $quakeOpts }}
   <link rel="stylesheet" href="{{ $quakeCSS.RelPermalink }}" />

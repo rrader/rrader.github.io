@@ -6,6 +6,22 @@
 @import "common";
 
 :root {
+  /* Terminal Palette (shared with quake-terminal) */
+  --bg-color: #{$bg-color};
+  --bg-panel: #{$bg-panel};
+  --text-color: #{$text-color};
+  --text-dim: #{$text-dim};
+  --text-bright: #{$text-bright};
+  --accent-color: #{$accent-color};
+  --glow-color: #{$glow-color};
+  --border-color: #{$border-color};
+  --prompt-color: #{$text-color};
+  --error-color: #{$error-color};
+  --link-color: #{$link-color};
+  --link-hover: #{$link-hover};
+  --font-main: #{$font-main};
+  --font-retro: #{$font-retro};
+
   /* Desktop & Workstation Palette */
   --ws-bg: #{$bg-color};
   --ws-panel: #{$bg-panel};
@@ -37,6 +53,15 @@
   /* Typography */
   --font-mono: #{$font-main};
   --font-retro: #{$font-retro};
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f6f7f9;
+  overflow: hidden;
 }
 
 @import "monitor";
