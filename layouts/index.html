@@ -103,8 +103,10 @@
             <!-- Top Header Bar -->
             <header class="header-bar">
               <div class="header-title">
-                <span class="quake-logo">⚡</span>
-                <span>rmn.pp.ua</span>
+                <a href="{{ if eq .Language.Lang "uk" }}{{ "uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="header-title-link" title="{{ if eq .Language.Lang "uk" }}rmn.pp.ua — Головна{{ else }}rmn.pp.ua — Home{{ end }}">
+                  <span class="quake-logo">⚡</span>
+                  <span>rmn.pp.ua</span>
+                </a>
               </div>
               <div class="header-controls">
                 {{- range .AllTranslations }}

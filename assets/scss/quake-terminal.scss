@@ -125,11 +125,24 @@ html, body {
 .header-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--text-bright);
-  text-shadow: 0 0 8px var(--glow-color);
+
+  .header-title-link, a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-bright);
+    text-shadow: 0 0 8px var(--glow-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--glow-color), 0 0 4px #ffffff;
+    }
+  }
 
   .quake-logo {
     font-size: 18px;
