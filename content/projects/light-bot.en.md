@@ -2,7 +2,7 @@
 title: "Light-Bot: Resilient Grid Power Monitoring & Telegram Notification Engine"
 date: 2026-07-04T16:26:24+03:00
 draft: false
-tags: ["projects", "python", "flask", "telegram", "homelab", "home-assistant"]
+tags: ["projects", "python", "flask", "telegram", "homelab"]
 ---
 
 In our newly built apartment building, both my neighbors and I found it extremely helpful to know exactly when grid power was on and when it went out. Because my home router and home server are backed up by battery and never shut down during blackouts, I built a straightforward and reliable solution: an in-apartment probe that continuously pings devices plugged directly into raw 220V mains, automatically computing outage durations and notifying all neighbors via a dedicated Telegram channel.
@@ -27,16 +27,15 @@ Light-Bot solves this through a split architecture:
          ▼
 [ Local Router / Probe ] ──(HTTPS + Token)──► [ Remote Cloud VPS ]
                                                       │
-                       ┌──────────────────────────────┴──────────────────────────────┐
-                       ▼                                                             ▼
-             [ Telegram Channel ]                                          [ Home Assistant ]
-             (Live Alerts & Stats)                                         (Automations / REST Sensor)
+                                                      ▼
+                                            [ Telegram Channel ]
+                                            (Live Alerts & Stats)
 ```
 
 1. **Local Edge Probe (`monitor.sh`):**
    - Runs directly on the local router or a low-power home server backed by battery.
-   - Pings one or more specific IP addresses on the local subnet belonging to devices that are plugged straight into raw wall mains without battery backup (e.g. smart plugs or AC units).
-   - Uses consecutive check debouncing (e.g., 3 consecutive failures over 15 seconds) to prevent false positives from transient network jitter.
+   - Pings a specific IP address on the local subnet belonging to a device plugged straight into raw wall mains without battery backup (e.g. smart plug or AC unit).
+   - Uses consecutive check debouncing (`CONSECUTIVE_CHECKS=3` over 15 seconds) to prevent false positives from transient network jitter.
    - When a state transition occurs, it dispatches an authenticated HTTPS payload to the remote server.
 
 2. **Cloud/VPS Service (`main.py`):**
@@ -57,37 +56,14 @@ Key capabilities:
 
 ---
 
-## 3. Secure REST API & Smart Home Integration
+## 3. Secure REST API
 
 Beyond Telegram broadcasts, Light-Bot exposes clean REST endpoints:
 
-* `GET /health` — Public health check endpoint for uptime monitors.
-* `GET /power-status` — Returns the current power state, timestamp, and duration:
+* `GET /health` — Public health check endpoint for uptime monitors:
   ```json
   {
-    "status": "on",
-    "timestamp": 1720100784,
-    "formatted_time": "2026-07-04 16:26:24",
-    "duration_minutes": 252
+    "status": "ok"
   }
   ```
 * `POST /power-status` — Ingests state transitions from authorized local monitoring scripts via `Authorization: Bearer <API_TOKEN>`.
-
-### Home Assistant Integration
-The REST API allows external systems like Home Assistant to ingest real-time grid telemetry without complex MQTT brokers. In Home Assistant:
-
-```yaml
-binary_sensor:
-  - platform: rest
-    name: "Grid Power Status"
-    resource: "https://your-server.com/power-status"
-    method: GET
-    headers:
-      Authorization: !secret light_bot_token
-      User-Agent: "HomeAssistant/2026.9"
-    device_class: power
-    value_template: "{{ value_json.status == 'on' }}"
-    scan_interval: 15
-```
-
-This sensor seamlessly drives automated power-saving scenes: shedding heavy heater loads when the grid cuts out, and safely queuing appliance restarts once 220V stabilizes.

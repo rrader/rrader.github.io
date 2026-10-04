@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 14 Sep 2017 10:12:42 +0000</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/retro/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>zk_phone — Hacking a Vintage Coin Payphone with Raspberry Pi</title>
+      <title>zk_phone — Programming a Payphone on Raspberry Pi</title>
       <link>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</link>
       <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
       <guid>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</guid>
-      <description>There is a unique tactile satisfaction in mechanical, industrial equipment from past decades. Heavy steel enclosures, satisfying mechanical coin drop chimes, robust rotary or matrix keypads, and substantial handset receivers with coiled cords offer a physical interaction that modern glass smartphones simply cannot replicate.&#xA;zk_phone is a hardware retrofitting project: taking an authentic vintage public coin payphone and equipping it with a Raspberry Pi, custom interface logic, character LCD display, and Python runtime.</description>
+      <description>zk_phone is a pet project of programming a physical payphone using a Raspberry Pi and Python.&#xA;Source Code: github.com/rrader/zk_phone Hardware: Payphone chassis, Raspberry Pi, HD44780 character LCD, matrix keypad, hook switch (reed switch) 1. How the Logic Works The software is written in Python and structured around a simple state machine in zk_phone/app.py.&#xA;State 1: Handset on Hook (HandsetPut) The LCD displays a greeting: Hello!. Service keypad codes are available while on hook: *1# — prints the local IP addresses of the Raspberry Pi to the LCD.</description>
     </item>
   </channel>
 </rss>

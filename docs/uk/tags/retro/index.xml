@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 14 Sep 2017 10:12:42 +0000</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/retro/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>zk_phone — Хакінг вінтажного таксофона на базі Raspberry Pi</title>
+      <title>zk_phone — програмування таксофона на базі Raspberry Pi</title>
       <link>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</link>
       <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/</guid>
-      <description>Вінтажне індустріальне обладнання минулих десятиліть має неповторну тактильну привабливість. Важкий сталевий антивандальний корпус, механічний дзвін монет при падінні у скарбничку, масивна телефонна слухавка на броньованому шнурі та металева матрична клавіатура дарують відчуття, які не здатні відтворити сучасні сенсорні смартфони.&#xA;zk_phone — це апаратний пет-проєкт глибокої модернізації (retrofitting): перетворення автентичного монетоприймального вуличного таксофона на інтерактивний цифровий пристрій під керуванням Raspberry Pi та власного софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: Монетний таксофон, Raspberry Pi, матрична клавіатура, текстовий LCD (HD44780), важіль слухавки (Hook switch) 1.</description>
+      <description>zk_phone — це пет-проєкт програмування вуличного таксофона на базі Raspberry Pi та софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: таксофон, Raspberry Pi, символьний LCD-дисплей (HD44780), матрична клавіатура, герконовий перемикач важеля слухавки (reed switch) 1. Як влаштована логіка Програма написана на Python і побудована на базі простого автомата станів (State Machine) у модулі zk_phone/app.py.&#xA;Стан 1: Трубка лежить на важелі (HandsetPut) На дисплеї світиться привітання: Hello!. Працюють сервісні коди з клавіатури: *1# — виводить на LCD поточні локальні IP-адреси Raspberry Pi.</description>
     </item>
   </channel>
 </rss>

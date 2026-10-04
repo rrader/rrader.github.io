@@ -1050,6 +1050,32 @@
     const slContainer = document.createElement('div');
     slContainer.className = 'sl-container';
 
+    // Detailed animated tied person on the track (Trolley Problem demonstration)
+    const MAN_FRAMES = [
+      [
+        "         ___  <- putin",
+        "        (o.O)  \"HELP!\"",
+        "       /( X )\\ /      ",
+        "      ==[#X#]==       ",
+        "        /   \\         ",
+        "=======d     b========"
+      ].join('\n'),
+      [
+        "         ___  <- putin",
+        "        (O.o)  \"HELP!\"",
+        "       /( X )\\ /      ",
+        "      ==[#X#]==       ",
+        "        |   |         ",
+        "=======d     b========"
+      ].join('\n')
+    ];
+
+    const obstacleEl = document.createElement('div');
+    obstacleEl.className = 'sl-obstacle';
+    obstacleEl.style.cssText = 'position: absolute; left: 120px; bottom: 0px; font-family: var(--font-retro), monospace; font-size: clamp(8px, 1.3vw, 13px); color: var(--accent-color); text-shadow: 0 0 6px var(--glow-color); z-index: 2; line-height: 1.15; white-space: pre; pointer-events: none;';
+    obstacleEl.textContent = MAN_FRAMES[0];
+    slContainer.appendChild(obstacleEl);
+
     const pre = document.createElement('pre');
     pre.className = 'sl-train';
     pre.textContent = frames[0];
@@ -1060,7 +1086,9 @@
     const containerWidth = containerEl.clientWidth || window.innerWidth;
     let posX = containerWidth;
     let frameIdx = 0;
+    let manIdx = 0;
     let tick = 0;
+    let hit = false;
     const trainWidth = 650;
 
     const interval = setInterval(() => {
@@ -1072,8 +1100,26 @@
         pre.textContent = frames[frameIdx];
       }
 
+      // Animate struggling tied person before impact
+      if (!hit && tick % 6 === 0) {
+        manIdx = (manIdx + 1) % MAN_FRAMES.length;
+        obstacleEl.textContent = MAN_FRAMES[manIdx];
+      }
+
       if (tick % 6 === 0) {
         playTrainChug();
+      }
+
+      // Contact with the tied figure around 130px
+      if (!hit && posX <= 180) {
+        hit = true;
+        playTrainChug();
+        obstacleEl.textContent = '\n\n   💥 *POOF* 💥\n======================';
+        setTimeout(() => {
+          if (obstacleEl.parentNode) {
+            obstacleEl.textContent = '\n\n         ...\n======================';
+          }
+        }, 260);
       }
 
       pre.style.transform = `translateX(${posX}px)`;
@@ -1093,8 +1139,8 @@
       inputEl.placeholder = oldPlaceholder;
       printLine(
         isUk
-          ? `🚂 <i>Поїзд проїхав! Можливо, ви мали на увазі <b style="color: var(--accent-color)">ls</b>?</i>`
-          : `🚂 <i>Train departed! Did you mean <b style="color: var(--accent-color)">ls</b>?</i>`,
+          ? `🚂 <i>Тепер, коли путін здох, можливо, ви мали на увазі <b style="color: var(--accent-color)">ls</b>?</i>`
+          : `🚂 <i>Now when putin is dead, did you mean <b style="color: var(--accent-color)">ls</b>?</i>`,
         'system'
       );
       inputEl.focus();

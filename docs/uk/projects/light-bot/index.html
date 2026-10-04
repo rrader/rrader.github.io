@@ -112,8 +112,8 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2026-07-04 16:26:24 &#43;0300 EEST">2026-07-04</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 490</span>
-      <span class="tty-badge"><span class="tty-label">READ:</span> ~3m</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 377</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
     
@@ -129,8 +129,6 @@ if (!doNotTrack) {
         <span class="tty-tag-pill">#telegram</span>
       
         <span class="tty-tag-pill">#homelab</span>
-      
-        <span class="tty-tag-pill">#home-assistant</span>
       
     </div>
     
@@ -161,17 +159,16 @@ if (!doNotTrack) {
           ▼
 [ Локальний роутер / Зонд ] ──(HTTPS + Токен)──► [ Віддалений хмарний VPS ]
                                                           │
-                        ┌─────────────────────────────────┴─────────────────────────────────┐
-                        ▼                                                                   ▼
-              [ Telegram-канал ]                                                  [ Home Assistant ]
-              (Живі звіти та статистика)                                          (Автоматизації / REST Sensor)
+                                                          ▼
+                                                [ Telegram-канал ]
+                                                (Живі звіти та статистика)
 </code></pre><ol>
 <li>
 <p><strong>Локальний крайовий зонд (<code>monitor.sh</code>):</strong></p>
 <ul>
 <li>Працює на роутері або міні-сервері, заживленому від станції резервного живлення.</li>
-<li>Періодично пінгує одну або кілька фіксованих IP-адрес пристроїв у локальній підмережі, підключених напряму до міської мережі 220V (наприклад, внутрішній блок кондиціонера чи розумну розетку).</li>
-<li>Має захист від помилкових спрацьовувань (debouncing): статус змінюється лише після кількох підтверджених невдалих спроб поспіль.</li>
+<li>Періодично пінгує фіксовану IP-адресу пристрою в локальній підмережі, підключеного напряму до міської мережі 220V (наприклад, внутрішній блок кондиціонера чи розумну розетку).</li>
+<li>Має захист від помилкових спрацьовувань (debouncing): статус змінюється лише після кількох підтверджених невдалих спроб поспіль (<code>CONSECUTIVE_CHECKS=3</code>).</li>
 <li>При зміні стану надсилає підписаний HTTPS-запит із токеном на віддалений VPS.</li>
 </ul>
 </li>
@@ -193,34 +190,16 @@ if (!doNotTrack) {
 <li><strong>Стійкість до збоїв:</strong> механізм повторних спроб надсилання гарантує, що ліміти Telegram API чи короткочасні збої зв&rsquo;язку не призведуть до втрати важливого статусу.</li>
 </ul>
 <hr>
-<h2 id="3-безпечний-rest-api-та-інтеграція-з-розумним-будинком">3. Безпечний REST API та інтеграція з розумним будинком</h2>
-<p>Крім публікації в месенджер, Light-Bot надає REST-ендпоінти для інтеграцій:</p>
+<h2 id="3-безпечний-rest-api">3. Безпечний REST API</h2>
+<p>Крім публікації в месенджер, Light-Bot надає REST-ендпоінти:</p>
 <ul>
-<li><code>GET /health</code> — перевірка працездатності для систем аптайм-моніторингу.</li>
-<li><code>GET /power-status</code> — повертає поточний статус, таймстемп та тривалість:
+<li><code>GET /health</code> — перевірка працездатності сервісу:
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;on&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;timestamp&#34;</span>: <span style="color:#ae81ff">1720100784</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;formatted_time&#34;</span>: <span style="color:#e6db74">&#34;2026-07-04 16:26:24&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;duration_minutes&#34;</span>: <span style="color:#ae81ff">252</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;status&#34;</span>: <span style="color:#e6db74">&#34;ok&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></li>
 <li><code>POST /power-status</code> — оновлення стану від локального скрипта за заголовком <code>Authorization: Bearer &lt;API_TOKEN&gt;</code>.</li>
 </ul>
-<h3 id="інтеграція-з-home-assistant">Інтеграція з Home Assistant</h3>
-<p>Через REST API система легко підключається до Home Assistant на Synology NAS як бінарний сенсор:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">binary_sensor</span>:
-</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">platform</span>: <span style="color:#ae81ff">rest</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Статус світла в оселі&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">resource</span>: <span style="color:#e6db74">&#34;https://your-server.com/power-status&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">method</span>: <span style="color:#ae81ff">GET</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">headers</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Authorization</span>: !<span style="color:#ae81ff">secret light_bot_token</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">User-Agent</span>: <span style="color:#e6db74">&#34;HomeAssistant/2026.9&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">device_class</span>: <span style="color:#ae81ff">power</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">value_template</span>: <span style="color:#e6db74">&#34;{{ value_json.status == &#39;on&#39; }}&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">scan_interval</span>: <span style="color:#ae81ff">15</span>
-</span></span></code></pre></div><p>Цей сенсор є ключовим тригером для енергозберігаючих сценаріїв: негайно вимикає бойлер та важкі нагрівачі при відключенні 220V, та плавно поновлює роботу клімату й заряджання станції після стабілізації напруги.</p>
 
   </div>
 
@@ -251,7 +230,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">490 words</span>
+            <span class="status-item">377 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

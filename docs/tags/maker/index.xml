@@ -29,12 +29,5 @@
       <guid>https://rrader.github.io/diy_posts/philips-vacuum-holder/</guid>
       <description>The cordless Philips 8000 Series Aqua Plus is great for quick daily cleanups, but in our cabinet shelf there simply isn&amp;rsquo;t enough vertical height to store the vacuum fully assembled. While the motor unit sits nicely on its original charging dock, the long aluminum extension tube and crevice nozzle have to be detached and parked on the wall right next to it.&#xA;Off-the-shelf broom clips and generic hardware store wall mounts don&amp;rsquo;t work:</description>
     </item>
-    <item>
-      <title>zk_phone — Hacking a Vintage Coin Payphone with Raspberry Pi</title>
-      <link>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</link>
-      <pubDate>Thu, 14 Sep 2017 10:12:42 +0000</pubDate>
-      <guid>https://rrader.github.io/diy_posts/zk-phone-raspberry-pi/</guid>
-      <description>There is a unique tactile satisfaction in mechanical, industrial equipment from past decades. Heavy steel enclosures, satisfying mechanical coin drop chimes, robust rotary or matrix keypads, and substantial handset receivers with coiled cords offer a physical interaction that modern glass smartphones simply cannot replicate.&#xA;zk_phone is a hardware retrofitting project: taking an authentic vintage public coin payphone and equipping it with a Raspberry Pi, custom interface logic, character LCD display, and Python runtime.</description>
-    </item>
   </channel>
 </rss>
