@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uart on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/uart/</link>
+    <description>Recent content in Uart on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/uart/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UART-монітор: спостереження за обміном даними через MSP430 LaunchPad</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.&#xA;Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:&#xA;Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard). Використати саму плату TI MSP430 LaunchPad виключно як апаратний USB-UART міст до комп&amp;rsquo;ютера.</description>
+    </item>
+    <item>
+      <title>Підключення мікроконтролера MSP430 до GSM-модуля SIM900A</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A (огляд плати) UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку 1. Схема підключення та живлення Схема підключення UART типова: лінія RX мікроконтролера з&amp;rsquo;єднується з TX модуля, а TX — з RX.&#xA;Щодо живлення SIM900A: для базового запуску та перевірки мені вистачило 3.3V безпосередньо з шини плати LaunchPad. Хоча за даташитом для впевненої роботи GSM-радіотракту потрібно від 3.4V до 4.5V (рекомендовано 4.0V) зі струмом у піках до 2A, для ініціалізації логіки 3.</description>
+    </item>
+    <item>
+      <title>Чому не варто купувати GSM-модуль SIM900A: огляд плати SIM900A Mini v3.4</title>
+      <link>https://rrader.github.io/uk/diy_posts/sim900a-mini-v34-caution/</link>
+      <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/sim900a-mini-v34-caution/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Підключення MSP430 до SIM900A UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку Замовив я розпаяний модуль SIM900A на компактній платі SIM900A Mini v3.4, до кінця не розібравшись у відмінностях між модифікаціями SIM900 та SIM900A.&#xA;Основна різниця в документації: SIM900 — чотирьохдіапазонний (quad-band, 850/900/1800/1900 МГц), а SIM900A — дводіапазонний (dual-band, 900/1800 МГц). Здавалося б, для європейських та українських мереж дводіапазонного 900/1800 МГц мало б вистачити з головою. Але ні.</description>
+    </item>
+  </channel>
+</rss>

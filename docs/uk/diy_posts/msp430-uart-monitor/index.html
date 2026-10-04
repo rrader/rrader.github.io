@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Пов&rsquo;язані статті серії:
+Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.
+Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:
+Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard). Використати саму плату TI MSP430 LaunchPad виключно як апаратний USB-UART міст до комп&rsquo;ютера.">  
+
+  <title>
+    
+      UART-монітор: спостереження за обміном даними через MSP430 LaunchPad // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../diy_posts/msp430-uart-monitor/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/diy_posts/msp430-uart-monitor/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../uk/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/msp430-uart-monitor.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat msp430-uart-monitor.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-18 21:08:00 &#43;0200 EET">2015-01-18</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 134</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#hardware</span>
+      
+        <span class="tty-tag-pill">#msp430</span>
+      
+        <span class="tty-tag-pill">#launchpad</span>
+      
+        <span class="tty-tag-pill">#uart</span>
+      
+        <span class="tty-tag-pill">#debugging</span>
+      
+        <span class="tty-tag-pill">#serial</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">UART-монітор: спостереження за обміном даними через MSP430 LaunchPad</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../diy_posts/msp430-uart-monitor/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p><em>Пов&rsquo;язані статті серії:</em></p>
+<ul>
+<li><a href="../../../uk/diy_posts/sim900a-mini-v34-caution/">Чому не варто купувати GSM-модуль SIM900A</a></li>
+<li><a href="../../../uk/diy_posts/msp430-interfacing-sim900a/">Підключення MSP430 до SIM900A</a></li>
+</ul>
+<hr>
+<p>Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.</p>
+<p>Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:</p>
+<ol>
+<li>Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard).</li>
+<li>Використати саму плату <strong>TI MSP430 LaunchPad</strong> виключно як апаратний USB-UART міст до комп&rsquo;ютера.</li>
+</ol>
+<p>Схема підключення для перехоплення відповідей пристрою:</p>
+<p><img alt="Схема підключення UART для моніторингу через LaunchPad" src="../../../images/msp430-uart-monitor/image-01.png"></p>
+<p>На комп&rsquo;ютері для читання трафіку з послідовного порту використовується вбудований <em>Serial Monitor</em> у середовищі Energia (або будь-яка інша термінальна програма на зразок <code>minicom</code>, <code>screen</code> чи <code>picocom</code>):</p>
+<p><img alt="Виведення перехоплених AT-команд у Serial Monitor" src="../../../images/msp430-uart-monitor/image-02.png"></p>
+<p>Така схема дозволяє бачити всі команди в реальному часі без внесення затримок чи спотворень у протокол обміну.</p>
+<hr>
+<p><em>Цей матеріал було перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2015/01/uart-uart.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: msp430-uart-monitor.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">msp430-uart-monitor.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">134 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

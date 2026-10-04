@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Related series articles:
+Connecting MSP430 to SIM900A MSP430-based Hardware UART Monitor I ordered a breakout board featuring the SIM900A Mini v3.4, without thoroughly researching the architectural differences between the SIM900 and SIM900A hardware revisions.
+The main datasheet distinction is that SIM900 is a quad-band modem (850/900/1800/1900 MHz), while SIM900A is dual-band (900/1800 MHz). On paper, dual-band should have been sufficient for European mobile networks. However, there is a catch.
+The SIM900A module enforces a strict firmware-level regional lock.">  
+
+  <title>
+    
+      Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../diy_posts/sim900a-mini-v34-caution/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/diy_posts/sim900a-mini-v34-caution/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/sim900a-mini-v34-caution.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat sim900a-mini-v34-caution.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-15 16:06:00 &#43;0200 EET">2015-01-15</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 246</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#hardware</span>
+      
+        <span class="tty-tag-pill">#gsm</span>
+      
+        <span class="tty-tag-pill">#sim900</span>
+      
+        <span class="tty-tag-pill">#fail</span>
+      
+        <span class="tty-tag-pill">#msp430</span>
+      
+        <span class="tty-tag-pill">#uart</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/diy_posts/sim900a-mini-v34-caution/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p><em>Related series articles:</em></p>
+<ul>
+<li><a href="../../diy_posts/msp430-interfacing-sim900a/">Connecting MSP430 to SIM900A</a></li>
+<li><a href="../../diy_posts/msp430-uart-monitor/">MSP430-based Hardware UART Monitor</a></li>
+</ul>
+<hr>
+<p>I ordered a breakout board featuring the <strong>SIM900A Mini v3.4</strong>, without thoroughly researching the architectural differences between the SIM900 and SIM900A hardware revisions.</p>
+<p>The main datasheet distinction is that <strong>SIM900</strong> is a quad-band modem (850/900/1800/1900 MHz), while <strong>SIM900A</strong> is dual-band (900/1800 MHz). On paper, dual-band should have been sufficient for European mobile networks. <strong>However, there is a catch.</strong></p>
+<p>The SIM900A module enforces a strict <strong>firmware-level regional lock</strong>.</p>
+<p>Here is the list of officially supported territories and Mobile Country Codes (MCC):</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Supported MCC Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China</td>
+<td>460</td>
+</tr>
+<tr>
+<td>India</td>
+<td>404 / 405</td>
+</tr>
+<tr>
+<td>Singapore</td>
+<td>525</td>
+</tr>
+<tr>
+<td>Malaysia</td>
+<td>502</td>
+</tr>
+<tr>
+<td>Thailand</td>
+<td>520</td>
+</tr>
+<tr>
+<td>Indonesia</td>
+<td>510</td>
+</tr>
+<tr>
+<td>Cambodia</td>
+<td>456</td>
+</tr>
+<tr>
+<td>Vietnam</td>
+<td>452</td>
+</tr>
+<tr>
+<td>Laos</td>
+<td>457</td>
+</tr>
+<tr>
+<td>Myanmar (Burma)</td>
+<td>414</td>
+</tr>
+<tr>
+<td>Brunei</td>
+<td>528</td>
+</tr>
+<tr>
+<td>Philippines</td>
+<td>515</td>
+</tr>
+<tr>
+<td>East Timor</td>
+<td>514</td>
+</tr>
+</tbody>
+</table>
+<p>The hardware board:</p>
+<p><img alt="SIM900A Mini v3.4 — Front side" src="../../images/sim900a-mini/image-01.jpg"></p>
+<p><img alt="SIM900A Mini v3.4 — Back side" src="../../images/sim900a-mini/image-02.jpg"></p>
+<p>After wiring up the module and establishing bidirectional UART communication, I ran into unexpected behavior:</p>
+<ul>
+<li>The module scanned base stations normally (network discovery via <code>AT+COPS=?</code> returned available cell carriers);</li>
+<li>It recognized the inserted SIM card;</li>
+<li>Yet <strong>it persistently failed to register on the cell tower</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>AT+CREG?
+</span></span><span style="display:flex;"><span>+CREG: 1,0
+</span></span><span style="display:flex;"><span>OK
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AT+CPIN?
+</span></span><span style="display:flex;"><span>+CPIN: PH-NET PIN
+</span></span><span style="display:flex;"><span>OK
+</span></span></code></pre></div><p>The response <code>+CPIN: PH-NET PIN</code> indicates that the chip is carrier/region-locked and demands a network unlock password.</p>
+<p><strong>Takeaway:</strong> Avoid ordering breakout boards equipped with the <strong>SIM900A</strong> revision unless you are prepared to perform custom firmware reflashing via SIMCom proprietary flashing tools. Standard <strong>SIM900</strong> modems (without the &ldquo;A&rdquo; suffix) are genuine quad-band devices without regional restrictions.</p>
+<hr>
+<p><em>This post was migrated from the legacy blog <a href="https://antigluk.blogspot.com/2015/01/sim900a-sim900-mini-v34-board.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: sim900a-mini-v34-caution.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">sim900a-mini-v34-caution.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">246 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

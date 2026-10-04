@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embedded on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/embedded/</link>
+    <description>Recent content in Embedded on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Thu, 05 Mar 2015 16:20:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Кодова клавіатура 4×4 для охоронної системи на базі MSP430</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-security-keypad/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-security-keypad/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Електрична схема та збірка охоронної сигналізації на MSP430 Створено інтерфейсну панель керування охоронної системи.&#xA;Встановлення та зняття з охорони здійснюється за допомогою цифрового пароля, тому системі необхідний надійний механізм введення коду доступу, валідації та його оперативної зміни.&#xA;1. Збереження пароля у Flash-пам&amp;rsquo;яті Мікроконтролер MSP430G2553 містить енергонезалежну сегментовану флеш-пам&amp;rsquo;ять (4 інформаційні сегменти по 64 байти). Саме в цій інформаційній пам&amp;rsquo;яті (Information Memory) зберігається встановлений пароль, що дозволяє не втрачати його при знеструмленні охоронної системи.</description>
+    </item>
+  </channel>
+</rss>

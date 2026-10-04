@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alarm on Roman Rader</title>
+    <link>https://rrader.github.io/tags/alarm/</link>
+    <description>Recent content in Alarm on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/alarm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSP430 Security Alarm: Electrical Schematics &amp; Hardware Build</title>
+      <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</guid>
+      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module The concluding phase of designing, assembling, and packaging a standalone security alarm unit around the TI MSP430G2553 microcontroller.&#xA;1. Electrical Schematic The circuit unites the microcontroller core, optically isolated sensor loops (reed door switches and PIR motion sensors), transistor driver stages for sirens and status indicators, a keypad connector header, and a UART telemetry link to the GSM modem:</description>
+    </item>
+  </channel>
+</rss>

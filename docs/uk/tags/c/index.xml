@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/c/</link>
+    <description>Recent content in C on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Tue, 15 Jul 2014 14:01:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-adc-python-plotter/</link>
+      <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-adc-python-plotter/</guid>
+      <description>Останнім часом я експериментував із налагоджувальною платою TI MSP430 Launchpad (мікроконтролер MSP430G2553). При роботі з аналого-цифровим перетворювачем (АЦП) дуже не вистачало наочної візуалізації даних. Оскільки на платі Launchpad реалізовано міст UART-USB, виникла ідея виводити отримані вимірювання на комп&amp;rsquo;ютер і будувати живий графік у реальному часі.&#xA;1. Прошивка мікроконтролера Алгоритм прошивки для контролера досить простий: він безперервно зчитує значення з АЦП та надсилає його в UART. Проте є важлива деталь: перед початком передачі даних потрібно виконати квитування («handshake») — дочекатися стартового символу від комп&amp;rsquo;ютера.</description>
+    </item>
+  </channel>
+</rss>

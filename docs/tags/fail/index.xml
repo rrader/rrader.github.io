@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fail on Roman Rader</title>
+    <link>https://rrader.github.io/tags/fail/</link>
+    <description>Recent content in Fail on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Jan 2015 16:06:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/fail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review</title>
+      <link>https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/</link>
+      <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/</guid>
+      <description>Related series articles:&#xA;Connecting MSP430 to SIM900A MSP430-based Hardware UART Monitor I ordered a breakout board featuring the SIM900A Mini v3.4, without thoroughly researching the architectural differences between the SIM900 and SIM900A hardware revisions.&#xA;The main datasheet distinction is that SIM900 is a quad-band modem (850/900/1800/1900 MHz), while SIM900A is dual-band (900/1800 MHz). On paper, dual-band should have been sufficient for European mobile networks. However, there is a catch.&#xA;The SIM900A module enforces a strict firmware-level regional lock.</description>
+    </item>
+  </channel>
+</rss>

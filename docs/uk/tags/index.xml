@@ -190,5 +190,124 @@
       <guid>https://rrader.github.io/uk/tags/retro/</guid>
       <description></description>
     </item>
+    <item>
+      <title>Alarm</title>
+      <link>https://rrader.github.io/uk/tags/alarm/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/alarm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Electronics</title>
+      <link>https://rrader.github.io/uk/tags/electronics/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/electronics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Msp430</title>
+      <link>https://rrader.github.io/uk/tags/msp430/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/msp430/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Schematics</title>
+      <link>https://rrader.github.io/uk/tags/schematics/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/schematics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://rrader.github.io/uk/tags/security/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Embedded</title>
+      <link>https://rrader.github.io/uk/tags/embedded/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/embedded/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Energia</title>
+      <link>https://rrader.github.io/uk/tags/energia/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/energia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Keypad</title>
+      <link>https://rrader.github.io/uk/tags/keypad/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/keypad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Debugging</title>
+      <link>https://rrader.github.io/uk/tags/debugging/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/debugging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Launchpad</title>
+      <link>https://rrader.github.io/uk/tags/launchpad/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/launchpad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Serial</title>
+      <link>https://rrader.github.io/uk/tags/serial/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/serial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Uart</title>
+      <link>https://rrader.github.io/uk/tags/uart/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/uart/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gsm</title>
+      <link>https://rrader.github.io/uk/tags/gsm/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/gsm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sim900</title>
+      <link>https://rrader.github.io/uk/tags/sim900/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/sim900/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fail</title>
+      <link>https://rrader.github.io/uk/tags/fail/</link>
+      <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/fail/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>https://rrader.github.io/uk/tags/c/</link>
+      <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Matplotlib</title>
+      <link>https://rrader.github.io/uk/tags/matplotlib/</link>
+      <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/matplotlib/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

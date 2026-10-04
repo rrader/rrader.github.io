@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debugging on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/debugging/</link>
+    <description>Recent content in Debugging on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/debugging/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UART-монітор: спостереження за обміном даними через MSP430 LaunchPad</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.&#xA;Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:&#xA;Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard). Використати саму плату TI MSP430 LaunchPad виключно як апаратний USB-UART міст до комп&amp;rsquo;ютера.</description>
+    </item>
+  </channel>
+</rss>

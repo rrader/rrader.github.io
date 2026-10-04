@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embedded on Roman Rader</title>
+    <link>https://rrader.github.io/tags/embedded/</link>
+    <description>Recent content in Embedded on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Mar 2015 16:20:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/embedded/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</title>
+      <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/msp430-security-keypad/</guid>
+      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build I built the user-facing interface subsystem for my custom DIY home alarm.&#xA;Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.&#xA;1. Non-Volatile Passcode Storage in Flash The MSP430G2553 MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.</description>
+    </item>
+  </channel>
+</rss>

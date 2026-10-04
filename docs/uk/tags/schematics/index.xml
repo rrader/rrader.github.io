@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Schematics on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/schematics/</link>
+    <description>Recent content in Schematics on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/schematics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Схема та апаратна реалізація охоронної сигналізації на базі MSP430</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</link>
+      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Кодова клавіатура 4×4 для охоронної системи на базі MSP430 Підключення MSP430 до GSM-модуля SIM900 UART-монітор для налагодження зв&amp;rsquo;язку Чому не варто купувати GSM-модуль SIM900A Фінальний етап розробки та збірки автономної охоронної сигналізації на базі мікроконтролера TI MSP430G2553.&#xA;1. Електрична принципова схема Схема об&amp;rsquo;єднує мікроконтролер, гальванічно розв&amp;rsquo;язані входи для охоронних шлейфів (герконів та датчиків руху), вихідні ключі навантаження для сирени й світлової індикації, роз&amp;rsquo;єм підключення кодової клавіатури та шину UART для зв&amp;rsquo;язку з GSM-модулем:</description>
+    </item>
+  </channel>
+</rss>

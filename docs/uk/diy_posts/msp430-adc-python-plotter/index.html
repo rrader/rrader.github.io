@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Останнім часом я експериментував із налагоджувальною платою TI MSP430 Launchpad (мікроконтролер MSP430G2553). При роботі з аналого-цифровим перетворювачем (АЦП) дуже не вистачало наочної візуалізації даних. Оскільки на платі Launchpad реалізовано міст UART-USB, виникла ідея виводити отримані вимірювання на комп&rsquo;ютер і будувати живий графік у реальному часі.
+1. Прошивка мікроконтролера Алгоритм прошивки для контролера досить простий: він безперервно зчитує значення з АЦП та надсилає його в UART. Проте є важлива деталь: перед початком передачі даних потрібно виконати квитування («handshake») — дочекатися стартового символу від комп&rsquo;ютера.">  
+
+  <title>
+    
+      Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../diy_posts/msp430-adc-python-plotter/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/diy_posts/msp430-adc-python-plotter/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../uk/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: diy_posts/msp430-adc-python-plotter.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat msp430-adc-python-plotter.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2014-07-15 14:01:00 &#43;0300 EEST">2014-07-15</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 1099</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~6m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#hardware</span>
+      
+        <span class="tty-tag-pill">#msp430</span>
+      
+        <span class="tty-tag-pill">#launchpad</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#c</span>
+      
+        <span class="tty-tag-pill">#matplotlib</span>
+      
+        <span class="tty-tag-pill">#serial</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../diy_posts/msp430-adc-python-plotter/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p>Останнім часом я експериментував із налагоджувальною платою <strong>TI MSP430 Launchpad</strong> (мікроконтролер MSP430G2553). При роботі з аналого-цифровим перетворювачем (АЦП) дуже не вистачало наочної візуалізації даних. Оскільки на платі Launchpad реалізовано міст UART-USB, виникла ідея виводити отримані вимірювання на комп&rsquo;ютер і будувати живий графік у реальному часі.</p>
+<p><img alt="TI MSP430 Launchpad" src="../../../images/msp430-adc/image-01.png"></p>
+<hr>
+<h2 id="1-прошивка-мікроконтролера">1. Прошивка мікроконтролера</h2>
+<p>Алгоритм прошивки для контролера досить простий: він безперервно зчитує значення з АЦП та надсилає його в UART. Проте є важлива деталь: перед початком передачі даних потрібно виконати квитування («handshake») — дочекатися стартового символу від комп&rsquo;ютера.</p>
+<p>Високорівневий алгоритм:</p>
+<ol>
+<li>Ініціалізація UART (9600 бод) та АЦП (канал 10 — внутрішній датчик температури).</li>
+<li>Очікування стартового сигналу («handshake»).</li>
+<li>У нескінченному циклі зчитування температури та передача значення в UART.</li>
+</ol>
+<h3 id="ініціалізація-ацп-канал-внутрішнього-термодатчика">Ініціалізація АЦП (канал внутрішнього термодатчика):</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ADC_init</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">=</span> SREF_1 <span style="color:#f92672">+</span> REFON <span style="color:#f92672">+</span> ADC10ON <span style="color:#f92672">+</span> ADC10SHT_3;
+</span></span><span style="display:flex;"><span>    ADC10CTL1 <span style="color:#f92672">=</span> INCH_10 <span style="color:#f92672">+</span> ADC10DIV_3;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getTemperatureCelsius</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__delay_cycles</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">|=</span> ENC <span style="color:#f92672">+</span> ADC10SC;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (ADC10CTL1 <span style="color:#f92672">&amp;</span> BUSY);
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> ADC10MEM;
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">&amp;=</span> <span style="color:#f92672">~</span>ENC;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">int</span>) ((t <span style="color:#f92672">*</span> <span style="color:#ae81ff">27069L</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">18169625L</span>) <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">16</span>);  <span style="color:#75715e">// формула переводу в градуси Цельсія
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><h3 id="квитування-звязку-handshake">Квитування зв&rsquo;язку (Handshake):</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ((c <span style="color:#f92672">=</span> <span style="color:#a6e22e">uart_getc</span>()) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;1&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">uart_puts</span>((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span></code></pre></div><p>Контролер чекає символ <code>'1'</code>, а після отримання надсилає у відповідь <code>&quot;OK&quot;</code>.</p>
+<p>Після цього починається безперервна передача температури:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_printf</span>(<span style="color:#e6db74">&#34;%i</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">getTemperatureCelsius</span>());
+</span></span><span style="display:flex;"><span>    P1OUT <span style="color:#f92672">^=</span> <span style="color:#ae81ff">0x1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Функція <code>uart_printf</code> форматує ціле число у рядок і надсилає через UART.</p>
+<hr>
+<h2 id="2-додаток-для-побудови-графіків-python">2. Додаток для побудови графіків (Python)</h2>
+<p>Для побудови графіків у Python чудово підходить бібліотека <code>matplotlib</code>, а для читання даних з послідовного порту — <code>pySerial</code>.</p>
+<p>При підключенні Launchpad до комп&rsquo;ютера на Linux створюється пристрій <code>/dev/ttyACM0</code>.</p>
+<p>Програма складається з двох потоків:</p>
+<ol>
+<li><strong>Обробка послідовного порту:</strong> читання байтів з порту та наповнення кільцевого буфера.</li>
+<li><strong>Оновлення графіка:</strong> безперервна анімація за допомогою <code>matplotlib.animation.FuncAnimation</code>.</li>
+</ol>
+<h3 id="обробка-послідовного-порту">Обробка послідовного порту</h3>
+<p>Глобальна черга <code>data = deque(0 for _ in range(5000))</code> містить вихідні дані, а <code>dataP = deque(0 for _ in range(5000))</code> — згладжені значення.</p>
+<p>У потоці порту відкриваємо з&rsquo;єднання та виконуємо handshake:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ser <span style="color:#f92672">=</span> serial<span style="color:#f92672">.</span>Serial(<span style="color:#e6db74">&#39;/dev/ttyACM0&#39;</span>, <span style="color:#ae81ff">9600</span>, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>ok <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ok<span style="color:#f92672">.</span>strip() <span style="color:#f92672">!=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;OK&#39;</span>:
+</span></span><span style="display:flex;"><span>    ser<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>    ok <span style="color:#f92672">=</span> ser<span style="color:#f92672">.</span>readline()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Handshake OK!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>Після квитування починаємо читати вимірювання:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        val <span style="color:#f92672">=</span> int(ser<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>strip())
+</span></span><span style="display:flex;"><span>        addValue(val)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><p>Оскільки UART іноді дає збої через перешкоди, винятки <code>ValueError</code> відловлюються.</p>
+<p>Функція <code>addValue</code> додає нове значення до черги та вираховує зважене ковзне середнє (EMA):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>avg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">addValue</span>(val):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> avg
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">.</span>append(val)
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>    avg <span style="color:#f92672">=</span> avg <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> (val <span style="color:#f92672">-</span> avg)
+</span></span><span style="display:flex;"><span>    dataP<span style="color:#f92672">.</span>append(avg)
+</span></span><span style="display:flex;"><span>    dataP<span style="color:#f92672">.</span>popleft()
+</span></span></code></pre></div><p>Розрахунок згладжування:</p>
+<p><img alt="Формула згладжування" src="../../../images/msp430-adc/image-02.png"></p>
+<h3 id="візуалізація-графіка">Візуалізація графіка</h3>
+<p>Створюємо вікно з двома графіками (сирий сигнал та згладжене середнє):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fig, (p1, p2) <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>plot_data, <span style="color:#f92672">=</span> p1<span style="color:#f92672">.</span>plot(data, animated<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>plot_processed, <span style="color:#f92672">=</span> p2<span style="color:#f92672">.</span>plot(data, animated<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>p1<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>p2<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">animate</span>(i):
+</span></span><span style="display:flex;"><span>    plot_data<span style="color:#f92672">.</span>set_ydata(data)
+</span></span><span style="display:flex;"><span>    plot_data<span style="color:#f92672">.</span>set_xdata(range(len(data)))
+</span></span><span style="display:flex;"><span>    plot_processed<span style="color:#f92672">.</span>set_ydata(dataP)
+</span></span><span style="display:flex;"><span>    plot_processed<span style="color:#f92672">.</span>set_xdata(range(len(dataP)))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [plot_data, plot_processed]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ani <span style="color:#f92672">=</span> animation<span style="color:#f92672">.</span>FuncAnimation(fig, animate, range(<span style="color:#ae81ff">10000</span>), interval<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, blit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>Результат роботи програми:</p>
+<p><img alt="Графік вимірювання температури у реальному часі" src="../../../images/msp430-adc/image-03.png"></p>
+<p>На першому графіку відображаються сирі дані з АЦП, а на другому — згладжені значення.</p>
+<hr>
+<h2 id="3-повні-вихідні-коди">3. Повні вихідні коди</h2>
+<h3 id="python-скрипт-plotterpy">Python-скрипт (<code>plotter.py</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.animation <span style="color:#66d9ef">as</span> animation
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> serial
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> collections <span style="color:#f92672">import</span> deque
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> deque(<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5000</span>))
+</span></span><span style="display:flex;"><span>dataP <span style="color:#f92672">=</span> deque(<span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5000</span>))
+</span></span><span style="display:flex;"><span>avg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">addValue</span>(val):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> avg
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">.</span>append(val)
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>    avg <span style="color:#f92672">=</span> avg <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span> <span style="color:#f92672">*</span> (val <span style="color:#f92672">-</span> avg)
+</span></span><span style="display:flex;"><span>    dataP<span style="color:#f92672">.</span>append(avg)
+</span></span><span style="display:flex;"><span>    dataP<span style="color:#f92672">.</span>popleft()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">msp430</span>():
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Connecting...&#34;</span>)
+</span></span><span style="display:flex;"><span>    ser <span style="color:#f92672">=</span> serial<span style="color:#f92672">.</span>Serial(<span style="color:#e6db74">&#39;/dev/ttyACM0&#39;</span>, <span style="color:#ae81ff">9600</span>, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Connected!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Handshake...</span>
+</span></span><span style="display:flex;"><span>    ok <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ok<span style="color:#f92672">.</span>strip() <span style="color:#f92672">!=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;OK&#39;</span>:
+</span></span><span style="display:flex;"><span>        ser<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>        ok <span style="color:#f92672">=</span> ser<span style="color:#f92672">.</span>readline()
+</span></span><span style="display:flex;"><span>        print(ok<span style="color:#f92672">.</span>strip())
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Handshake OK!</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            val <span style="color:#f92672">=</span> int(ser<span style="color:#f92672">.</span>readline()<span style="color:#f92672">.</span>strip())
+</span></span><span style="display:flex;"><span>            addValue(val)
+</span></span><span style="display:flex;"><span>            print(val)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ValueError</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>msp430)<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fig, (p1, p2) <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    plot_data, <span style="color:#f92672">=</span> p1<span style="color:#f92672">.</span>plot(data, animated<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    plot_processed, <span style="color:#f92672">=</span> p2<span style="color:#f92672">.</span>plot(data, animated<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    p1<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>    p2<span style="color:#f92672">.</span>set_ylim(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">animate</span>(i):
+</span></span><span style="display:flex;"><span>        plot_data<span style="color:#f92672">.</span>set_ydata(data)
+</span></span><span style="display:flex;"><span>        plot_data<span style="color:#f92672">.</span>set_xdata(range(len(data)))
+</span></span><span style="display:flex;"><span>        plot_processed<span style="color:#f92672">.</span>set_ydata(dataP)
+</span></span><span style="display:flex;"><span>        plot_processed<span style="color:#f92672">.</span>set_xdata(range(len(dataP)))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> [plot_data, plot_processed]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ani <span style="color:#f92672">=</span> animation<span style="color:#f92672">.</span>FuncAnimation(fig, animate, range(<span style="color:#ae81ff">10000</span>), interval<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>, blit<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><h3 id="прошивка-msp430-на-c-mainc">Прошивка MSP430 на C (<code>main.c</code>)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;msp430g2553.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;legacymsp430.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdarg.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Прототипи функцій
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_init</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_set_rx_isr_ptr</span>(<span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>isr_ptr)(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#a6e22e">uart_getc</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_putc</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_puts</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_printf</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>, ...);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ADC_init</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getTemperatureCelsius</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_rx_isr</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c) {
+</span></span><span style="display:flex;"><span>    P1OUT <span style="color:#f92672">^=</span> <span style="color:#ae81ff">0x40</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    WDTCTL <span style="color:#f92672">=</span> WDTPW <span style="color:#f92672">+</span> WDTHOLD;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    BCSCTL1 <span style="color:#f92672">=</span> CALBC1_8MHZ; <span style="color:#75715e">// DCO 8 МГц
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    DCOCTL <span style="color:#f92672">=</span> CALDCO_8MHZ;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    P1DIR <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xff</span>;
+</span></span><span style="display:flex;"><span>    P1OUT <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x1</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ADC_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_set_rx_isr_ptr</span>(uart_rx_isr);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__bis_SR_register</span>(GIE); <span style="color:#75715e">// глобальний дозвіл переривань
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// UART Handshake
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((c <span style="color:#f92672">=</span> <span style="color:#a6e22e">uart_getc</span>()) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;1&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_puts</span>((<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">OK</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">|=</span> ADC10SC;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">uart_printf</span>(<span style="color:#e6db74">&#34;%i</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">getTemperatureCelsius</span>());
+</span></span><span style="display:flex;"><span>        P1OUT <span style="color:#f92672">^=</span> <span style="color:#ae81ff">0x1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ADC_init</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">=</span> SREF_1 <span style="color:#f92672">+</span> REFON <span style="color:#f92672">+</span> ADC10ON <span style="color:#f92672">+</span> ADC10SHT_3;
+</span></span><span style="display:flex;"><span>    ADC10CTL1 <span style="color:#f92672">=</span> INCH_10 <span style="color:#f92672">+</span> ADC10DIV_3;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getTemperatureCelsius</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> t <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">__delay_cycles</span>(<span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">|=</span> ENC <span style="color:#f92672">+</span> ADC10SC;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (ADC10CTL1 <span style="color:#f92672">&amp;</span> BUSY);
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> ADC10MEM;
+</span></span><span style="display:flex;"><span>    ADC10CTL0 <span style="color:#f92672">&amp;=</span> <span style="color:#f92672">~</span>ENC;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">int</span>) ((t <span style="color:#f92672">*</span> <span style="color:#ae81ff">27069L</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">18169625L</span>) <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">16</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// UART реалізація
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#define RXD BIT1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define TXD BIT2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>uart_rx_isr_ptr)(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_init</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_set_rx_isr_ptr</span>(<span style="color:#ae81ff">0L</span>);
+</span></span><span style="display:flex;"><span>    P1SEL <span style="color:#f92672">=</span> RXD <span style="color:#f92672">+</span> TXD;
+</span></span><span style="display:flex;"><span>    P1SEL2 <span style="color:#f92672">=</span> RXD <span style="color:#f92672">+</span> TXD;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    UCA0CTL1 <span style="color:#f92672">|=</span> UCSSEL_2; <span style="color:#75715e">// SMCLK
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 8,000,000Hz, 9600 Baud
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    UCA0BR0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">52</span>;
+</span></span><span style="display:flex;"><span>    UCA0BR1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    UCA0MCTL <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x10</span> <span style="color:#f92672">|</span> UCOS16;
+</span></span><span style="display:flex;"><span>    UCA0CTL1 <span style="color:#f92672">&amp;=</span> <span style="color:#f92672">~</span>UCSWRST;
+</span></span><span style="display:flex;"><span>    IE2 <span style="color:#f92672">|=</span> UCA0RXIE;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_set_rx_isr_ptr</span>(<span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>isr_ptr)(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c)) {
+</span></span><span style="display:flex;"><span>    uart_rx_isr_ptr <span style="color:#f92672">=</span> isr_ptr;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#a6e22e">uart_getc</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>(IFG2 <span style="color:#f92672">&amp;</span> UCA0RXIFG));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> UCA0RXBUF;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_putc</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> c) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>(IFG2 <span style="color:#f92672">&amp;</span> UCA0TXIFG));
+</span></span><span style="display:flex;"><span>    UCA0TXBUF <span style="color:#f92672">=</span> c;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_puts</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>str) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">*</span>str) <span style="color:#a6e22e">uart_putc</span>(<span style="color:#f92672">*</span>str<span style="color:#f92672">++</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">interrupt</span>(USCIAB0RX_VECTOR) <span style="color:#a6e22e">USCI0RX_ISR</span>(<span style="color:#66d9ef">void</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (uart_rx_isr_ptr <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0L</span>) {
+</span></span><span style="display:flex;"><span>        (uart_rx_isr_ptr)(UCA0RXBUF);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Легковагова uart_printf
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> dv[] <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">1000000000</span>, <span style="color:#ae81ff">100000000</span>, <span style="color:#ae81ff">10000000</span>, <span style="color:#ae81ff">1000000</span>, <span style="color:#ae81ff">100000</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">10000</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">xtoa</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> x, <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#f92672">*</span>dp) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> c;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> d;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (x <span style="color:#f92672">&lt;</span> <span style="color:#f92672">*</span>dp) <span style="color:#f92672">++</span>dp;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>            d <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>dp<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            c <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (x <span style="color:#f92672">&gt;=</span> d) <span style="color:#f92672">++</span>c, x <span style="color:#f92672">-=</span> d;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">uart_putc</span>(c);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>(d <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">uart_putc</span>(<span style="color:#e6db74">&#39;0&#39;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">puth</span>(<span style="color:#66d9ef">unsigned</span> n) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> hex[<span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;0&#39;</span>,<span style="color:#e6db74">&#39;1&#39;</span>,<span style="color:#e6db74">&#39;2&#39;</span>,<span style="color:#e6db74">&#39;3&#39;</span>,<span style="color:#e6db74">&#39;4&#39;</span>,<span style="color:#e6db74">&#39;5&#39;</span>,<span style="color:#e6db74">&#39;6&#39;</span>,<span style="color:#e6db74">&#39;7&#39;</span>,<span style="color:#e6db74">&#39;8&#39;</span>,<span style="color:#e6db74">&#39;9&#39;</span>,<span style="color:#e6db74">&#39;A&#39;</span>,<span style="color:#e6db74">&#39;B&#39;</span>,<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#e6db74">&#39;D&#39;</span>,<span style="color:#e6db74">&#39;E&#39;</span>,<span style="color:#e6db74">&#39;F&#39;</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">uart_putc</span>(hex[n <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">15</span>]);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">uart_printf</span>(<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>format, ...) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> c;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">long</span> n;
+</span></span><span style="display:flex;"><span>    va_list a;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">va_start</span>(a, format);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((c <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>format<span style="color:#f92672">++</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;%&#39;</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">switch</span> (c <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>format<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;s&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">uart_puts</span>(<span style="color:#a6e22e">va_arg</span>(a, <span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)); <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;c&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">uart_putc</span>(<span style="color:#a6e22e">va_arg</span>(a, <span style="color:#66d9ef">char</span>)); <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;i&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;u&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    i <span style="color:#f92672">=</span> <span style="color:#a6e22e">va_arg</span>(a, <span style="color:#66d9ef">int</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;i&#39;</span> <span style="color:#f92672">&amp;&amp;</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) i <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>i, <span style="color:#a6e22e">uart_putc</span>(<span style="color:#e6db74">&#39;-&#39;</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">xtoa</span>((<span style="color:#66d9ef">unsigned</span>)i, dv <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;l&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;n&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    n <span style="color:#f92672">=</span> <span style="color:#a6e22e">va_arg</span>(a, <span style="color:#66d9ef">long</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;l&#39;</span> <span style="color:#f92672">&amp;&amp;</span> n <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) n <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>n, <span style="color:#a6e22e">uart_putc</span>(<span style="color:#e6db74">&#39;-&#39;</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">xtoa</span>((<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span>)n, dv);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;x&#39;</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>                    i <span style="color:#f92672">=</span> <span style="color:#a6e22e">va_arg</span>(a, <span style="color:#66d9ef">int</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">puth</span>(i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">12</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">puth</span>(i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">puth</span>(i <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">puth</span>(i);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">goto</span> bad_fmt;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>bad_fmt:    <span style="color:#a6e22e">uart_putc</span>(c);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">va_end</span>(a);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h2 id="джерела-та-подяки">Джерела та подяки</h2>
+<ul>
+<li>[1] UART: Stefan Wendler — <em>gpio.kaltpost.de</em></li>
+<li>[2] ADC: <em>Using the internal temperature sensor on MSP430</em></li>
+<li>[3] printf: <em>Tiny printf C version for MSP430 (43oh forum)</em></li>
+</ul>
+<hr>
+<p><em>Цей матеріал було перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2014/07/plotting-live-data-from-msp430-adc-in.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: msp430-adc-python-plotter.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">msp430-adc-python-plotter.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">1099 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

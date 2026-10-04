@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Energia on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/energia/</link>
+    <description>Recent content in Energia on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Thu, 05 Mar 2015 16:20:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/energia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Кодова клавіатура 4×4 для охоронної системи на базі MSP430</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-security-keypad/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-security-keypad/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Електрична схема та збірка охоронної сигналізації на MSP430 Створено інтерфейсну панель керування охоронної системи.&#xA;Встановлення та зняття з охорони здійснюється за допомогою цифрового пароля, тому системі необхідний надійний механізм введення коду доступу, валідації та його оперативної зміни.&#xA;1. Збереження пароля у Flash-пам&amp;rsquo;яті Мікроконтролер MSP430G2553 містить енергонезалежну сегментовану флеш-пам&amp;rsquo;ять (4 інформаційні сегменти по 64 байти). Саме в цій інформаційній пам&amp;rsquo;яті (Information Memory) зберігається встановлений пароль, що дозволяє не втрачати його при знеструмленні охоронної системи.</description>
+    </item>
+    <item>
+      <title>Підключення мікроконтролера MSP430 до GSM-модуля SIM900A</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</guid>
+      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A (огляд плати) UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку 1. Схема підключення та живлення Схема підключення UART типова: лінія RX мікроконтролера з&amp;rsquo;єднується з TX модуля, а TX — з RX.&#xA;Щодо живлення SIM900A: для базового запуску та перевірки мені вистачило 3.3V безпосередньо з шини плати LaunchPad. Хоча за даташитом для впевненої роботи GSM-радіотракту потрібно від 3.4V до 4.5V (рекомендовано 4.0V) зі струмом у піках до 2A, для ініціалізації логіки 3.</description>
+    </item>
+  </channel>
+</rss>
