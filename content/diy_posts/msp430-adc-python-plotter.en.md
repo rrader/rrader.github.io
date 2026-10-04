@@ -5,7 +5,11 @@ draft: false
 tags: ["diy", "hardware", "msp430", "launchpad", "python", "c", "matplotlib", "serial"]
 ---
 
-Recently I've been experimenting with the **TI MSP430 Launchpad** development kit (featuring the MSP430G2553 microcontroller). When working with its integrated Analog-to-Digital Converter (ADC), having immediate visual feedback was essential. Since the Launchpad board features an onboard UART-USB interface, I decided to stream incoming readings to a PC and plot them in real time.
+I've finally got something for post.
+
+Last month I've been playing with the **TI MSP430 Launchpad** and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.
+
+*I'm using MSP430G2553, and all code was written for this controller.*
 
 ![TI MSP430 Launchpad](/images/msp430-adc/image-01.png)
 

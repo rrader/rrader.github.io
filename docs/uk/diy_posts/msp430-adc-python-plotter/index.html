@@ -3,8 +3,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Останнім часом я експериментував із налагоджувальною платою TI MSP430 Launchpad (мікроконтролер MSP430G2553). При роботі з аналого-цифровим перетворювачем (АЦП) дуже не вистачало наочної візуалізації даних. Оскільки на платі Launchpad реалізовано міст UART-USB, виникла ідея виводити отримані вимірювання на комп&rsquo;ютер і будувати живий графік у реальному часі.
-1. Прошивка мікроконтролера Алгоритм прошивки для контролера досить простий: він безперервно зчитує значення з АЦП та надсилає його в UART. Проте є важлива деталь: перед початком передачі даних потрібно виконати квитування («handshake») — дочекатися стартового символу від комп&rsquo;ютера.">  
+   <meta name="description" content="Нарешті в мене з&rsquo;явилося про що написати пост!
+Останній місяць я експериментував із налагоджувальною платою TI MSP430 Launchpad, і при роботі з АЦП дуже не вистачало наочної візуалізації. Оскільки на платі Launchpad є інтерфейс UART-USB, я вирішив виводити отримані дані на графік.
+Я використовую мікроконтролер MSP430G2553, і весь код написаний саме для цього контролера.
+1. Прошивка мікроконтролера Алгоритм прошивки для контролера досить простий: він безперервно зчитує значення з АЦП та надсилає його в UART.">  
 
   <title>
     
@@ -112,7 +114,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2014-07-15 14:01:00 &#43;0300 EEST">2014-07-15</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 1099</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 1108</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~6m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -149,7 +151,9 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p>Останнім часом я експериментував із налагоджувальною платою <strong>TI MSP430 Launchpad</strong> (мікроконтролер MSP430G2553). При роботі з аналого-цифровим перетворювачем (АЦП) дуже не вистачало наочної візуалізації даних. Оскільки на платі Launchpad реалізовано міст UART-USB, виникла ідея виводити отримані вимірювання на комп&rsquo;ютер і будувати живий графік у реальному часі.</p>
+    <p>Нарешті в мене з&rsquo;явилося про що написати пост!</p>
+<p>Останній місяць я експериментував із налагоджувальною платою <strong>TI MSP430 Launchpad</strong>, і при роботі з АЦП дуже не вистачало наочної візуалізації. Оскільки на платі Launchpad є інтерфейс UART-USB, я вирішив виводити отримані дані на графік.</p>
+<p><em>Я використовую мікроконтролер MSP430G2553, і весь код написаний саме для цього контролера.</em></p>
 <p><img alt="TI MSP430 Launchpad" src="../../../images/msp430-adc/image-01.png"></p>
 <hr>
 <h2 id="1-прошивка-мікроконтролера">1. Прошивка мікроконтролера</h2>
@@ -512,7 +516,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">1099 words</span>
+            <span class="status-item">1108 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

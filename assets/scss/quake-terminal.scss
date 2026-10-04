@@ -311,6 +311,61 @@ html, body {
   overflow-x: auto;
 }
 
+/* File System (ls) Styling */
+.ls-dir {
+  color: #55ffff;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(85, 255, 255, 0.45);
+  text-decoration: none;
+
+  &:hover {
+    color: #aaffff;
+    text-decoration: underline;
+  }
+}
+
+.ls-exec {
+  color: #55ff55;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(85, 255, 85, 0.45);
+}
+
+.ls-file {
+  color: var(--text-color);
+}
+
+/* Grep Match Highlighting */
+.grep-highlight {
+  background-color: rgba(255, 204, 0, 0.35);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 2px;
+  padding: 0 2px;
+  text-shadow: 0 0 6px rgba(255, 204, 0, 0.8);
+}
+
+/* Steam Locomotive (SL) Animation */
+.sl-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 12px 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+.sl-train {
+  margin: 0;
+  white-space: pre;
+  font-family: var(--font-retro), monospace;
+  font-size: clamp(8px, 1.4vw, 13px);
+  line-height: 1.15;
+  color: var(--accent-color);
+  text-shadow: 0 0 8px var(--glow-color);
+  display: inline-block;
+  will-change: transform;
+}
+
 @media (max-width: 600px) {
   html, body {
     font-size: 13px;
@@ -332,3 +387,4 @@ html, body {
     font-size: 12px;
   }
 }
+

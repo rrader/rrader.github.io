@@ -48,7 +48,7 @@
       <link>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</guid>
-      <description>Recently I&amp;rsquo;ve been experimenting with the TI MSP430 Launchpad development kit (featuring the MSP430G2553 microcontroller). When working with its integrated Analog-to-Digital Converter (ADC), having immediate visual feedback was essential. Since the Launchpad board features an onboard UART-USB interface, I decided to stream incoming readings to a PC and plot them in real time.&#xA;1. Microcontroller Firmware The high-level firmware logic on the microcontroller is straightforward: it continuously reads the ADC value and outputs it over UART.</description>
+      <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;1. Microcontroller Firmware The high-level firmware logic on the microcontroller is straightforward: it continuously reads the ADC value and outputs it over UART.</description>
     </item>
   </channel>
 </rss>
