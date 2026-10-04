@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyper-V on Roman Rader</title>
+    <link>https://rrader.github.io/tags/hyper-v/</link>
+    <description>Recent content in Hyper-V on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Apr 2014 18:59:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control Hyper-V with Python</title>
+      <link>https://rrader.github.io/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/control-hyper-v-with-python/</guid>
+      <description>Collection of links for writing Hyper-V scripts to control Hyper-V from Python.&#xA;To manage Hyper-V machines there&amp;rsquo;s a WMI API (in my case I use Python WMI; there&amp;rsquo;s also a PowerShell version, obviously):&#xA;Python 2.7 x64 bit pywin32 — build 218 was latest on publication date WMI package — https://pypi.python.org/pypi/WMI/ When Windows 8 came out, two versions of the API appeared: root\virtualization and root\virtualization\v2.&#xA;I think code is the best documentation for an API (at least when I wrote my scripts it was much more useful when I found code examples), so without any words, without tl;dr — read the code of my scripts.</description>
+    </item>
+  </channel>
+</rss>

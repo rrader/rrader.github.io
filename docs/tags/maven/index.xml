@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maven on Roman Rader</title>
+    <link>https://rrader.github.io/tags/maven/</link>
+    <description>Recent content in Maven on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Mar 2015 23:40:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New CentOS 7 Maven Slave in docker-jenkins-slave</title>
+      <link>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 23:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Today I pushed a new Jenkins slave template into docker-jenkins-slave named &amp;ldquo;centos7-java&amp;rdquo;.&#xA;It&amp;rsquo;s based (thank you, Captain Obvious) on CentOS 7 and its purpose is to build Maven projects, so the image has Maven preinstalled.</description>
+    </item>
+    <item>
+      <title>Caching Maven Local Repository in Docker</title>
+      <link>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 14:10:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I&amp;rsquo;m using Docker instances as Jenkins slaves and run my containers like:&#xA;# docker run -d --name=&amp;#34;Chewbakka&amp;#34; antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name &amp;#34;Chewbakka&amp;#34; (actually, I do it using docker-jenkins-slave)&#xA;However, it doesn&amp;rsquo;t make sense to keep maven local repository in every container.</description>
+    </item>
+  </channel>
+</rss>

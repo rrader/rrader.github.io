@@ -5,6 +5,13 @@ draft: false
 tags: ["docker", "jenkins", "linux", "virtualization", "ci-cd", "devops"]
 ---
 
+> **Docker & Jenkins Series:**
+> 1. **Using Docker Containers as Jenkins Nodes** (2013-10-31)
+> 2. [Docker Jenkins Slave Generator](/engineering/docker-jenkins-slave-generator/) (2014-09-02)
+> 3. [Caching Maven Local Repository in Docker](/engineering/caching-maven-local-repository-in-docker/) (2015-03-13)
+> 4. [New CentOS 7 Maven Slave in docker-jenkins-slave](/engineering/new-centos-7-maven-slave-in-docker/) (2015-03-13)
+> 5. [Docker-Jenkins-Slave 2.0 (DJS2)](/engineering/docker-jenkins-slave-20-djs2/) (2015-03-22)
+
 This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: [tl;dr repository on GitHub](https://github.com/rrader/docker-jenkins-slave).
 
 To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.

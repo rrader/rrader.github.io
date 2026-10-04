@@ -39,251 +39,216 @@
   --font-retro: #{$font-retro};
 }
 
+@import "monitor";
+
 /* Base Body Override */
 body.workstation-body {
   margin: 0;
   padding: 0;
-  background-color: var(--ws-bg);
+  background-color: #f6f7f9;
   color: var(--paper-text);
   font-family: var(--font-mono);
   font-size: 16px;
   line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Workstation Outer Wrapper */
-.workstation-wrapper {
-  min-height: 100vh;
+/* Inner CRT Display for Document Reader */
+.doc-crt-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  background: 
-    radial-gradient(circle at 50% 0%, #131c18 0%, var(--ws-bg) 75%),
-    linear-gradient(rgba(0, 255, 102, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 102, 0.02) 1px, transparent 1px);
-  background-size: 100% 100%, 32px 32px, 32px 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #0f1713;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85);
+  transition: filter 0.25s ease, opacity 0.25s ease;
+
+  &.crt-powered-off {
+    background: #020302 !important;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.95) !important;
+    * {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  }
 }
 
-/* Top System Workstation Bar */
-.workstation-top-bar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  height: 44px;
-  background: rgba(16, 22, 20, 0.94);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--ws-border);
+/* Document Top Screen Header Bar */
+.doc-header-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.25rem;
-  color: var(--ws-text-light);
-  font-size: 0.88rem;
+  padding: 8px 14px;
+  background: rgba(11, 15, 14, 0.94);
+  border-bottom: 2px solid var(--border-color);
+  z-index: 10;
+  user-select: none;
 }
 
-.ws-bar-left {
+.header-title {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
+  gap: 10px;
 
-.ws-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: var(--ws-green);
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  transition: all 0.2s ease;
+  .ws-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-bright);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px var(--glow-color);
 
-  &:hover {
-    color: #ffffff;
-    text-shadow: 0 0 10px var(--ws-green);
-  }
+    &:hover {
+      color: #ffffff;
+    }
 
-  .ws-logo-icon {
-    color: #ffcc00;
+    .quake-logo {
+      color: var(--accent-color);
+      font-size: 16px;
+    }
   }
 }
 
 .ws-status-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.78rem;
-  color: var(--ws-dim);
-  background: rgba(0, 204, 85, 0.06);
-  border: 1px solid rgba(0, 204, 85, 0.18);
-  padding: 2px 8px;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+  background: rgba(0, 204, 85, 0.08);
+  border: 1px solid rgba(0, 204, 85, 0.2);
+  padding: 2px 7px;
   border-radius: 3px;
+  font-family: var(--font-mono);
 }
 
 .ws-dot {
   width: 6px;
   height: 6px;
-  background: var(--ws-green);
+  background: var(--text-color);
   border-radius: 50%;
-  box-shadow: 0 0 6px var(--ws-green);
+  box-shadow: 0 0 6px var(--glow-color);
 }
 
-.ws-bar-right {
+.header-controls {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-.ws-btn {
+.ctrl-btn {
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  color: var(--ws-text-light);
+  gap: 5px;
+  text-shadow: 0 0 5px var(--glow-color);
   text-decoration: none;
-  background: #151d1a;
-  border: 1px solid var(--ws-border);
-  padding: 4px 10px;
-  border-radius: 3px;
-  font-size: 0.8rem;
-  font-family: var(--font-mono);
-  transition: all 0.2s ease;
+  user-select: none;
 
   &:hover {
-    background: #1c2723;
-    color: #ffffff;
-    border-color: var(--ws-green);
+    background: var(--text-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--glow-color);
+    text-decoration: none;
   }
 
   &.active {
-    background: rgba(0, 204, 85, 0.15);
-    color: var(--ws-green);
-    border-color: var(--ws-green);
-    font-weight: 600;
+    background: rgba(0, 255, 102, 0.12);
+    border-color: var(--text-bright);
+    box-shadow: 0 0 6px var(--glow-color);
   }
 
   &.home-btn {
-    color: #ffffff;
-    background: rgba(0, 204, 85, 0.12);
-    border-color: rgba(0, 204, 85, 0.4);
-
+    border-color: var(--accent-color);
+    color: var(--text-bright);
     &:hover {
-      background: var(--ws-green);
-      color: #000000;
-      font-weight: bold;
-      box-shadow: 0 0 12px var(--ws-green);
+      background: var(--accent-color);
+      color: #000;
     }
   }
 }
 
-/* Floating Terminal Window Container */
-.term-window-container {
+/* Scrollable Document Reading Container inside the CRT */
+.doc-reading-container {
   flex: 1;
-  max-width: 900px;
-  width: 100%;
-  margin: 1.75rem auto 2.5rem auto;
-  padding: 0 1rem;
-}
-
-.term-window {
+  min-height: 0;
+  overflow-y: auto;
   background: var(--paper-bg);
-  border: 1px solid var(--ws-border);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(0, 204, 85, 0.15);
-  display: flex;
-  flex-direction: column;
+  color: var(--paper-text);
+  padding: 2rem 2.5rem;
+  @include terminal-scrollbar(var(--border-color), rgba(0, 0, 0, 0.05));
 }
 
-/* Terminal Window Chrome Titlebar */
-.term-window-titlebar {
-  background: #131a17;
-  border-bottom: 1px solid var(--ws-border);
-  padding: 0.65rem 1rem;
+/* Bottom Status Bar */
+.doc-statusbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #a0b8ac;
-  font-size: 0.82rem;
+  padding: 5px 14px;
+  background: #111816;
+  border-top: 1px solid #1a3023;
+  color: var(--text-bright);
+  font-size: 11px;
+  font-family: var(--font-mono);
   user-select: none;
-}
+  z-index: 10;
 
-.term-window-controls {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
+  .status-left, .status-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 
-.win-btn {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none !important;
-  transition: all 0.15s ease;
+  .status-mode {
+    font-weight: 700;
+    color: #00ff66;
+    background: rgba(0, 255, 102, 0.15);
+    padding: 1px 6px;
+    border-radius: 2px;
+  }
 
-  &.win-close {
-    background: #{$win-close};
-    box-shadow: 0 0 4px rgba(255, 95, 86, 0.6);
-    color: transparent;
-    cursor: pointer;
-    opacity: 0.9;
+  .status-filename {
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+
+  .status-item {
+    color: #527563;
+  }
+
+  .status-action {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1px 7px;
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    transition: all 0.2s ease;
 
     &:hover {
-      opacity: 1;
-      color: rgba(0, 0, 0, 0.75);
-      transform: scale(1.15);
-      box-shadow: 0 0 8px rgba(255, 95, 86, 0.9);
+      background: var(--text-color);
+      color: #000000;
     }
   }
-
-  &.win-min,
-  &.win-max,
-  &.is-inactive {
-    opacity: 0.3;
-    cursor: not-allowed;
-    filter: grayscale(0.5);
-    box-shadow: none;
-    pointer-events: none;
-  }
-
-  &.win-min { background: #{$win-min}; }
-  &.win-max { background: #{$win-max}; }
-}
-
-.term-window-title {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  color: #c0d8cc;
-  font-weight: 500;
-  max-width: 60%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  .win-title-icon {
-    font-size: 0.95rem;
-  }
-}
-
-.term-window-meta {
-  color: var(--ws-green);
-  font-size: 0.76rem;
-  letter-spacing: 0.05em;
-}
-
-/* Document Reading Body (Light Paper Mode) */
-.term-window-body {
-  background: var(--paper-bg);
-  color: var(--paper-text);
-  padding: 2.5rem 3rem;
 }
 
 .document-canvas {

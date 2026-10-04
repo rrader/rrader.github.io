@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/programming/</link>
+    <description>Recent content in Programming on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Mon, 17 Aug 2015 16:22:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Використання DjangoTemplates незалежно від Django</title>
+      <link>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</link>
+      <pubDate>Mon, 17 Aug 2015 16:22:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</guid>
+      <description>Щоб використовувати та налаштовувати DjangoTemplates окремо від самого Django, незалежно від settings.py та всього іншого, замість використання об&amp;rsquo;єкта Template набагато краще створити екземпляр власного Engine з налаштуваннями (параметри схожі на settings.py). Приклад нижче:&#xA;from django.template.backends.django import DjangoTemplates engine = DjangoTemplates( { &amp;#39;NAME&amp;#39;: &amp;#39;mail&amp;#39;, &amp;#39;APP_DIRS&amp;#39;: False, &amp;#39;DIRS&amp;#39;: [], &amp;#39;OPTIONS&amp;#39;: { &amp;#39;loaders&amp;#39;: [ &amp;#39;events.loaders.MyLoader&amp;#39;, ], }, }) template = engine.get_template(template_slug) rendered = template.render(Context(...)) (Gist: rrader/602459d44ff8473ad3b3)&#xA;Таким чином ви можете сконфігурувати власний engine у тому місці, де потрібно, з тими параметрами, які вам потрібні (я, наприклад, додав кастомний лоадер), і навіть переналаштовувати його на льоту.</description>
+    </item>
+    <item>
+      <title>Елегантний спосіб отримати об&#39;єкт дескриптора в Python</title>
+      <link>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</link>
+      <pubDate>Mon, 10 Feb 2014 23:22:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</guid>
+      <description>(c) zaper3095&#xA;Сьогодні на роботі виникло цікаве питання: Цитата зі StackOverflow:&#xA;У Python 3:&#xA;class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Чи є кращий спосіб це зробити? Мені не дуже подобається ця штука з self.__class__.__dict__&#xA;Коротко кажучи, відповідь — НІ. Немає іншого способу отримати об&amp;rsquo;єкт дескриптора (без виклику __get__), крім як дістати його з __dict__.</description>
+    </item>
+  </channel>
+</rss>

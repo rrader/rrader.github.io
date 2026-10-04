@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Roman Rader</title>
+    <link>https://rrader.github.io/tags/programming/</link>
+    <description>Recent content in Programming on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Aug 2015 16:22:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using DjangoTemplates Independently</title>
+      <link>https://rrader.github.io/engineering/using-djangotemplates-independently/</link>
+      <pubDate>Mon, 17 Aug 2015 16:22:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/using-djangotemplates-independently/</guid>
+      <description>To use and configure DjangoTemplates externally of Django itself, independently of settings.py and all other stuff, instead of using Template object it&amp;rsquo;s much better to instantiate your own Engine with settings (settings are similar to settings.py). Example below:&#xA;from django.template.backends.django import DjangoTemplates engine = DjangoTemplates( { &amp;#39;NAME&amp;#39;: &amp;#39;mail&amp;#39;, &amp;#39;APP_DIRS&amp;#39;: False, &amp;#39;DIRS&amp;#39;: [], &amp;#39;OPTIONS&amp;#39;: { &amp;#39;loaders&amp;#39;: [ &amp;#39;events.loaders.MyLoader&amp;#39;, ], }, }) template = engine.get_template(template_slug) rendered = template.render(Context(...)) (Gist: rrader/602459d44ff8473ad3b3)&#xA;This way, you can configure your own engine in the place you need with settings you want (I put custom loader, for example) and even reconfigure it on the fly.</description>
+    </item>
+    <item>
+      <title>Neat Way to Get Descriptor Object in Python</title>
+      <link>https://rrader.github.io/engineering/neat-way-to-get-descriptor-object/</link>
+      <pubDate>Mon, 10 Feb 2014 23:22:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/neat-way-to-get-descriptor-object/</guid>
+      <description>(c) zaper3095&#xA;Interesting question appeared today on my job: Quoting from StackOverflow:&#xA;In Python 3:&#xA;class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Is there better way to do it? I don&amp;rsquo;t like this self.__class__.__dict__ stuff&#xA;Shortly, the answer is NO. No other way to get descriptor object (preventing __get__ being invoked) than getting it from __dict__.</description>
+    </item>
+  </channel>
+</rss>

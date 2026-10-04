@@ -548,6 +548,71 @@
                 href="https://rrader.github.io/uk/diy_posts/zk-phone-raspberry-pi/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/uk/tags/django/</loc>
+    <lastmod>2015-08-17T16:22:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/django/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/django/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/programming/</loc>
+    <lastmod>2015-08-17T16:22:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/programming/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/programming/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/templates/</loc>
+    <lastmod>2015-08-17T16:22:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/templates/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/templates/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</loc>
+    <lastmod>2015-08-17T16:22:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/using-djangotemplates-independently/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/using-djangotemplates-independently/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/</loc>
+    <lastmod>2015-08-17T16:22:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/tags/alarm/</loc>
     <lastmod>2015-07-30T17:35:00+03:00</lastmod>
     <xhtml:link
@@ -769,17 +834,56 @@
                 href="https://rrader.github.io/uk/tags/vagrant/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/engineering/</loc>
-    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <loc>https://rrader.github.io/uk/tags/maven/</loc>
+    <lastmod>2015-03-13T23:40:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/engineering/"
+                href="https://rrader.github.io/tags/maven/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/engineering/"
+                href="https://rrader.github.io/uk/tags/maven/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/</loc>
+    <lastmod>2015-03-13T23:40:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/caching/</loc>
+    <lastmod>2015-03-13T14:10:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/caching/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/caching/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/</loc>
+    <lastmod>2015-03-13T14:10:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/energia/</loc>
@@ -1016,6 +1120,84 @@
                 href="https://rrader.github.io/uk/diy_posts/msp430-adc-python-plotter/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/uk/tags/big-data/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/big-data/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/big-data/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/kpi/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/kpi/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/kpi/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/research/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/research/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/research/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/science/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/science/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/science/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/telecom/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/telecom/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/telecom/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</loc>
+    <lastmod>2014-06-10T00:27:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/study_posts/telecom-anomaly-detection/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/tags/academic/</loc>
     <lastmod>2014-06-07T22:12:00+03:00</lastmod>
     <xhtml:link
@@ -1079,6 +1261,58 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/hyper-v/</loc>
+    <lastmod>2014-04-18T18:59:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/hyper-v/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/hyper-v/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/windows/</loc>
+    <lastmod>2014-04-18T18:59:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/windows/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/windows/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</loc>
+    <lastmod>2014-04-18T18:59:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/control-hyper-v-with-python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/control-hyper-v-with-python/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</loc>
+    <lastmod>2014-02-10T23:22:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/neat-way-to-get-descriptor-object/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/kernel/</loc>

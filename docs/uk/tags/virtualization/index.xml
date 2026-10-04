@@ -13,14 +13,21 @@
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
-      <description>tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.&#xA;У цьому репозиторії: https://github.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.</description>
+    </item>
+    <item>
+      <title>Керування Hyper-V за допомогою Python</title>
+      <link>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</guid>
+      <description>Колекція посилань для написання скриптів керування Hyper-V із Python.&#xA;Для керування машинами Hyper-V існує WMI API (у моєму випадку я використовую Python WMI; очевидно, є також версія для PowerShell):&#xA;Python 2.7 x64 bit pywin32 — збірка 218 була найновішою на дату публікації Пакет WMI — https://pypi.python.org/pypi/WMI/ З виходом Windows 8 з&amp;rsquo;явилися дві версії API: root\virtualization та root\virtualization\v2.&#xA;Я вважаю, що код — найкраща документація для API (принаймні, коли я писав свої скрипти, приклади коду виявилися значно кориснішими), тому без зайвих слів і tl;dr — дивіться код моїх скриптів.</description>
     </item>
     <item>
       <title>Використання Docker-контейнерів як Jenkins-нод</title>
       <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
       <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
-      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.</description>
     </item>
   </channel>
 </rss>

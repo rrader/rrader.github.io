@@ -13,21 +13,35 @@
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS. It&amp;rsquo;s useful to use buildbots like Jenkins to run this builds on automated basis, commencing builds after any commit, whatever.&#xA;Anyway, installing jenkins on host machine and using Docker as slaves is useful, but can clog your computer with garbage files that hard to cleanup.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS.</description>
+    </item>
+    <item>
+      <title>New CentOS 7 Maven Slave in docker-jenkins-slave</title>
+      <link>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 23:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Today I pushed a new Jenkins slave template into docker-jenkins-slave named &amp;ldquo;centos7-java&amp;rdquo;.&#xA;It&amp;rsquo;s based (thank you, Captain Obvious) on CentOS 7 and its purpose is to build Maven projects, so the image has Maven preinstalled.</description>
+    </item>
+    <item>
+      <title>Caching Maven Local Repository in Docker</title>
+      <link>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 14:10:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I&amp;rsquo;m using Docker instances as Jenkins slaves and run my containers like:&#xA;# docker run -d --name=&amp;#34;Chewbakka&amp;#34; antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name &amp;#34;Chewbakka&amp;#34; (actually, I do it using docker-jenkins-slave)&#xA;However, it doesn&amp;rsquo;t make sense to keep maven local repository in every container.</description>
     </item>
     <item>
       <title>Docker Jenkins Slave Generator</title>
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
-      <description>tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave The beginning of story is here: Using Docker Containers as Jenkins Nodes.&#xA;Abstract: If you want to build your project on different environments (e.g. Jenkins installed on Arch Linux, and you want to build RPM on CentOS 6) with jenkins, but you don&amp;rsquo;t want to use virtual machines, which is inefficient wasting of RAM and CPU, using Docker is good idea.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave The beginning of story is here: Using Docker Containers as Jenkins Nodes.&#xA;Abstract: If you want to build your project on different environments (e.</description>
     </item>
     <item>
       <title>Using Docker Containers as Jenkins Nodes</title>
       <link>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</link>
       <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</guid>
-      <description>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.&#xA;Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.</description>
     </item>
   </channel>
 </rss>

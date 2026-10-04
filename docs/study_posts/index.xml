@@ -23,6 +23,13 @@
       <description>Slides and video of lightning talk about comparing context switch speed using threading and asyncio libraries from LvivPy#4 conference, held on May 30, 2015.&#xA;Video recording: Slides: LvivPy4 - Threading vs asyncio from Roman Anigon&#xA;Recordings of all talks: http://lvivpy.org.ua/?p=375&#xA;Once again I&amp;rsquo;d like to thank the organizers for a mega decent event.&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
     </item>
     <item>
+      <title>Anomaly Detection System for Telephone Network Subscribers</title>
+      <link>https://rrader.github.io/study_posts/telecom-anomaly-detection/</link>
+      <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/telecom-anomaly-detection/</guid>
+      <description>A new issue of the KPI Bulletin on Computer Engineering was published featuring my research paper:&#xA;Bulletin of NTUU &amp;ldquo;KPI&amp;rdquo;. Informatics, Operation and Computer Science: Collection of Scientific Papers. – Kyiv: Vek+, 2013. – No. 59. – 134 p.&#xA;Issue: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk Issue PDF This post was migrated from the old blog antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</title>
       <link>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</link>
       <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>

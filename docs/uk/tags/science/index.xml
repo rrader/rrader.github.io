@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Science on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/science/</link>
+    <description>Recent content in Science on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Tue, 10 Jun 2014 00:27:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Система виявлення аномальної поведінки абонентів телефонної мережі</title>
+      <link>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</link>
+      <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</guid>
+      <description>Вийшов новий номер вісника КПІ з обчислювальної техніки з моєю статтею:&#xA;Вісник НТУУ «КПІ». Інформатика, управління та обчислювальна техніка: Зб. наук. пр. – К.: Век+, 2013. – № 59. – 134 c.&#xA;Збірник: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk PDF випуску Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+  </channel>
+</rss>

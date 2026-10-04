@@ -5,6 +5,13 @@ draft: false
 tags: ["docker", "jenkins", "linux", "virtualization", "ci-cd", "devops"]
 ---
 
+> **Серія статей про Docker та Jenkins:**
+> 1. **Використання Docker-контейнерів як Jenkins-нод** (2013-10-31)
+> 2. [Docker Jenkins Slave Generator](/uk/engineering/docker-jenkins-slave-generator/) (2014-09-02)
+> 3. [Кешування локального репозиторію Maven у Docker](/uk/engineering/caching-maven-local-repository-in-docker/) (2015-03-13)
+> 4. [Новий CentOS 7 Maven Slave у docker-jenkins-slave](/uk/engineering/new-centos-7-maven-slave-in-docker/) (2015-03-13)
+> 5. [Docker-Jenkins-Slave 2.0 (DJS2)](/uk/engineering/docker-jenkins-slave-20-djs2/) (2015-03-22)
+
 Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: [tl;dr репозиторій на GitHub](https://github.com/rrader/docker-jenkins-slave).
 
 Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.

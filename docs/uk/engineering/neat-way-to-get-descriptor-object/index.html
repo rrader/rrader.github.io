@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="(c) zaper3095
+Сьогодні на роботі виникло цікаве питання: Цитата зі StackOverflow:
+У Python 3:
+class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Чи є кращий спосіб це зробити? Мені не дуже подобається ця штука з self.__class__.__dict__
+Коротко кажучи, відповідь — НІ. Немає іншого способу отримати об&rsquo;єкт дескриптора (без виклику __get__), крім як дістати його з __dict__.">  
+
+  <title>
+    
+      Елегантний спосіб отримати об&#39;єкт дескриптора в Python // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  <div class="desk-environment">
+    <div class="monitor-assembly">
+      
+      <div class="crt-monitor-casing">
+        
+        <div class="casing-vents-top">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        
+        <div class="bezel-top-bar">
+          <div class="viewsonic-logo" title="ViewSonic">
+            <svg class="viewsonic-birds-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 27 C28 26, 60 27, 106 26" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round" />
+              
+              <g transform="translate(6, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(38, 2) scale(0.6)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fdd835" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#ab47bc" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#d32f2f" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(72, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+            </svg>
+            <span class="viewsonic-text">ViewSonic</span>
+          </div>
+
+          <div class="model-badge">
+            <span class="badge-brand">SonicTron</span>
+            <span class="badge-series">PT775</span>
+          </div>
+        </div>
+
+        
+        <div class="crt-tube-frame">
+          <div class="crt-wrapper doc-crt-screen" id="crt-wrapper">
+            
+            <header class="header-bar doc-header-bar">
+              <div class="header-title">
+                <a href="../../../" class="ws-logo" title="Головний термінал">
+                  <span class="quake-logo">⚡</span>
+                  <span>rmn.pp.ua</span>
+                </a>
+                <span class="ws-status-chip">
+                  <span class="ws-dot"></span> TTY1: neat-way-to-get-descriptor-object.uk.md
+                </span>
+              </div>
+              <div class="header-controls">
+                <a href="../../../engineering/neat-way-to-get-descriptor-object/" class="ctrl-btn lang-btn">
+                  🇬🇧 EN
+                </a>
+                <a href="../../../uk/engineering/neat-way-to-get-descriptor-object/" class="ctrl-btn lang-btn active">
+                  🇺🇦 UA
+                </a>
+                <a href="../../../uk/index.xml" class="ctrl-btn rss-btn" target="_blank" title="RSS Feed">
+                  📡 RSS
+                </a>
+                <a href="../../../" class="ctrl-btn home-btn" title="Back to Quake Terminal">
+                  ↵ TERMINAL
+                </a>
+              </div>
+            </header>
+
+            
+            <main class="terminal-container doc-reading-container" id="top">
+              <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat neat-way-to-get-descriptor-object.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2014-02-10 23:22:00 &#43;0200 EET">2014-02-10</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 240</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#programming</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Елегантний спосіб отримати об&#39;єкт дескриптора в Python</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../engineering/neat-way-to-get-descriptor-object/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p><img alt="Python" src="../../../images/neat-way-to-get-descriptor-object/image-01.jpg">
+<em>(c) <a href="http://zaper3095.deviantart.com/art/Python-182991031">zaper3095</a></em></p>
+<p>Сьогодні на роботі виникло цікаве питання:
+Цитата зі StackOverflow:</p>
+<blockquote>
+<p>У Python 3:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>(object):
+</span></span><span style="display:flex;"><span>    attr <span style="color:#f92672">=</span> SomeDescriptor()
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">somewhere</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># need to check is type of self.attr is SomeDescriptor()</span>
+</span></span><span style="display:flex;"><span>        desc <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__dict__[attr_name]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> isinstance(desc, SomeDescriptor)
+</span></span></code></pre></div><p>Чи є кращий спосіб це зробити? Мені не дуже подобається ця штука з <code>self.__class__.__dict__</code></p>
+</blockquote>
+<p>Коротко кажучи, відповідь — <strong>НІ</strong>. Немає іншого способу отримати об&rsquo;єкт дескриптора (без виклику <code>__get__</code>), крім як дістати його з <code>__dict__</code>.</p>
+<p><strong>Проте</strong>, є кілька обхідних шляхів ;)</p>
+<h3 id="1-повертати-self-у-__get__-якщо-instance-дорівнює-none">1) Повертати self у <code>__get__</code>, якщо instance дорівнює None</h3>
+<p>Повертати <code>self</code> у методі <code>__get__</code>, якщо <code>instance</code> є <code>None</code> (це відбувається, якщо викликати <code>getattr</code> на об&rsquo;єкті класу, тобто <code>type(self)</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeDescriptor</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __get__(self, inst, instcls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> inst <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># instance attribute accessed on class, return self</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>():
+</span></span><span style="display:flex;"><span>    attr <span style="color:#f92672">=</span> SomeDescriptor()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">somewhere</span>(self):
+</span></span><span style="display:flex;"><span>        attr_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attr&#39;</span>
+</span></span><span style="display:flex;"><span>        desc  <span style="color:#f92672">=</span> getattr(type(self), attr_name)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># desc = self.__class__.__dict__[attr_name]  # b.somewhere() would raise KeyError</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> isinstance(desc, SomeDescriptor)
+</span></span></code></pre></div><h3 id="2-призначити-атрибут-на-функцію-яку-повертає-дескриптор">2) Призначити атрибут на функцію, яку повертає дескриптор</h3>
+<p>Друге рішення запропонував мій колега Максим Панібратенко:
+Оскільки наш дескриптор є callable, і <code>__get__</code> повертає функцію, ми можемо призначити атрибут цій функції та перевіряти під час виконання, чи має функція цей атрибут за допомогою <code>hasattr()</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeDescriptor</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __get__(self, inst, instcls):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>        func<span style="color:#f92672">.</span>implemented <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> func
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>():
+</span></span><span style="display:flex;"><span>    attr <span style="color:#f92672">=</span> SomeDescriptor()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">somewhere</span>(self):
+</span></span><span style="display:flex;"><span>        attr_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;attr&#39;</span>
+</span></span><span style="display:flex;"><span>        desc  <span style="color:#f92672">=</span> getattr(self, attr_name)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> hasattr(desc, <span style="color:#e6db74">&#39;implemented&#39;</span>)
+</span></span></code></pre></div><p>Посилання на повне обговорення:
+<a href="http://stackoverflow.com/questions/21629397/neat-way-to-get-descriptor-object">http://stackoverflow.com/questions/21629397/neat-way-to-get-descriptor-object</a></p>
+<hr>
+<p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2014/02/neat-way-to-get-descriptor-object.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: neat-way-to-get-descriptor-object.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+              </div>
+            </main>
+
+            
+            <div class="doc-statusbar">
+              <div class="status-left">
+                <span class="status-mode">NORMAL</span>
+                <span class="status-filename">neat-way-to-get-descriptor-object.uk.md</span>
+              </div>
+              <div class="status-right">
+                <span class="status-item">UTF-8</span>
+                <span class="status-item">240 words</span>
+                <a href="#top" class="status-action" id="doc-btn-top" title="Top">▲ TOP</a>
+                <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="bezel-bottom-bar">
+          <div class="bezel-speaker-grille">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="bezel-osd-panel">
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">1</span>
+              <button type="button" class="osd-btn" id="osd-btn-1" title="Top">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">2</span>
+              <button type="button" class="osd-btn" id="osd-btn-2" title="Terminal">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▼</span>
+              <button type="button" class="osd-btn" id="osd-btn-down" title="Scroll Down">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▲</span>
+              <button type="button" class="osd-btn" id="osd-btn-up" title="Scroll Up">·</button>
+            </div>
+          </div>
+
+          <div class="bezel-power-panel">
+            <div class="power-indicator" id="monitor-power-led" title="Power Status"></div>
+            <button type="button" class="power-button" id="monitor-power-btn" title="Monitor Power Switch">
+              <span class="power-symbol">⏻</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="monitor-stand">
+        <div class="stand-neck"></div>
+        <div class="stand-swivel-ring"></div>
+        <div class="stand-base"></div>
+        <div class="stand-desk-shadow"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const pwrBtn = document.getElementById('monitor-power-btn');
+      const pwrLed = document.getElementById('monitor-power-led');
+      const crtWrap = document.getElementById('crt-wrapper');
+      const readingCont = document.querySelector('.doc-reading-container');
+      let pwrOn = true;
+
+      if (pwrBtn && crtWrap) {
+        pwrBtn.addEventListener('click', function() {
+          pwrOn = !pwrOn;
+          if (pwrOn) {
+            crtWrap.classList.remove('crt-powered-off');
+            if (pwrLed) pwrLed.classList.remove('standby');
+          } else {
+            crtWrap.classList.add('crt-powered-off');
+            if (pwrLed) pwrLed.classList.add('standby');
+          }
+        });
+      }
+
+      const osd1 = document.getElementById('osd-btn-1');
+      if (osd1 && readingCont) {
+        osd1.addEventListener('click', function() {
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      const osd2 = document.getElementById('osd-btn-2');
+      if (osd2) {
+        osd2.addEventListener('click', function() {
+          window.location.href = '\/';
+        });
+      }
+
+      const osdDown = document.getElementById('osd-btn-down');
+      if (osdDown && readingCont) {
+        osdDown.addEventListener('click', function() {
+          readingCont.scrollBy({ top: 350, behavior: 'smooth' });
+        });
+      }
+
+      const osdUp = document.getElementById('osd-btn-up');
+      if (osdUp && readingCont) {
+        osdUp.addEventListener('click', function() {
+          readingCont.scrollBy({ top: -350, behavior: 'smooth' });
+        });
+      }
+
+      const topBtn = document.getElementById('doc-btn-top');
+      if (topBtn && readingCont) {
+        topBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

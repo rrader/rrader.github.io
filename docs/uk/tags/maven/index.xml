@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maven on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/maven/</link>
+    <description>Recent content in Maven on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Fri, 13 Mar 2015 23:40:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Новий CentOS 7 Maven Slave у docker-jenkins-slave</title>
+      <link>https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 23:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/</guid>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Сьогодні я додав новий шаблон Jenkins-слейва в docker-jenkins-slave під назвою «centos7-java».&#xA;Він базується (дякую, Капітане Очевидність) на CentOS 7 і його мета — збирати Maven-проєкти, тож образ має встановлений Maven.&#xA;Це доволі звично. Але головна новина в тому, що новий образ більше не містить жахливого SSH-демона, який порушує філософію Docker щодо запуску одного процесу в контейнері.</description>
+    </item>
+    <item>
+      <title>Кешування локального репозиторію Maven у Docker</title>
+      <link>https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 14:10:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/</guid>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Я використовую Docker-інстанси як Jenkins-слейви і запускаю свої контейнери ось так:&#xA;# docker run -d --name=&amp;#34;Chewbakka&amp;#34; antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name &amp;#34;Chewbakka&amp;#34; (насправді я роблю це за допомогою docker-jenkins-slave)&#xA;Проте немає жодного сенсу тримати локальний репозиторій Maven у кожному контейнері окремо.</description>
+    </item>
+  </channel>
+</rss>

@@ -13,7 +13,7 @@
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS. It&amp;rsquo;s useful to use buildbots like Jenkins to run this builds on automated basis, commencing builds after any commit, whatever.&#xA;Anyway, installing jenkins on host machine and using Docker as slaves is useful, but can clog your computer with garbage files that hard to cleanup.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS.</description>
     </item>
   </channel>
 </rss>

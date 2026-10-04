@@ -23,6 +23,13 @@
       <description>Слайди презентації та відео бліц-доповіді про порівняння швидкості перемикання контексту використовуючи бібліотеки threading та asyncio з конференції LvivPy#4, яка проходила 30 травня 2015.&#xA;Запис: Слайди: LvivPy4 - Threading vs asyncio from Roman Anigon&#xA;Записи всіх доповідей: http://lvivpy.org.ua/?p=375&#xA;Ще раз хочеться подякувати організаторам за мега гідний івент.&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
     </item>
     <item>
+      <title>Система виявлення аномальної поведінки абонентів телефонної мережі</title>
+      <link>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</link>
+      <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</guid>
+      <description>Вийшов новий номер вісника КПІ з обчислювальної техніки з моєю статтею:&#xA;Вісник НТУУ «КПІ». Інформатика, управління та обчислювальна техніка: Зб. наук. пр. – К.: Век+, 2013. – № 59. – 134 c.&#xA;Збірник: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk PDF випуску Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Оформлення псевдокоду в LaTeX українською</title>
       <link>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</link>
       <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>

@@ -86,6 +86,13 @@
       <description>zk_phone is a pet project of programming a physical payphone using a Raspberry Pi and Python.&#xA;Source Code: github.com/rrader/zk_phone Hardware: Payphone chassis, Raspberry Pi, HD44780 character LCD, matrix keypad, hook switch (reed switch) 1. How the Logic Works The software is written in Python and structured around a simple state machine in zk_phone/app.py.&#xA;State 1: Handset on Hook (HandsetPut) The LCD displays a greeting: Hello!. Service keypad codes are available while on hook: *1# — prints the local IP addresses of the Raspberry Pi to the LCD.</description>
     </item>
     <item>
+      <title>Using DjangoTemplates Independently</title>
+      <link>https://rrader.github.io/engineering/using-djangotemplates-independently/</link>
+      <pubDate>Mon, 17 Aug 2015 16:22:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/using-djangotemplates-independently/</guid>
+      <description>To use and configure DjangoTemplates externally of Django itself, independently of settings.py and all other stuff, instead of using Template object it&amp;rsquo;s much better to instantiate your own Engine with settings (settings are similar to settings.py). Example below:&#xA;from django.template.backends.django import DjangoTemplates engine = DjangoTemplates( { &amp;#39;NAME&amp;#39;: &amp;#39;mail&amp;#39;, &amp;#39;APP_DIRS&amp;#39;: False, &amp;#39;DIRS&amp;#39;: [], &amp;#39;OPTIONS&amp;#39;: { &amp;#39;loaders&amp;#39;: [ &amp;#39;events.loaders.MyLoader&amp;#39;, ], }, }) template = engine.get_template(template_slug) rendered = template.render(Context(...)) (Gist: rrader/602459d44ff8473ad3b3)&#xA;This way, you can configure your own engine in the place you need with settings you want (I put custom loader, for example) and even reconfigure it on the fly.</description>
+    </item>
+    <item>
       <title>Alarm Schematics</title>
       <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
@@ -104,7 +111,21 @@
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS. It&amp;rsquo;s useful to use buildbots like Jenkins to run this builds on automated basis, commencing builds after any commit, whatever.&#xA;Anyway, installing jenkins on host machine and using Docker as slaves is useful, but can clog your computer with garbage files that hard to cleanup.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS.</description>
+    </item>
+    <item>
+      <title>New CentOS 7 Maven Slave in docker-jenkins-slave</title>
+      <link>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 23:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/new-centos-7-maven-slave-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Today I pushed a new Jenkins slave template into docker-jenkins-slave named &amp;ldquo;centos7-java&amp;rdquo;.&#xA;It&amp;rsquo;s based (thank you, Captain Obvious) on CentOS 7 and its purpose is to build Maven projects, so the image has Maven preinstalled.</description>
+    </item>
+    <item>
+      <title>Caching Maven Local Repository in Docker</title>
+      <link>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 14:10:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/caching-maven-local-repository-in-docker/</guid>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) I&amp;rsquo;m using Docker instances as Jenkins slaves and run my containers like:&#xA;# docker run -d --name=&amp;#34;Chewbakka&amp;#34; antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name &amp;#34;Chewbakka&amp;#34; (actually, I do it using docker-jenkins-slave)&#xA;However, it doesn&amp;rsquo;t make sense to keep maven local repository in every container.</description>
     </item>
     <item>
       <title>Security System Keypad on MSP430</title>
@@ -139,7 +160,7 @@
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
-      <description>tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave The beginning of story is here: Using Docker Containers as Jenkins Nodes.&#xA;Abstract: If you want to build your project on different environments (e.g. Jenkins installed on Arch Linux, and you want to build RPM on CentOS 6) with jenkins, but you don&amp;rsquo;t want to use virtual machines, which is inefficient wasting of RAM and CPU, using Docker is good idea.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave The beginning of story is here: Using Docker Containers as Jenkins Nodes.&#xA;Abstract: If you want to build your project on different environments (e.</description>
     </item>
     <item>
       <title>Plotting Live Data from MSP430 ADC in Python</title>
@@ -149,11 +170,32 @@
       <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;Firmware Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a &amp;ldquo;handshake&amp;rdquo; - receive start symbol from computer.</description>
     </item>
     <item>
+      <title>Anomaly Detection System for Telephone Network Subscribers</title>
+      <link>https://rrader.github.io/study_posts/telecom-anomaly-detection/</link>
+      <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
+      <guid>https://rrader.github.io/study_posts/telecom-anomaly-detection/</guid>
+      <description>A new issue of the KPI Bulletin on Computer Engineering was published featuring my research paper:&#xA;Bulletin of NTUU &amp;ldquo;KPI&amp;rdquo;. Informatics, Operation and Computer Science: Collection of Scientific Papers. – Kyiv: Vek+, 2013. – No. 59. – 134 p.&#xA;Issue: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk Issue PDF This post was migrated from the old blog antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Formatting Pseudocode in LaTeX in Ukrainian (algorithm2e)</title>
       <link>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</link>
       <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
       <guid>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</guid>
       <description>There are several packages for typesetting pseudocode in LaTeX documents; I worked with algorithm2e.&#xA;Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.&#xA;I won&amp;rsquo;t cover general usage of algorithm2e here, as detailed guides are readily available (Wikibooks, Harrix blog, PDF documentation).&#xA;To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:</description>
+    </item>
+    <item>
+      <title>Control Hyper-V with Python</title>
+      <link>https://rrader.github.io/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/control-hyper-v-with-python/</guid>
+      <description>Collection of links for writing Hyper-V scripts to control Hyper-V from Python.&#xA;To manage Hyper-V machines there&amp;rsquo;s a WMI API (in my case I use Python WMI; there&amp;rsquo;s also a PowerShell version, obviously):&#xA;Python 2.7 x64 bit pywin32 — build 218 was latest on publication date WMI package — https://pypi.python.org/pypi/WMI/ When Windows 8 came out, two versions of the API appeared: root\virtualization and root\virtualization\v2.&#xA;I think code is the best documentation for an API (at least when I wrote my scripts it was much more useful when I found code examples), so without any words, without tl;dr — read the code of my scripts.</description>
+    </item>
+    <item>
+      <title>Neat Way to Get Descriptor Object in Python</title>
+      <link>https://rrader.github.io/engineering/neat-way-to-get-descriptor-object/</link>
+      <pubDate>Mon, 10 Feb 2014 23:22:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/neat-way-to-get-descriptor-object/</guid>
+      <description>(c) zaper3095&#xA;Interesting question appeared today on my job: Quoting from StackOverflow:&#xA;In Python 3:&#xA;class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Is there better way to do it? I don&amp;rsquo;t like this self.__class__.__dict__ stuff&#xA;Shortly, the answer is NO. No other way to get descriptor object (preventing __get__ being invoked) than getting it from __dict__.</description>
     </item>
     <item>
       <title>Linked lists in Linux Kernel</title>
@@ -167,7 +209,7 @@
       <link>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</link>
       <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</guid>
-      <description>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.&#xA;Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.</description>
+      <description>Docker &amp;amp; Jenkins Series:&#xA;Using Docker Containers as Jenkins Nodes (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Caching Maven Local Repository in Docker (2015-03-13) New CentOS 7 Maven Slave in docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.</description>
     </item>
   </channel>
 </rss>

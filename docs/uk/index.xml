@@ -86,6 +86,13 @@
       <description>zk_phone — це пет-проєкт програмування вуличного таксофона на базі Raspberry Pi та софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: таксофон, Raspberry Pi, символьний LCD-дисплей (HD44780), матрична клавіатура, герконовий перемикач важеля слухавки (reed switch) 1. Як влаштована логіка Програма написана на Python і побудована на базі простого автомата станів (State Machine) у модулі zk_phone/app.py.&#xA;Стан 1: Трубка лежить на важелі (HandsetPut) На дисплеї світиться привітання: Hello!. Працюють сервісні коди з клавіатури: *1# — виводить на LCD поточні локальні IP-адреси Raspberry Pi.</description>
     </item>
     <item>
+      <title>Використання DjangoTemplates незалежно від Django</title>
+      <link>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</link>
+      <pubDate>Mon, 17 Aug 2015 16:22:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</guid>
+      <description>Щоб використовувати та налаштовувати DjangoTemplates окремо від самого Django, незалежно від settings.py та всього іншого, замість використання об&amp;rsquo;єкта Template набагато краще створити екземпляр власного Engine з налаштуваннями (параметри схожі на settings.py). Приклад нижче:&#xA;from django.template.backends.django import DjangoTemplates engine = DjangoTemplates( { &amp;#39;NAME&amp;#39;: &amp;#39;mail&amp;#39;, &amp;#39;APP_DIRS&amp;#39;: False, &amp;#39;DIRS&amp;#39;: [], &amp;#39;OPTIONS&amp;#39;: { &amp;#39;loaders&amp;#39;: [ &amp;#39;events.loaders.MyLoader&amp;#39;, ], }, }) template = engine.get_template(template_slug) rendered = template.render(Context(...)) (Gist: rrader/602459d44ff8473ad3b3)&#xA;Таким чином ви можете сконфігурувати власний engine у тому місці, де потрібно, з тими параметрами, які вам потрібні (я, наприклад, додав кастомний лоадер), і навіть переналаштовувати його на льоту.</description>
+    </item>
+    <item>
       <title>Схема сигналізації</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
@@ -104,7 +111,21 @@
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.&#xA;Встановлення Jenkins на робочу систему та використання Docker як слейвів — зручна річ, але може засмічувати комп&amp;rsquo;ютер тимчасовими файлами, які важко вичищати. DJS2 пропонує ізольоване середовище (LXC-контейнер), де виконується і сам Jenkins, і всі його Docker-слейви, а на вашому комп&amp;rsquo;ютері зберігається лише папка з даними та джобами Jenkins.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.</description>
+    </item>
+    <item>
+      <title>Новий CentOS 7 Maven Slave у docker-jenkins-slave</title>
+      <link>https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 23:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/new-centos-7-maven-slave-in-docker/</guid>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Сьогодні я додав новий шаблон Jenkins-слейва в docker-jenkins-slave під назвою «centos7-java».&#xA;Він базується (дякую, Капітане Очевидність) на CentOS 7 і його мета — збирати Maven-проєкти, тож образ має встановлений Maven.&#xA;Це доволі звично. Але головна новина в тому, що новий образ більше не містить жахливого SSH-демона, який порушує філософію Docker щодо запуску одного процесу в контейнері.</description>
+    </item>
+    <item>
+      <title>Кешування локального репозиторію Maven у Docker</title>
+      <link>https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/</link>
+      <pubDate>Fri, 13 Mar 2015 14:10:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/caching-maven-local-repository-in-docker/</guid>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Я використовую Docker-інстанси як Jenkins-слейви і запускаю свої контейнери ось так:&#xA;# docker run -d --name=&amp;#34;Chewbakka&amp;#34; antigluk/jenkins-slave-centos7-java -labels docker-centos7-java -name &amp;#34;Chewbakka&amp;#34; (насправді я роблю це за допомогою docker-jenkins-slave)&#xA;Проте немає жодного сенсу тримати локальний репозиторій Maven у кожному контейнері окремо.</description>
     </item>
     <item>
       <title>Security System Keypad on MSP430</title>
@@ -139,7 +160,7 @@
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
-      <description>tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.&#xA;У цьому репозиторії: https://github.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.</description>
     </item>
     <item>
       <title>Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</title>
@@ -149,11 +170,32 @@
       <description>Нарешті в мене з&amp;rsquo;явилося про що написати пост!&#xA;Останній місяць я експериментував із налагоджувальною платою TI MSP430 Launchpad, і при роботі з АЦП дуже не вистачало наочної візуалізації. Оскільки на платі Launchpad є інтерфейс UART-USB, я вирішив виводити отримані дані на графік.&#xA;Я використовую мікроконтролер MSP430G2553, і весь код написаний саме для цього контролера.&#xA;1. Прошивка мікроконтролера Прошивка контролера у загальних рисах досить проста: вона просто безперервно відправляє значення з АЦП в UART — з однією ремаркою: перед початком відправки нам потрібно зробити &amp;ldquo;handshake&amp;rdquo; — отримати стартовий символ від комп&amp;rsquo;ютера.</description>
     </item>
     <item>
+      <title>Система виявлення аномальної поведінки абонентів телефонної мережі</title>
+      <link>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</link>
+      <pubDate>Tue, 10 Jun 2014 00:27:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/study_posts/telecom-anomaly-detection/</guid>
+      <description>Вийшов новий номер вісника КПІ з обчислювальної техніки з моєю статтею:&#xA;Вісник НТУУ «КПІ». Інформатика, управління та обчислювальна техніка: Зб. наук. пр. – К.: Век+, 2013. – № 59. – 134 c.&#xA;Збірник: http://it-visnyk.kpi.ua/?page_id=1978&amp;lang=uk PDF випуску Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+    <item>
       <title>Оформлення псевдокоду в LaTeX українською</title>
       <link>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</link>
       <pubDate>Sat, 07 Jun 2014 22:12:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/study_posts/latex-pseudocode-algorithm2e/</guid>
       <description>Для вставлення псевдокоду в латех документи є кілька пакетів, я працював із algorithm2e.&#xA;Звісно, псевдокод можна вставити як звичайний текст моноширинним шрифтом, але він виглядає набагато краще, коли він оформлений з підсвітлюванням синтаксису.&#xA;Я не буду писати як загалом працювати із пакетом algorithm2e, тому що в мережі є детальні інструкції, документація, та інше.&#xA;Для використання пакету в україномовних документах потрібна локалізація для ключових слів та операторів. Викладаю свій переклад (потрібно додати в преамбулу документу):</description>
+    </item>
+    <item>
+      <title>Керування Hyper-V за допомогою Python</title>
+      <link>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</guid>
+      <description>Колекція посилань для написання скриптів керування Hyper-V із Python.&#xA;Для керування машинами Hyper-V існує WMI API (у моєму випадку я використовую Python WMI; очевидно, є також версія для PowerShell):&#xA;Python 2.7 x64 bit pywin32 — збірка 218 була найновішою на дату публікації Пакет WMI — https://pypi.python.org/pypi/WMI/ З виходом Windows 8 з&amp;rsquo;явилися дві версії API: root\virtualization та root\virtualization\v2.&#xA;Я вважаю, що код — найкраща документація для API (принаймні, коли я писав свої скрипти, приклади коду виявилися значно кориснішими), тому без зайвих слів і tl;dr — дивіться код моїх скриптів.</description>
+    </item>
+    <item>
+      <title>Елегантний спосіб отримати об&#39;єкт дескриптора в Python</title>
+      <link>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</link>
+      <pubDate>Mon, 10 Feb 2014 23:22:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</guid>
+      <description>(c) zaper3095&#xA;Сьогодні на роботі виникло цікаве питання: Цитата зі StackOverflow:&#xA;У Python 3:&#xA;class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Чи є кращий спосіб це зробити? Мені не дуже подобається ця штука з self.__class__.__dict__&#xA;Коротко кажучи, відповідь — НІ. Немає іншого способу отримати об&amp;rsquo;єкт дескриптора (без виклику __get__), крім як дістати його з __dict__.</description>
     </item>
     <item>
       <title>Linked lists in Linux Kernel</title>
@@ -167,7 +209,7 @@
       <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
       <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
-      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.</description>
     </item>
   </channel>
 </rss>

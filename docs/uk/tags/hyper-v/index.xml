@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyper-V on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/hyper-v/</link>
+    <description>Recent content in Hyper-V on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Fri, 18 Apr 2014 18:59:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Керування Hyper-V за допомогою Python</title>
+      <link>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</guid>
+      <description>Колекція посилань для написання скриптів керування Hyper-V із Python.&#xA;Для керування машинами Hyper-V існує WMI API (у моєму випадку я використовую Python WMI; очевидно, є також версія для PowerShell):&#xA;Python 2.7 x64 bit pywin32 — збірка 218 була найновішою на дату публікації Пакет WMI — https://pypi.python.org/pypi/WMI/ З виходом Windows 8 з&amp;rsquo;явилися дві версії API: root\virtualization та root\virtualization\v2.&#xA;Я вважаю, що код — найкраща документація для API (принаймні, коли я писав свої скрипти, приклади коду виявилися значно кориснішими), тому без зайвих слів і tl;dr — дивіться код моїх скриптів.</description>
+    </item>
+  </channel>
+</rss>

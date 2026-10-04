@@ -5,6 +5,13 @@ draft: false
 tags: ["containers", "continuous-integration", "devops", "docker", "jenkins", "vagrant"]
 ---
 
+> **Серія статей про Docker та Jenkins:**
+> 1. [Використання Docker-контейнерів як Jenkins-нод](/uk/engineering/using-docker-containers-as-jenkins-nodes/) (2013-10-31)
+> 2. [Docker Jenkins Slave Generator](/uk/engineering/docker-jenkins-slave-generator/) (2014-09-02)
+> 3. [Кешування локального репозиторію Maven у Docker](/uk/engineering/caching-maven-local-repository-in-docker/) (2015-03-13)
+> 4. [Новий CentOS 7 Maven Slave у docker-jenkins-slave](/uk/engineering/new-centos-7-maven-slave-in-docker/) (2015-03-13)
+> 5. **Docker-Jenkins-Slave 2.0 (DJS2)** (2015-03-22)
+
 Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.
 
 ![DJS2 Архітектура](/images/docker-jenkins-slave-20-djs2/image-01.png)

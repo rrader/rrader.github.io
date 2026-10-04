@@ -5,6 +5,13 @@ draft: false
 tags: ["continuous-integration", "devops", "docker", "jenkins", "virtualization"]
 ---
 
+> **Docker & Jenkins Series:**
+> 1. [Using Docker Containers as Jenkins Nodes](/engineering/using-docker-containers-as-jenkins-nodes/) (2013-10-31)
+> 2. **Docker Jenkins Slave Generator** (2014-09-02)
+> 3. [Caching Maven Local Repository in Docker](/engineering/caching-maven-local-repository-in-docker/) (2015-03-13)
+> 4. [New CentOS 7 Maven Slave in docker-jenkins-slave](/engineering/new-centos-7-maven-slave-in-docker/) (2015-03-13)
+> 5. [Docker-Jenkins-Slave 2.0 (DJS2)](/engineering/docker-jenkins-slave-20-djs2/) (2015-03-22)
+
 tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .
 
 ![Docker Jenkins Slave Generator](/images/docker-jenkins-slave-generator/image-01.png)

@@ -30,6 +30,13 @@
       <description>zk_phone — це пет-проєкт програмування вуличного таксофона на базі Raspberry Pi та софту на Python.&#xA;Вихідний код: github.com/rrader/zk_phone Апаратна частина: таксофон, Raspberry Pi, символьний LCD-дисплей (HD44780), матрична клавіатура, герконовий перемикач важеля слухавки (reed switch) 1. Як влаштована логіка Програма написана на Python і побудована на базі простого автомата станів (State Machine) у модулі zk_phone/app.py.&#xA;Стан 1: Трубка лежить на важелі (HandsetPut) На дисплеї світиться привітання: Hello!. Працюють сервісні коди з клавіатури: *1# — виводить на LCD поточні локальні IP-адреси Raspberry Pi.</description>
     </item>
     <item>
+      <title>Використання DjangoTemplates незалежно від Django</title>
+      <link>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</link>
+      <pubDate>Mon, 17 Aug 2015 16:22:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-djangotemplates-independently/</guid>
+      <description>Щоб використовувати та налаштовувати DjangoTemplates окремо від самого Django, незалежно від settings.py та всього іншого, замість використання об&amp;rsquo;єкта Template набагато краще створити екземпляр власного Engine з налаштуваннями (параметри схожі на settings.py). Приклад нижче:&#xA;from django.template.backends.django import DjangoTemplates engine = DjangoTemplates( { &amp;#39;NAME&amp;#39;: &amp;#39;mail&amp;#39;, &amp;#39;APP_DIRS&amp;#39;: False, &amp;#39;DIRS&amp;#39;: [], &amp;#39;OPTIONS&amp;#39;: { &amp;#39;loaders&amp;#39;: [ &amp;#39;events.loaders.MyLoader&amp;#39;, ], }, }) template = engine.get_template(template_slug) rendered = template.render(Context(...)) (Gist: rrader/602459d44ff8473ad3b3)&#xA;Таким чином ви можете сконфігурувати власний engine у тому місці, де потрібно, з тими параметрами, які вам потрібні (я, наприклад, додав кастомний лоадер), і навіть переналаштовувати його на льоту.</description>
+    </item>
+    <item>
       <title>LvivPy4: Threading vs asyncio - benchmark</title>
       <link>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
       <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
@@ -42,6 +49,20 @@
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-adc-python-plotter/</guid>
       <description>Нарешті в мене з&amp;rsquo;явилося про що написати пост!&#xA;Останній місяць я експериментував із налагоджувальною платою TI MSP430 Launchpad, і при роботі з АЦП дуже не вистачало наочної візуалізації. Оскільки на платі Launchpad є інтерфейс UART-USB, я вирішив виводити отримані дані на графік.&#xA;Я використовую мікроконтролер MSP430G2553, і весь код написаний саме для цього контролера.&#xA;1. Прошивка мікроконтролера Прошивка контролера у загальних рисах досить проста: вона просто безперервно відправляє значення з АЦП в UART — з однією ремаркою: перед початком відправки нам потрібно зробити &amp;ldquo;handshake&amp;rdquo; — отримати стартовий символ від комп&amp;rsquo;ютера.</description>
+    </item>
+    <item>
+      <title>Керування Hyper-V за допомогою Python</title>
+      <link>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</link>
+      <pubDate>Fri, 18 Apr 2014 18:59:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/control-hyper-v-with-python/</guid>
+      <description>Колекція посилань для написання скриптів керування Hyper-V із Python.&#xA;Для керування машинами Hyper-V існує WMI API (у моєму випадку я використовую Python WMI; очевидно, є також версія для PowerShell):&#xA;Python 2.7 x64 bit pywin32 — збірка 218 була найновішою на дату публікації Пакет WMI — https://pypi.python.org/pypi/WMI/ З виходом Windows 8 з&amp;rsquo;явилися дві версії API: root\virtualization та root\virtualization\v2.&#xA;Я вважаю, що код — найкраща документація для API (принаймні, коли я писав свої скрипти, приклади коду виявилися значно кориснішими), тому без зайвих слів і tl;dr — дивіться код моїх скриптів.</description>
+    </item>
+    <item>
+      <title>Елегантний спосіб отримати об&#39;єкт дескриптора в Python</title>
+      <link>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</link>
+      <pubDate>Mon, 10 Feb 2014 23:22:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/neat-way-to-get-descriptor-object/</guid>
+      <description>(c) zaper3095&#xA;Сьогодні на роботі виникло цікаве питання: Цитата зі StackOverflow:&#xA;У Python 3:&#xA;class A(object): attr = SomeDescriptor() ... def somewhere(self): # need to check is type of self.attr is SomeDescriptor() desc = self.__class__.__dict__[attr_name] return isinstance(desc, SomeDescriptor) Чи є кращий спосіб це зробити? Мені не дуже подобається ця штука з self.__class__.__dict__&#xA;Коротко кажучи, відповідь — НІ. Немає іншого способу отримати об&amp;rsquo;єкт дескриптора (без виклику __get__), крім як дістати його з __dict__.</description>
     </item>
   </channel>
 </rss>

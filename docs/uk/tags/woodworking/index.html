@@ -44,62 +44,103 @@ if (!doNotTrack) {
   
 </head>
 <body class="workstation-body" a="light">
-  
-  <div class="workstation-wrapper">
+  <div class="desk-environment">
+    <div class="monitor-assembly">
+      
+      <div class="crt-monitor-casing">
+        
+        <div class="casing-vents-top">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
-    
-    <header class="workstation-top-bar">
-      <div class="ws-bar-left">
-        <a href="../../../" class="ws-logo" title="Головний термінал">
-          <span class="ws-logo-icon">⚡</span>
-          <span class="ws-logo-text">rmn.pp.ua</span>
-        </a>
-        <span class="ws-status-chip">
-          <span class="ws-dot"></span> TTY1: ONLINE
-        </span>
-      </div>
-
-      <div class="ws-bar-right">
         
-        <a href="../../../tags/woodworking/" class="ws-btn lang-btn">
-          🇬🇧 EN
-        </a>
-        <a href="../../../uk/tags/woodworking/" class="ws-btn lang-btn active">
-          🇺🇦 UA
-        </a>
-        
-        <a href="../../../uk/tags/woodworking/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
-          📡 RSS
-        </a>
-        
-        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
-          ↵ TERMINAL
-        </a>
-      </div>
-    </header>
-
-    
-    <main class="term-window-container" id="top">
-      <div class="term-window">
-        
-        <div class="term-window-titlebar">
-          <div class="term-window-controls">
-            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
-            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
-            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+        <div class="bezel-top-bar">
+          <div class="viewsonic-logo" title="ViewSonic">
+            <svg class="viewsonic-birds-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 27 C28 26, 60 27, 106 26" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round" />
+              
+              <g transform="translate(6, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(38, 2) scale(0.6)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fdd835" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#ab47bc" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#d32f2f" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(72, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+            </svg>
+            <span class="viewsonic-text">ViewSonic</span>
           </div>
-          <div class="term-window-title">
-            <span class="win-title-icon">📄</span>
-            <span>guest@rmn.pp.ua: Woodworking</span>
-          </div>
-          <div class="term-window-meta">
-            <span class="win-meta-tag">[READ-ONLY]</span>
+
+          <div class="model-badge">
+            <span class="badge-brand">SonicTron</span>
+            <span class="badge-series">PT775</span>
           </div>
         </div>
 
         
-        <div class="term-window-body">
-          <div class="document-canvas">
+        <div class="crt-tube-frame">
+          <div class="crt-wrapper doc-crt-screen" id="crt-wrapper">
+            
+            <header class="header-bar doc-header-bar">
+              <div class="header-title">
+                <a href="../../../" class="ws-logo" title="Головний термінал">
+                  <span class="quake-logo">⚡</span>
+                  <span>rmn.pp.ua</span>
+                </a>
+                <span class="ws-status-chip">
+                  <span class="ws-dot"></span> TTY1: INDEX
+                </span>
+              </div>
+              <div class="header-controls">
+                <a href="../../../tags/woodworking/" class="ctrl-btn lang-btn">
+                  🇬🇧 EN
+                </a>
+                <a href="../../../uk/tags/woodworking/" class="ctrl-btn lang-btn active">
+                  🇺🇦 UA
+                </a>
+                <a href="../../../uk/tags/woodworking/index.xml" class="ctrl-btn rss-btn" target="_blank" title="RSS Feed">
+                  📡 RSS
+                </a>
+                <a href="../../../" class="ctrl-btn home-btn" title="Back to Quake Terminal">
+                  ↵ TERMINAL
+                </a>
+              </div>
+            </header>
+
+            
+            <main class="terminal-container doc-reading-container" id="top">
+              <div class="document-canvas">
 <a href="../../../">..</a>
 
 <h1>Woodworking</h1>
@@ -116,24 +157,128 @@ if (!doNotTrack) {
 
 
 
+              </div>
+            </main>
+
+            
+            <div class="doc-statusbar">
+              <div class="status-left">
+                <span class="status-mode">NORMAL</span>
+                <span class="status-filename">index</span>
+              </div>
+              <div class="status-right">
+                <span class="status-item">UTF-8</span>
+                
+                <a href="#top" class="status-action" id="doc-btn-top" title="Top">▲ TOP</a>
+                <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+              </div>
+            </div>
           </div>
         </div>
 
         
-        <div class="term-window-statusbar">
-          <div class="status-left">
-            <span class="status-mode">NORMAL</span>
-            <span class="status-filename">index</span>
+        <div class="bezel-bottom-bar">
+          <div class="bezel-speaker-grille">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
           </div>
-          <div class="status-right">
-            <span class="status-item">UTF-8</span>
-            
-            <a href="#top" class="status-action" title="Top">▲ TOP</a>
-            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+
+          <div class="bezel-osd-panel">
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">1</span>
+              <button type="button" class="osd-btn" id="osd-btn-1" title="Top">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">2</span>
+              <button type="button" class="osd-btn" id="osd-btn-2" title="Terminal">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▼</span>
+              <button type="button" class="osd-btn" id="osd-btn-down" title="Scroll Down">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▲</span>
+              <button type="button" class="osd-btn" id="osd-btn-up" title="Scroll Up">·</button>
+            </div>
+          </div>
+
+          <div class="bezel-power-panel">
+            <div class="power-indicator" id="monitor-power-led" title="Power Status"></div>
+            <button type="button" class="power-button" id="monitor-power-btn" title="Monitor Power Switch">
+              <span class="power-symbol">⏻</span>
+            </button>
           </div>
         </div>
       </div>
-    </main>
+
+      
+      <div class="monitor-stand">
+        <div class="stand-neck"></div>
+        <div class="stand-swivel-ring"></div>
+        <div class="stand-base"></div>
+        <div class="stand-desk-shadow"></div>
+      </div>
+    </div>
   </div>
+
+  <script>
+    (function() {
+      const pwrBtn = document.getElementById('monitor-power-btn');
+      const pwrLed = document.getElementById('monitor-power-led');
+      const crtWrap = document.getElementById('crt-wrapper');
+      const readingCont = document.querySelector('.doc-reading-container');
+      let pwrOn = true;
+
+      if (pwrBtn && crtWrap) {
+        pwrBtn.addEventListener('click', function() {
+          pwrOn = !pwrOn;
+          if (pwrOn) {
+            crtWrap.classList.remove('crt-powered-off');
+            if (pwrLed) pwrLed.classList.remove('standby');
+          } else {
+            crtWrap.classList.add('crt-powered-off');
+            if (pwrLed) pwrLed.classList.add('standby');
+          }
+        });
+      }
+
+      const osd1 = document.getElementById('osd-btn-1');
+      if (osd1 && readingCont) {
+        osd1.addEventListener('click', function() {
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      const osd2 = document.getElementById('osd-btn-2');
+      if (osd2) {
+        osd2.addEventListener('click', function() {
+          window.location.href = '\/';
+        });
+      }
+
+      const osdDown = document.getElementById('osd-btn-down');
+      if (osdDown && readingCont) {
+        osdDown.addEventListener('click', function() {
+          readingCont.scrollBy({ top: 350, behavior: 'smooth' });
+        });
+      }
+
+      const osdUp = document.getElementById('osd-btn-up');
+      if (osdUp && readingCont) {
+        osdUp.addEventListener('click', function() {
+          readingCont.scrollBy({ top: -350, behavior: 'smooth' });
+        });
+      }
+
+      const topBtn = document.getElementById('doc-btn-top');
+      if (topBtn && readingCont) {
+        topBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

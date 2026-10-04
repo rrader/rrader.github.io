@@ -13,7 +13,7 @@
       <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
       <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
-      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
+      <description>Серія статей про Docker та Jenkins:&#xA;Використання Docker-контейнерів як Jenkins-нод (2013-10-31) Docker Jenkins Slave Generator (2014-09-02) Кешування локального репозиторію Maven у Docker (2015-03-13) Новий CentOS 7 Maven Slave у docker-jenkins-slave (2015-03-13) Docker-Jenkins-Slave 2.0 (DJS2) (2015-03-22) Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.</description>
     </item>
   </channel>
 </rss>
