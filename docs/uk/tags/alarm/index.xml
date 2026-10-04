@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/alarm/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Схема та апаратна реалізація охоронної сигналізації на базі MSP430</title>
+      <title>Схема сигналізації</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Кодова клавіатура 4×4 для охоронної системи на базі MSP430 Підключення MSP430 до GSM-модуля SIM900 UART-монітор для налагодження зв&amp;rsquo;язку Чому не варто купувати GSM-модуль SIM900A Електрична схема сигналізації (клікабельно):&#xA;Те, що вийшло в результаті:&#xA;(Відео: YouTube)&#xA;Ще фото:&#xA;Зовнішній вигляд Вигляд збоку Внутрішнє компонування Розводка проводів та клемники Плата контролера та розпайка Зворотна сторона кришки з клавіатурою Цей матеріал було перенесено зі старого блогу antigluk.blogspot.com.</description>
+      <description>Електрична схема сигналізації (клікабельно):&#xA;Те, що вийшло в результаті:&#xA;Ще фото:&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
     </item>
   </channel>
 </rss>

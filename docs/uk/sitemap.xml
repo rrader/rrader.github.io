@@ -561,19 +561,6 @@
                 href="https://rrader.github.io/uk/tags/alarm/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/electronics/</loc>
-    <lastmod>2015-07-30T17:35:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/electronics/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/electronics/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/uk/tags/msp430/</loc>
     <lastmod>2015-07-30T17:35:00+03:00</lastmod>
     <xhtml:link
@@ -598,19 +585,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/schematics/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/security/</loc>
-    <lastmod>2015-07-30T17:35:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/security/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/security/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</loc>
@@ -663,6 +637,19 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/conference/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/lvivpy/</loc>
+    <lastmod>2015-06-27T15:46:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/lvivpy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/lvivpy/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</loc>
@@ -795,19 +782,6 @@
                 href="https://rrader.github.io/uk/engineering/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/embedded/</loc>
-    <lastmod>2015-03-05T16:20:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/embedded/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/embedded/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/uk/tags/energia/</loc>
     <lastmod>2015-03-05T16:20:00+02:00</lastmod>
     <xhtml:link
@@ -834,6 +808,19 @@
                 href="https://rrader.github.io/uk/tags/keypad/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/uk/tags/security/</loc>
+    <lastmod>2015-03-05T16:20:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/security/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/security/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/diy_posts/msp430-security-keypad/</loc>
     <lastmod>2015-03-05T16:20:00+02:00</lastmod>
     <xhtml:link
@@ -847,30 +834,17 @@
                 href="https://rrader.github.io/uk/diy_posts/msp430-security-keypad/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/debugging/</loc>
+    <loc>https://rrader.github.io/uk/tags/just-for-fun/</loc>
     <lastmod>2015-01-18T21:08:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/tags/debugging/"
+                href="https://rrader.github.io/tags/just-for-fun/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/debugging/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/launchpad/</loc>
-    <lastmod>2015-01-18T21:08:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/launchpad/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/launchpad/"
+                href="https://rrader.github.io/uk/tags/just-for-fun/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/serial/</loc>
@@ -912,30 +886,17 @@
                 href="https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/gsm/</loc>
+    <loc>https://rrader.github.io/uk/tags/launchpad/</loc>
     <lastmod>2015-01-17T12:58:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/tags/gsm/"
+                href="https://rrader.github.io/tags/launchpad/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/gsm/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/sim900/</loc>
-    <lastmod>2015-01-17T12:58:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/sim900/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/sim900/"
+                href="https://rrader.github.io/uk/tags/launchpad/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</loc>
@@ -949,6 +910,19 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/sim900/</loc>
+    <lastmod>2015-01-17T12:58:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/sim900/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/sim900/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/fail/</loc>
@@ -1120,6 +1094,19 @@
                 href="https://rrader.github.io/uk/tags/kernel/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</loc>
+    <lastmod>2013-11-15T01:37:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/linked-lists-in-linux-kernel/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/tags/linux/</loc>
     <lastmod>2013-11-15T01:37:00+02:00</lastmod>
     <xhtml:link
@@ -1144,19 +1131,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/low-level/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</loc>
-    <lastmod>2013-11-15T01:37:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/engineering/linked-lists-in-linux-kernel/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/ci-cd/</loc>

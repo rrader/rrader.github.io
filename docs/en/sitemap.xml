@@ -564,17 +564,17 @@
                 href="https://rrader.github.io/tags/alarm/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/electronics/</loc>
+    <loc>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</loc>
     <lastmod>2015-07-30T17:35:00+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/electronics/"
+                href="https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/tags/electronics/"
+                href="https://rrader.github.io/diy_posts/msp430-security-alarm-system/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/msp430/</loc>
@@ -590,19 +590,6 @@
                 href="https://rrader.github.io/tags/msp430/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</loc>
-    <lastmod>2015-07-30T17:35:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/diy_posts/msp430-security-alarm-system/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/tags/schematics/</loc>
     <lastmod>2015-07-30T17:35:00+03:00</lastmod>
     <xhtml:link
@@ -614,19 +601,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/tags/schematics/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/security/</loc>
-    <lastmod>2015-07-30T17:35:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/security/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/security/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/asyncio/</loc>
@@ -666,6 +640,19 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/tags/conference/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/lvivpy/</loc>
+    <lastmod>2015-06-27T15:46:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/lvivpy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/lvivpy/"
                 />
   </url><url>
     <loc>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</loc>
@@ -798,19 +785,6 @@
                 href="https://rrader.github.io/tags/vagrant/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/embedded/</loc>
-    <lastmod>2015-03-05T16:20:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/embedded/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/embedded/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/tags/energia/</loc>
     <lastmod>2015-03-05T16:20:00+02:00</lastmod>
     <xhtml:link
@@ -837,6 +811,19 @@
                 href="https://rrader.github.io/tags/keypad/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/tags/security/</loc>
+    <lastmod>2015-03-05T16:20:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/security/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/security/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/diy_posts/msp430-security-keypad/</loc>
     <lastmod>2015-03-05T16:20:00+02:00</lastmod>
     <xhtml:link
@@ -850,17 +837,17 @@
                 href="https://rrader.github.io/diy_posts/msp430-security-keypad/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/debugging/</loc>
+    <loc>https://rrader.github.io/tags/just-for-fun/</loc>
     <lastmod>2015-01-18T21:08:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/debugging/"
+                href="https://rrader.github.io/uk/tags/just-for-fun/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/tags/debugging/"
+                href="https://rrader.github.io/tags/just-for-fun/"
                 />
   </url><url>
     <loc>https://rrader.github.io/diy_posts/msp430-uart-monitor/</loc>
@@ -874,19 +861,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/diy_posts/msp430-uart-monitor/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/tags/launchpad/</loc>
-    <lastmod>2015-01-18T21:08:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/launchpad/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/launchpad/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/serial/</loc>
@@ -915,17 +889,17 @@
                 href="https://rrader.github.io/tags/uart/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/gsm/</loc>
+    <loc>https://rrader.github.io/tags/launchpad/</loc>
     <lastmod>2015-01-17T12:58:00+02:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/gsm/"
+                href="https://rrader.github.io/uk/tags/launchpad/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-us"
-                href="https://rrader.github.io/tags/gsm/"
+                href="https://rrader.github.io/tags/launchpad/"
                 />
   </url><url>
     <loc>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</loc>
@@ -954,19 +928,6 @@
                 href="https://rrader.github.io/tags/sim900/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/tags/fail/</loc>
-    <lastmod>2015-01-15T16:06:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/fail/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/fail/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/</loc>
     <lastmod>2015-01-15T16:06:00+02:00</lastmod>
     <xhtml:link
@@ -978,6 +939,19 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/fail/</loc>
+    <lastmod>2015-01-15T16:06:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/fail/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/fail/"
                 />
   </url><url>
     <loc>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</loc>

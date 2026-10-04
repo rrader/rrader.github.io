@@ -6,21 +6,14 @@
     <description>Recent content in Launchpad on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jan 2015 12:58:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/launchpad/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hardware UART Monitor: Snooping Serial Traffic with MSP430 LaunchPad</title>
-      <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
-      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.&#xA;For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.</description>
-    </item>
-    <item>
-      <title>Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem</title>
+      <title>MSP430 Interfacing to SIM900A</title>
       <link>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</link>
       <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor For pitfalls of the SIM900A Mini v3.4 board read here.&#xA;UART wiring scheme is simple: RX to TX, TX to RX.&#xA;Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.&#xA;Initially jumpers are in this position for UART conversion through MAX232:</description>
+      <description>For pitfalls of the SIM900A Mini v3.4 board read here.&#xA;UART wiring scheme is simple: RX to TX, TX to RX.&#xA;Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.&#xA;Initially jumpers are in this position for UART conversion through MAX232:&#xA;But we don&amp;rsquo;t need to connect the board to a computer COM port, we need the unconverted UART signal.</description>
     </item>
     <item>
       <title>Plotting Live Data from MSP430 ADC in Python</title>

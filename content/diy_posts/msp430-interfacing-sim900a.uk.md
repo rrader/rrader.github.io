@@ -1,14 +1,8 @@
 ---
-title: "Підключення мікроконтролера MSP430 до GSM-модуля SIM900A"
+title: "MSP430 Interfacing to SIM900A"
 date: 2015-01-17T12:58:00+02:00
 draft: false
-tags: ["diy", "hardware", "msp430", "launchpad", "sim900", "gsm", "uart", "energia"]
----
-
-*Пов'язані статті серії:*
-* [Чому не варто купувати GSM-модуль SIM900A (огляд плати)](/uk/diy_posts/sim900a-mini-v34-caution/)
-* [UART-монітор на базі MSP430 для налагодження зв'язку](/uk/diy_posts/msp430-uart-monitor/)
-
+tags: ["hardware", "launchpad", "msp430", "schematics", "sim900", "uart"]
 ---
 
 Про підводні камені плати SIM900A Mini v3.4 [читати тут](/uk/diy_posts/sim900a-mini-v34-caution/).

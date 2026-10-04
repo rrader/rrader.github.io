@@ -6,21 +6,14 @@
     <description>Recent content in Security on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2015 16:20:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>MSP430 Security Alarm: Electrical Schematics &amp; Hardware Build</title>
-      <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
-      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module Electrical schematic of the alarm system (clickable):&#xA;What turned out in the end:&#xA;(Video: YouTube)&#xA;More photos:&#xA;Exterior Perspective Side Angle Internal Board Placement Wiring Loom &amp;amp; Screw Terminals Hand-Soldered Controller PCB Keypad Ribbon Routing This post was migrated from the legacy blog antigluk.</description>
-    </item>
-    <item>
-      <title>MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</title>
+      <title>Security System Keypad on MSP430</title>
       <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-security-keypad/</guid>
-      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build Built the interface part of the security system.&#xA;Disarming and arming will be done using a password, so we need a way to enter the password and change it.&#xA;The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&amp;rsquo;s where we&amp;rsquo;ll store the password.&#xA;Also, in case the password is forgotten, a &amp;ldquo;super-password&amp;rdquo; is needed to reset memory back to the default password.</description>
+      <description>Built the interface part of the security system.&#xA;Arming and disarming will be done using a password, so a way to enter and change the password is needed.&#xA;The MSP430G2553 has flash memory, 4 data segments of 64 bytes each. That&amp;rsquo;s where we&amp;rsquo;ll store the password.&#xA;Also, in case the password is forgotten, a &amp;ldquo;super password&amp;rdquo; is required to reset memory to the default password.&#xA;To read keypresses from the keypad, each button must be polled periodically.</description>
     </item>
   </channel>
 </rss>

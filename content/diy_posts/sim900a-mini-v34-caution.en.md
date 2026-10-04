@@ -1,23 +1,17 @@
 ---
-title: "Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review"
+title: "Don't buy SIM900A! SIM900A Mini v3.4 board"
 date: 2015-01-15T16:06:00+02:00
 draft: false
-tags: ["diy", "hardware", "gsm", "sim900", "fail", "msp430", "uart"]
+tags: ["fail", "hardware", "msp430", "sim900", "uart"]
 ---
 
-*Related series articles:*
-* [Connecting MSP430 to SIM900A](/diy_posts/msp430-interfacing-sim900a/)
-* [MSP430-based Hardware UART Monitor](/diy_posts/msp430-uart-monitor/)
+[Connecting MSP430 to SIM900A](/diy_posts/msp430-interfacing-sim900a/)  
+[UART monitor - observing data transmission over UART](/diy_posts/msp430-uart-monitor/)
 
----
+I ordered a soldered SIM900A on the *SIM900A Mini v3.4* board, without fully understanding how the SIM900A modification differs from the SIM900. The main difference is that SIM900A operates in a dual-band range, while SIM900 operates in quad-band. It seemed that for Ukraine, dual-band should fit ideally. **But no.**
 
-I ordered a breakout board featuring the **SIM900A Mini v3.4**, without thoroughly researching the architectural differences between the SIM900 and SIM900A hardware revisions.
-
-The main datasheet distinction is that **SIM900** is a quad-band modem (850/900/1800/1900 MHz), while **SIM900A** is dual-band (900/1800 MHz). On paper, dual-band should have been sufficient for European mobile networks. **However, there is a catch.**
-
-The SIM900A module enforces a strict **firmware-level regional lock**.
-
-Here is the list of officially supported territories and Mobile Country Codes (MCC):
+SIM900A has a **[regional lock](http://www.blog.zapro.dk/?p=368).**  
+Here is the list of countries where SIM900A can be used:
 
 | Country | Supported MCC Codes |
 |---|---|

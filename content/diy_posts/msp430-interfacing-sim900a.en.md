@@ -1,14 +1,8 @@
 ---
-title: "Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem"
+title: "MSP430 Interfacing to SIM900A"
 date: 2015-01-17T12:58:00+02:00
 draft: false
-tags: ["diy", "hardware", "msp430", "launchpad", "sim900", "gsm", "uart", "energia"]
----
-
-*Related series articles:*
-* [Why You Should Avoid the SIM900A GSM Module](/diy_posts/sim900a-mini-v34-caution/)
-* [MSP430-based Hardware UART Monitor](/diy_posts/msp430-uart-monitor/)
-
+tags: ["hardware", "launchpad", "msp430", "schematics", "sim900", "uart"]
 ---
 
 For pitfalls of the SIM900A Mini v3.4 board [read here](/diy_posts/sim900a-mini-v34-caution/).

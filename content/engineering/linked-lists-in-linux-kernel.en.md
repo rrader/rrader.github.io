@@ -1,22 +1,20 @@
 ---
-title: "Linked Lists in Linux Kernel"
+title: "Linked lists in Linux Kernel"
 date: 2013-11-15T01:37:00+02:00
 draft: false
-tags: ["c", "kernel", "linux", "low-level", "algorithms"]
+tags: ["c", "kernel", "linux", "low-level"]
 ---
 
-The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in `include/linux/list.h`.
+The Linux kernel already implements linked lists, so when writing kernel modules there is no need to reinvent the wheel. But the interface is somewhat non-obvious and differs from classical lists. See all operations in `/usr/src/linux-*/include/linux/list.h`.
 
-In typical algorithms coursework, a generic list node points to payload data (`node->data = payload`). The Linux kernel turns this upside down: the list node structure (`struct hlist_node` or `struct list_head`) is embedded directly **inside** your own data structure. Using the `container_of` macro (which computes memory offsets using `offsetof`), the kernel recovers the parent struct pointer without any separate dynamic memory allocations for wrapper nodes.
-
-First, declare and initialize the list head (for hash lists, `hlist`):
+First, declare a structure for the list head and initialize it:
 
 ```c
 struct hlist_head inodes;
 INIT_HLIST_HEAD(&inodes);
 ```
 
-Next, define the struct that will be an element of this list:
+Next, declare the structure that will be the elements of this list:
 
 ```c
 struct ffs_inode_info {
@@ -27,37 +25,32 @@ struct ffs_inode_info {
 };
 ```
 
-To become part of the linked list, the struct must contain an embedded `struct hlist_node`. This can be confusing at first, as one typically expects list nodes to point to instances of their own type.
+To become part of a linked list, the structure must contain a `struct hlist_node` element. Personally, this confused me a bit at first, because usually linked list elements hold references to elements of their own type.
 
-### Adding an element to the head
+To add an element (`finode`) to the head of the list (`inodes`):
 
 ```c
 struct ffs_inode_info *finode;
-/* ... allocate and populate finode ... */
-
+...
 hlist_add_head(&finode->list_node, &inodes);
 ```
 
-### Removing an element from the list
+Delete an element from the list:
 
 ```c
 hlist_del(&finode->list_node);
 ```
 
-### Iterating through the list
-
-To traverse all entries in the list, use the `hlist_for_each_entry` macro:
+Iterate through all elements of the list (`inodes`) sequentially:
 
 ```c
 struct hlist_head *head = &inodes;
 struct ffs_inode_info *i;
 
 hlist_for_each_entry(i, head, list_node) {
-    /* work with 'i' */
+    // some work with 'i' element
 }
 ```
-
-This intrusive list design yields great cache locality and completely eliminates separate allocation overhead for list management.
 
 ---
 *Migrated from legacy blog [antigluk.blogspot.com](https://antigluk.blogspot.com/2013/11/linked-lists-in-linux-kernel.html).*

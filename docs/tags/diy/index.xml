@@ -44,41 +44,6 @@
       <description>zk_phone is a pet project of programming a physical payphone using a Raspberry Pi and Python.&#xA;Source Code: github.com/rrader/zk_phone Hardware: Payphone chassis, Raspberry Pi, HD44780 character LCD, matrix keypad, hook switch (reed switch) 1. How the Logic Works The software is written in Python and structured around a simple state machine in zk_phone/app.py.&#xA;State 1: Handset on Hook (HandsetPut) The LCD displays a greeting: Hello!. Service keypad codes are available while on hook: *1# — prints the local IP addresses of the Raspberry Pi to the LCD.</description>
     </item>
     <item>
-      <title>MSP430 Security Alarm: Electrical Schematics &amp; Hardware Build</title>
-      <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
-      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module Electrical schematic of the alarm system (clickable):&#xA;What turned out in the end:&#xA;(Video: YouTube)&#xA;More photos:&#xA;Exterior Perspective Side Angle Internal Board Placement Wiring Loom &amp;amp; Screw Terminals Hand-Soldered Controller PCB Keypad Ribbon Routing This post was migrated from the legacy blog antigluk.</description>
-    </item>
-    <item>
-      <title>MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</title>
-      <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
-      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-security-keypad/</guid>
-      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build Built the interface part of the security system.&#xA;Disarming and arming will be done using a password, so we need a way to enter the password and change it.&#xA;The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&amp;rsquo;s where we&amp;rsquo;ll store the password.&#xA;Also, in case the password is forgotten, a &amp;ldquo;super-password&amp;rdquo; is needed to reset memory back to the default password.</description>
-    </item>
-    <item>
-      <title>Hardware UART Monitor: Snooping Serial Traffic with MSP430 LaunchPad</title>
-      <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
-      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.&#xA;For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.</description>
-    </item>
-    <item>
-      <title>Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem</title>
-      <link>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</link>
-      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
-      <guid>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor For pitfalls of the SIM900A Mini v3.4 board read here.&#xA;UART wiring scheme is simple: RX to TX, TX to RX.&#xA;Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.&#xA;Initially jumpers are in this position for UART conversion through MAX232:</description>
-    </item>
-    <item>
-      <title>Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review</title>
-      <link>https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/</link>
-      <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
-      <guid>https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/</guid>
-      <description>Related series articles:&#xA;Connecting MSP430 to SIM900A MSP430-based Hardware UART Monitor I ordered a breakout board featuring the SIM900A Mini v3.4, without thoroughly researching the architectural differences between the SIM900 and SIM900A hardware revisions.&#xA;The main datasheet distinction is that SIM900 is a quad-band modem (850/900/1800/1900 MHz), while SIM900A is dual-band (900/1800 MHz). On paper, dual-band should have been sufficient for European mobile networks. However, there is a catch.&#xA;The SIM900A module enforces a strict firmware-level regional lock.</description>
-    </item>
-    <item>
       <title>Plotting Live Data from MSP430 ADC in Python</title>
       <link>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>

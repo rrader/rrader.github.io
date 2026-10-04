@@ -9,11 +9,25 @@
     <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/schematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>MSP430 Security Alarm: Electrical Schematics &amp; Hardware Build</title>
+      <title>Alarm Schematics</title>
       <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module Electrical schematic of the alarm system (clickable):&#xA;What turned out in the end:&#xA;(Video: YouTube)&#xA;More photos:&#xA;Exterior Perspective Side Angle Internal Board Placement Wiring Loom &amp;amp; Screw Terminals Hand-Soldered Controller PCB Keypad Ribbon Routing This post was migrated from the legacy blog antigluk.</description>
+      <description>Alarm circuit schematic (clickable):&#xA;What came out in the end:&#xA;More photos:&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
+    </item>
+    <item>
+      <title>Note: UART monitor - observing transmission over UART</title>
+      <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
+      <description>Connecting MSP430 to SIM900&#xA;When using UART, for debugging purposes, I needed to monitor what the MSP430 sends and what the second device (SIM900) responds.&#xA;To do this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.&#xA;Wiring schematic of UART MSP430 -&amp;gt; Device so that on the computer you can see the Device responses:</description>
+    </item>
+    <item>
+      <title>MSP430 Interfacing to SIM900A</title>
+      <link>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</guid>
+      <description>For pitfalls of the SIM900A Mini v3.4 board read here.&#xA;UART wiring scheme is simple: RX to TX, TX to RX.&#xA;Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.&#xA;Initially jumpers are in this position for UART conversion through MAX232:&#xA;But we don&amp;rsquo;t need to connect the board to a computer COM port, we need the unconverted UART signal.</description>
     </item>
   </channel>
 </rss>

@@ -15,12 +15,5 @@
       <guid>https://rrader.github.io/study_posts/latex-pseudocode-algorithm2e/</guid>
       <description>There are several packages for typesetting pseudocode in LaTeX documents; I worked with algorithm2e.&#xA;Pseudocode can be included as plain monospaced text, but it looks much better when properly structured with syntax highlighting.&#xA;I won&amp;rsquo;t cover general usage of algorithm2e here, as detailed guides are readily available (Wikibooks, Harrix blog, PDF documentation).&#xA;To use the package in Ukrainian-language documents (diploma theses, scientific papers), localized keywords and operators are required. Here is my preamble translation snippet:</description>
     </item>
-    <item>
-      <title>Linked Lists in Linux Kernel</title>
-      <link>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</link>
-      <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
-      <guid>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</guid>
-      <description>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.&#xA;In typical algorithms coursework, a generic list node points to payload data (node-&amp;gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.</description>
-    </item>
   </channel>
 </rss>

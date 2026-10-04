@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 27 Jun 2015 15:46:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/benchmark/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LvivPy #4: Threading vs asyncio — бенчмарк перемикання контексту</title>
+      <title>LvivPy4: Threading vs asyncio - benchmark</title>
       <link>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
       <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
-      <description>Слайди презентації та відеозапис мого бліц-доповіді з конференції LvivPy #4 (30 травня 2015 року) про порівняння швидкості перемикання контексту між потоками ОС (threading) та асинхронним подієвим циклом (asyncio) у Python.&#xA;Відео доповіді Слайди презентації Презентація доступна на SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Записи та матеріали конференції: lvivpy.org.ua.&#xA;Дякую організаторам за чудову подію та теплу львівську спільноту Python!&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+      <description>Слайди презентації та відео бліц-доповіді про порівняння швидкості перемикання контексту використовуючи бібліотеки threading та asyncio з конференції LvivPy#4, яка проходила 30 травня 2015.&#xA;Запис: Слайди: LvivPy4 - Threading vs asyncio from Roman Anigon&#xA;Записи всіх доповідей: http://lvivpy.org.ua/?p=375&#xA;Ще раз хочеться подякувати організаторам за мега гідний івент.&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
     </item>
   </channel>
 </rss>

@@ -9,11 +9,11 @@
     <lastBuildDate>Fri, 15 Nov 2013 01:37:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/low-level/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel)</title>
+      <title>Linked lists in Linux Kernel</title>
       <link>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</link>
       <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</guid>
-      <description>У ядрі Linux уже давно реалізовані готові зв&amp;rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі include/linux/list.h.&#xA;Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (node-&amp;gt;data = my_data). В ядрі Linux усе зроблено навпаки: службова структура списку (struct hlist_node або struct list_head) інкапсулюється всередину вашої структури даних як одне з її полів.</description>
+      <description>У ядрі Linux уже реалізовані зв&amp;rsquo;язні списки, тож під час написання модулів ядра не треба писати свої велосипеди. Але інтерфейс роботи з ними дещо неочевидний і відрізняється від класичних списків. Див. усі операції в /usr/src/linux-*/include/linux/list.h.&#xA;Спочатку необхідно оголосити структуру на голову списку та проініціалізувати:&#xA;struct hlist_head inodes; INIT_HLIST_HEAD(&amp;amp;inodes); Далі необхідно оголосити структуру, яка буде елементами цього списку:&#xA;struct ffs_inode_info { struct inode vfs_inode; struct ffs_fd fd; struct hlist_node list_node; struct buffer_head *datablock; }; Щоб структура могла стати частиною зв&amp;rsquo;язного списку, вона повинна містити елемент struct hlist_node.</description>
     </item>
   </channel>
 </rss>

@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 27 Jun 2015 15:46:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/threading/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>LvivPy #4: Threading vs asyncio — Context Switch Benchmark</title>
+      <title>LvivPy4: Threading vs asyncio - benchmark</title>
       <link>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
       <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
       <guid>https://rrader.github.io/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
-      <description>Slides and video recording of my lightning talk from the LvivPy #4 Python conference (May 30, 2015), comparing context switching overhead between OS threads (threading) and event loops (asyncio) in Python.&#xA;Talk Video Presentation Slides Slides are available on SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Conference talks archive: lvivpy.org.ua.&#xA;Thanks again to the organizers for an awesome event and a great community!&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
+      <description>Slides and video of lightning talk about comparing context switch speed using threading and asyncio libraries from LvivPy#4 conference, held on May 30, 2015.&#xA;Video recording: Slides: LvivPy4 - Threading vs asyncio from Roman Anigon&#xA;Recordings of all talks: http://lvivpy.org.ua/?p=375&#xA;Once again I&amp;rsquo;d like to thank the organizers for a mega decent event.&#xA;Migrated from legacy blog antigluk.blogspot.com.</description>
     </item>
   </channel>
 </rss>

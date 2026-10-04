@@ -191,13 +191,6 @@
       <description></description>
     </item>
     <item>
-      <title>Electronics</title>
-      <link>https://rrader.github.io/tags/electronics/</link>
-      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
-      <guid>https://rrader.github.io/tags/electronics/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Msp430</title>
       <link>https://rrader.github.io/tags/msp430/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
@@ -209,13 +202,6 @@
       <link>https://rrader.github.io/tags/schematics/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
       <guid>https://rrader.github.io/tags/schematics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://rrader.github.io/tags/security/</link>
-      <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
-      <guid>https://rrader.github.io/tags/security/</guid>
       <description></description>
     </item>
     <item>
@@ -237,6 +223,13 @@
       <link>https://rrader.github.io/tags/conference/</link>
       <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
       <guid>https://rrader.github.io/tags/conference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lvivpy</title>
+      <link>https://rrader.github.io/tags/lvivpy/</link>
+      <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
+      <guid>https://rrader.github.io/tags/lvivpy/</guid>
       <description></description>
     </item>
     <item>
@@ -289,13 +282,6 @@
       <description></description>
     </item>
     <item>
-      <title>Embedded</title>
-      <link>https://rrader.github.io/tags/embedded/</link>
-      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/embedded/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Energia</title>
       <link>https://rrader.github.io/tags/energia/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
@@ -310,17 +296,17 @@
       <description></description>
     </item>
     <item>
-      <title>Debugging</title>
-      <link>https://rrader.github.io/tags/debugging/</link>
-      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/debugging/</guid>
+      <title>Security</title>
+      <link>https://rrader.github.io/tags/security/</link>
+      <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/security/</guid>
       <description></description>
     </item>
     <item>
-      <title>Launchpad</title>
-      <link>https://rrader.github.io/tags/launchpad/</link>
+      <title>Just-for-Fun</title>
+      <link>https://rrader.github.io/tags/just-for-fun/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/launchpad/</guid>
+      <guid>https://rrader.github.io/tags/just-for-fun/</guid>
       <description></description>
     </item>
     <item>
@@ -338,10 +324,10 @@
       <description></description>
     </item>
     <item>
-      <title>Gsm</title>
-      <link>https://rrader.github.io/tags/gsm/</link>
+      <title>Launchpad</title>
+      <link>https://rrader.github.io/tags/launchpad/</link>
       <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/gsm/</guid>
+      <guid>https://rrader.github.io/tags/launchpad/</guid>
       <description></description>
     </item>
     <item>

@@ -3,15 +3,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Related series articles:
-MSP430 Security Alarm Schematics and Build Built the interface part of the security system.
-Disarming and arming will be done using a password, so we need a way to enter the password and change it.
-The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.
-Also, in case the password is forgotten, a &ldquo;super-password&rdquo; is needed to reset memory back to the default password.">  
+   <meta name="description" content="Built the interface part of the security system.
+Arming and disarming will be done using a password, so a way to enter and change the password is needed.
+The MSP430G2553 has flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.
+Also, in case the password is forgotten, a &ldquo;super password&rdquo; is required to reset memory to the default password.
+To read keypresses from the keypad, each button must be polled periodically.">  
 
   <title>
     
-      MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm // rmn.pp.ua
+      Security System Keypad on MSP430 // rmn.pp.ua
     
   </title>
 
@@ -115,7 +115,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-03-05 16:20:00 &#43;0200 EET">2015-03-05</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 156</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 141</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -123,26 +123,22 @@ if (!doNotTrack) {
     <div class="tty-tags-row">
       <span class="tty-label">TAGS:</span>
       
-        <span class="tty-tag-pill">#diy</span>
+        <span class="tty-tag-pill">#energia</span>
       
         <span class="tty-tag-pill">#hardware</span>
       
-        <span class="tty-tag-pill">#msp430</span>
-      
         <span class="tty-tag-pill">#keypad</span>
       
+        <span class="tty-tag-pill">#msp430</span>
+      
         <span class="tty-tag-pill">#security</span>
-      
-        <span class="tty-tag-pill">#energia</span>
-      
-        <span class="tty-tag-pill">#embedded</span>
       
     </div>
     
   </div>
 
   
-  <h1 class="post-title">MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</h1>
+  <h1 class="post-title">Security System Keypad on MSP430</h1>
 
   
   <div class="translations-badge">
@@ -150,36 +146,23 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p><em>Related series articles:</em></p>
-<ul>
-<li><a href="../../diy_posts/msp430-security-alarm-system/">MSP430 Security Alarm Schematics and Build</a></li>
-</ul>
-<hr>
-<p>Built the interface part of the security system.<br>
-Disarming and arming will be done using a password, so we need a way to enter the password and change it.</p>
-<p>The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.</p>
-<p>Also, in case the password is forgotten, a &ldquo;super-password&rdquo; is needed to reset memory back to the default password.</p>
-<p>To read key presses from the keypad, each button must be polled periodically. In addition, contact bounce must be eliminated. The Arduino &ldquo;Keypad&rdquo; library implements debouncing, knows how to poll keys, and works great with Energia.</p>
+    <p>Built the interface part of the security system.<br>
+Arming and disarming will be done using a password, so a way to enter and change the password is needed.</p>
+<p>The MSP430G2553 has flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.</p>
+<p>Also, in case the password is forgotten, a &ldquo;super password&rdquo; is required to reset memory to the default password.</p>
+<p>To read keypresses from the keypad, each button must be polled periodically. Additionally, contact debounce must be eliminated. The &ldquo;Keypad&rdquo; library for Arduino implements debounce protection, handles keypad scanning, and works great with Energia.</p>
 <h3 id="available-commands">Available commands</h3>
-<ul>
-<li>Authentication: <code>&lt;password&gt;</code> + <strong>#</strong></li>
-<li>Cancel input: <strong>*</strong></li>
-<li>Reset via super-password: <code>&lt;superpassword&gt;</code> + <strong>D</strong></li>
-<li>Change password: <code>&lt;old password&gt;</code> + <strong>D</strong> + <code>&lt;new password&gt;</code> + <strong>D</strong></li>
-</ul>
-<h3 id="demo-video">Demo video</h3>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/wLLoZa_CDJM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<ul>
-<li>Video: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">https://www.youtube.com/watch?v=wLLoZa_CDJM</a></li>
-<li>Keypad library: <a href="http://playground.arduino.cc/Code/Keypad">http://playground.arduino.cc/Code/Keypad</a></li>
-<li>Source code: <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></li>
-</ul>
+<p>Authentication: <code>&lt;password&gt;</code> + <strong>#</strong><br>
+Cancel input: <strong>*</strong><br>
+Super password reset: <code>&lt;superpassword&gt;</code> + <strong>D</strong><br>
+Password change: <code>&lt;old password&gt;</code> + <strong>D</strong> + <code>&lt;new password&gt;</code> + <strong>D</strong></p>
+<h3 id="video-in-action">Video in action</h3>
+<!-- raw HTML omitted -->
+<p>Video: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">https://www.youtube.com/watch?v=wLLoZa_CDJM</a><br>
+Keypad library: <a href="http://playground.arduino.cc/Code/Keypad">http://playground.arduino.cc/Code/Keypad</a><br>
+Source code: <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></p>
 <hr>
-<p><em>This post was migrated from the legacy blog <a href="https://antigluk.blogspot.com/2015/03/4x4-msp430.html">antigluk.blogspot.com</a>.</em></p>
+<p><em>Migrated from legacy blog <a href="https://antigluk.blogspot.com/2015/03/4x4-msp430.html">antigluk.blogspot.com</a>.</em></p>
 
   </div>
 
@@ -210,7 +193,7 @@ Disarming and arming will be done using a password, so we need a way to enter th
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">156 words</span>
+            <span class="status-item">141 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

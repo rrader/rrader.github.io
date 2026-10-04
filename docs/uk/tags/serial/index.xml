@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/serial/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>UART-монітор: спостереження за обміном даними через MSP430 LaunchPad</title>
+      <title>Замітка: UART-монітор — спостереження за передачею по UART</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A При використанні UART, з метою налагодження, мені було необхідно моніторити, що посилає MSP430 і що відповідає другий пристрій (SIM900).&#xA;Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).&#xA;А сам LaunchPad підключити до комп&amp;rsquo;ютера, щоб моніторити UART.&#xA;Схема підключення UART MSP430 -&amp;gt; Device так, щоб на комп&amp;rsquo;ютері можна було бачити відповіді Device:&#xA;На комп&amp;rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</description>
+      <description>Підключення MSP430 до SIM900&#xA;При використанні UART, з метою налагодження, мені було необхідно моніторити що посилає msp430 і що відповідає другий пристрій (sim900).&#xA;Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).&#xA;А сам LaunchPad підключити до комп&amp;rsquo;ютера, щоб моніторити UART.&#xA;Схема підключення UART MSP430 -&amp;gt; Device так, щоб на комп&amp;rsquo;ютері можна було бачити відповіді Device:&#xA;На комп&amp;rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</description>
     </item>
     <item>
       <title>Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</title>

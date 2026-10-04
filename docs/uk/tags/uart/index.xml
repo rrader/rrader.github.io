@@ -9,25 +9,25 @@
     <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/uart/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>UART-монітор: спостереження за обміном даними через MSP430 LaunchPad</title>
+      <title>Замітка: UART-монітор — спостереження за передачею по UART</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A При використанні UART, з метою налагодження, мені було необхідно моніторити, що посилає MSP430 і що відповідає другий пристрій (SIM900).&#xA;Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).&#xA;А сам LaunchPad підключити до комп&amp;rsquo;ютера, щоб моніторити UART.&#xA;Схема підключення UART MSP430 -&amp;gt; Device так, щоб на комп&amp;rsquo;ютері можна було бачити відповіді Device:&#xA;На комп&amp;rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</description>
+      <description>Підключення MSP430 до SIM900&#xA;При використанні UART, з метою налагодження, мені було необхідно моніторити що посилає msp430 і що відповідає другий пристрій (sim900).&#xA;Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).&#xA;А сам LaunchPad підключити до комп&amp;rsquo;ютера, щоб моніторити UART.&#xA;Схема підключення UART MSP430 -&amp;gt; Device так, щоб на комп&amp;rsquo;ютері можна було бачити відповіді Device:&#xA;На комп&amp;rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</description>
     </item>
     <item>
-      <title>Підключення мікроконтролера MSP430 до GSM-модуля SIM900A</title>
+      <title>MSP430 Interfacing to SIM900A</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</link>
       <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Чому не варто купувати GSM-модуль SIM900A (огляд плати) UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку Про підводні камені плати SIM900A Mini v3.4 читати тут.&#xA;Схема підключення UART проста: RX в TX, TX в RX.&#xA;Живлення для SIM900A: для запуску мені вистачило живлення 3.3V від LaunchPad&amp;rsquo;а, але це порушує даташит — необхідно 4V. Тим не менш, все працює.&#xA;Спочатку джампери знаходяться в такому положенні для перетворення UART через MAX232:</description>
+      <description>Про підводні камені плати SIM900A Mini v3.4 читати тут.&#xA;Схема підключення UART проста: RX в TX, TX в RX.&#xA;Живлення для SIM900A: для запуску мені вистачило живлення 3.3V від LaunchPad&amp;rsquo;а, але це порушує даташит — необхідно 4V. Тим не менш, все працює.&#xA;Спочатку джампери знаходяться в такому положенні для перетворення UART через MAX232:&#xA;Але нам не потрібно підключати плату до COM-порту комп&amp;rsquo;ютера, нам потрібен неперетворений UART-сигнал. Тому перемикаємо джампери так, щоб вони «висіли» на одному піні, а в другий отвір джампера підключаємо кабелі:</description>
     </item>
     <item>
-      <title>Чому не варто купувати GSM-модуль SIM900A: огляд плати SIM900A Mini v3.4</title>
+      <title>Не купуйте SIM900A! Плата SIM900A Mini v3.4</title>
       <link>https://rrader.github.io/uk/diy_posts/sim900a-mini-v34-caution/</link>
       <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/sim900a-mini-v34-caution/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Підключення MSP430 до SIM900A UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку Замовив я розпаяний модуль SIM900A на компактній платі SIM900A Mini v3.4, до кінця не розібравшись у відмінностях між модифікаціями SIM900 та SIM900A.&#xA;Основна різниця в документації: SIM900 — чотирьохдіапазонний (quad-band, 850/900/1800/1900 МГц), а SIM900A — дводіапазонний (dual-band, 900/1800 МГц). Здавалося б, для європейських та українських мереж дводіапазонного 900/1800 МГц мало б вистачити з головою. Але ні.</description>
+      <description>Підключення MSP430 до SIM900A&#xA;UART-монітор — спостереження за передачею даних по UART&#xA;Замовив я розпаяний SIM900A на платі SIM900A Mini v3.4, не розібравшись до кінця в чому відмінність модифікації SIM900A від SIM900. Основна відмінність — SIM900A працює в dual-band діапазоні, а SIM900 — в quad-band. Здавалося б, для України dual-band повинен підходити ідеально. Але ні.&#xA;SIM900A має регіональне блокування.&#xA;Ось список країн, у яких можна використовувати SIM900A:&#xA;Країна Підтримувані коди операторів (MCC) Китай 460 Індія 404 / 405 Сінгапур 525 Малайзія 502 Таїланд 520 Індонезія 510 Камбоджа 456 В&amp;rsquo;єтнам 452 Лаос 457 М&amp;rsquo;янма (Бірма) 414 Бруней 528 Філіппіни 515 Східний Тимор 514 Прийшла мені така залізяка:</description>
     </item>
   </channel>
 </rss>

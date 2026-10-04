@@ -3,15 +3,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Related series articles:
-Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor For pitfalls of the SIM900A Mini v3.4 board read here.
+   <meta name="description" content="For pitfalls of the SIM900A Mini v3.4 board read here.
 UART wiring scheme is simple: RX to TX, TX to RX.
 Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.
-Initially jumpers are in this position for UART conversion through MAX232:">  
+Initially jumpers are in this position for UART conversion through MAX232:
+But we don&rsquo;t need to connect the board to a computer COM port, we need the unconverted UART signal.">  
 
   <title>
     
-      Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem // rmn.pp.ua
+      MSP430 Interfacing to SIM900A // rmn.pp.ua
     
   </title>
 
@@ -115,7 +115,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-17 12:58:00 &#43;0200 EET">2015-01-17</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 264</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 249</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -123,28 +123,24 @@ if (!doNotTrack) {
     <div class="tty-tags-row">
       <span class="tty-label">TAGS:</span>
       
-        <span class="tty-tag-pill">#diy</span>
-      
         <span class="tty-tag-pill">#hardware</span>
-      
-        <span class="tty-tag-pill">#msp430</span>
       
         <span class="tty-tag-pill">#launchpad</span>
       
+        <span class="tty-tag-pill">#msp430</span>
+      
+        <span class="tty-tag-pill">#schematics</span>
+      
         <span class="tty-tag-pill">#sim900</span>
       
-        <span class="tty-tag-pill">#gsm</span>
-      
         <span class="tty-tag-pill">#uart</span>
-      
-        <span class="tty-tag-pill">#energia</span>
       
     </div>
     
   </div>
 
   
-  <h1 class="post-title">Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem</h1>
+  <h1 class="post-title">MSP430 Interfacing to SIM900A</h1>
 
   
   <div class="translations-badge">
@@ -152,13 +148,7 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p><em>Related series articles:</em></p>
-<ul>
-<li><a href="../../diy_posts/sim900a-mini-v34-caution/">Why You Should Avoid the SIM900A GSM Module</a></li>
-<li><a href="../../diy_posts/msp430-uart-monitor/">MSP430-based Hardware UART Monitor</a></li>
-</ul>
-<hr>
-<p>For pitfalls of the SIM900A Mini v3.4 board <a href="../../diy_posts/sim900a-mini-v34-caution/">read here</a>.</p>
+    <p>For pitfalls of the SIM900A Mini v3.4 board <a href="../../diy_posts/sim900a-mini-v34-caution/">read here</a>.</p>
 <p>UART wiring scheme is simple: RX to TX, TX to RX.<br>
 Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.</p>
 <p><img alt="Wiring schematic: MSP430 Launchpad to SIM900A" src="../../images/msp430-sim900a/image-01.png"></p>
@@ -252,7 +242,7 @@ Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for 
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">264 words</span>
+            <span class="status-item">249 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

@@ -3,12 +3,14 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="У ядрі Linux уже давно реалізовані готові зв&rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі include/linux/list.h.
-Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (node-&gt;data = my_data). В ядрі Linux усе зроблено навпаки: службова структура списку (struct hlist_node або struct list_head) інкапсулюється всередину вашої структури даних як одне з її полів.">  
+   <meta name="description" content="У ядрі Linux уже реалізовані зв&rsquo;язні списки, тож під час написання модулів ядра не треба писати свої велосипеди. Але інтерфейс роботи з ними дещо неочевидний і відрізняється від класичних списків. Див. усі операції в /usr/src/linux-*/include/linux/list.h.
+Спочатку необхідно оголосити структуру на голову списку та проініціалізувати:
+struct hlist_head inodes; INIT_HLIST_HEAD(&amp;inodes); Далі необхідно оголосити структуру, яка буде елементами цього списку:
+struct ffs_inode_info { struct inode vfs_inode; struct ffs_fd fd; struct hlist_node list_node; struct buffer_head *datablock; }; Щоб структура могла стати частиною зв&rsquo;язного списку, вона повинна містити елемент struct hlist_node.">  
 
   <title>
     
-      Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel) // rmn.pp.ua
+      Linked lists in Linux Kernel // rmn.pp.ua
     
   </title>
 
@@ -112,7 +114,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2013-11-15 01:37:00 &#43;0200 EET">2013-11-15</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 253</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 157</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -128,14 +130,12 @@ if (!doNotTrack) {
       
         <span class="tty-tag-pill">#low-level</span>
       
-        <span class="tty-tag-pill">#algorithms</span>
-      
     </div>
     
   </div>
 
   
-  <h1 class="post-title">Зв&#39;язні списки в ядрі Linux (Linked Lists in Linux Kernel)</h1>
+  <h1 class="post-title">Linked lists in Linux Kernel</h1>
 
   
   <div class="translations-badge">
@@ -143,36 +143,32 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p>У ядрі Linux уже давно реалізовані готові зв&rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі <code>include/linux/list.h</code>.</p>
-<p>Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (<code>node-&gt;data = my_data</code>). В ядрі Linux усе зроблено навпаки: службова структура списку (<code>struct hlist_node</code> або <code>struct list_head</code>) інкапсулюється <strong>всередину</strong> вашої структури даних як одне з її полів. Завдяки макросу <code>container_of</code> (обчислення зміщення структури в пам&rsquo;яті через <code>offsetof</code>) ядро знаходить адресу батьківської структури без зайвих виділень пам&rsquo;яті під вузли-обгортки.</p>
-<p>Спочатку оголошуємо та ініціалізуємо голову списку (хеш-списку <code>hlist</code>):</p>
+    <p>У ядрі Linux уже реалізовані зв&rsquo;язні списки, тож під час написання модулів ядра не треба писати свої велосипеди. Але інтерфейс роботи з ними дещо неочевидний і відрізняється від класичних списків. Див. усі операції в <code>/usr/src/linux-*/include/linux/list.h</code>.</p>
+<p>Спочатку необхідно оголосити структуру на голову списку та проініціалізувати:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head inodes;
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">INIT_HLIST_HEAD</span>(<span style="color:#f92672">&amp;</span>inodes);
-</span></span></code></pre></div><p>Далі оголошуємо структуру, екземпляри якої будуть елементами цього списку:</p>
+</span></span></code></pre></div><p>Далі необхідно оголосити структуру, яка буде елементами цього списку:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> inode vfs_inode;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> ffs_fd fd;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> hlist_node list_node;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> buffer_head <span style="color:#f92672">*</span>datablock;
 </span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p>Щоб структура могла стати частиною списку, вона обов&rsquo;язково повинна містити поле типу <code>struct hlist_node</code>. Спочатку це може спантеличити, адже зазвичай очікуєш, що елементи зв&rsquo;язного списку зберігають вказівники на елементи свого ж типу.</p>
-<h3 id="додавання-елемента-в-голову-списку">Додавання елемента в голову списку</h3>
+</span></span></code></pre></div><p>Щоб структура могла стати частиною зв&rsquo;язного списку, вона повинна містити елемент <code>struct hlist_node</code>. Особисто мене це дещо збило з пантелику спочатку, адже зазвичай елементи зв&rsquo;язного списку зберігають посилання на елементи свого ж типу.</p>
+<p>Для додавання елемента (<code>finode</code>) у голову списку (<code>inodes</code>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>finode;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/* ... виділення пам&#39;яті та ініціалізація finode ... */</span>
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>...
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_add_head</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node, <span style="color:#f92672">&amp;</span>inodes);
-</span></span></code></pre></div><h3 id="видалення-елемента-зі-списку">Видалення елемента зі списку</h3>
+</span></span></code></pre></div><p>Видалити елемент зі списку:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">hlist_del</span>(<span style="color:#f92672">&amp;</span>finode<span style="color:#f92672">-&gt;</span>list_node);
-</span></span></code></pre></div><h3 id="ітерування-по-списку">Ітерування по списку</h3>
-<p>Для проходження по всіх елементах списку використовується макрос <code>hlist_for_each_entry</code>:</p>
+</span></span></code></pre></div><p>Обійти всі елементи списку (<code>inodes</code>) послідовно:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> hlist_head <span style="color:#f92672">*</span>head <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>inodes;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> ffs_inode_info <span style="color:#f92672">*</span>i;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">hlist_for_each_entry</span>(i, head, list_node) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* обробка поточного елемента i */</span>
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Такий підхід забезпечує максимальну ефективність кешу процесора та усуває накладні витрати на динамічне виділення пам&rsquo;яті під службові вузли.</p>
-<hr>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// some work with &#39;i&#39; element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><hr>
 <p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2013/11/linked-lists-in-linux-kernel.html">antigluk.blogspot.com</a>.</em></p>
 
   </div>
@@ -204,7 +200,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">253 words</span>
+            <span class="status-item">157 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

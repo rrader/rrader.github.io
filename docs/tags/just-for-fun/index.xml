@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Just-for-Fun on Roman Rader</title>
+    <link>https://rrader.github.io/tags/just-for-fun/</link>
+    <description>Recent content in Just-for-Fun on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jan 2015 21:08:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/just-for-fun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Note: UART monitor - observing transmission over UART</title>
+      <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
+      <description>Connecting MSP430 to SIM900&#xA;When using UART, for debugging purposes, I needed to monitor what the MSP430 sends and what the second device (SIM900) responds.&#xA;To do this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.&#xA;Wiring schematic of UART MSP430 -&amp;gt; Device so that on the computer you can see the Device responses:</description>
+    </item>
+  </channel>
+</rss>

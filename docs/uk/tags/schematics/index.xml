@@ -9,11 +9,25 @@
     <lastBuildDate>Thu, 30 Jul 2015 17:35:00 +0300</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/schematics/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Схема та апаратна реалізація охоронної сигналізації на базі MSP430</title>
+      <title>Схема сигналізації</title>
       <link>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Пов&amp;rsquo;язані статті серії:&#xA;Кодова клавіатура 4×4 для охоронної системи на базі MSP430 Підключення MSP430 до GSM-модуля SIM900 UART-монітор для налагодження зв&amp;rsquo;язку Чому не варто купувати GSM-модуль SIM900A Електрична схема сигналізації (клікабельно):&#xA;Те, що вийшло в результаті:&#xA;(Відео: YouTube)&#xA;Ще фото:&#xA;Зовнішній вигляд Вигляд збоку Внутрішнє компонування Розводка проводів та клемники Плата контролера та розпайка Зворотна сторона кришки з клавіатурою Цей матеріал було перенесено зі старого блогу antigluk.blogspot.com.</description>
+      <description>Електрична схема сигналізації (клікабельно):&#xA;Те, що вийшло в результаті:&#xA;Ще фото:&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+    </item>
+    <item>
+      <title>Замітка: UART-монітор — спостереження за передачею по UART</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</link>
+      <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-uart-monitor/</guid>
+      <description>Підключення MSP430 до SIM900&#xA;При використанні UART, з метою налагодження, мені було необхідно моніторити що посилає msp430 і що відповідає другий пристрій (sim900).&#xA;Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).&#xA;А сам LaunchPad підключити до комп&amp;rsquo;ютера, щоб моніторити UART.&#xA;Схема підключення UART MSP430 -&amp;gt; Device так, щоб на комп&amp;rsquo;ютері можна було бачити відповіді Device:&#xA;На комп&amp;rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</description>
+    </item>
+    <item>
+      <title>MSP430 Interfacing to SIM900A</title>
+      <link>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</link>
+      <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/msp430-interfacing-sim900a/</guid>
+      <description>Про підводні камені плати SIM900A Mini v3.4 читати тут.&#xA;Схема підключення UART проста: RX в TX, TX в RX.&#xA;Живлення для SIM900A: для запуску мені вистачило живлення 3.3V від LaunchPad&amp;rsquo;а, але це порушує даташит — необхідно 4V. Тим не менш, все працює.&#xA;Спочатку джампери знаходяться в такому положенні для перетворення UART через MAX232:&#xA;Але нам не потрібно підключати плату до COM-порту комп&amp;rsquo;ютера, нам потрібен неперетворений UART-сигнал. Тому перемикаємо джампери так, щоб вони «висіли» на одному піні, а в другий отвір джампера підключаємо кабелі:</description>
     </item>
   </channel>
 </rss>

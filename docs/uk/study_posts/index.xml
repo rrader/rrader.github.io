@@ -16,11 +16,11 @@
       <description>RADER Roman, JEŘÁBEK Kamil and RYŠAVÝ Ondřej. Detecting DoH-Based Data Exfiltration: FluBot Malware Case Study. In: IEEE 48th Conference on Local Computer Networks (LCN). Daytona Beach: IEEE Computer Society, 2023, pp. 50-54. ISBN 979-8-3503-0074-1.&#xA;Участь у 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN) Наша наукова стаття щодо виявлення витоку (ексфільтрації) даних через протокол DoH була опублікована на 48-й конференції IEEE з локальних комп&amp;rsquo;ютерних мереж (LCN), що проходила з 1 по 5 жовтня 2023 року в Дейтона-Біч, Флорида, США.</description>
     </item>
     <item>
-      <title>LvivPy #4: Threading vs asyncio — бенчмарк перемикання контексту</title>
+      <title>LvivPy4: Threading vs asyncio - benchmark</title>
       <link>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</link>
       <pubDate>Sat, 27 Jun 2015 15:46:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/study_posts/lvivpy4-threading-vs-asyncio-benchmark/</guid>
-      <description>Слайди презентації та відеозапис мого бліц-доповіді з конференції LvivPy #4 (30 травня 2015 року) про порівняння швидкості перемикання контексту між потоками ОС (threading) та асинхронним подієвим циклом (asyncio) у Python.&#xA;Відео доповіді Слайди презентації Презентація доступна на SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Записи та матеріали конференції: lvivpy.org.ua.&#xA;Дякую організаторам за чудову подію та теплу львівську спільноту Python!&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
+      <description>Слайди презентації та відео бліц-доповіді про порівняння швидкості перемикання контексту використовуючи бібліотеки threading та asyncio з конференції LvivPy#4, яка проходила 30 травня 2015.&#xA;Запис: Слайди: LvivPy4 - Threading vs asyncio from Roman Anigon&#xA;Записи всіх доповідей: http://lvivpy.org.ua/?p=375&#xA;Ще раз хочеться подякувати організаторам за мега гідний івент.&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
     </item>
     <item>
       <title>Оформлення псевдокоду в LaTeX українською</title>

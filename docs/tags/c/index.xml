@@ -16,11 +16,11 @@
       <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;Firmware Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a &amp;ldquo;handshake&amp;rdquo; - receive start symbol from computer.</description>
     </item>
     <item>
-      <title>Linked Lists in Linux Kernel</title>
+      <title>Linked lists in Linux Kernel</title>
       <link>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</link>
       <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</guid>
-      <description>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.&#xA;In typical algorithms coursework, a generic list node points to payload data (node-&amp;gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.</description>
+      <description>The Linux kernel already implements linked lists, so when writing kernel modules there is no need to reinvent the wheel. But the interface is somewhat non-obvious and differs from classical lists. See all operations in /usr/src/linux-*/include/linux/list.h.&#xA;First, declare a structure for the list head and initialize it:&#xA;struct hlist_head inodes; INIT_HLIST_HEAD(&amp;amp;inodes); Next, declare the structure that will be the elements of this list:&#xA;struct ffs_inode_info { struct inode vfs_inode; struct ffs_fd fd; struct hlist_node list_node; struct buffer_head *datablock; }; To become part of a linked list, the structure must contain a struct hlist_node element.</description>
     </item>
   </channel>
 </rss>

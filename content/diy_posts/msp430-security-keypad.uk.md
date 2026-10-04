@@ -1,13 +1,8 @@
 ---
-title: "Кодова клавіатура 4×4 для охоронної системи на базі MSP430"
+title: "Security System Keypad on MSP430"
 date: 2015-03-05T16:20:00+02:00
 draft: false
-tags: ["diy", "hardware", "msp430", "keypad", "security", "energia", "embedded"]
----
-
-*Пов'язані статті серії:*
-* [Електрична схема та збірка охоронної сигналізації на MSP430](/uk/diy_posts/msp430-security-alarm-system/)
-
+tags: ["energia", "hardware", "keypad", "msp430", "security"]
 ---
 
 Зробив інтерфейсну частину охоронної системи.  
@@ -17,23 +12,24 @@ MSP430G2553 містить флеш-пам'ять, 4 сегменти даних
 
 Також, на випадок забування пароля, необхідний "суперпароль", який буде скидати пам'ять на пароль за замовчуванням.
 
-Для зчитування натискань клавіш із клавіатури необхідно періодично опитувати кожну кнопку. Крім того, треба позбавлятися від брязкоту (дребезга). Бібліотека для Arduino "Keypad" реалізує захист від брязкоту і вміє опитувати клавіші, а також відмінно підходить для Energia.
+Для зчитування натискань клавіш із клавіатури необхідно періодично опитувати кожну кнопку. Крім того, треба позбавлятися від брязкоту. Бібліотека для Arduino "Keypad" реалізує захист від брязкоту і вміє опитувати клавіші, а також відмінно підходить для Energia.
 
 ### Доступні команди
 
-* Аутентифікація: `<пароль>` + **#**
-* Скасування вводу: **\***
-* Скидання за суперпаролем: `<суперпароль>` + **D**
-* Зміна пароля: `<старий пароль>` + **D** + `<новий пароль>` + **D**
+Аутентифікація: `<пароль>` + **#**  
+Скасування вводу: **\***  
+Скидання за суперпаролем: `<суперпароль>` + **D**  
+Зміна пароля: `<старий пароль>` + **D** + `<новий пароль>` + **D**  
 
 ### Відео роботи
 
-{{< youtube wLLoZa_CDJM >}}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 1.5rem 0;">
+  <iframe src="https://www.youtube.com/embed/wLLoZa_CDJM" style="position: absolute; top:0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen title="Security System Keypad on MSP430"></iframe>
+</div>
 
-* Відео: <https://www.youtube.com/watch?v=wLLoZa_CDJM>
-* Бібліотека Keypad: <http://playground.arduino.cc/Code/Keypad>
-* Вихідний код: <https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main>
+Відео: <https://www.youtube.com/watch?v=wLLoZa_CDJM>  
+Бібліотека Keypad: <http://playground.arduino.cc/Code/Keypad>  
+Вихідний код: <https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main>
 
 ---
-
-*Цей матеріал було перенесено зі старого блогу [antigluk.blogspot.com](https://antigluk.blogspot.com/2015/03/4x4-msp430.html).*
+*Цей пост перенесено зі старого блогу [antigluk.blogspot.com](https://antigluk.blogspot.com/2015/03/4x4-msp430.html).*

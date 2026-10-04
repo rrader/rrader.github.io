@@ -3,14 +3,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Related series articles:
-Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.
-For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).
-And connect the LaunchPad itself to the computer to monitor the UART.">  
+   <meta name="description" content="Connecting MSP430 to SIM900
+When using UART, for debugging purposes, I needed to monitor what the MSP430 sends and what the second device (SIM900) responds.
+To do this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).
+And connect the LaunchPad itself to the computer to monitor the UART.
+Wiring schematic of UART MSP430 -&gt; Device so that on the computer you can see the Device responses:">  
 
   <title>
     
-      Hardware UART Monitor: Snooping Serial Traffic with MSP430 LaunchPad // rmn.pp.ua
+      Note: UART monitor - observing transmission over UART // rmn.pp.ua
     
   </title>
 
@@ -114,7 +115,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-18 21:08:00 &#43;0200 EET">2015-01-18</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 123</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 107</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -122,26 +123,24 @@ if (!doNotTrack) {
     <div class="tty-tags-row">
       <span class="tty-label">TAGS:</span>
       
-        <span class="tty-tag-pill">#diy</span>
-      
         <span class="tty-tag-pill">#hardware</span>
+      
+        <span class="tty-tag-pill">#just-for-fun</span>
       
         <span class="tty-tag-pill">#msp430</span>
       
-        <span class="tty-tag-pill">#launchpad</span>
-      
-        <span class="tty-tag-pill">#uart</span>
-      
-        <span class="tty-tag-pill">#debugging</span>
+        <span class="tty-tag-pill">#schematics</span>
       
         <span class="tty-tag-pill">#serial</span>
+      
+        <span class="tty-tag-pill">#uart</span>
       
     </div>
     
   </div>
 
   
-  <h1 class="post-title">Hardware UART Monitor: Snooping Serial Traffic with MSP430 LaunchPad</h1>
+  <h1 class="post-title">Note: UART monitor - observing transmission over UART</h1>
 
   
   <div class="translations-badge">
@@ -149,21 +148,16 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p><em>Related series articles:</em></p>
-<ul>
-<li><a href="../../diy_posts/sim900a-mini-v34-caution/">Why You Should Avoid the SIM900A GSM Module</a></li>
-<li><a href="../../diy_posts/msp430-interfacing-sim900a/">Connecting MSP430 to SIM900A</a></li>
-</ul>
-<hr>
-<p>When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.</p>
-<p>For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).<br>
+    <p><a href="../../diy_posts/msp430-interfacing-sim900a/">Connecting MSP430 to SIM900</a></p>
+<p>When using UART, for debugging purposes, I needed to monitor what the MSP430 sends and what the second device (SIM900) responds.</p>
+<p>To do this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).<br>
 And connect the LaunchPad itself to the computer to monitor the UART.</p>
-<p>UART connection scheme MSP430 -&gt; Device so that you can see the Device&rsquo;s responses on the computer:</p>
-<p><img alt="UART interception circuit using LaunchPad bridge" src="../../images/msp430-uart-monitor/image-01.png"></p>
-<p>On the computer, to read from UART I use Serial Monitor in the Energia IDE (any other way to read from a serial port will work).</p>
-<p><img alt="Intercepted data in Serial Monitor" src="../../images/msp430-uart-monitor/image-02.png"></p>
+<p>Wiring schematic of UART MSP430 -&gt; Device so that on the computer you can see the Device responses:</p>
+<p><img alt="UART monitor wiring schematic" src="../../images/msp430-uart-monitor/image-01.png"></p>
+<p>On the computer, to read from UART I use Serial Monitor in the Energia IDE (any other method of reading from the serial port will do).</p>
+<p><img alt="Serial Monitor in Energia IDE" src="../../images/msp430-uart-monitor/image-02.png"></p>
 <hr>
-<p><em>This post was migrated from the legacy blog <a href="https://antigluk.blogspot.com/2015/01/uart-uart.html">antigluk.blogspot.com</a>.</em></p>
+<p><em>Migrated from legacy blog <a href="https://antigluk.blogspot.com/2015/01/uart-uart.html">antigluk.blogspot.com</a>.</em></p>
 
   </div>
 
@@ -194,7 +188,7 @@ And connect the LaunchPad itself to the computer to monitor the UART.</p>
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">123 words</span>
+            <span class="status-item">107 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>
