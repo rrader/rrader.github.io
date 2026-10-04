@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jenkins on Roman Rader</title>
+    <link>https://rrader.github.io/tags/jenkins/</link>
+    <description>Recent content in Jenkins on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Mar 2015 15:56:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/jenkins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker-Jenkins-Slave 2.0 (DJS2): Fully Isolated Multi-OS CI with LXC and Docker</title>
+      <link>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</guid>
+      <description>I frequently needed to compile RPMs and test code across multiple Linux distributions with varying library versions. My primary host was Arch Linux, but work tasks required building software targeted at RHEL/CentOS.&#xA;Running Jenkins directly on the development host while spawning Docker containers worked, but it quickly cluttered the workstation with intermediate build files, dangling layers, and state that was hard to clean up.&#xA;In DJS2 (Docker-Jenkins-Slave 2.0), I decoupled the entire CI system into an isolated nested LXC container managed by Vagrant (vagrant-lxc).</description>
+    </item>
+    <item>
+      <title>Docker Jenkins Slave Generator: Dynamic Multi-OS Builds in Containers</title>
+      <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
+      <description>When building and testing software across multiple target operating systems (e.g., your Jenkins master runs on Arch Linux, but you need to compile RPMs on CentOS 5/6 or DEBs on Debian 6), running dedicated full virtual machines for each task is an inefficient waste of RAM and CPU. Back in 2014, when Docker was still in its early days, running disposable build slaves inside lightweight containers was a game changer.</description>
+    </item>
+  </channel>
+</rss>

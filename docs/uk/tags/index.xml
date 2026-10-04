@@ -247,6 +247,55 @@
       <description></description>
     </item>
     <item>
+      <title>Containers</title>
+      <link>https://rrader.github.io/uk/tags/containers/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/containers/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Devops</title>
+      <link>https://rrader.github.io/uk/tags/devops/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/devops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://rrader.github.io/uk/tags/docker/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Jenkins</title>
+      <link>https://rrader.github.io/uk/tags/jenkins/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/jenkins/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lxc</title>
+      <link>https://rrader.github.io/uk/tags/lxc/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/lxc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open-Source</title>
+      <link>https://rrader.github.io/uk/tags/open-source/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/open-source/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vagrant</title>
+      <link>https://rrader.github.io/uk/tags/vagrant/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/tags/vagrant/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Embedded</title>
       <link>https://rrader.github.io/uk/tags/embedded/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
@@ -314,6 +363,13 @@
       <link>https://rrader.github.io/uk/tags/fail/</link>
       <pubDate>Thu, 15 Jan 2015 16:06:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/tags/fail/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci-Cd</title>
+      <link>https://rrader.github.io/uk/tags/ci-cd/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/tags/ci-cd/</guid>
       <description></description>
     </item>
     <item>

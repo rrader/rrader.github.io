@@ -694,6 +694,123 @@
                 href="https://rrader.github.io/tags/threading/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/tags/containers/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/containers/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/containers/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/devops/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/devops/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/devops/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/docker/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/docker/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/docker/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/engineering/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/jenkins/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/jenkins/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/jenkins/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/lxc/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/lxc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/lxc/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/open-source/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/open-source/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/open-source/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/tags/vagrant/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/vagrant/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/vagrant/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/tags/embedded/</loc>
     <lastmod>2015-03-05T16:20:00+02:00</lastmod>
     <xhtml:link
@@ -876,6 +993,32 @@
                 href="https://rrader.github.io/diy_posts/sim900a-mini-v34-caution/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/tags/ci-cd/</loc>
+    <lastmod>2014-09-02T21:04:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/ci-cd/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/ci-cd/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</loc>
+    <lastmod>2014-09-02T21:04:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/docker-jenkins-slave-generator/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/tags/c/</loc>
     <lastmod>2014-07-15T14:01:00+03:00</lastmod>
     <xhtml:link
@@ -978,19 +1121,6 @@
                 rel="alternate"
                 hreflang="en-us"
                 href="https://rrader.github.io/tags/pseudocode/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/engineering/</loc>
-    <lastmod>2013-11-15T01:37:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/engineering/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/engineering/"
                 />
   </url><url>
     <loc>https://rrader.github.io/tags/kernel/</loc>

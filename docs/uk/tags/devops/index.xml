@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/devops/</link>
+    <description>Recent content in Devops on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Sun, 22 Mar 2015 15:56:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker</title>
+      <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</guid>
+      <description>Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&amp;rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.&#xA;Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.&#xA;У версії DJS2 (Docker-Jenkins-Slave 2.0) я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (vagrant-lxc).</description>
+    </item>
+    <item>
+      <title>Docker Jenkins Slave Generator: динамічні збірки в контейнерах</title>
+      <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
+      <description>Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам&amp;rsquo;яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.&#xA;Проєкт Docker Jenkins Slave У репозиторії rrader/docker-jenkins-slave реалізовано правила збірки та автоматичного підключення воркерів для:</description>
+    </item>
+  </channel>
+</rss>

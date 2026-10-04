@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ci-Cd on Roman Rader</title>
+    <link>https://rrader.github.io/tags/ci-cd/</link>
+    <description>Recent content in Ci-Cd on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Sep 2014 21:04:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Jenkins Slave Generator: Dynamic Multi-OS Builds in Containers</title>
+      <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
+      <description>When building and testing software across multiple target operating systems (e.g., your Jenkins master runs on Arch Linux, but you need to compile RPMs on CentOS 5/6 or DEBs on Debian 6), running dedicated full virtual machines for each task is an inefficient waste of RAM and CPU. Back in 2014, when Docker was still in its early days, running disposable build slaves inside lightweight containers was a game changer.</description>
+    </item>
+  </channel>
+</rss>

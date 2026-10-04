@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.
+Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.
+У версії DJS2 (Docker-Jenkins-Slave 2.0) я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (vagrant-lxc).">  
+
+  <title>
+    
+      Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../engineering/docker-jenkins-slave-20-djs2/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/engineering/docker-jenkins-slave-20-djs2/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../uk/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: engineering/docker-jenkins-slave-20-djs2.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat docker-jenkins-slave-20-djs2.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-03-22 15:56:00 &#43;0200 EET">2015-03-22</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 174</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#docker</span>
+      
+        <span class="tty-tag-pill">#jenkins</span>
+      
+        <span class="tty-tag-pill">#devops</span>
+      
+        <span class="tty-tag-pill">#vagrant</span>
+      
+        <span class="tty-tag-pill">#lxc</span>
+      
+        <span class="tty-tag-pill">#containers</span>
+      
+        <span class="tty-tag-pill">#open-source</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../engineering/docker-jenkins-slave-20-djs2/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p>Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.</p>
+<p>Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.</p>
+<p><img alt="DJS2 Архітектура" src="../../../images/docker-jenkins-slave-20-djs2/image-01.png"></p>
+<p>У версії <strong><a href="https://github.com/rrader/docker-jenkins-slave">DJS2 (Docker-Jenkins-Slave 2.0)</a></strong> я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (<code>vagrant-lxc</code>). На хостовій машині зберігалася лише папка з робочими завданнями (jobs) Jenkins.</p>
+<p><img alt="Швидкий старт DJS2" src="../../../images/docker-jenkins-slave-20-djs2/image-02.jpg"></p>
+<h3 id="як-це-працювало">Як це працювало</h3>
+<p>Усе, що потрібно на хості — це Linux із підтримкою LXC та встановлений Vagrant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vagrant plugin install vagrant-lxc
+</span></span></code></pre></div><h4 id="запуск-оточення">Запуск оточення:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rrader/docker-jenkins-slave.git djs
+</span></span><span style="display:flex;"><span>cd djs
+</span></span><span style="display:flex;"><span>./djs.sh up
+</span></span></code></pre></div><p>Скрипт розгортав ізольований інстанс Jenkins (доступний за адресою на зразок <code>http://10.0.3.74:8080</code>).</p>
+<h4 id="додавання-білд-воркерів">Додавання білд-воркерів:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./djs.sh add centos7-java Luke
+</span></span></code></pre></div><p>Команда автоматично завантажувала готовий образ воркера з Docker Hub (<code>antigluk/jenkins-slave-centos7-java</code>) і запускала його. Воркер «Luke» миттєво з&rsquo;являвся в блоці <em>Build Executor Status</em> у панелі Jenkins.</p>
+<ul>
+<li><strong>Репозиторій проєкту:</strong> <a href="https://github.com/rrader/docker-jenkins-slave">github.com/rrader/docker-jenkins-slave</a></li>
+</ul>
+<hr>
+<p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2015/03/docker-jenkins-slave-20-djs2.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: docker-jenkins-slave-20-djs2.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">docker-jenkins-slave-20-djs2.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">174 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
