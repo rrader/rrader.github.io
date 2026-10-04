@@ -3,12 +3,14 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам&rsquo;яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.
-Проєкт Docker Jenkins Slave У репозиторії rrader/docker-jenkins-slave реалізовано правила збірки та автоматичного підключення воркерів для:">  
+   <meta name="description" content="tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .
+Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.
+Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.
+У цьому репозиторії: https://github.">  
 
   <title>
     
-      Docker Jenkins Slave Generator: динамічні збірки в контейнерах // rmn.pp.ua
+      Docker Jenkins Slave Generator // rmn.pp.ua
     
   </title>
 
@@ -112,7 +114,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2014-09-02 21:04:00 &#43;0300 EEST">2014-09-02</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 197</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 249</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -120,22 +122,22 @@ if (!doNotTrack) {
     <div class="tty-tags-row">
       <span class="tty-label">TAGS:</span>
       
+        <span class="tty-tag-pill">#continuous-integration</span>
+      
+        <span class="tty-tag-pill">#devops</span>
+      
         <span class="tty-tag-pill">#docker</span>
       
         <span class="tty-tag-pill">#jenkins</span>
       
-        <span class="tty-tag-pill">#devops</span>
-      
-        <span class="tty-tag-pill">#ci-cd</span>
-      
-        <span class="tty-tag-pill">#open-source</span>
+        <span class="tty-tag-pill">#virtualization</span>
       
     </div>
     
   </div>
 
   
-  <h1 class="post-title">Docker Jenkins Slave Generator: динамічні збірки в контейнерах</h1>
+  <h1 class="post-title">Docker Jenkins Slave Generator</h1>
 
   
   <div class="translations-badge">
@@ -143,36 +145,52 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p>Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам&rsquo;яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.</p>
-<p><img alt="Генератор Dockerfile для Jenkins Slave" src="../../../images/docker-jenkins-slave-generator/image-01.png"></p>
-<h3 id="проєкт-docker-jenkins-slave">Проєкт Docker Jenkins Slave</h3>
-<p>У репозиторії <strong><a href="https://github.com/rrader/docker-jenkins-slave">rrader/docker-jenkins-slave</a></strong> реалізовано правила збірки та автоматичного підключення воркерів для:</p>
+    <p>tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: <a href="http://docker-jenkins-slave.herokuapp.com/">http://docker-jenkins-slave.herokuapp.com/</a> .</p>
+<p><img alt="Docker Jenkins Slave Generator" src="../../../images/docker-jenkins-slave-generator/image-01.png"></p>
+<h2 id="docker-jenkins-slave">Docker jenkins slave</h2>
+<p><em>Початок історії тут: <a href="../../../uk/engineering/using-docker-containers-as-jenkins-nodes/">Використання Docker-контейнерів як Jenkins-нод</a>.</em></p>
+<p><em>Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.</em></p>
+<p>У цьому репозиторії: <a href="https://github.com/rrader/docker-jenkins-slave">https://github.com/rrader/docker-jenkins-slave</a> зараз доступні правила збірки для:</p>
+<p><img alt="Підтримувані дистрибутиви" src="../../../images/docker-jenkins-slave-generator/image-02.png"></p>
 <ul>
-<li>CentOS 5.4 (<code>docker-centos5</code>)</li>
-<li>CentOS 6.4 (<code>docker-centos6</code>)</li>
-<li>openSUSE 12.1 (<code>docker-suse12</code>)</li>
-<li>Debian 6 Squeeze (<code>docker-squeeze</code>)</li>
+<li>CentOS 5</li>
+<li>CentOS 6</li>
+<li>Suse 12</li>
+<li>Debian 6</li>
 </ul>
-<p><img alt="Логотипи дистрибутивів" src="../../../images/docker-jenkins-slave-generator/image-02.png"></p>
-<h4 id="як-це-працювало">Як це працювало:</h4>
+<p>Передбачається, що у вас уже встановлені Docker та Jenkins.</p>
 <ol>
-<li>На Jenkins-сервер встановлюється <strong>Swarm Plugin</strong> (дозволяє агентам автоматично реєструватися на мастері через API).</li>
-<li>Клонуємо репозиторій та переходимо до потрібного оточення:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rrader/docker-jenkins-slave.git
-</span></span><span style="display:flex;"><span>cd docker-jenkins-slave/centos6
-</span></span><span style="display:flex;"><span>sudo bash build.sh
+<li>
+<p>Встановіть Swarm Plugin у ваш Jenkins (він дозволяє слейвам додаватися до Jenkins автоматично через API)</p>
+</li>
+<li>
+<p><code>$ git clone git@github.com:rrader/docker-jenkins-slave.git; cd docker-jenkins-slave</code></p>
+</li>
+<li>
+<p>Перейдіть у папку з правилами для потрібної системи:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd centos6
 </span></span></code></pre></div></li>
-<li>Після створення базового образу можна запускати скільки завгодно ізольованих воркерів:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo bash add_slave.sh SlaveName
+<li>
+<p>Зберіть образ:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo bash build.sh
 </span></span></code></pre></div></li>
-<li>У конфігурації задачі в Jenkins вказується відповідна мітка (label), наприклад <code>docker-centos6</code>.</li>
 </ol>
-<h3 id="веб-генератор-dockerfile">Веб-генератор Dockerfile</h3>
-<p>Щоб не писати Dockerfile під кожного воркера вручну, я випустив першу версію веб-сервісу генерації маніфестів:</p>
+<p>Тепер, коли є зібраний образ, ви можете додати скільки завгодно нод цього типу:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo bash add_slave.sh SlaveName
+</span></span></code></pre></div><p>Після цього призначте мітку (label) для вашої задачі в Jenkins: <code>docker-&lt;tagname&gt;</code>. Точні назви тегів для вибраної OS слейва можна подивитися на вікі: <a href="https://github.com/rrader/docker-jenkins-slave/wiki/Tags">https://github.com/rrader/docker-jenkins-slave/wiki/Tags</a></p>
 <ul>
-<li><strong>Вихідний код веб-сервісу:</strong> <a href="https://github.com/rrader/docker-jenkins-slave-service">github.com/rrader/docker-jenkins-slave-service</a></li>
+<li>centos6 : <code>centos6.4</code></li>
+<li>centos5 : <code>centos5.4</code></li>
+<li>suse12 : <code>suse12.1</code></li>
+<li>squeeze : <code>debian6</code></li>
 </ul>
-<p>Сервіс дозволяв у пару кліків сконфігурувати ім&rsquo;я користувача, домашню директорію, паролі та згенерувати готовий до запуску Dockerfile із налаштованим Jenkins Swarm клієнтом.</p>
+<h2 id="docker-jenkins-slave-generator">Docker jenkins slave Generator</h2>
+<p>Вийшла початкова версія генератора jenkins slave, його мета — генерувати Dockerfile саме під ваші потреби, із встановленими потрібними пакетами та іншим добром.</p>
+<p>Зараз реалізовано лише невелику частину запланованого функціоналу: можна налаштувати username, home directory та паролі для root/user.</p>
+<p>Сервіс розгорнуто тут:
+<a href="http://docker-jenkins-slave.herokuapp.com/">http://docker-jenkins-slave.herokuapp.com/</a></p>
+<p>Вихідний код веб-сервісу на GitHub: <a href="https://github.com/rrader/docker-jenkins-slave-service">https://github.com/rrader/docker-jenkins-slave-service</a></p>
+<p>Будь-які пропозиції та пулл-реквести вітаються!</p>
 <hr>
 <p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2014/09/docker-jenkins-slave-generator.html">antigluk.blogspot.com</a>.</em></p>
 
@@ -205,7 +223,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">197 words</span>
+            <span class="status-item">249 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

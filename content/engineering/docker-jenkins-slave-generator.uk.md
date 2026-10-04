@@ -1,45 +1,69 @@
 ---
-title: "Docker Jenkins Slave Generator: динамічні збірки в контейнерах"
+title: "Docker Jenkins Slave Generator"
 date: 2014-09-02T21:04:00+03:00
 draft: false
-tags: ["docker", "jenkins", "devops", "ci-cd", "open-source"]
+tags: ["continuous-integration", "devops", "docker", "jenkins", "virtualization"]
 ---
 
-Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам'яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.
+tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .
 
-![Генератор Dockerfile для Jenkins Slave](/images/docker-jenkins-slave-generator/image-01.png)
+![Docker Jenkins Slave Generator](/images/docker-jenkins-slave-generator/image-01.png)
 
-### Проєкт Docker Jenkins Slave
+## Docker jenkins slave
 
-У репозиторії **[rrader/docker-jenkins-slave](https://github.com/rrader/docker-jenkins-slave)** реалізовано правила збірки та автоматичного підключення воркерів для:
-- CentOS 5.4 (`docker-centos5`)
-- CentOS 6.4 (`docker-centos6`)
-- openSUSE 12.1 (`docker-suse12`)
-- Debian 6 Squeeze (`docker-squeeze`)
+*Початок історії тут: [Використання Docker-контейнерів як Jenkins-нод](/uk/engineering/using-docker-containers-as-jenkins-nodes/).*
 
-![Логотипи дистрибутивів](/images/docker-jenkins-slave-generator/image-02.png)
+*Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.*
 
-#### Як це працювало:
+У цьому репозиторії: https://github.com/rrader/docker-jenkins-slave зараз доступні правила збірки для:
 
-1. На Jenkins-сервер встановлюється **Swarm Plugin** (дозволяє агентам автоматично реєструватися на мастері через API).
-2. Клонуємо репозиторій та переходимо до потрібного оточення:
+![Підтримувані дистрибутиви](/images/docker-jenkins-slave-generator/image-02.png)
+
+- CentOS 5
+- CentOS 6
+- Suse 12
+- Debian 6
+
+Передбачається, що у вас уже встановлені Docker та Jenkins.
+
+1) Встановіть Swarm Plugin у ваш Jenkins (він дозволяє слейвам додаватися до Jenkins автоматично через API)
+
+2) `$ git clone git@github.com:rrader/docker-jenkins-slave.git; cd docker-jenkins-slave`
+
+3) Перейдіть у папку з правилами для потрібної системи:
    ```bash
-   git clone https://github.com/rrader/docker-jenkins-slave.git
-   cd docker-jenkins-slave/centos6
-   sudo bash build.sh
+   $ cd centos6
    ```
-3. Після створення базового образу можна запускати скільки завгодно ізольованих воркерів:
+
+4) Зберіть образ:
    ```bash
-   sudo bash add_slave.sh SlaveName
+   $ sudo bash build.sh
    ```
-4. У конфігурації задачі в Jenkins вказується відповідна мітка (label), наприклад `docker-centos6`.
 
-### Веб-генератор Dockerfile
+Тепер, коли є зібраний образ, ви можете додати скільки завгодно нод цього типу:
+```bash
+$ sudo bash add_slave.sh SlaveName
+```
 
-Щоб не писати Dockerfile під кожного воркера вручну, я випустив першу версію веб-сервісу генерації маніфестів:
-- **Вихідний код веб-сервісу:** [github.com/rrader/docker-jenkins-slave-service](https://github.com/rrader/docker-jenkins-slave-service)
+Після цього призначте мітку (label) для вашої задачі в Jenkins: `docker-<tagname>`. Точні назви тегів для вибраної OS слейва можна подивитися на вікі: https://github.com/rrader/docker-jenkins-slave/wiki/Tags
 
-Сервіс дозволяв у пару кліків сконфігурувати ім'я користувача, домашню директорію, паролі та згенерувати готовий до запуску Dockerfile із налаштованим Jenkins Swarm клієнтом.
+- centos6 : `centos6.4`
+- centos5 : `centos5.4`
+- suse12 : `suse12.1`
+- squeeze : `debian6`
+
+## Docker jenkins slave Generator
+
+Вийшла початкова версія генератора jenkins slave, його мета — генерувати Dockerfile саме під ваші потреби, із встановленими потрібними пакетами та іншим добром.
+
+Зараз реалізовано лише невелику частину запланованого функціоналу: можна налаштувати username, home directory та паролі для root/user.
+
+Сервіс розгорнуто тут:
+http://docker-jenkins-slave.herokuapp.com/
+
+Вихідний код веб-сервісу на GitHub: https://github.com/rrader/docker-jenkins-slave-service
+
+Будь-які пропозиції та пулл-реквести вітаються!
 
 ---
 *Цей пост перенесено зі старого блогу [antigluk.blogspot.com](https://antigluk.blogspot.com/2014/09/docker-jenkins-slave-generator.html).*

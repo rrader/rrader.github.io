@@ -704,6 +704,19 @@
                 href="https://rrader.github.io/uk/tags/containers/"
                 />
   </url><url>
+    <loc>https://rrader.github.io/uk/tags/continuous-integration/</loc>
+    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/continuous-integration/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/continuous-integration/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/tags/devops/</loc>
     <lastmod>2015-03-22T15:56:00+02:00</lastmod>
     <xhtml:link
@@ -754,32 +767,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/jenkins/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/lxc/</loc>
-    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/lxc/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/lxc/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/open-source/</loc>
-    <lastmod>2015-03-22T15:56:00+02:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/open-source/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/open-source/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/vagrant/</loc>
@@ -990,19 +977,6 @@
                 href="https://rrader.github.io/uk/diy_posts/sim900a-mini-v34-caution/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/ci-cd/</loc>
-    <lastmod>2014-09-02T21:04:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/ci-cd/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/ci-cd/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</loc>
     <lastmod>2014-09-02T21:04:00+03:00</lastmod>
     <xhtml:link
@@ -1014,6 +988,19 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/virtualization/</loc>
+    <lastmod>2014-09-02T21:04:00+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/virtualization/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/virtualization/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/c/</loc>
@@ -1170,6 +1157,32 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/ci-cd/</loc>
+    <lastmod>2013-10-31T09:40:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/ci-cd/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/ci-cd/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</loc>
+    <lastmod>2013-10-31T09:40:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/categories/</loc>

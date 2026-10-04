@@ -1,45 +1,69 @@
 ---
-title: "Docker Jenkins Slave Generator: Dynamic Multi-OS Builds in Containers"
+title: "Docker Jenkins Slave Generator"
 date: 2014-09-02T21:04:00+03:00
 draft: false
-tags: ["docker", "jenkins", "devops", "ci-cd", "open-source"]
+tags: ["continuous-integration", "devops", "docker", "jenkins", "virtualization"]
 ---
 
-When building and testing software across multiple target operating systems (e.g., your Jenkins master runs on Arch Linux, but you need to compile RPMs on CentOS 5/6 or DEBs on Debian 6), running dedicated full virtual machines for each task is an inefficient waste of RAM and CPU. Back in 2014, when Docker was still in its early days, running disposable build slaves inside lightweight containers was a game changer.
+tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .
 
-![Jenkins Slave Dockerfile Generator](/images/docker-jenkins-slave-generator/image-01.png)
+![Docker Jenkins Slave Generator](/images/docker-jenkins-slave-generator/image-01.png)
 
-### Docker Jenkins Slave Project
+## Docker jenkins slave
 
-The **[rrader/docker-jenkins-slave](https://github.com/rrader/docker-jenkins-slave)** repository contains build recipes and automated swarm discovery for:
-- CentOS 5.4 (`docker-centos5`)
-- CentOS 6.4 (`docker-centos6`)
-- openSUSE 12.1 (`docker-suse12`)
-- Debian 6 Squeeze (`docker-squeeze`)
+*The beginning of story is here: [Using Docker Containers as Jenkins Nodes](/engineering/using-docker-containers-as-jenkins-nodes/).*
 
-![Distro logos](/images/docker-jenkins-slave-generator/image-02.png)
+*Abstract: If you want to build your project on different environments (e.g. Jenkins installed on Arch Linux, and you want to build RPM on CentOS 6) with jenkins, but you don't want to use virtual machines, which is inefficient wasting of RAM and CPU, using Docker is good idea.*
 
-#### How it worked:
+In this repository: https://github.com/rrader/docker-jenkins-slave now present build rules for:
 
-1. Install the **Swarm Plugin** on the Jenkins master (enabling dynamic slave discovery via API).
-2. Clone the repository and navigate to the target OS directory:
+![Supported Distros](/images/docker-jenkins-slave-generator/image-02.png)
+
+- CentOS 5
+- CentOS 6
+- Suse 12
+- Debian 6
+
+It is assumed that you have installed the Docker and Jenkins.
+
+1) Install Swarm Plugin to your Jenkins (it allows slaves to be added to Jenkins automatically using API)
+
+2) `$ git clone git@github.com:rrader/docker-jenkins-slave.git; cd docker-jenkins-slave`
+
+3) Browse to the folder with the rules for the desired system:
    ```bash
-   git clone https://github.com/rrader/docker-jenkins-slave.git
-   cd docker-jenkins-slave/centos6
-   sudo bash build.sh
+   $ cd centos6
    ```
-3. Once the base image is built, spawn any number of worker nodes:
+
+4) Build the image:
    ```bash
-   sudo bash add_slave.sh SlaveName
+   $ sudo bash build.sh
    ```
-4. Assign the appropriate job label in Jenkins, such as `docker-centos6`.
 
-### Dockerfile Web Generator
+Now you have the image, you can add as many nodes of this type as you need:
+```bash
+$ sudo bash add_slave.sh SlaveName
+```
 
-To avoid writing Dockerfiles manually for every worker configuration, I built an online generator service:
-- **Service repository:** [github.com/rrader/docker-jenkins-slave-service](https://github.com/rrader/docker-jenkins-slave-service)
+After that, assign label for your jenkins job `docker-<tagname>`, exact tagname for chosen slave OS you can see on wiki: https://github.com/rrader/docker-jenkins-slave/wiki/Tags
 
-The web app allowed customizing usernames, home paths, credentials, and generated a ready-to-run Dockerfile bundled with the Jenkins Swarm client.
+- centos6 : `centos6.4`
+- centos5 : `centos5.4`
+- suse12 : `suse12.1`
+- squeeze : `debian6`
+
+## Docker jenkins slave Generator
+
+Initial version of jenkins slave generator was released, it's purpose is to generate Dockerfile exactly for your needs, with preinstalled needed packages and other stuff.
+
+Right now only tiny amount of planned functionality implemented, you can customize username, home directory and root/user password.
+
+App is deployed here:
+http://docker-jenkins-slave.herokuapp.com/
+
+Source code of web service is on github: https://github.com/rrader/docker-jenkins-slave-service
+
+Any suggestions, pull requests are welcomed!
 
 ---
 *Migrated from legacy blog [antigluk.blogspot.com](https://antigluk.blogspot.com/2014/09/docker-jenkins-slave-generator.html).*

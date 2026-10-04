@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 22 Mar 2015 15:56:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/containers/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker</title>
+      <title>Docker-Jenkins-Slave 2.0 (DJS2)</title>
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&amp;rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.&#xA;Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.&#xA;У версії DJS2 (Docker-Jenkins-Slave 2.0) я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (vagrant-lxc).</description>
+      <description>Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.&#xA;Встановлення Jenkins на робочу систему та використання Docker як слейвів — зручна річ, але може засмічувати комп&amp;rsquo;ютер тимчасовими файлами, які важко вичищати. DJS2 пропонує ізольоване середовище (LXC-контейнер), де виконується і сам Jenkins, і всі його Docker-слейви, а на вашому комп&amp;rsquo;ютері зберігається лише папка з даними та джобами Jenkins.</description>
     </item>
   </channel>
 </rss>

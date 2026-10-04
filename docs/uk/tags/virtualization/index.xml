@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualization on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/virtualization/</link>
+    <description>Recent content in Virtualization on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Tue, 02 Sep 2014 21:04:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Jenkins Slave Generator</title>
+      <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
+      <description>tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.&#xA;У цьому репозиторії: https://github.</description>
+    </item>
+    <item>
+      <title>Використання Docker-контейнерів як Jenkins-нод</title>
+      <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
+    </item>
+  </channel>
+</rss>

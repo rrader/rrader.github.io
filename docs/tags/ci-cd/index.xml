@@ -6,14 +6,14 @@
     <description>Recent content in Ci-Cd on Roman Rader</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Sep 2014 21:04:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2013 09:40:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker Jenkins Slave Generator: Dynamic Multi-OS Builds in Containers</title>
-      <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
-      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
-      <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
-      <description>When building and testing software across multiple target operating systems (e.g., your Jenkins master runs on Arch Linux, but you need to compile RPMs on CentOS 5/6 or DEBs on Debian 6), running dedicated full virtual machines for each task is an inefficient waste of RAM and CPU. Back in 2014, when Docker was still in its early days, running disposable build slaves inside lightweight containers was a game changer.</description>
+      <title>Using Docker Containers as Jenkins Nodes</title>
+      <link>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.&#xA;Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.</description>
     </item>
   </channel>
 </rss>

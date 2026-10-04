@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 22 Mar 2015 15:56:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/tags/containers/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker-Jenkins-Slave 2.0 (DJS2): Fully Isolated Multi-OS CI with LXC and Docker</title>
+      <title>Docker-Jenkins-Slave 2.0 (DJS2)</title>
       <link>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>I frequently needed to compile RPMs and test code across multiple Linux distributions with varying library versions. My primary host was Arch Linux, but work tasks required building software targeted at RHEL/CentOS.&#xA;Running Jenkins directly on the development host while spawning Docker containers worked, but it quickly cluttered the workstation with intermediate build files, dangling layers, and state that was hard to clean up.&#xA;In DJS2 (Docker-Jenkins-Slave 2.0), I decoupled the entire CI system into an isolated nested LXC container managed by Vagrant (vagrant-lxc).</description>
+      <description>I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS. It&amp;rsquo;s useful to use buildbots like Jenkins to run this builds on automated basis, commencing builds after any commit, whatever.&#xA;Anyway, installing jenkins on host machine and using Docker as slaves is useful, but can clog your computer with garbage files that hard to cleanup.</description>
     </item>
   </channel>
 </rss>

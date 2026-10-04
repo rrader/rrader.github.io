@@ -100,11 +100,11 @@
       <description>Слайди презентації та відеозапис мого бліц-доповіді з конференції LvivPy #4 (30 травня 2015 року) про порівняння швидкості перемикання контексту між потоками ОС (threading) та асинхронним подієвим циклом (asyncio) у Python.&#xA;Відео доповіді Слайди презентації Презентація доступна на SlideShare: LvivPy4 - Threading vs asyncio.&#xA;Записи та матеріали конференції: lvivpy.org.ua.&#xA;Дякую організаторам за чудову подію та теплу львівську спільноту Python!&#xA;Цей пост перенесено зі старого блогу antigluk.blogspot.com.</description>
     </item>
     <item>
-      <title>Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker</title>
+      <title>Docker-Jenkins-Slave 2.0 (DJS2)</title>
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-20-djs2/</guid>
-      <description>Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&amp;rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.&#xA;Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.&#xA;У версії DJS2 (Docker-Jenkins-Slave 2.0) я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (vagrant-lxc).</description>
+      <description>Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.&#xA;Встановлення Jenkins на робочу систему та використання Docker як слейвів — зручна річ, але може засмічувати комп&amp;rsquo;ютер тимчасовими файлами, які важко вичищати. DJS2 пропонує ізольоване середовище (LXC-контейнер), де виконується і сам Jenkins, і всі його Docker-слейви, а на вашому комп&amp;rsquo;ютері зберігається лише папка з даними та джобами Jenkins.</description>
     </item>
     <item>
       <title>Кодова клавіатура 4×4 для охоронної системи на базі MSP430</title>
@@ -135,11 +135,11 @@
       <description>Пов&amp;rsquo;язані статті серії:&#xA;Підключення MSP430 до SIM900A UART-монітор на базі MSP430 для налагодження зв&amp;rsquo;язку Замовив я розпаяний модуль SIM900A на компактній платі SIM900A Mini v3.4, до кінця не розібравшись у відмінностях між модифікаціями SIM900 та SIM900A.&#xA;Основна різниця в документації: SIM900 — чотирьохдіапазонний (quad-band, 850/900/1800/1900 МГц), а SIM900A — дводіапазонний (dual-band, 900/1800 МГц). Здавалося б, для європейських та українських мереж дводіапазонного 900/1800 МГц мало б вистачити з головою. Але ні.</description>
     </item>
     <item>
-      <title>Docker Jenkins Slave Generator: динамічні збірки в контейнерах</title>
+      <title>Docker Jenkins Slave Generator</title>
       <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
       <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
-      <description>Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам&amp;rsquo;яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.&#xA;Проєкт Docker Jenkins Slave У репозиторії rrader/docker-jenkins-slave реалізовано правила збірки та автоматичного підключення воркерів для:</description>
+      <description>tl;dr: Сервіс для генерації Dockerfile для Jenkins-слейвів доступний і працює тут: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave Початок історії тут: Використання Docker-контейнерів як Jenkins-нод.&#xA;Abstract: Якщо ви хочете збирати свій проєкт під різні оточення (наприклад, Jenkins встановлено на Arch Linux, а ви хочете зібрати RPM під CentOS 6) через Jenkins, але не бажаєте використовувати віртуальні машини, що призводить до неефективного витрачання RAM і CPU, використання Docker — чудова ідея.&#xA;У цьому репозиторії: https://github.</description>
     </item>
     <item>
       <title>Візуалізація даних АЦП мікроконтролера MSP430 у реальному часі на Python</title>
@@ -161,6 +161,13 @@
       <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
       <guid>https://rrader.github.io/uk/engineering/linked-lists-in-linux-kernel/</guid>
       <description>У ядрі Linux уже давно реалізовані готові зв&amp;rsquo;язні списки, тож під час написання модулів ядра чи драйверів вигадувати власні велосипеди не потрібно. Проте інтерфейс роботи з ними дещо незвичний після класичних курсів CS. Усі операції описані в заголовному файлі include/linux/list.h.&#xA;Головна відмінність від класичного підходу: у стандартних структурах даних елемент списку зазвичай містить вказівник на дані (node-&amp;gt;data = my_data). В ядрі Linux усе зроблено навпаки: службова структура списку (struct hlist_node або struct list_head) інкапсулюється всередину вашої структури даних як одне з її полів.</description>
+    </item>
+    <item>
+      <title>Використання Docker-контейнерів як Jenkins-нод</title>
+      <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
     </item>
   </channel>
 </rss>

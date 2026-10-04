@@ -25,24 +25,350 @@
 html, body {
   width: 100%;
   height: 100%;
-  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  background-color: #f6f7f9;
   color: var(--text-color);
   font-family: var(--font-main);
   font-size: 15px;
   line-height: 1.5;
   overflow: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* CRT Container & Screen Vignette */
-.crt-wrapper {
-  position: relative;
+/* Desk Room Background (Clean White Desk Environment) */
+.desk-environment {
   width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 10px 14px 4px 14px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 28%, #ffffff 0%, #f4f5f8 50%, #e2e5eb 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Overall Monitor Assembly */
+.monitor-assembly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1140px;
+  height: 100%;
+  max-height: 98vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ViewSonic PT775 90s CRT Monitor Casing */
+.crt-monitor-casing {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  max-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(175deg, #e5e0d6 0%, #dad5cb 35%, #cec9be 100%);
+  border-radius: 28px 28px 22px 22px;
+  padding: 10px 22px 8px 22px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  border: 2px solid #ede8de;
+  border-bottom: 3px solid #b1aa9c;
+  border-right: 3px solid #bcb5a8;
+  box-shadow: 
+    0 18px 36px rgba(0, 0, 0, 0.2), 
+    0 35px 70px -15px rgba(0, 0, 0, 0.22), 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95), 
+    inset -2px -2px 4px rgba(0, 0, 0, 0.22);
+}
+
+/* Top Chassis Ventilation Slits */
+.casing-vents-top {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 6px;
+
+  span {
+    width: 32px;
+    height: 3px;
+    background: #b5ada0;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Top Bezel: ViewSonic Brand & Model */
+.bezel-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 8px 4px;
+  user-select: none;
+}
+
+.viewsonic-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .viewsonic-birds-svg {
+    width: 68px;
+    height: 22px;
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.8));
+  }
+
+  .viewsonic-text {
+    font-family: 'Arial Black', Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    color: #4c4840;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+}
+
+.model-badge {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  .badge-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 13px;
+    color: #9c2727;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .badge-series {
+    font-family: var(--font-main), monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #645f55;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    letter-spacing: 1px;
+  }
+}
+
+/* Deep Recessed CRT Screen Frame */
+.crt-tube-frame {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #131614;
+  border-radius: 16px;
+  padding: 6px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #242725;
+  box-shadow: 
+    inset 0 4px 10px rgba(0, 0, 0, 0.95), 
+    inset 0 0 5px rgba(0, 0, 0, 0.9), 
+    0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+/* Inner CRT Display Glass */
+.crt-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: radial-gradient(circle at center, var(--bg-panel) 0%, var(--bg-color) 100%);
+  border-radius: 10px;
+  background: radial-gradient(circle at 50% 45%, #0f1713 0%, #060907 100%);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85);
+  transition: filter 0.25s ease, opacity 0.25s ease;
+
+  &.crt-powered-off {
+    background: #020302 !important;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.95) !important;
+    * {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  }
+}
+
+/* Bottom Bezel: Speaker Vents, OSD Buttons & Power */
+.bezel-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  margin-top: auto;
+  user-select: none;
+}
+
+.bezel-speaker-grille {
+  display: flex;
+  gap: 3.5px;
+  align-items: center;
+
+  span {
+    width: 3px;
+    height: 13px;
+    background: #b5ada0;
+    border-radius: 1.5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+}
+
+.bezel-osd-panel {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  .osd-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .osd-btn-label {
+    font-family: var(--font-main), monospace;
+    font-size: 9px;
+    font-weight: 700;
+    color: #757065;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    line-height: 1;
+  }
+
+  .osd-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid #b8b1a3;
+    background: linear-gradient(to bottom, #ded9cf, #c8c2b5);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: #5c574d;
+    padding: 0;
+    outline: none;
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+  }
+}
+
+.bezel-power-panel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  .power-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #18e04b;
+    box-shadow: 0 0 6px #18e04b, 0 0 2px #fff;
+    border: 1px solid #11a337;
+    transition: all 0.2s ease;
+
+    &.standby {
+      background: #ff9900 !important;
+      box-shadow: 0 0 6px #ff9900, 0 0 2px #ffe0b2 !important;
+      border-color: #c77700 !important;
+    }
+  }
+
+  .power-button {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid #b8b1a3;
+    background: linear-gradient(to bottom, #e2ddd3, #cac4b7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    outline: none;
+    transition: transform 0.05s ease;
+
+    &:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .power-symbol {
+      font-size: 11px;
+      font-weight: 700;
+      color: #686358;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+/* Pedestal Swivel Stand & Desk Shadow */
+.monitor-stand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: -3px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.stand-neck {
+  width: 150px;
+  height: 16px;
+  background: linear-gradient(to right, #9c9588 0%, #ded9ce 30%, #f0ece3 50%, #ded9ce 70%, #948d80 100%);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.35);
+  border-left: 1px solid #8e877a;
+  border-right: 1px solid #8e877a;
+}
+
+.stand-swivel-ring {
+  width: 190px;
+  height: 6px;
+  margin-top: -1px;
+  background: linear-gradient(to right, #80796c, #bfb9a7, #80796c);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stand-base {
+  width: 58vw;
+  max-width: 420px;
+  height: 20px;
+  margin-top: -1px;
+  background: linear-gradient(180deg, #eae5dc 0%, #dbd6ca 45%, #c5bfb2 100%);
+  border-radius: 12px 12px 18px 18px;
+  border: 2px solid #f2ede4;
+  border-bottom: 2px solid #a39c8e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.stand-desk-shadow {
+  width: 80vw;
+  max-width: 560px;
+  height: 14px;
+  margin-top: -7px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.12) 50%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(4px);
 }
 
 /* CRT Scanlines Layer */
@@ -361,25 +687,82 @@ html, body {
   will-change: transform;
 }
 
+@media (max-width: 768px) {
+  .desk-environment {
+    padding: 4px;
+  }
+  .crt-monitor-casing {
+    border-radius: 18px 18px 14px 14px;
+    padding: 6px 10px;
+    max-height: 100vh;
+  }
+  .casing-vents-top {
+    margin-bottom: 4px;
+    gap: 4px;
+    span { width: 20px; height: 2px; }
+  }
+  .bezel-top-bar {
+    padding: 0 2px 4px 2px;
+  }
+  .viewsonic-logo .viewsonic-birds-svg {
+    width: 52px;
+    height: 18px;
+  }
+  .viewsonic-logo .viewsonic-text {
+    font-size: 11px;
+  }
+  .model-badge .badge-brand {
+    font-size: 11px;
+  }
+  .model-badge .badge-series {
+    font-size: 9px;
+  }
+  .bezel-bottom-bar {
+    padding-top: 4px;
+  }
+  .bezel-speaker-grille {
+    display: none;
+  }
+  .stand-neck {
+    height: 8px;
+    width: 90px;
+  }
+  .stand-swivel-ring {
+    height: 4px;
+    width: 120px;
+  }
+  .stand-base {
+    height: 12px;
+  }
+}
+
 @media (max-width: 600px) {
   html, body {
     font-size: 13px;
   }
   .header-bar {
-    padding: 8px 10px;
+    padding: 6px 8px;
   }
   .header-title {
-    font-size: 13px;
+    font-size: 12px;
   }
   .ctrl-btn {
-    padding: 3px 6px;
-    font-size: 11px;
+    padding: 2px 5px;
+    font-size: 10px;
   }
   .terminal-container {
-    padding: 12px;
+    padding: 10px;
   }
   .ascii-banner {
-    font-size: 12px;
+    font-size: 11px;
+  }
+  .quick-pills {
+    gap: 4px;
+    margin: 6px 0 10px 0;
+  }
+  .pill-btn {
+    padding: 2px 8px;
+    font-size: 11px;
   }
 }
 

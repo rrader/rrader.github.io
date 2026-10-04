@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.
+To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.
+Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.">  
+
+  <title>
+    
+      Using Docker Containers as Jenkins Nodes // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../" class="ws-logo" title="Home Terminal">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../engineering/using-docker-containers-as-jenkins-nodes/" class="ws-btn lang-btn active">
+          🇬🇧 EN
+        </a>
+        <a href="../../uk/engineering/using-docker-containers-as-jenkins-nodes/" class="ws-btn lang-btn">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../" class="win-btn win-close" title="Close window (back to terminal)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: engineering/using-docker-containers-as-jenkins-nodes.en.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat using-docker-containers-as-jenkins-nodes.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2013-10-31 09:40:00 &#43;0200 EET">2013-10-31</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 415</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#docker</span>
+      
+        <span class="tty-tag-pill">#jenkins</span>
+      
+        <span class="tty-tag-pill">#linux</span>
+      
+        <span class="tty-tag-pill">#virtualization</span>
+      
+        <span class="tty-tag-pill">#ci-cd</span>
+      
+        <span class="tty-tag-pill">#devops</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Using Docker Containers as Jenkins Nodes</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/engineering/using-docker-containers-as-jenkins-nodes/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: <a href="https://github.com/rrader/docker-jenkins-slave">tl;dr repository on GitHub</a>.</p>
+<p>To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.</p>
+<p><img alt="Distributions" src="../../images/docker-jenkins-nodes/image-01.png"></p>
+<p>Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds. This was initially solved by spinning up a CentOS 5 VM in VirtualBox. Then support for SUSE was added, followed by Debian.</p>
+<p>RAM is finite, and using heavyweight full virtual machines solely for build compilation and packaging is clear overhead. So we decided to migrate our build scripts to Docker.</p>
+<p>Using Jenkins for CI, you can connect nodes with required OSs in several ways:</p>
+<ul>
+<li>Rent individual dedicated instances/servers.</li>
+<li>Use traditional hypervisor virtualization (KVM, VirtualBox, etc.).</li>
+<li>Containers (LXC, Docker, jails).</li>
+</ul>
+<p>The advantages of containers over VMs are obvious here: memory is shared dynamically on demand, and running multiple containers simultaneously does not drag the host down. On top of that, Docker introduces critical benefits:</p>
+<ul>
+<li>Only the actual build script runs inside the container, whereas a VM runs all background system daemons and services, wasting host resources.</li>
+<li>Cheap and fast creation of isolated sandbox clones for each build.</li>
+</ul>
+<h2 id="docker-as-a-jenkins-node">Docker as a Jenkins Node</h2>
+<p>For a Jenkins slave, we need:</p>
+<ol>
+<li>Java runtime</li>
+<li>Entrypoint — an SSH server</li>
+<li>Build tools required by the project</li>
+</ol>
+<p>The entrypoint is needed to keep the container process alive and retain filesystem state across the build session. Since Jenkins communicates with slaves over SSH anyway, the SSH daemon serves as our entrypoint.</p>
+<p>Docker uses Dockerfiles to define build environments. In the repository <strong><a href="https://github.com/rrader/docker-jenkins-slave">rrader/docker-jenkins-slave</a></strong>, build recipes are provided for:</p>
+<ul>
+<li>CentOS 5</li>
+<li>CentOS 6</li>
+<li>SUSE 12</li>
+<li>Debian 6</li>
+</ul>
+<p>Pull requests with new OS recipes and script improvements are welcome!</p>
+<h2 id="build--usage">Build &amp; Usage</h2>
+<p>Assuming you have Docker and Jenkins installed:</p>
+<ol>
+<li>
+<p>Install the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin">Swarm Plugin</a> in Jenkins (enables slaves to join Jenkins automatically via API).</p>
+</li>
+<li>
+<p>Clone the repo:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rrader/docker-jenkins-slave.git
+</span></span><span style="display:flex;"><span>cd docker-jenkins-slave
+</span></span></code></pre></div><ol start="3">
+<li>Enter the target OS folder and build the image:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd centos6
+</span></span><span style="display:flex;"><span>sudo bash build.sh
+</span></span></code></pre></div><ol start="4">
+<li>Once built, you can spawn as many nodes of this type as needed:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo bash add_slave.sh SlaveName
+</span></span></code></pre></div><p>The node will appear in Jenkins immediately. To dispatch jobs to it, assign the matching label in job configuration (e.g. <code>docker-centos6.4</code>). The complete list of tags is documented in the <a href="https://github.com/rrader/docker-jenkins-slave/wiki/Tags">Repository Wiki</a>.</p>
+<hr>
+<p><em>Migrated from legacy blog <a href="https://antigluk.blogspot.com/2013/10/docker-jenkins.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: using-docker-containers-as-jenkins-nodes.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">using-docker-containers-as-jenkins-nodes.en.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">415 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

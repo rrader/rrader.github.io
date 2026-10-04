@@ -24,57 +24,172 @@
   <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
 </head>
 <body>
-  <div class="crt-wrapper">
-    <div class="crt-scanlines"></div>
-    <div class="crt-glow"></div>
-    <canvas id="matrix-canvas"></canvas>
-
-    
-    <header class="header-bar">
-      <div class="header-title">
-        <span class="quake-logo">⚡</span>
-        <span>rmn.pp.ua</span>
-      </div>
-      <div class="header-controls">
-        <a href="../" class="ctrl-btn lang-btn" title="English">
-          🇬🇧 EN
-        </a>
-        <a href="../uk/" class="ctrl-btn lang-btn active" title="Українська">
-          🇺🇦 UA
-        </a>
-        <button id="sfx-btn" class="ctrl-btn active" title="Toggle Sound Effects">🔊 SFX: ON</button>
-        <button id="gfx-btn" class="ctrl-btn active" title="Toggle CRT Scanline Effects">📺 GFX: ON</button>
-      </div>
-    </header>
-
-    
-    <main class="terminal-container">
-      <div id="terminal-output" class="terminal-output"></div>
-
+  <div class="desk-environment">
+    <div class="monitor-assembly">
       
-      <div class="quick-pills">
-        <button class="pill-btn" data-cmd="ls">ls</button>
-        <button class="pill-btn" data-cmd="bio">bio</button>
-        <button class="pill-btn" data-cmd="posts">posts</button>
-        <button class="pill-btn" data-cmd="projects">projects</button>
-        <button class="pill-btn" data-cmd="engineering">engineering</button>
-        <button class="pill-btn" data-cmd="diy">diy</button>
-        <button class="pill-btn" data-cmd="study">study</button>
-        <button class="pill-btn" data-cmd="teaching">teaching</button>
-        <button class="pill-btn" data-cmd="contact">contact</button>
-        <button class="pill-btn" data-cmd="rss">rss</button>
-        <button class="pill-btn" data-cmd="help">help</button>
-        <button class="pill-btn" data-cmd="clear">clear</button>
-      </div>
+      <div class="crt-monitor-casing">
+        
+        <div class="casing-vents-top">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
-      
-      <div class="input-line">
-        <span class="prompt-symbol">[guest@rmn.pp.ua ~]$</span>
-        <div class="cmd-input-wrapper">
-          <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" autofocus placeholder="введіть команду..." />
+        
+        <div class="bezel-top-bar">
+          <div class="viewsonic-logo" title="ViewSonic">
+            <svg class="viewsonic-birds-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              
+              <path d="M4 27 C28 26, 60 27, 106 26" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round" />
+              
+              <g transform="translate(6, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(38, 2) scale(0.6)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fdd835" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#ab47bc" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#d32f2f" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(72, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+            </svg>
+            <span class="viewsonic-text">ViewSonic</span>
+          </div>
+
+          <div class="model-badge">
+            <span class="badge-brand">SonicTron</span>
+            <span class="badge-series">PT775</span>
+          </div>
+        </div>
+
+        
+        <div class="crt-tube-frame">
+          
+          <div class="crt-wrapper">
+            <div class="crt-scanlines"></div>
+            <div class="crt-glow"></div>
+            <canvas id="matrix-canvas"></canvas>
+
+            
+            <header class="header-bar">
+              <div class="header-title">
+                <span class="quake-logo">⚡</span>
+                <span>rmn.pp.ua</span>
+              </div>
+              <div class="header-controls">
+                <a href="../" class="ctrl-btn lang-btn" title="English">
+                  🇬🇧 EN
+                </a>
+                <a href="../uk/" class="ctrl-btn lang-btn active" title="Українська">
+                  🇺🇦 UA
+                </a>
+                <button id="sfx-btn" class="ctrl-btn active" title="Toggle Sound Effects">🔊 SFX: ON</button>
+                <button id="gfx-btn" class="ctrl-btn active" title="Toggle CRT Scanline Effects">📺 GFX: ON</button>
+              </div>
+            </header>
+
+            
+            <main class="terminal-container">
+              <div id="terminal-output" class="terminal-output"></div>
+
+              
+              <div class="quick-pills">
+                <button class="pill-btn" data-cmd="ls">ls</button>
+                <button class="pill-btn" data-cmd="bio">bio</button>
+                <button class="pill-btn" data-cmd="posts">posts</button>
+                <button class="pill-btn" data-cmd="projects">projects</button>
+                <button class="pill-btn" data-cmd="engineering">engineering</button>
+                <button class="pill-btn" data-cmd="diy">diy</button>
+                <button class="pill-btn" data-cmd="study">study</button>
+                <button class="pill-btn" data-cmd="teaching">teaching</button>
+                <button class="pill-btn" data-cmd="contact">contact</button>
+                <button class="pill-btn" data-cmd="rss">rss</button>
+                <button class="pill-btn" data-cmd="help">help</button>
+                <button class="pill-btn" data-cmd="clear">clear</button>
+              </div>
+
+              
+              <div class="input-line">
+                <span class="prompt-symbol">[guest@rmn.pp.ua ~]$</span>
+                <div class="cmd-input-wrapper">
+                  <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false" autofocus placeholder="введіть команду..." />
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+
+        
+        <div class="bezel-bottom-bar">
+          <div class="bezel-speaker-grille">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="bezel-osd-panel">
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">1</span>
+              <button type="button" class="osd-btn" id="osd-btn-1" title="OSD Menu 1 (Help)">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">2</span>
+              <button type="button" class="osd-btn" id="osd-btn-2" title="OSD Menu 2 (GFX)">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▼</span>
+              <button type="button" class="osd-btn" id="osd-btn-down" title="OSD Down (SFX)">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▲</span>
+              <button type="button" class="osd-btn" id="osd-btn-up" title="OSD Up (Matrix)">·</button>
+            </div>
+          </div>
+
+          <div class="bezel-power-panel">
+            <div class="power-indicator" id="monitor-power-led" title="Power Status"></div>
+            <button type="button" class="power-button" id="monitor-power-btn" title="Monitor Power Switch">
+              <span class="power-symbol">⏻</span>
+            </button>
+          </div>
         </div>
       </div>
-    </main>
+
+      
+      <div class="monitor-stand">
+        <div class="stand-neck"></div>
+        <div class="stand-swivel-ring"></div>
+        <div class="stand-base"></div>
+        <div class="stand-desk-shadow"></div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -171,7 +286,7 @@
         date: "2015-06-27"
       },
       {
-        title: "Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker",
+        title: "Docker-Jenkins-Slave 2.0 (DJS2)",
         section: "engineering",
         lang: "uk",
         url: "/uk/engineering/docker-jenkins-slave-20-djs2/",
@@ -206,7 +321,7 @@
         date: "2015-01-15"
       },
       {
-        title: "Docker Jenkins Slave Generator: динамічні збірки в контейнерах",
+        title: "Docker Jenkins Slave Generator",
         section: "engineering",
         lang: "uk",
         url: "/uk/engineering/docker-jenkins-slave-generator/",
@@ -232,6 +347,13 @@
         lang: "uk",
         url: "/uk/engineering/linked-lists-in-linux-kernel/",
         date: "2013-11-15"
+      },
+      {
+        title: "Використання Docker-контейнерів як Jenkins-нод",
+        section: "engineering",
+        lang: "uk",
+        url: "/uk/engineering/using-docker-containers-as-jenkins-nodes/",
+        date: "2013-10-31"
       },
     ];
   </script>

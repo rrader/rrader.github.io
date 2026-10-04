@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualization on Roman Rader</title>
+    <link>https://rrader.github.io/tags/virtualization/</link>
+    <description>Recent content in Virtualization on Roman Rader</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Sep 2014 21:04:00 +0300</lastBuildDate>
+    <atom:link href="https://rrader.github.io/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker Jenkins Slave Generator</title>
+      <link>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</link>
+      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
+      <guid>https://rrader.github.io/engineering/docker-jenkins-slave-generator/</guid>
+      <description>tl;dr: Service for generating Dockerfile for Jenkins slaves is up and running here: http://docker-jenkins-slave.herokuapp.com/ .&#xA;Docker jenkins slave The beginning of story is here: Using Docker Containers as Jenkins Nodes.&#xA;Abstract: If you want to build your project on different environments (e.g. Jenkins installed on Arch Linux, and you want to build RPM on CentOS 6) with jenkins, but you don&amp;rsquo;t want to use virtual machines, which is inefficient wasting of RAM and CPU, using Docker is good idea.</description>
+    </item>
+    <item>
+      <title>Using Docker Containers as Jenkins Nodes</title>
+      <link>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.&#xA;Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.</description>
+    </item>
+  </channel>
+</rss>

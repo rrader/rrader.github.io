@@ -6,14 +6,14 @@
     <description>Recent content in Ci-Cd on Роман Радер</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>uk-ua</language>
-    <lastBuildDate>Tue, 02 Sep 2014 21:04:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 31 Oct 2013 09:40:00 +0200</lastBuildDate>
     <atom:link href="https://rrader.github.io/uk/tags/ci-cd/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Docker Jenkins Slave Generator: динамічні збірки в контейнерах</title>
-      <link>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</link>
-      <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
-      <guid>https://rrader.github.io/uk/engineering/docker-jenkins-slave-generator/</guid>
-      <description>Якщо потрібно збирати та тестувати проєкти під різними цільовими дистрибутивами (наприклад, хост із Jenkins працює на Arch Linux, а потрібно зібрати RPM-пакети під CentOS 5/6 або DEB під Debian 6), підіймати під кожну задачу окрему важку віртуальну машину — це неефективна витрата пам&amp;rsquo;яті та процесорного часу. У 2014 році, коли Docker тільки набирав обертів, чудовим рішенням став запуск білд-воркерів Jenkins у легких Docker-контейнерах.&#xA;Проєкт Docker Jenkins Slave У репозиторії rrader/docker-jenkins-slave реалізовано правила збірки та автоматичного підключення воркерів для:</description>
+      <title>Використання Docker-контейнерів як Jenkins-нод</title>
+      <link>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.&#xA;Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.&#xA;Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.</description>
     </item>
   </channel>
 </rss>

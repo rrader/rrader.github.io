@@ -15,5 +15,12 @@
       <guid>https://rrader.github.io/engineering/linked-lists-in-linux-kernel/</guid>
       <description>The Linux kernel already implements generic linked list data structures, so when writing kernel modules or drivers there is no need to reinvent the wheel. However, the interface can be somewhat counterintuitive if you come from classical CS textbooks. All operations can be found in include/linux/list.h.&#xA;In typical algorithms coursework, a generic list node points to payload data (node-&amp;gt;data = payload). The Linux kernel turns this upside down: the list node structure (struct hlist_node or struct list_head) is embedded directly inside your own data structure.</description>
     </item>
+    <item>
+      <title>Using Docker Containers as Jenkins Nodes</title>
+      <link>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/engineering/using-docker-containers-as-jenkins-nodes/</guid>
+      <description>This post describes using Docker containers as isolated nodes for continuous integration, in this case Jenkins. For the impatient: tl;dr repository on GitHub.&#xA;To build our project into RPM and DEB packages we use Jenkins, deployed on a dedicated server.&#xA;Initially we built our software solely for CentOS 6. Later we added CentOS 5 support, and discovered that strict shared library dependencies prevented the same binaries from running across different CentOS major versions, requiring separate RPM builds.</description>
+    </item>
   </channel>
 </rss>

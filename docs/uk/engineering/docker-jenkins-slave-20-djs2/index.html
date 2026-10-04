@@ -3,13 +3,12 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.
-Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.
-У версії DJS2 (Docker-Jenkins-Slave 2.0) я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (vagrant-lxc).">  
+   <meta name="description" content="Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.
+Встановлення Jenkins на робочу систему та використання Docker як слейвів — зручна річ, але може засмічувати комп&rsquo;ютер тимчасовими файлами, які важко вичищати. DJS2 пропонує ізольоване середовище (LXC-контейнер), де виконується і сам Jenkins, і всі його Docker-слейви, а на вашому комп&rsquo;ютері зберігається лише папка з даними та джобами Jenkins.">  
 
   <title>
     
-      Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker // rmn.pp.ua
+      Docker-Jenkins-Slave 2.0 (DJS2) // rmn.pp.ua
     
   </title>
 
@@ -113,34 +112,32 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-03-22 15:56:00 &#43;0200 EET">2015-03-22</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 174</span>
-      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 364</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
     
     <div class="tty-tags-row">
       <span class="tty-label">TAGS:</span>
       
+        <span class="tty-tag-pill">#containers</span>
+      
+        <span class="tty-tag-pill">#continuous-integration</span>
+      
+        <span class="tty-tag-pill">#devops</span>
+      
         <span class="tty-tag-pill">#docker</span>
       
         <span class="tty-tag-pill">#jenkins</span>
       
-        <span class="tty-tag-pill">#devops</span>
-      
         <span class="tty-tag-pill">#vagrant</span>
-      
-        <span class="tty-tag-pill">#lxc</span>
-      
-        <span class="tty-tag-pill">#containers</span>
-      
-        <span class="tty-tag-pill">#open-source</span>
       
     </div>
     
   </div>
 
   
-  <h1 class="post-title">Docker-Jenkins-Slave 2.0 (DJS2): Повна ізоляція CI через LXC та Docker</h1>
+  <h1 class="post-title">Docker-Jenkins-Slave 2.0 (DJS2)</h1>
 
   
   <div class="translations-badge">
@@ -148,25 +145,49 @@ if (!doNotTrack) {
 
   
   <div class="post-content">
-    <p>Мені часто доводилося збирати RPM-пакети та тестувати код під різні дистрибутиви Linux із різними версіями системних бібліотек. На робочому комп&rsquo;ютері в мене стояв Arch Linux, а робочі задачі вимагали складання під RHEL/CentOS.</p>
-<p>Запуск Jenkins безпосередньо на робочій машині зі спавном Docker-воркерів працював, проте з часом засмічував хостову систему залишковими файлами та шарами образів, які складно вичищати.</p>
+    <p>Мені часто доводиться збирати RPM або тестувати свій код на різних операційних системах з різним оточенням, версіями бібліотек тощо. На робочій машині я використовую Arch Linux, але робота вимагає писати софт для RHEL/CentOS. Зручно використовувати білд-боти на зразок Jenkins для автоматизації цих збірок після кожного коміту.</p>
 <p><img alt="DJS2 Архітектура" src="../../../images/docker-jenkins-slave-20-djs2/image-01.png"></p>
-<p>У версії <strong><a href="https://github.com/rrader/docker-jenkins-slave">DJS2 (Docker-Jenkins-Slave 2.0)</a></strong> я пішов далі: ізолював весь стек (сам Jenkins-майстер і всі Docker-контейнери воркерів) усередині окремого легкого LXC-контейнера через Vagrant (<code>vagrant-lxc</code>). На хостовій машині зберігалася лише папка з робочими завданнями (jobs) Jenkins.</p>
-<p><img alt="Швидкий старт DJS2" src="../../../images/docker-jenkins-slave-20-djs2/image-02.jpg"></p>
-<h3 id="як-це-працювало">Як це працювало</h3>
-<p>Усе, що потрібно на хості — це Linux із підтримкою LXC та встановлений Vagrant:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vagrant plugin install vagrant-lxc
-</span></span></code></pre></div><h4 id="запуск-оточення">Запуск оточення:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rrader/docker-jenkins-slave.git djs
-</span></span><span style="display:flex;"><span>cd djs
-</span></span><span style="display:flex;"><span>./djs.sh up
-</span></span></code></pre></div><p>Скрипт розгортав ізольований інстанс Jenkins (доступний за адресою на зразок <code>http://10.0.3.74:8080</code>).</p>
-<h4 id="додавання-білд-воркерів">Додавання білд-воркерів:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./djs.sh add centos7-java Luke
-</span></span></code></pre></div><p>Команда автоматично завантажувала готовий образ воркера з Docker Hub (<code>antigluk/jenkins-slave-centos7-java</code>) і запускала його. Воркер «Luke» миттєво з&rsquo;являвся в блоці <em>Build Executor Status</em> у панелі Jenkins.</p>
-<ul>
-<li><strong>Репозиторій проєкту:</strong> <a href="https://github.com/rrader/docker-jenkins-slave">github.com/rrader/docker-jenkins-slave</a></li>
-</ul>
+<p>Встановлення Jenkins на робочу систему та використання Docker як слейвів — зручна річ, але може засмічувати комп&rsquo;ютер тимчасовими файлами, які важко вичищати. <a href="https://github.com/rrader/docker-jenkins-slave">DJS2</a> пропонує ізольоване середовище (LXC-контейнер), де виконується і сам Jenkins, і всі його Docker-слейви, а на вашому комп&rsquo;ютері зберігається лише папка з даними та джобами Jenkins.</p>
+<p>Отже, якщо вам потрібно тестувати або збирати код під різні Linux-дистрибутиви, з DJS2 потрібна лише хостова Linux-машина з підтримкою LXC та Vagrant.</p>
+<p>Репозиторій проєкту: <a href="https://github.com/rrader/docker-jenkins-slave">https://github.com/rrader/docker-jenkins-slave</a></p>
+<p>Нова версія DJS уже на GitHub. Вона в бета-версії та ще не повністю протестована, але на моєму комп&rsquo;ютері працює. Спробуйте на своєму ПК та надсилайте відгуки — буду дуже радий будь-якому фідбеку, як про помилки, так і про успішні запуски.</p>
+<p><img alt="DJS2 Швидкий старт" src="../../../images/docker-jenkins-slave-20-djs2/image-02.jpg"></p>
+<p>Розгорнути Vagrant зі слейвами під різні ОС на локальній машині дуже просто. Зараз доступні CentOS 6 та CentOS 7, але поступово всі підтримувані ОС будуть перенесені (CentOS 5, Suse, Debian).</p>
+<p>Pull-Request&rsquo;и дуже вітаються :)</p>
+<p>Нижче наведено фрагмент README з інструкцією, як запустити зв&rsquo;язку Jenkins + Docker + LXC на вашому комп&rsquo;ютері.</p>
+<h3 id="системні-вимоги">Системні вимоги</h3>
+<ol>
+<li>Vagrant</li>
+</ol>
+<p>Опціонально (але дуже рекомендовано):</p>
+<ol>
+<li>плагін vagrant-lxc: <code>vagrant plugin install vagrant-lxc</code></li>
+<li>налаштування vagrant-lxc на хості (див. <a href="https://github.com/fgrehm/vagrant-lxc/wiki">https://github.com/fgrehm/vagrant-lxc/wiki</a>)</li>
+</ol>
+<h3 id="швидкий-старт">Швидкий старт</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git clone git@github.com:rrader/docker-jenkins-slave.git djs
+</span></span><span style="display:flex;"><span>$ cd djs
+</span></span><span style="display:flex;"><span>$ ./djs.sh up
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>lots of vagrant output ....<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">==================================================</span>
+</span></span><span style="display:flex;"><span>Jenkins should be available on 10.0.3.74:8080
+</span></span><span style="display:flex;"><span>Start using slaves with adding one
+</span></span><span style="display:flex;"><span> e.g. <span style="color:#75715e"># ./djs.sh add centos7-java Luke</span>
+</span></span></code></pre></div><p>Тепер щойно розгорнутий Jenkins має бути доступний на <a href="http://10.0.3.74:8080">http://10.0.3.74:8080</a> або подібній IP.</p>
+<p>Тепер додамо слейви за допомогою <code>./djs.sh add &lt;image&gt; &lt;name&gt;</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ./djs.sh add centos7-java Luke
+</span></span><span style="display:flex;"><span>Unable to find image <span style="color:#e6db74">&#39;antigluk/jenkins-slave-centos6-java&#39;</span> locally
+</span></span><span style="display:flex;"><span>Pulling repository antigluk/jenkins-slave-centos6-java
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>lots of docker output ....<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Status: Downloaded newer image <span style="color:#66d9ef">for</span>
+</span></span><span style="display:flex;"><span>    antigluk/jenkins-slave-centos6-java:latest
+</span></span><span style="display:flex;"><span>    507e2a18674253d0d7d1f5201ee963681704c2d18310af619f9fcbb0124efaf3
+</span></span><span style="display:flex;"><span>Connection to 10.0.3.74 closed.
+</span></span></code></pre></div><p>Це завантажить образ <code>centos7-java</code> з Docker Hub і запустить його. Після завершення команди воркер «Luke» з&rsquo;явиться в секції «Build Executor Status» у Jenkins.</p>
+<h3 id="важливі-примітки">Важливі примітки</h3>
+<p>Для використання з Vagrant Jenkins зараз готові лише <code>centos6-java</code> та <code>centos7-java</code>.</p>
+<h3 id="посилання">Посилання</h3>
+<p>Репозиторій DJS: <a href="https://github.com/rrader/docker-jenkins-slave">https://github.com/rrader/docker-jenkins-slave</a></p>
 <hr>
 <p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2015/03/docker-jenkins-slave-20-djs2.html">antigluk.blogspot.com</a>.</em></p>
 
@@ -199,7 +220,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">174 words</span>
+            <span class="status-item">364 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

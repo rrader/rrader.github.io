@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uk-ua"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: tl;dr репозиторій на GitHub.
+Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.
+Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM.">  
+
+  <title>
+    
+      Використання Docker-контейнерів як Jenkins-нод // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Роман Радер (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  
+  <div class="workstation-wrapper">
+
+    
+    <header class="workstation-top-bar">
+      <div class="ws-bar-left">
+        <a href="../../../" class="ws-logo" title="Головний термінал">
+          <span class="ws-logo-icon">⚡</span>
+          <span class="ws-logo-text">rmn.pp.ua</span>
+        </a>
+        <span class="ws-status-chip">
+          <span class="ws-dot"></span> TTY1: ONLINE
+        </span>
+      </div>
+
+      <div class="ws-bar-right">
+        
+        <a href="../../../engineering/using-docker-containers-as-jenkins-nodes/" class="ws-btn lang-btn">
+          🇬🇧 EN
+        </a>
+        <a href="../../../uk/engineering/using-docker-containers-as-jenkins-nodes/" class="ws-btn lang-btn active">
+          🇺🇦 UA
+        </a>
+        
+        <a href="../../../uk/index.xml" class="ws-btn rss-btn" target="_blank" title="RSS Feed">
+          📡 RSS
+        </a>
+        
+        <a href="../../../" class="ws-btn home-btn" title="Back to Quake Terminal">
+          ↵ TERMINAL
+        </a>
+      </div>
+    </header>
+
+    
+    <main class="term-window-container" id="top">
+      <div class="term-window">
+        
+        <div class="term-window-titlebar">
+          <div class="term-window-controls">
+            <a href="../../../" class="win-btn win-close" title="Закрити вікно (на термінал)">×</a>
+            <span class="win-btn win-min is-inactive" title="Inactive" aria-disabled="true"></span>
+            <span class="win-btn win-max is-inactive" title="Inactive" aria-disabled="true"></span>
+          </div>
+          <div class="term-window-title">
+            <span class="win-title-icon">📄</span>
+            <span>guest@rmn.pp.ua: engineering/using-docker-containers-as-jenkins-nodes.uk.md</span>
+          </div>
+          <div class="term-window-meta">
+            <span class="win-meta-tag">[READ-ONLY]</span>
+          </div>
+        </div>
+
+        
+        <div class="term-window-body">
+          <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../../">~</a>/<a href="../../../engineering">engineering</a>]$</span>
+    <span class="cli-prompt-cmd">cat using-docker-containers-as-jenkins-nodes.uk.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2013-10-31 09:40:00 &#43;0200 EET">2013-10-31</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 410</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#docker</span>
+      
+        <span class="tty-tag-pill">#jenkins</span>
+      
+        <span class="tty-tag-pill">#linux</span>
+      
+        <span class="tty-tag-pill">#virtualization</span>
+      
+        <span class="tty-tag-pill">#ci-cd</span>
+      
+        <span class="tty-tag-pill">#devops</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">Використання Docker-контейнерів як Jenkins-нод</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Інші мови:</span><a href="../../../engineering/using-docker-containers-as-jenkins-nodes/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇬🇧 English</a></div>
+
+  
+  <div class="post-content">
+    <p>Ця стаття описує використання контейнерів Docker як окремих нод для системи неперервної інтеграції (у даному випадку Jenkins). Кому лінь читати: <a href="https://github.com/rrader/docker-jenkins-slave">tl;dr репозиторій на GitHub</a>.</p>
+<p>Для збірки нашого проєкту в RPM та DEB пакети ми використовуємо Jenkins, під який виділено окрему машину.</p>
+<p><img alt="Дистрибутиви" src="../../../images/docker-jenkins-nodes/image-01.png"></p>
+<p>Спочатку ми збирали наш проєкт тільки для CentOS 6. Далі додалася підтримка CentOS 5, і виявилося, що жорсткі залежності від конкретних версій бібліотек не дозволяють запускати одні й ті самі бінарники під різними версіями дистрибутива — знадобилася збірка різних RPM. Спочатку це вирішувалося додаванням у Jenkins ноди з CentOS 5, якою слугувала звичайна віртуалка на VirtualBox. Згодом додалася підтримка SUSE, а потім і Debian.</p>
+<p>Кількість оперативної пам&rsquo;яті не гумова, а використання повноцінних віртуальних машин суто для компіляції та пакування — це невиправданий оверхед. Тому було вирішено переписати скрипти з використанням Docker.</p>
+<p>Використовуючи Jenkins для CI, можна підключати ноди з потрібними операційними системами кількома шляхами:</p>
+<ul>
+<li>Орендувати окремі машини/сервери та тримати їх увімкненими.</li>
+<li>Використовувати класичну віртуалізацію (гіпервізори KVM, VirtualBox тощо).</li>
+<li>Контейнери (LXC, Docker, jail).</li>
+</ul>
+<p>Переваги контейнерів перед віртуальними машинами тут очевидні: оперативна пам&rsquo;ять спільна та динамічно виділяється за потребою, а велика кількість запущених контейнерів не просаджує систему. При цьому Docker додає важливі моменти:</p>
+<ul>
+<li>Для збірки проєкту запускається суто скрипт збірки й нічого зайвого, тоді як у VM працюють усі системні демони, що з&rsquo;їдає ресурси хоста.</li>
+<li>«Дешеве» створення ізольованих клонів оточення для кожної задачі.</li>
+</ul>
+<h2 id="docker-як-нода-в-jenkins">Docker як нода в Jenkins</h2>
+<p>Для Jenkins-слейва нам потрібні:</p>
+<ol>
+<li>Java</li>
+<li>Точка входу — SSH-сервер</li>
+<li>Інструменти для збірки проєкту</li>
+</ol>
+<p>Точка входу потрібна для запуску процесу в Docker та збереження стану файлової системи в рамках сесії збірки (LXC зазвичай використовує <code>init</code>, але нам ціла ОС не потрібна). Оскільки Jenkins однаково спілкується з нодами через SSH, цей демон і є точкою входу.</p>
+<p>Для конфігурації образів використовується Dockerfile. У репозиторії <strong><a href="https://github.com/rrader/docker-jenkins-slave">rrader/docker-jenkins-slave</a></strong> доступні готові правила збірки для:</p>
+<ul>
+<li>CentOS 5</li>
+<li>CentOS 6</li>
+<li>SUSE 12</li>
+<li>Debian 6</li>
+</ul>
+<p>Пул-реквести з новими системами та покращеннями скриптів вітаються!</p>
+<h2 id="збірка-та-використання">Збірка та використання</h2>
+<p>Передбачається, що у вас уже встановлені Docker та Jenkins.</p>
+<ol>
+<li>
+<p>Встановіть у Jenkins <a href="https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin">Swarm Plugin</a> (він дозволяє слейвам автоматично реєструватися на мастері через API).</p>
+</li>
+<li>
+<p>Клонуйте репозиторій:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/rrader/docker-jenkins-slave.git
+</span></span><span style="display:flex;"><span>cd docker-jenkins-slave
+</span></span></code></pre></div><ol start="3">
+<li>Перейдіть у папку з правилами для потрібної ОС та зберіть образ:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd centos6
+</span></span><span style="display:flex;"><span>sudo bash build.sh
+</span></span></code></pre></div><ol start="4">
+<li>Коли образ збереться, ви можете запускати скільки завгодно нод цього типу:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo bash add_slave.sh SlaveName
+</span></span></code></pre></div><p>Після виконання цієї команди нова нода з&rsquo;явиться в Jenkins. Для її використання достатньо вказати в конфігурації збірки відповідний тег, наприклад <code>docker-centos6.4</code>. Список усіх підтримуваних тегів зібрано у <a href="https://github.com/rrader/docker-jenkins-slave/wiki/Tags">Wiki репозиторію</a>.</p>
+<hr>
+<p><em>Цей пост перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2013/10/docker-jenkins.html">antigluk.blogspot.com</a>.</em></p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: using-docker-containers-as-jenkins-nodes.uk.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Головний термінал
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Вгору
+    </a>
+  </div>
+</article>
+
+          </div>
+        </div>
+
+        
+        <div class="term-window-statusbar">
+          <div class="status-left">
+            <span class="status-mode">NORMAL</span>
+            <span class="status-filename">using-docker-containers-as-jenkins-nodes.uk.md</span>
+          </div>
+          <div class="status-right">
+            <span class="status-item">UTF-8</span>
+            <span class="status-item">410 words</span>
+            <a href="#top" class="status-action" title="Top">▲ TOP</a>
+            <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

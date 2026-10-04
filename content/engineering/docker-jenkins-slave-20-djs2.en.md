@@ -1,47 +1,75 @@
 ---
-title: "Docker-Jenkins-Slave 2.0 (DJS2): Fully Isolated Multi-OS CI with LXC and Docker"
+title: "Docker-Jenkins-Slave 2.0 (DJS2)"
 date: 2015-03-22T15:56:00+02:00
 draft: false
-tags: ["docker", "jenkins", "devops", "vagrant", "lxc", "containers", "open-source"]
+tags: ["containers", "continuous-integration", "devops", "docker", "jenkins", "vagrant"]
 ---
 
-I frequently needed to compile RPMs and test code across multiple Linux distributions with varying library versions. My primary host was Arch Linux, but work tasks required building software targeted at RHEL/CentOS.
-
-Running Jenkins directly on the development host while spawning Docker containers worked, but it quickly cluttered the workstation with intermediate build files, dangling layers, and state that was hard to clean up.
+I often need to build some RPM or test my code on different operating systems that have different environment, libraries versions etc. On my host machine I use Arch Linux, but my job requires to write software for RHEL/CentOS. It's useful to use buildbots like Jenkins to run this builds on automated basis, commencing builds after any commit, whatever.
 
 ![DJS2 Architecture](/images/docker-jenkins-slave-20-djs2/image-01.png)
 
-In **[DJS2 (Docker-Jenkins-Slave 2.0)](https://github.com/rrader/docker-jenkins-slave)**, I decoupled the entire CI system into an isolated nested LXC container managed by Vagrant (`vagrant-lxc`). Both the Jenkins master and its ephemeral Docker slaves ran inside this sandbox, while only the Jenkins jobs data directory remained mounted on the workstation host.
+Anyway, installing jenkins on host machine and using Docker as slaves is useful, but can clog your computer with garbage files that hard to cleanup. [DJS2](https://github.com/rrader/docker-jenkins-slave) offers you isolated environment (LXC container) where your Jenkins and all Docker slaves are executed, and only jenkins data folder with jobs is stored on your computer.
+
+So, if you need to test/build your code on different linux-based operating systems, all you need with DJS2 is only LXC-enabled Linux host machine and Vagrant.
+
+You can get it here: https://github.com/rrader/docker-jenkins-slave
+
+New version of DJS is already on GitHub. It's in beta and still not tested well, but is working on my PC. Try it on your PC and send me feedback, I'd be really pleased to see any feedback - about failures and successful runs as well.
 
 ![DJS2 Quickstart](/images/docker-jenkins-slave-20-djs2/image-02.jpg)
 
-### How It Worked
+It's really easy to deploy vagrant with different OS slaves on your local machine. Now CentOS 6 and CentOS 7 only available to use, but eventually all supported OSs will be migrated (as CentOS 5, Suse, Debian).
 
-All that was needed on the host was an LXC-capable Linux kernel and Vagrant:
+Pull-Requests are highly appreciated :)
 
-```bash
-vagrant plugin install vagrant-lxc
-```
+Following text is part of README, it's instructions how to get Jenkins+Docker+LXC on your computer working.
 
-#### Launching the environment:
+### Prerequisites
 
-```bash
-git clone https://github.com/rrader/docker-jenkins-slave.git djs
-cd djs
-./djs.sh up
-```
+1. Vagrant
 
-This booted the isolated Jenkins master instance (typically available on an internal IP like `http://10.0.3.74:8080`).
+Optional (but is really recommended):
+1. vagrant-lxc plugin: `vagrant plugin install vagrant-lxc`
+2. vagrant-lxc related configuration on Host. See https://github.com/fgrehm/vagrant-lxc/wiki
 
-#### Spawning build workers:
+### Getting started
 
 ```bash
-./djs.sh add centos7-java Luke
+$ git clone git@github.com:rrader/docker-jenkins-slave.git djs
+$ cd djs
+$ ./djs.sh up
+[lots of vagrant output ....]
+==================================================
+Jenkins should be available on 10.0.3.74:8080
+Start using slaves with adding one
+ e.g. # ./djs.sh add centos7-java Luke
 ```
 
-This automatically pulled the prebuilt slave image from Docker Hub (`antigluk/jenkins-slave-centos7-java`) and spun it up. The "Luke" worker immediately registered in the *Build Executor Status* dashboard on Jenkins.
+Now you should be able to use your just deployed jenkins on [http://10.0.3.74:8080](http://10.0.3.74:8080) or similar.
 
-- **Project Repository:** [github.com/rrader/docker-jenkins-slave](https://github.com/rrader/docker-jenkins-slave)
+Now let's add some slaves with `./djs.sh add <image> <name>`:
+
+```bash
+$ ./djs.sh add centos7-java Luke
+Unable to find image 'antigluk/jenkins-slave-centos6-java' locally
+Pulling repository antigluk/jenkins-slave-centos6-java
+[lots of docker output ....]
+Status: Downloaded newer image for
+    antigluk/jenkins-slave-centos6-java:latest
+    507e2a18674253d0d7d1f5201ee963681704c2d18310af619f9fcbb0124efaf3
+Connection to 10.0.3.74 closed.
+```
+
+This will pull centos7-java image from Docker Hub and start it. After this command ends you should be able to see Luke worker in "Build Executor Status" section on Jenkins.
+
+### Notes [important]
+
+Only centos6-java and centos7-java are ready to use now with Vagrant Jenkins.
+
+### Links
+
+DJS Repository: https://github.com/rrader/docker-jenkins-slave
 
 ---
 *Migrated from legacy blog [antigluk.blogspot.com](https://antigluk.blogspot.com/2015/03/docker-jenkins-slave-20-djs2.html).*

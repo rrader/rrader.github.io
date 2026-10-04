@@ -273,6 +273,60 @@
     sfxBtn.addEventListener('click', () => toggleSfx());
     gfxBtn.addEventListener('click', () => toggleGfx());
 
+    // Monitor Bezel Controls (ViewSonic PT775)
+    const monitorPowerBtn = document.getElementById('monitor-power-btn');
+    const monitorPowerLed = document.getElementById('monitor-power-led');
+    let monitorPoweredOn = true;
+
+    if (monitorPowerBtn) {
+      monitorPowerBtn.addEventListener('click', () => {
+        monitorPoweredOn = !monitorPoweredOn;
+        if (monitorPoweredOn) {
+          wrapperEl.classList.remove('crt-powered-off');
+          if (monitorPowerLed) monitorPowerLed.classList.remove('standby');
+          inputEl.disabled = false;
+          inputEl.focus();
+        } else {
+          wrapperEl.classList.add('crt-powered-off');
+          if (monitorPowerLed) monitorPowerLed.classList.add('standby');
+          inputEl.disabled = true;
+        }
+      });
+    }
+
+    const osdBtn1 = document.getElementById('osd-btn-1');
+    if (osdBtn1) {
+      osdBtn1.addEventListener('click', () => {
+        if (!monitorPoweredOn) return;
+        executeCommand('help');
+        inputEl.focus();
+      });
+    }
+
+    const osdBtn2 = document.getElementById('osd-btn-2');
+    if (osdBtn2) {
+      osdBtn2.addEventListener('click', () => {
+        if (!monitorPoweredOn) return;
+        toggleGfx();
+      });
+    }
+
+    const osdBtnDown = document.getElementById('osd-btn-down');
+    if (osdBtnDown) {
+      osdBtnDown.addEventListener('click', () => {
+        if (!monitorPoweredOn) return;
+        toggleSfx();
+      });
+    }
+
+    const osdBtnUp = document.getElementById('osd-btn-up');
+    if (osdBtnUp) {
+      osdBtnUp.addEventListener('click', () => {
+        if (!monitorPoweredOn) return;
+        toggleMatrix();
+      });
+    }
+
     document.querySelectorAll('.pill-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const cmd = e.target.getAttribute('data-cmd');

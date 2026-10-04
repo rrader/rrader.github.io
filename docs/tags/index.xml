@@ -254,6 +254,13 @@
       <description></description>
     </item>
     <item>
+      <title>Continuous-Integration</title>
+      <link>https://rrader.github.io/tags/continuous-integration/</link>
+      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/continuous-integration/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Devops</title>
       <link>https://rrader.github.io/tags/devops/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
@@ -272,20 +279,6 @@
       <link>https://rrader.github.io/tags/jenkins/</link>
       <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
       <guid>https://rrader.github.io/tags/jenkins/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lxc</title>
-      <link>https://rrader.github.io/tags/lxc/</link>
-      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/lxc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Open-Source</title>
-      <link>https://rrader.github.io/tags/open-source/</link>
-      <pubDate>Sun, 22 Mar 2015 15:56:00 +0200</pubDate>
-      <guid>https://rrader.github.io/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
@@ -366,10 +359,10 @@
       <description></description>
     </item>
     <item>
-      <title>Ci-Cd</title>
-      <link>https://rrader.github.io/tags/ci-cd/</link>
+      <title>Virtualization</title>
+      <link>https://rrader.github.io/tags/virtualization/</link>
       <pubDate>Tue, 02 Sep 2014 21:04:00 +0300</pubDate>
-      <guid>https://rrader.github.io/tags/ci-cd/</guid>
+      <guid>https://rrader.github.io/tags/virtualization/</guid>
       <description></description>
     </item>
     <item>
@@ -433,6 +426,13 @@
       <link>https://rrader.github.io/tags/low-level/</link>
       <pubDate>Fri, 15 Nov 2013 01:37:00 +0200</pubDate>
       <guid>https://rrader.github.io/tags/low-level/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ci-Cd</title>
+      <link>https://rrader.github.io/tags/ci-cd/</link>
+      <pubDate>Thu, 31 Oct 2013 09:40:00 +0200</pubDate>
+      <guid>https://rrader.github.io/tags/ci-cd/</guid>
       <description></description>
     </item>
   </channel>
