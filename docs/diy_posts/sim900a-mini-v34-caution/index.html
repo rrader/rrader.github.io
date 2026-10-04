@@ -114,7 +114,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-15 16:06:00 &#43;0200 EET">2015-01-15</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 246</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 218</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -221,15 +221,10 @@ if (!doNotTrack) {
 </tr>
 </tbody>
 </table>
-<p>The hardware board:</p>
+<p>I received this piece of hardware:</p>
 <p><img alt="SIM900A Mini v3.4 — Front side" src="../../images/sim900a-mini/image-01.jpg"></p>
 <p><img alt="SIM900A Mini v3.4 — Back side" src="../../images/sim900a-mini/image-02.jpg"></p>
-<p>After wiring up the module and establishing bidirectional UART communication, I ran into unexpected behavior:</p>
-<ul>
-<li>The module scanned base stations normally (network discovery via <code>AT+COPS=?</code> returned available cell carriers);</li>
-<li>It recognized the inserted SIM card;</li>
-<li>Yet <strong>it persistently failed to register on the cell tower</strong>:</li>
-</ul>
+<p>Played around with the connection for a long time, and when I finally managed to send AT commands, something strange emerged: the device sees networks (<code>AT+COPS=?</code> network scan works), sees the SIM card and the carrier. But does not register on the network:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>AT+CREG?
 </span></span><span style="display:flex;"><span>+CREG: 1,0
 </span></span><span style="display:flex;"><span>OK
@@ -237,8 +232,8 @@ if (!doNotTrack) {
 </span></span><span style="display:flex;"><span>AT+CPIN?
 </span></span><span style="display:flex;"><span>+CPIN: PH-NET PIN
 </span></span><span style="display:flex;"><span>OK
-</span></span></code></pre></div><p>The response <code>+CPIN: PH-NET PIN</code> indicates that the chip is carrier/region-locked and demands a network unlock password.</p>
-<p><strong>Takeaway:</strong> Avoid ordering breakout boards equipped with the <strong>SIM900A</strong> revision unless you are prepared to perform custom firmware reflashing via SIMCom proprietary flashing tools. Standard <strong>SIM900</strong> modems (without the &ldquo;A&rdquo; suffix) are genuine quad-band devices without regional restrictions.</p>
+</span></span></code></pre></div><p>After some googling, it turned out that the highlighted response means the device is <strong>locked</strong>.</p>
+<p>Therefore, avoid buying SIM900A chips — without the &lsquo;A&rsquo; is better.</p>
 <hr>
 <p><em>This post was migrated from the legacy blog <a href="https://antigluk.blogspot.com/2015/01/sim900a-sim900-mini-v34-board.html">antigluk.blogspot.com</a>.</em></p>
 
@@ -271,7 +266,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">246 words</span>
+            <span class="status-item">218 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

@@ -4,9 +4,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="description" content="Пов&rsquo;язані статті серії:
-Електрична схема та збірка охоронної сигналізації на MSP430 Створено інтерфейсну панель керування охоронної системи.
-Встановлення та зняття з охорони здійснюється за допомогою цифрового пароля, тому системі необхідний надійний механізм введення коду доступу, валідації та його оперативної зміни.
-1. Збереження пароля у Flash-пам&rsquo;яті Мікроконтролер MSP430G2553 містить енергонезалежну сегментовану флеш-пам&rsquo;ять (4 інформаційні сегменти по 64 байти). Саме в цій інформаційній пам&rsquo;яті (Information Memory) зберігається встановлений пароль, що дозволяє не втрачати його при знеструмленні охоронної системи.">  
+Електрична схема та збірка охоронної сигналізації на MSP430 Зробив інтерфейсну частину охоронної системи.
+Зняття та встановлення охорони буде проводитися за допомогою пароля, тому потрібен спосіб ввести пароль і змінити його.
+MSP430G2553 містить флеш-пам&rsquo;ять, 4 сегменти даних по 64 байти. Там і будемо зберігати пароль.
+Також, на випадок забування пароля, необхідний &ldquo;суперпароль&rdquo;, який буде скидати пам&rsquo;ять на пароль за замовчуванням.
+Для зчитування натискань клавіш із клавіатури необхідно періодично опитувати кожну кнопку.">  
 
   <title>
     
@@ -114,7 +116,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-03-05 16:20:00 &#43;0200 EET">2015-03-05</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 205</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 142</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -154,32 +156,28 @@ if (!doNotTrack) {
 <li><a href="../../../uk/diy_posts/msp430-security-alarm-system/">Електрична схема та збірка охоронної сигналізації на MSP430</a></li>
 </ul>
 <hr>
-<p>Створено інтерфейсну панель керування охоронної системи.</p>
-<p>Встановлення та зняття з охорони здійснюється за допомогою цифрового пароля, тому системі необхідний надійний механізм введення коду доступу, валідації та його оперативної зміни.</p>
-<h2 id="1-збереження-пароля-у-flash-памяті">1. Збереження пароля у Flash-пам&rsquo;яті</h2>
-<p>Мікроконтролер <strong>MSP430G2553</strong> містить енергонезалежну сегментовану флеш-пам&rsquo;ять (4 інформаційні сегменти по 64 байти). Саме в цій інформаційній пам&rsquo;яті (Information Memory) зберігається встановлений пароль, що дозволяє не втрачати його при знеструмленні охоронної системи.</p>
-<p>На випадок втрати чи забування коду передбачено аварійний «суперпароль» (майстер-код), який скидає налаштування на заводські значення за замовчуванням.</p>
-<h2 id="2-опитування-клавіатури-та-антибрязкіт-контактів">2. Опитування клавіатури та антибрязкіт контактів</h2>
-<p>Для зчитування натискань із матричної мембранної або кнопкової клавіатури 4×4 потрібно циклічно сканувати рядки та стовпчики. Крім того, критично важливо фільтрувати брязкіт механічних контактів (debouncing).</p>
-<p>Бібліотека <em>Keypad</em> реалізує ефективний алгоритм захисту від брязкоту та опитування матриці, а також легко інтегрується в середовище розробки Energia.</p>
-<h2 id="3-команди-інтерфейсу">3. Команди інтерфейсу</h2>
+<p>Зробив інтерфейсну частину охоронної системи.<br>
+Зняття та встановлення охорони буде проводитися за допомогою пароля, тому потрібен спосіб ввести пароль і змінити його.</p>
+<p>MSP430G2553 містить флеш-пам&rsquo;ять, 4 сегменти даних по 64 байти. Там і будемо зберігати пароль.</p>
+<p>Також, на випадок забування пароля, необхідний &ldquo;суперпароль&rdquo;, який буде скидати пам&rsquo;ять на пароль за замовчуванням.</p>
+<p>Для зчитування натискань клавіш із клавіатури необхідно періодично опитувати кожну кнопку. Крім того, треба позбавлятися від брязкоту (дребезга). Бібліотека для Arduino &ldquo;Keypad&rdquo; реалізує захист від брязкоту і вміє опитувати клавіші, а також відмінно підходить для Energia.</p>
+<h3 id="доступні-команди">Доступні команди</h3>
 <ul>
-<li><strong>Аутентифікація (зняття / встановлення охорони):</strong> <code>&lt;пароль&gt; + #</code></li>
-<li><strong>Скасування введених символів:</strong> <code>*</code></li>
-<li><strong>Скидання майстер-кодом:</strong> <code>&lt;суперпароль&gt; + D</code></li>
-<li><strong>Зміна пароля:</strong> <code>&lt;старий пароль&gt; + D + &lt;новий пароль&gt; + D</code></li>
+<li>Аутентифікація: <code>&lt;пароль&gt;</code> + <strong>#</strong></li>
+<li>Скасування вводу: <strong>*</strong></li>
+<li>Скидання за суперпаролем: <code>&lt;суперпароль&gt;</code> + <strong>D</strong></li>
+<li>Зміна пароля: <code>&lt;старий пароль&gt;</code> + <strong>D</strong> + <code>&lt;новий пароль&gt;</code> + <strong>D</strong></li>
 </ul>
-<h2 id="4-демонстрація-роботи">4. Демонстрація роботи</h2>
+<h3 id="відео-роботи">Відео роботи</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/wLLoZa_CDJM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<p><em>(Альтернативне посилання на відео: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">YouTube</a>)</em></p>
-<h2 id="ресурси-та-вихідний-код">Ресурси та вихідний код</h2>
 <ul>
-<li><strong>Вихідний код проєкту:</strong> <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></li>
-<li><strong>Бібліотека Keypad:</strong> <a href="https://playground.arduino.cc/Code/Keypad/">Arduino Keypad Library Reference</a></li>
+<li>Відео: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">https://www.youtube.com/watch?v=wLLoZa_CDJM</a></li>
+<li>Бібліотека Keypad: <a href="http://playground.arduino.cc/Code/Keypad">http://playground.arduino.cc/Code/Keypad</a></li>
+<li>Вихідний код: <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></li>
 </ul>
 <hr>
 <p><em>Цей матеріал було перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2015/03/4x4-msp430.html">antigluk.blogspot.com</a>.</em></p>
@@ -213,7 +211,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">205 words</span>
+            <span class="status-item">142 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

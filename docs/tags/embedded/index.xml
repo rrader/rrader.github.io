@@ -13,7 +13,7 @@
       <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-security-keypad/</guid>
-      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build I built the user-facing interface subsystem for my custom DIY home alarm.&#xA;Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.&#xA;1. Non-Volatile Passcode Storage in Flash The MSP430G2553 MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.</description>
+      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build Built the interface part of the security system.&#xA;Disarming and arming will be done using a password, so we need a way to enter the password and change it.&#xA;The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&amp;rsquo;s where we&amp;rsquo;ll store the password.&#xA;Also, in case the password is forgotten, a &amp;ldquo;super-password&amp;rdquo; is needed to reset memory back to the default password.</description>
     </item>
   </channel>
 </rss>

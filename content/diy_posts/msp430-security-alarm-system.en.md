@@ -13,35 +13,19 @@ tags: ["diy", "hardware", "msp430", "alarm", "security", "schematics", "electron
 
 ---
 
-The concluding phase of designing, assembling, and packaging a standalone security alarm unit around the **TI MSP430G2553** microcontroller.
+Electrical schematic of the alarm system (clickable):
 
-## 1. Electrical Schematic
+[![Electrical schematic of the alarm](/images/msp430-alarm/image-01.png)](/images/msp430-alarm/image-01.png)
 
-The circuit unites the microcontroller core, optically isolated sensor loops (reed door switches and PIR motion sensors), transistor driver stages for sirens and status indicators, a keypad connector header, and a UART telemetry link to the GSM modem:
+What turned out in the end:
 
-[![Security alarm electrical schematic](/images/msp430-alarm/image-01.png)](/images/msp430-alarm/image-01.png)
-
----
-
-## 2. Enclosed Hardware Build
-
-The finished security system, enclosed in a rugged IP-rated junction box with the 4×4 membrane keypad mounted directly to the front faceplate:
-
-![Assembled security alarm inside the enclosure](/images/msp430-alarm/image-02.jpg)
-
----
-
-## 3. Video Demonstration
+![Finished alarm system in enclosure](/images/msp430-alarm/image-02.jpg)
 
 {{< youtube TtKPR9UL11o >}}
 
-*(Direct video link: [YouTube](https://www.youtube.com/watch?v=TtKPR9UL11o))*
+*(Video: [YouTube](https://www.youtube.com/watch?v=TtKPR9UL11o))*
 
----
-
-## 4. Hardware Assembly Photos
-
-The internal electronics are hand-soldered onto prototype perfboard with screw terminals and pin headers for field serviceability:
+More photos:
 
 | Exterior Perspective | Side Angle |
 |---|---|

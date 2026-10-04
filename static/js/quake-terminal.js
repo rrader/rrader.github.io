@@ -103,6 +103,58 @@
     } catch (e) {}
   }
 
+  function playTrainWhistle() {
+    if (!state.sfx) return;
+    initAudio();
+    if (!audioCtx) return;
+
+    try {
+      const now = audioCtx.currentTime;
+      // Dual-tone harmonic train whistle (A4 = 440Hz, C#5 = 554.37Hz)
+      [440, 554.37].forEach((freq) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now);
+        osc.frequency.linearRampToValueAtTime(freq * 1.03, now + 0.18);
+        osc.frequency.linearRampToValueAtTime(freq, now + 0.38);
+
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.04);
+        gain.gain.setValueAtTime(0.08, now + 0.3);
+        gain.gain.linearRampToValueAtTime(0.001, now + 0.44);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.44);
+      });
+    } catch (e) {}
+  }
+
+  function playTrainChug() {
+    if (!state.sfx) return;
+    initAudio();
+    if (!audioCtx) return;
+
+    try {
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(95, now);
+      osc.frequency.exponentialRampToValueAtTime(30, now + 0.05);
+
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.05);
+    } catch (e) {}
+  }
+
   const isUk = (document.documentElement.lang || '').startsWith('uk') || window.location.pathname.includes('/uk/');
   const currentLang = isUk ? 'uk' : 'en';
 
@@ -111,6 +163,34 @@
     help: {
       desc: isUk ? 'Показати список доступних команд' : 'Display available terminal commands',
       action: () => printHelp()
+    },
+    ls: {
+      desc: isUk ? 'Список файлів та каталогів (ls [-l|-a] [dir])' : 'List directory contents (ls [-l|-a] [dir])',
+      action: (args) => lsCmd(args)
+    },
+    dir: {
+      desc: isUk ? 'Аліас для ls' : 'Alias for ls',
+      action: (args) => lsCmd(args)
+    },
+    ll: {
+      desc: isUk ? 'Детальний список файлів (ls -la)' : 'Detailed file listing with hidden files (ls -la)',
+      action: (args) => lsCmd(['-la', ...args])
+    },
+    cat: {
+      desc: isUk ? 'Вивести вміст текстового файлу (cat <file>)' : 'Display text file content (cat <file>)',
+      action: (args) => catCmd(args)
+    },
+    grep: {
+      desc: isUk ? 'Пошук статей або фільтрація виводу (| grep)' : 'Search articles or filter pipe output (| grep)',
+      action: (args) => grepCmd(args)
+    },
+    sl: {
+      desc: isUk ? 'Класичний паровоз (Steam Locomotive) 🚂' : 'Classic Steam Locomotive animation 🚂',
+      action: (args) => runSlTrain(args)
+    },
+    train: {
+      desc: isUk ? 'Аліас для sl (Steam Locomotive)' : 'Alias for sl (Steam Locomotive)',
+      action: (args) => runSlTrain(args)
     },
     bio: {
       desc: isUk ? 'Коротка біографія, локація та ключові напрями' : 'Show bio summary, location, and core focus',
@@ -207,7 +287,13 @@
   });
 
   // --- Terminal Output Functions ---
+  let captureBuffer = null;
+
   function printLine(htmlText, className = '') {
+    if (captureBuffer !== null) {
+      captureBuffer.push({ html: htmlText, className });
+      return;
+    }
     const line = document.createElement('div');
     line.className = `output-line ${className}`;
     line.innerHTML = htmlText;
@@ -224,12 +310,12 @@
       printLine(`[СИСТЕМА ГОТОВА] Роман Радер — Персональний веб-вузол`, 'system');
       printLine(`Локація: Київ, Україна 🇺🇦`);
       printLine(`Напрям: Програмна інженерія та навчання інженерії ШІ у школі (10–11 класи)`);
-      printLine(`Введіть <b style="color: var(--text-bright)">help</b> для списку команд або оберіть дію з кнопок вище.\n`);
+      printLine(`Введіть <b style="color: var(--text-bright)">help</b> для списку команд, <b style="color: var(--text-bright)">ls</b> для перегляду файлів або оберіть дію з кнопок вище.\n`);
     } else {
       printLine(`[SYSTEM READY] Roman Rader — Personal Web Node`, 'system');
       printLine(`Location: Kyiv, Ukraine 🇺🇦`);
       printLine(`Focus: Software Engineering & AI Engineering Education (K-12)`);
-      printLine(`Type <b style="color: var(--text-bright)">help</b> to list commands, or tap the action pills above.\n`);
+      printLine(`Type <b style="color: var(--text-bright)">help</b> to list commands, <b style="color: var(--text-bright)">ls</b> to explore files, or tap the action pills above.\n`);
     }
   }
 
@@ -477,6 +563,553 @@
     }
   }
 
+  // --- Virtual File System & Commands (ls, cat, grep, sl) ---
+  const VFS_DIRS = {
+    projects: { section: 'projects', desc: isUk ? 'Програмні проєкти та розробка' : 'Software projects & dev' },
+    diy: { section: 'diy_posts', desc: isUk ? 'DIY, 3D-друк та апаратні проєкти' : 'DIY, 3D printing & hardware' },
+    diy_posts: { section: 'diy_posts', aliasOf: 'diy' },
+    teaching: { section: 'teach_posts', desc: isUk ? 'Матеріали з інформатики та курси ШІ' : 'Informatics & AI course materials' },
+    teach_posts: { section: 'teach_posts', aliasOf: 'teaching' },
+    research: { section: 'study_posts', desc: isUk ? 'Дослідження безпеки та публікації' : 'Cybersecurity research & papers' },
+    study_posts: { section: 'study_posts', aliasOf: 'research' }
+  };
+
+  const VFS_FILES = {
+    'README.md': {
+      size: 1024,
+      date: '2026-10-04',
+      getContent: () => isUk
+        ? `# rmn.pp.ua — Персональний веб-вузол Романа Радера\n\nЛаскаво просимо до інтерактивного термінала!\nТут можна переглядати проєкти, статті, дослідження та навчальні матеріали.\n\nОсновні команди:\n  ls         - перегляд списку файлів та каталогів\n  cat <file> - вивід вмісту текстового файлу\n  grep <tex> - пошук за статтями або фільтрація через pipe (| grep)\n  sl         - класичний паровоз (Steam Locomotive) 🚂\n  posts      - повний перелік усіх публікацій\n  help       - повна довідка з усіх команд`
+        : `# rmn.pp.ua — Roman Rader Personal Web Node\n\nWelcome to the interactive Quake terminal!\nExplore software projects, DIY builds, cybersecurity research, and AI curricula.\n\nCore commands:\n  ls         - list directory contents\n  cat <file> - display text file contents\n  grep <txt> - search articles or filter pipeline (| grep)\n  sl         - classic Steam Locomotive animation 🚂\n  posts      - list all publications\n  help       - view all available commands`
+    },
+    'bio.txt': {
+      size: 512,
+      date: '2026-10-04',
+      getContent: () => isUk
+        ? `[БІОГРАФІЯ]\nРоман Ілліч Радер — інженер-програміст та педагог (Київ, Україна 🇺🇦).\nНапрям: Програмна інженерія та методика навчання інженерії ШІ у школі (10-11 класи).\nРозробляю навчальні платформи, матеріали з інформатики та апаратні DIY-рішення.`
+        : `[BIOGRAPHY]\nRoman Rader — Software Engineer & Educator (Kyiv, Ukraine 🇺🇦).\nFocus: Software Engineering & AI Engineering Education (K-12).\nBuilding educational platforms, informatics curricula, and hardware DIY solutions.`
+    },
+    'contact.txt': {
+      size: 384,
+      date: '2026-10-04',
+      getContent: () => `Email: roman.rader@gmail.com\nLinkedIn: https://www.linkedin.com/in/roman-rader/\nGitHub: https://github.com/rrader/\nGoogle Scholar: https://scholar.google.com.ua/citations?user=hisJj1IAAAAJ`
+    },
+    'rss.xml': {
+      size: 256,
+      date: '2026-10-04',
+      getContent: () => `Main (EN): ${window.location.origin}/index.xml\nMain (UA): ${window.location.origin}/uk/index.xml\nDIY: ${window.location.origin}/diy_posts/index.xml\nTeaching: ${window.location.origin}/teach_posts/index.xml\nResearch: ${window.location.origin}/study_posts/index.xml`
+    },
+    '.bashrc': {
+      size: 128,
+      date: '2026-10-04',
+      hidden: true,
+      getContent: () => `# rmn.pp.ua bash config\nalias ll='ls -la'\nalias cls='clear'\nalias train='sl'`
+    },
+    '.profile': {
+      size: 64,
+      date: '2026-10-04',
+      hidden: true,
+      getContent: () => `export PS1='[guest@rmn.pp.ua ~]$ '\nexport TERM='xterm-256color'`
+    }
+  };
+
+  function lsCmd(args = []) {
+    let showAll = false;
+    let longFormat = false;
+    let targetPath = '';
+
+    for (const arg of args) {
+      if (arg.startsWith('-')) {
+        if (arg.includes('a')) showAll = true;
+        if (arg.includes('l')) longFormat = true;
+      } else if (!targetPath) {
+        targetPath = arg.trim();
+      }
+    }
+
+    targetPath = targetPath.replace(/^\.\//, '').replace(/\/$/, '');
+
+    // Case 1: Target directory or file
+    if (targetPath && targetPath !== '~' && targetPath !== '.') {
+      const dirKey = targetPath.toLowerCase();
+
+      if (VFS_DIRS[dirKey]) {
+        const sec = VFS_DIRS[dirKey].section;
+        const posts = getDynamicPosts(sec);
+        if (posts.length === 0) {
+          printLine(isUk ? '(порожній каталог)' : '(empty directory)', 'system');
+          return;
+        }
+
+        if (longFormat) {
+          printLine(`total ${posts.length * 4}`);
+          posts.forEach(p => {
+            const slug = p.url.replace(/^\/(uk\/)?/, '').replace(/\/$/, '').split('/').pop() || 'article';
+            const fn = `${slug}.md`;
+            printLine(`-rw-r--r-- 1 guest guest 4096 ${p.date} <a href="${p.url}" target="_blank" class="ls-file">${escapeHtml(fn)}</a> <span style="opacity:0.65;"># ${escapeHtml(p.title)}</span>`);
+          });
+        } else {
+          const links = posts.map(p => {
+            const slug = p.url.replace(/^\/(uk\/)?/, '').replace(/\/$/, '').split('/').pop() || 'article';
+            return `<a href="${p.url}" target="_blank" class="ls-file">${escapeHtml(slug)}.md</a>`;
+          });
+          printLine(links.join('&nbsp;&nbsp;&nbsp;'));
+        }
+        return;
+      }
+
+      if (dirKey === '..' || dirKey === '/') {
+        printLine(`<span class="ls-dir">bin/</span>   <span class="ls-dir">dev/</span>   <span class="ls-dir">etc/</span>   <span class="ls-dir">home/</span>   <span class="ls-dir">usr/</span>   <span class="ls-dir">var/</span>`);
+        return;
+      }
+
+      if (dirKey === 'bin' || dirKey === '/bin') {
+        printLine(`<span class="ls-exec">cat*</span>   <span class="ls-exec">clear*</span>   <span class="ls-exec">date*</span>   <span class="ls-exec">grep*</span>   <span class="ls-exec">help*</span>   <span class="ls-exec">ls*</span>   <span class="ls-exec">matrix*</span>   <span class="ls-exec">sl*</span>`);
+        return;
+      }
+
+      if (VFS_FILES[dirKey]) {
+        const f = VFS_FILES[dirKey];
+        if (longFormat) {
+          printLine(`-rw-r--r-- 1 guest guest ${String(f.size).padStart(5, ' ')} ${f.date} <span class="ls-file">${escapeHtml(dirKey)}</span>`);
+        } else {
+          printLine(`<span class="ls-file">${escapeHtml(dirKey)}</span>`);
+        }
+        return;
+      }
+
+      printLine(`ls: cannot access '${escapeHtml(targetPath)}': No such file or directory`, 'error');
+      return;
+    }
+
+    // Case 2: default ls in current home directory ~
+    const dirs = ['projects/', 'diy/', 'teaching/', 'research/'];
+    const regularFiles = ['README.md', 'bio.txt', 'contact.txt', 'rss.xml'];
+    const execFiles = ['sl*'];
+    const hiddenFiles = ['.', '..', '.bashrc', '.profile'];
+
+    if (longFormat) {
+      printLine(`total 32`);
+      if (showAll) {
+        printLine(`drwxr-xr-x 6 guest guest 4096 Oct 04 22:00 <span class="ls-dir">.</span>`);
+        printLine(`drwxr-xr-x 3 root  root  4096 Oct 04 22:00 <span class="ls-dir">..</span>`);
+        printLine(`-rw-r--r-- 1 guest guest  128 Oct 04 22:00 <span class="ls-file">.bashrc</span>`);
+        printLine(`-rw-r--r-- 1 guest guest   64 Oct 04 22:00 <span class="ls-file">.profile</span>`);
+      }
+      dirs.forEach(d => {
+        printLine(`drwxr-xr-x 2 guest guest 4096 Oct 04 22:00 <span class="ls-dir">${d}</span>`);
+      });
+      regularFiles.forEach(f => {
+        const size = VFS_FILES[f] ? VFS_FILES[f].size : 1024;
+        const date = VFS_FILES[f] ? VFS_FILES[f].date : 'Oct 04 22:00';
+        printLine(`-rw-r--r-- 1 guest guest ${String(size).padStart(5, ' ')} ${date} <span class="ls-file">${f}</span>`);
+      });
+      execFiles.forEach(e => {
+        printLine(`-rwxr-xr-x 1 guest guest  8192 Oct 04 22:00 <span class="ls-exec">${e}</span>`);
+      });
+    } else {
+      let items = [];
+      if (showAll) {
+        items.push(...hiddenFiles.map(h => `<span class="${h === '.' || h === '..' ? 'ls-dir' : 'ls-file'}">${h}</span>`));
+      }
+      items.push(...dirs.map(d => `<span class="ls-dir">${d}</span>`));
+      items.push(...regularFiles.map(f => `<span class="ls-file">${f}</span>`));
+      items.push(...execFiles.map(e => `<span class="ls-exec">${e}</span>`));
+
+      printLine(items.join('&nbsp;&nbsp;&nbsp;&nbsp;'));
+    }
+  }
+
+  function catCmd(args = []) {
+    if (!args || args.length === 0) {
+      printLine('usage: cat &lt;filename&gt;', 'system');
+      return;
+    }
+    const filename = args[0].replace(/^~\//, '');
+    if (VFS_FILES[filename]) {
+      const content = VFS_FILES[filename].getContent();
+      printLine(escapeHtml(content));
+      return;
+    }
+    if (VFS_DIRS[filename]) {
+      printLine(`cat: ${escapeHtml(filename)}: Is a directory`, 'error');
+      return;
+    }
+    const allPosts = window.__HUGO_POSTS__ || [];
+    const matched = allPosts.find(p => {
+      const slug = p.url.replace(/^\/(uk\/)?/, '').replace(/\/$/, '').split('/').pop();
+      return filename === slug || filename === `${slug}.md`;
+    });
+    if (matched) {
+      printLine(`<b>${escapeHtml(matched.title)}</b> <span style="opacity:0.6;">(${matched.date})</span>`);
+      printLine(`Section: ${matched.section}`);
+      printLine(`URL: <a href="${matched.url}" target="_blank">${matched.url}</a>`);
+      return;
+    }
+    printLine(`cat: ${escapeHtml(filename)}: No such file or directory`, 'error');
+  }
+
+  function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  }
+
+  function highlightMatch(html, pattern, ignoreCase = true) {
+    if (!pattern) return html;
+    const escPat = pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(<[^>]+>)|(${escPat})`, ignoreCase ? 'gi' : 'g');
+    return html.replace(re, (match, tag, textGroup) => {
+      if (tag) return tag;
+      return `<span class="grep-highlight">${textGroup}</span>`;
+    });
+  }
+
+  function grepCmd(args = []) {
+    let ignoreCase = true;
+    let showLineNum = false;
+    let invertMatch = false;
+    let countOnly = false;
+    const cleanArgs = [];
+
+    for (const a of args) {
+      if (a === '-i') ignoreCase = true;
+      else if (a === '-n') showLineNum = true;
+      else if (a === '-v') invertMatch = true;
+      else if (a === '-c') countOnly = true;
+      else if (a.startsWith('-')) {
+        if (a.includes('i')) ignoreCase = true;
+        if (a.includes('n')) showLineNum = true;
+        if (a.includes('v')) invertMatch = true;
+        if (a.includes('c')) countOnly = true;
+      } else {
+        cleanArgs.push(a);
+      }
+    }
+
+    if (cleanArgs.length === 0) {
+      printLine('usage: grep [-i] &lt;pattern&gt; [file...] or &lt;command&gt; | grep &lt;pattern&gt;', 'system');
+      return;
+    }
+
+    const pattern = cleanArgs[0];
+    const targetFile = cleanArgs[1] || '';
+
+    let regex;
+    try {
+      regex = new RegExp(pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), ignoreCase ? 'i' : '');
+    } catch (e) {
+      printLine(`grep: invalid pattern: ${escapeHtml(pattern)}`, 'error');
+      return;
+    }
+
+    // Subcase A: Search inside a specific file
+    if (targetFile) {
+      const fn = targetFile.replace(/^~\//, '');
+      if (VFS_FILES[fn]) {
+        const text = VFS_FILES[fn].getContent();
+        const lines = text.split('\n');
+        let matchCount = 0;
+        lines.forEach((line, idx) => {
+          const matched = regex.test(line);
+          const shouldShow = invertMatch ? !matched : matched;
+          if (shouldShow) {
+            matchCount++;
+            if (!countOnly) {
+              const prefix = showLineNum ? `<span style="opacity:0.6;">${idx + 1}:</span> ` : '';
+              const highlighted = highlightMatch(escapeHtml(line), pattern, ignoreCase);
+              printLine(`${prefix}${highlighted}`);
+            }
+          }
+        });
+        if (countOnly) {
+          printLine(`${matchCount}`);
+        } else if (matchCount === 0 && !invertMatch) {
+          printLine(`grep: '${escapeHtml(pattern)}': no matches in ${escapeHtml(fn)}`, 'system');
+        }
+        return;
+      } else {
+        printLine(`grep: ${escapeHtml(targetFile)}: No such file or directory`, 'error');
+        return;
+      }
+    }
+
+    // Subcase B: Global search across all posts and files
+    const allPosts = window.__HUGO_POSTS__ || [];
+    const matchedPosts = allPosts.filter(p => {
+      const textToSearch = `${p.title} ${p.section} ${p.url} ${p.date}`;
+      const matched = regex.test(textToSearch);
+      return invertMatch ? !matched : matched;
+    });
+
+    const matchedFiles = [];
+    Object.keys(VFS_FILES).forEach(fn => {
+      if (VFS_FILES[fn].hidden) return;
+      const text = VFS_FILES[fn].getContent();
+      if (regex.test(text)) {
+        matchedFiles.push(fn);
+      }
+    });
+
+    if (countOnly) {
+      printLine(`${matchedPosts.length + matchedFiles.length}`);
+      return;
+    }
+
+    if (matchedPosts.length === 0 && matchedFiles.length === 0) {
+      printLine(
+        isUk
+          ? `grep: збігів для "<b>${escapeHtml(pattern)}</b>" не знайдено.`
+          : `grep: no matches found for "<b>${escapeHtml(pattern)}</b>".`,
+        'system'
+      );
+      return;
+    }
+
+    printLine(`<b>${isUk ? 'РЕЗУЛЬТАТИ ПОШУКУ GREP:' : 'GREP SEARCH RESULTS:'} "${escapeHtml(pattern)}"</b>`, 'system');
+    printLine('--------------------------------------------------');
+
+    if (matchedPosts.length > 0) {
+      printLine(`<b>${isUk ? 'Публікації та проєкти:' : 'Articles & Projects:'}</b> (${matchedPosts.length})`);
+      matchedPosts.forEach(p => {
+        const highlightedTitle = highlightMatch(escapeHtml(p.title), pattern, ignoreCase);
+        const highlightedSec = highlightMatch(escapeHtml(p.section), pattern, ignoreCase);
+        printLine(`  • [${highlightedSec}] <a href="${p.url}" target="_blank">${highlightedTitle}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+      });
+    }
+
+    if (matchedFiles.length > 0) {
+      printLine(`<b>${isUk ? 'Текстові файли вузла:' : 'System Text Files:'}</b>`);
+      matchedFiles.forEach(fn => {
+        printLine(`  • <span class="ls-file">${fn}</span> (cat ${fn})`);
+      });
+    }
+    printLine('--------------------------------------------------');
+  }
+
+  function runPipedGrep(capturedLines, args) {
+    let ignoreCase = true;
+    let showLineNum = false;
+    let invertMatch = false;
+    let countOnly = false;
+    const cleanArgs = [];
+
+    for (const a of args) {
+      if (a === '-i') ignoreCase = true;
+      else if (a === '-n') showLineNum = true;
+      else if (a === '-v') invertMatch = true;
+      else if (a === '-c') countOnly = true;
+      else if (a.startsWith('-')) {
+        if (a.includes('i')) ignoreCase = true;
+        if (a.includes('n')) showLineNum = true;
+        if (a.includes('v')) invertMatch = true;
+        if (a.includes('c')) countOnly = true;
+      } else {
+        cleanArgs.push(a);
+      }
+    }
+
+    if (cleanArgs.length === 0) {
+      printLine('grep: missing search pattern', 'error');
+      return;
+    }
+
+    const pattern = cleanArgs[0];
+    let regex;
+    try {
+      regex = new RegExp(pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), ignoreCase ? 'i' : '');
+    } catch (e) {
+      printLine(`grep: invalid pattern: ${escapeHtml(pattern)}`, 'error');
+      return;
+    }
+
+    let matchCount = 0;
+    capturedLines.forEach((item, idx) => {
+      const plainText = stripHtml(item.html);
+      const isMatch = regex.test(plainText);
+      const shouldInclude = invertMatch ? !isMatch : isMatch;
+
+      if (shouldInclude) {
+        matchCount++;
+        if (!countOnly) {
+          const highlighted = highlightMatch(item.html, pattern, ignoreCase);
+          const prefix = showLineNum ? `<span style="opacity:0.6;">${idx + 1}:</span> ` : '';
+          printLine(`${prefix}${highlighted}`, item.className);
+        }
+      }
+    });
+
+    if (countOnly) {
+      printLine(`${matchCount}`);
+    }
+  }
+
+  // --- Steam Locomotive (SL) Animation ---
+  const SL_FRAMES = [
+    // Frame 0
+    [
+      "                       (  ) (@@) ( )  )",
+      "                      (    )    (@@@@)",
+      "                     (@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|_________|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(O)(O)______[(O)(O)]______[(O)(O)]______[(O)(O)]__"
+    ].join('\n'),
+    // Frame 1
+    [
+      "                   (@@@)  (   )   (@@)",
+      "                  (     )   (@@@@)  ( )",
+      "                 (@@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|_________|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(o)(o)______[(o)(o)]______[(o)(o)]______[(o)(o)]__"
+    ].join('\n'),
+    // Frame 2
+    [
+      "                      (@@)  (  )  (@@@)",
+      "                     (    )   (@@)   ( )",
+      "                      (@@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|_________|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(*)-(*)______[(*)-(*)]______[(*)-(*)]______[(*)-(*)]__"
+    ].join('\n')
+  ];
+
+  const SL_FRAMES_ACCIDENT = [
+    [
+      "                       (  ) (@@) ( )  )",
+      "                      (    )    (@@@@)",
+      "                     (@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|HELP! SOS|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(O)(O)______[(O)(O)]______[(O)(O)]______[(O)(O)]__"
+    ].join('\n'),
+    [
+      "                   (@@@)  (   )   (@@)",
+      "                  (     )   (@@@@)  ( )",
+      "                 (@@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|HELP! SOS|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(o)(o)______[(o)(o)]______[(o)(o)]______[(o)(o)]__"
+    ].join('\n'),
+    [
+      "                      (@@)  (  )  (@@@)",
+      "                     (    )   (@@)   ( )",
+      "                      (@@@@)",
+      "                    ====        ________                ___________",
+      "                _D _|  |_______/        \\__I_I_____===__|HELP! SOS|",
+      "                 |(_)---  |   H\\________/ _____ \\   |    | -------|",
+      "                 /     |  |   H  |  |   |     | |   |    |        |",
+      "                |      |  |   H  |__--------------------|--------|",
+      "                | ________|___H__/__/_____/[][]~\\_______|________|",
+      "                |/ |   |_____I........................I______|",
+      "               __(*)-(*)______[(*)-(*)]______[(*)-(*)]______[(*)-(*)]__"
+    ].join('\n')
+  ];
+
+  let slRunning = false;
+
+  function runSlTrain(args = []) {
+    if (slRunning) return;
+    slRunning = true;
+
+    const isAccident = args.includes('-a');
+    const frames = isAccident ? SL_FRAMES_ACCIDENT : SL_FRAMES;
+
+    inputEl.disabled = true;
+    const oldPlaceholder = inputEl.placeholder;
+    inputEl.placeholder = isUk ? '🚂 Проїжджає паровоз SL...' : '🚂 SL Steam Locomotive passing...';
+
+    playTrainWhistle();
+
+    const slContainer = document.createElement('div');
+    slContainer.className = 'sl-container';
+
+    const pre = document.createElement('pre');
+    pre.className = 'sl-train';
+    pre.textContent = frames[0];
+    slContainer.appendChild(pre);
+    outputEl.appendChild(slContainer);
+    scrollToBottom();
+
+    const containerWidth = containerEl.clientWidth || window.innerWidth;
+    let posX = containerWidth;
+    let frameIdx = 0;
+    let tick = 0;
+    const trainWidth = 650;
+
+    const interval = setInterval(() => {
+      posX -= 12;
+      tick++;
+
+      if (tick % 3 === 0) {
+        frameIdx = (frameIdx + 1) % frames.length;
+        pre.textContent = frames[frameIdx];
+      }
+
+      if (tick % 6 === 0) {
+        playTrainChug();
+      }
+
+      pre.style.transform = `translateX(${posX}px)`;
+
+      if (posX < -trainWidth) {
+        finishSl();
+      }
+    }, 30);
+
+    function finishSl() {
+      clearInterval(interval);
+      slRunning = false;
+      if (slContainer.parentNode) {
+        slContainer.parentNode.removeChild(slContainer);
+      }
+      inputEl.disabled = false;
+      inputEl.placeholder = oldPlaceholder;
+      printLine(
+        isUk
+          ? `🚂 <i>Поїзд проїхав! Можливо, ви мали на увазі <b style="color: var(--accent-color)">ls</b>?</i>`
+          : `🚂 <i>Train departed! Did you mean <b style="color: var(--accent-color)">ls</b>?</i>`,
+        'system'
+      );
+      inputEl.focus();
+      scrollToBottom();
+    }
+
+    const abortHandler = (e) => {
+      if (slRunning && (e.key === 'Escape' || (e.key === 'c' && e.ctrlKey))) {
+        window.removeEventListener('keydown', abortHandler);
+        finishSl();
+      }
+    };
+    window.addEventListener('keydown', abortHandler, { once: true });
+  }
+
   function executeCommand(rawInput) {
     printLine(`<span style="color: var(--prompt-color)">[guest@rmn.pp.ua ~]$</span> ${escapeHtml(rawInput)}`, 'command-echo');
     
@@ -484,15 +1117,38 @@
     state.history.push(rawInput);
     state.historyIndex = -1;
 
-    const parts = rawInput.trim().split(/\s+/);
+    // Check pipeline support (e.g. ls | grep diy)
+    if (rawInput.includes('|')) {
+      const pipeIndex = rawInput.indexOf('|');
+      const leftPart = rawInput.slice(0, pipeIndex).trim();
+      const rightPart = rawInput.slice(pipeIndex + 1).trim();
+      const rightTokens = rightPart.split(/\s+/);
+      const rightCmd = rightTokens[0].toLowerCase();
+
+      if (rightCmd === 'grep') {
+        const grepArgs = rightTokens.slice(1);
+        captureBuffer = [];
+        executeSingleCommand(leftPart, false);
+        const captured = captureBuffer;
+        captureBuffer = null;
+        runPipedGrep(captured, grepArgs);
+        return;
+      }
+    }
+
+    executeSingleCommand(rawInput, true);
+  }
+
+  function executeSingleCommand(cmdStr, playChime = true) {
+    const parts = cmdStr.trim().split(/\s+/);
     const cmdName = parts[0].toLowerCase();
     const args = parts.slice(1);
 
     if (COMMANDS[cmdName]) {
-      playEnterChime();
+      if (playChime) playEnterChime();
       COMMANDS[cmdName].action(args);
     } else {
-      playErrorTone();
+      if (playChime) playErrorTone();
       printLine(`Command not found: <b>${escapeHtml(cmdName)}</b>. Type <b style="color: var(--text-bright)">help</b> for a list of available commands.`, 'error');
     }
   }
@@ -500,6 +1156,20 @@
   function handleAutocomplete() {
     const val = inputEl.value.trim().toLowerCase();
     if (!val) return;
+
+    if (val.startsWith('ls ') || val.startsWith('cat ')) {
+      const parts = val.split(/\s+/);
+      const prefix = parts.slice(0, -1).join(' ') + ' ';
+      const target = parts[parts.length - 1];
+      const available = [...Object.keys(VFS_DIRS), ...Object.keys(VFS_FILES)];
+      const matches = available.filter(name => name.startsWith(target));
+      if (matches.length === 1) {
+        inputEl.value = prefix + matches[0] + (VFS_DIRS[matches[0]] ? '/' : ' ');
+      } else if (matches.length > 1) {
+        printLine(`Matches: ${matches.join(', ')}`, 'system');
+      }
+      return;
+    }
 
     const matches = Object.keys(COMMANDS).filter(cmd => cmd.startsWith(val));
     if (matches.length === 1) {

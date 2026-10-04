@@ -15,16 +15,14 @@ Last month I've been playing with the **TI MSP430 Launchpad** and when I work wi
 
 ---
 
-## 1. Microcontroller Firmware
+## Firmware
 
-The high-level firmware logic on the microcontroller is straightforward: it continuously reads the ADC value and outputs it over UART. However, there is a critical step: before streaming data, the device performs a handshake to verify that the host machine is ready to listen.
+Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a "handshake" - receive start symbol from computer. So, high-level algorithm will be like this:
+1) Initialize UART[1] (9600 baud) and ADC[2]
+2) Wait for start signal ("handshake")
+3) In forever loop send temperature to UART
 
-High-level workflow:
-1. Initialize UART (9600 baud) and ADC (channel 10 — internal temperature sensor).
-2. Wait for a start signal ("handshake").
-3. In an infinite loop, read temperature in Celsius and transmit the reading via UART.
-
-### ADC Initialization (Internal Temperature Sensor Channel):
+ADC initialization to read temperature (10 channel):
 ```c
 void ADC_init(void) {
     ADC10CTL0 = SREF_1 + REFON + ADC10ON + ADC10SHT_3;
@@ -33,50 +31,59 @@ void ADC_init(void) {
 
 int getTemperatureCelsius() {
     int t = 0;
-    __delay_cycles(1000);
+    __delay_cycles(1000); // Not neccessary.
     ADC10CTL0 |= ENC + ADC10SC;
     while (ADC10CTL1 & BUSY);
     t = ADC10MEM;
     ADC10CTL0 &= ~ENC;
-    return (int) ((t * 27069L - 18169625L) >> 16);  // Conversion to Celsius
+    return (int) ((t * 27069L - 18169625L) >> 16);  // magic conversion to Celsius
 }
 ```
 
-### Connection Handshake:
+Handshake:
 ```c
+// UART Handshake...
 unsigned char c;
 while ((c = uart_getc()) != '1');
 uart_puts((char *)"\nOK\n");
 ```
-The controller waits for the character `'1'` and responds with `"OK"`.
 
-Once established, continuous telemetry streaming begins:
+We're waiting for '1' and sending "OK" when we receive it.
+
+After that, program starts to send temperature indefinitely:
 ```c
 while(1) {
     uart_printf("%i\n", getTemperatureCelsius());
     P1OUT ^= 0x1;
 }
 ```
-The helper function `uart_printf` formats integers into ASCII and dispatches them across the serial line.
+
+uart_printf converts integer value into string and send over UART [3].
+
+The source code of firmware in the bottom of this post.
 
 ---
 
-## 2. Desktop Plotting Application (Python)
+## Plotting Application
 
-To visualize streaming time-series data in Python, `matplotlib` is an ideal tool, paired with `pySerial` for serial bus communications.
+I love *matplotlib* in python, it's great library to plot everything. To read data from UART, I used *pySerial* library. That's all we need.
 
-When the Launchpad is connected to a Linux host, a virtual serial interface is exposed at `/dev/ttyACM0`.
+When we connect launchpad to computer, device `/dev/ttyACM0` is created. It's serial port which we need to use.
 
-The application runs two concurrent threads:
-1. **Serial Port Listener:** Reads bytes from the port and populates a ring buffer.
-2. **Plot Render Loop:** Continuously animates the chart via `matplotlib.animation.FuncAnimation`.
+Application consists of two threads:
+1. Serial port processing
+2. Continous plot updating
 
-### Serial Port Processing
-A global circular buffer `data = deque(0 for _ in range(5000))` holds incoming raw measurements, while `dataP = deque(0 for _ in range(5000))` holds smoothed values.
+### Serial port processing
 
-The serial thread initializes the connection and performs the handshake:
+Let's define global variable `data = deque(0 for _ in range(5000))`, it will contain data to plot and `dataP = deque(0 for _ in range(5000))`, it will contain approximated values.
+
+In the serial port thread, we need to open connection:
 ```python
 ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+```
+then, make a "handshake":
+```python
 ok = b''
 while ok.strip() != b'OK':
     ser.write(b"1")
@@ -84,7 +91,7 @@ while ok.strip() != b'OK':
 print("Handshake OK!\n")
 ```
 
-Once confirmed, the loop consumes sensor frames:
+As you see, we're waiting the "OK" in response to "1". After "handshake", we can start reading data:
 ```python
 while True:
     try:
@@ -93,7 +100,8 @@ while True:
     except ValueError:
         pass
 ```
-Because serial lines can introduce transmission artifacts, malformed frames that trigger `ValueError` are safely dropped.
+
+UART is not very stable, so sometimes you can receive distorted data. That's why I eat exceptions.
 
 The `addValue` routine computes an Exponential Moving Average (EMA) to smooth noise:
 ```python

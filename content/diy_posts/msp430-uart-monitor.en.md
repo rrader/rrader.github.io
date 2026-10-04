@@ -11,21 +11,18 @@ tags: ["diy", "hardware", "msp430", "launchpad", "uart", "debugging", "serial"]
 
 ---
 
-While debugging UART communications, I needed a simple way to inspect the continuous message flow between the MSP430 microcontroller and the peripheral device (the SIM900 GSM modem) without altering timing characteristics.
+When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.
 
-A straightforward hardware sniffing approach without dedicated logic analyzers:
-1. Extract the MSP430 MCU from the DIP socket on the LaunchPad and deploy it independently on a breadboard.
-2. Utilize the onboard USB-UART bridge of the **TI MSP430 LaunchPad** solely to intercept and mirror serial frames to a workstation.
+For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).  
+And connect the LaunchPad itself to the computer to monitor the UART.
 
-Interception wiring layout:
+UART connection scheme MSP430 -> Device so that you can see the Device's responses on the computer:
 
 ![UART interception circuit using LaunchPad bridge](/images/msp430-uart-monitor/image-01.png)
 
-On the PC, traffic is observed in real time via the built-in *Serial Monitor* inside the Energia IDE (or standard serial consoles such as `picocom`, `minicom`, or `screen`):
+On the computer, to read from UART I use Serial Monitor in the Energia IDE (any other way to read from a serial port will work).
 
-![Intercepted AT commands visible inside the Serial Monitor](/images/msp430-uart-monitor/image-02.png)
-
-This setup provides transparency into negotiation handshakes and error strings directly from the physical bus.
+![Intercepted data in Serial Monitor](/images/msp430-uart-monitor/image-02.png)
 
 ---
 

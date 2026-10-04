@@ -4,9 +4,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="description" content="Related series articles:
-MSP430 Security Alarm Schematics and Build I built the user-facing interface subsystem for my custom DIY home alarm.
-Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.
-1. Non-Volatile Passcode Storage in Flash The MSP430G2553 MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.">  
+MSP430 Security Alarm Schematics and Build Built the interface part of the security system.
+Disarming and arming will be done using a password, so we need a way to enter the password and change it.
+The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.
+Also, in case the password is forgotten, a &ldquo;super-password&rdquo; is needed to reset memory back to the default password.">  
 
   <title>
     
@@ -114,7 +115,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-03-05 16:20:00 &#43;0200 EET">2015-03-05</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 216</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 156</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -154,32 +155,28 @@ if (!doNotTrack) {
 <li><a href="../../diy_posts/msp430-security-alarm-system/">MSP430 Security Alarm Schematics and Build</a></li>
 </ul>
 <hr>
-<p>I built the user-facing interface subsystem for my custom DIY home alarm.</p>
-<p>Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.</p>
-<h2 id="1-non-volatile-passcode-storage-in-flash">1. Non-Volatile Passcode Storage in Flash</h2>
-<p>The <strong>MSP430G2553</strong> MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.</p>
-<p>In case the customized passcode is forgotten, a fallback master &ldquo;super-password&rdquo; is hardcoded to reset the flash segment back to factory defaults.</p>
-<h2 id="2-matrix-polling--contact-debouncing">2. Matrix Polling &amp; Contact Debouncing</h2>
-<p>Reading keystrokes from a 4×4 multiplexed keypad requires cyclical row-and-column scanning. Filtering out mechanical contact bounce (debouncing) is essential to avoid ghost digits.</p>
-<p>The <em>Keypad</em> library provides robust contact debouncing and efficient multiplexed scanning, compiling seamlessly inside the Energia environment.</p>
-<h2 id="3-supported-command-sequences">3. Supported Command Sequences</h2>
+<p>Built the interface part of the security system.<br>
+Disarming and arming will be done using a password, so we need a way to enter the password and change it.</p>
+<p>The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&rsquo;s where we&rsquo;ll store the password.</p>
+<p>Also, in case the password is forgotten, a &ldquo;super-password&rdquo; is needed to reset memory back to the default password.</p>
+<p>To read key presses from the keypad, each button must be polled periodically. In addition, contact bounce must be eliminated. The Arduino &ldquo;Keypad&rdquo; library implements debouncing, knows how to poll keys, and works great with Energia.</p>
+<h3 id="available-commands">Available commands</h3>
 <ul>
-<li><strong>Authentication (Arm / Disarm):</strong> <code>&lt;PIN&gt; + #</code></li>
-<li><strong>Clear Entry Buffer:</strong> <code>*</code></li>
-<li><strong>Master Reset to Defaults:</strong> <code>&lt;Master-PIN&gt; + D</code></li>
-<li><strong>Change Passcode:</strong> <code>&lt;Old-PIN&gt; + D + &lt;New-PIN&gt; + D</code></li>
+<li>Authentication: <code>&lt;password&gt;</code> + <strong>#</strong></li>
+<li>Cancel input: <strong>*</strong></li>
+<li>Reset via super-password: <code>&lt;superpassword&gt;</code> + <strong>D</strong></li>
+<li>Change password: <code>&lt;old password&gt;</code> + <strong>D</strong> + <code>&lt;new password&gt;</code> + <strong>D</strong></li>
 </ul>
-<h2 id="4-video-demonstration">4. Video Demonstration</h2>
+<h3 id="demo-video">Demo video</h3>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://www.youtube.com/embed/wLLoZa_CDJM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-<p><em>(Direct video link: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">YouTube</a>)</em></p>
-<h2 id="resources--source-code">Resources &amp; Source Code</h2>
 <ul>
-<li><strong>Source Code Repository:</strong> <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></li>
-<li><strong>Keypad Library:</strong> <a href="https://playground.arduino.cc/Code/Keypad/">Arduino Keypad Library Reference</a></li>
+<li>Video: <a href="https://www.youtube.com/watch?v=wLLoZa_CDJM">https://www.youtube.com/watch?v=wLLoZa_CDJM</a></li>
+<li>Keypad library: <a href="http://playground.arduino.cc/Code/Keypad">http://playground.arduino.cc/Code/Keypad</a></li>
+<li>Source code: <a href="https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main">https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main</a></li>
 </ul>
 <hr>
 <p><em>This post was migrated from the legacy blog <a href="https://antigluk.blogspot.com/2015/03/4x4-msp430.html">antigluk.blogspot.com</a>.</em></p>
@@ -213,7 +210,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">216 words</span>
+            <span class="status-item">156 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

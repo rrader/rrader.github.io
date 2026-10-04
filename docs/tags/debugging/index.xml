@@ -13,7 +13,7 @@
       <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A While debugging UART communications, I needed a simple way to inspect the continuous message flow between the MSP430 microcontroller and the peripheral device (the SIM900 GSM modem) without altering timing characteristics.&#xA;A straightforward hardware sniffing approach without dedicated logic analyzers:&#xA;Extract the MSP430 MCU from the DIP socket on the LaunchPad and deploy it independently on a breadboard.</description>
+      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.&#xA;For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.</description>
     </item>
   </channel>
 </rss>

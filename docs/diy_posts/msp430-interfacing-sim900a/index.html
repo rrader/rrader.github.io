@@ -4,8 +4,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="description" content="Related series articles:
-Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor 1. Wiring &amp; Power Supply The UART connection layout follows standard serial topology: the microcontroller&rsquo;s RX connects to the modem&rsquo;s TX, and TX connects to RX.
-Regarding power delivery: for basic logic testing and AT probing, drawing 3.3V directly from the LaunchPad header proved sufficient. While the SIM900 datasheet specifies an operating voltage between 3.4V and 4.">  
+Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor For pitfalls of the SIM900A Mini v3.4 board read here.
+UART wiring scheme is simple: RX to TX, TX to RX.
+Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.
+Initially jumpers are in this position for UART conversion through MAX232:">  
 
   <title>
     
@@ -113,8 +115,8 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-17 12:58:00 &#43;0200 EET">2015-01-17</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 349</span>
-      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 264</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
     
@@ -156,21 +158,17 @@ if (!doNotTrack) {
 <li><a href="../../diy_posts/msp430-uart-monitor/">MSP430-based Hardware UART Monitor</a></li>
 </ul>
 <hr>
-<h2 id="1-wiring--power-supply">1. Wiring &amp; Power Supply</h2>
-<p>The UART connection layout follows standard serial topology: the microcontroller&rsquo;s <code>RX</code> connects to the modem&rsquo;s <code>TX</code>, and <code>TX</code> connects to <code>RX</code>.</p>
-<p>Regarding power delivery: for basic logic testing and AT probing, drawing 3.3V directly from the LaunchPad header proved sufficient. While the SIM900 datasheet specifies an operating voltage between 3.4V and 4.5V (with a recommended 4.0V rail capable of sustaining 2A burst current during transmission peaks), the 3.3V rail was adequate to boot the baseband processor and verify AT responsiveness:</p>
+<p>For pitfalls of the SIM900A Mini v3.4 board <a href="../../diy_posts/sim900a-mini-v34-caution/">read here</a>.</p>
+<p>UART wiring scheme is simple: RX to TX, TX to RX.<br>
+Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.</p>
 <p><img alt="Wiring schematic: MSP430 Launchpad to SIM900A" src="../../images/msp430-sim900a/image-01.png"></p>
-<hr>
-<h2 id="2-breakout-board-jumper-configuration">2. Breakout Board Jumper Configuration</h2>
-<p>By default, the jumpers on the SIM900A Mini board are configured to route communication through the MAX232 level-shifting IC (designed for traditional PC COM ports):</p>
+<p>Initially jumpers are in this position for UART conversion through MAX232:</p>
 <p><img alt="Default factory jumper arrangement for MAX232 RS232 levels" src="../../images/msp430-sim900a/image-02.jpg"></p>
-<p>Because the MSP430 operates on standard 3.3V TTL logic levels, bypassing the RS-232 transceiver is required.</p>
-<p>To tap straight into the raw TTL UART pins, reorient the jumpers so that they clip onto only one pin of the header, leaving the secondary pin exposed to receive jumper wires:</p>
+<p>But we don&rsquo;t need to connect the board to a computer COM port, we need the unconverted UART signal. Therefore, we switch the jumpers so they &lsquo;hang&rsquo; on one pin, and plug cables into the second jumper hole:</p>
 <p><img alt="Reoriented jumpers for direct TTL UART tapping" src="../../images/msp430-sim900a/image-03.jpg"></p>
-<p>In the photo above: green wire = <code>RX</code>, white wire = <code>TX</code>.</p>
-<hr>
-<h2 id="3-minimal-test-firmware-energia--c">3. Minimal Test Firmware (Energia / C)</h2>
-<p>The primary objective for the initial smoke test is continuous transmission of the <code>AT</code> attention command until the modem acknowledges with <code>OK</code>. This confirms proper baud rate synchronization (auto-bauding) and validates serial transceiver stability.</p>
+<p>In the picture: green cable is RX, white is TX.</p>
+<h3 id="minimal-program-for-energia">Minimal program for Energia</h3>
+<p>Task minimum is sending the &ldquo;AT&rdquo; command until we receive &ldquo;OK&rdquo;. This means we synchronized baud rate and can send more complex commands.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> incomingByte <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
@@ -254,7 +252,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">349 words</span>
+            <span class="status-item">264 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

@@ -90,28 +90,28 @@
       <link>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</link>
       <pubDate>Thu, 30 Jul 2015 17:35:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-security-alarm-system/</guid>
-      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module The concluding phase of designing, assembling, and packaging a standalone security alarm unit around the TI MSP430G2553 microcontroller.&#xA;1. Electrical Schematic The circuit unites the microcontroller core, optically isolated sensor loops (reed door switches and PIR motion sensors), transistor driver stages for sirens and status indicators, a keypad connector header, and a UART telemetry link to the GSM modem:</description>
+      <description>Related series articles:&#xA;MSP430-Based 4×4 Matrix Keypad Controller Interfacing MSP430 with SIM900 GSM Modem Hardware UART Monitor for Protocol Debugging Why You Should Avoid the SIM900A GSM Module Electrical schematic of the alarm system (clickable):&#xA;What turned out in the end:&#xA;(Video: YouTube)&#xA;More photos:&#xA;Exterior Perspective Side Angle Internal Board Placement Wiring Loom &amp;amp; Screw Terminals Hand-Soldered Controller PCB Keypad Ribbon Routing This post was migrated from the legacy blog antigluk.</description>
     </item>
     <item>
       <title>MSP430-Based 4×4 Matrix Keypad Controller for Security Alarm</title>
       <link>https://rrader.github.io/diy_posts/msp430-security-keypad/</link>
       <pubDate>Thu, 05 Mar 2015 16:20:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-security-keypad/</guid>
-      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build I built the user-facing interface subsystem for my custom DIY home alarm.&#xA;Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.&#xA;1. Non-Volatile Passcode Storage in Flash The MSP430G2553 MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.</description>
+      <description>Related series articles:&#xA;MSP430 Security Alarm Schematics and Build Built the interface part of the security system.&#xA;Disarming and arming will be done using a password, so we need a way to enter the password and change it.&#xA;The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That&amp;rsquo;s where we&amp;rsquo;ll store the password.&#xA;Also, in case the password is forgotten, a &amp;ldquo;super-password&amp;rdquo; is needed to reset memory back to the default password.</description>
     </item>
     <item>
       <title>Hardware UART Monitor: Snooping Serial Traffic with MSP430 LaunchPad</title>
       <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A While debugging UART communications, I needed a simple way to inspect the continuous message flow between the MSP430 microcontroller and the peripheral device (the SIM900 GSM modem) without altering timing characteristics.&#xA;A straightforward hardware sniffing approach without dedicated logic analyzers:&#xA;Extract the MSP430 MCU from the DIP socket on the LaunchPad and deploy it independently on a breadboard.</description>
+      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.&#xA;For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.</description>
     </item>
     <item>
       <title>Interfacing the MSP430 Microcontroller with the SIM900A GSM Modem</title>
       <link>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</link>
       <pubDate>Sat, 17 Jan 2015 12:58:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-interfacing-sim900a/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor 1. Wiring &amp;amp; Power Supply The UART connection layout follows standard serial topology: the microcontroller&amp;rsquo;s RX connects to the modem&amp;rsquo;s TX, and TX connects to RX.&#xA;Regarding power delivery: for basic logic testing and AT probing, drawing 3.3V directly from the LaunchPad header proved sufficient. While the SIM900 datasheet specifies an operating voltage between 3.4V and 4.</description>
+      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module MSP430-based Hardware UART Monitor For pitfalls of the SIM900A Mini v3.4 board read here.&#xA;UART wiring scheme is simple: RX to TX, TX to RX.&#xA;Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.&#xA;Initially jumpers are in this position for UART conversion through MAX232:</description>
     </item>
     <item>
       <title>Why You Should Avoid the SIM900A GSM Module: SIM900A Mini v3.4 Board Review</title>
@@ -125,7 +125,7 @@
       <link>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</guid>
-      <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;1. Microcontroller Firmware The high-level firmware logic on the microcontroller is straightforward: it continuously reads the ADC value and outputs it over UART.</description>
+      <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;Firmware Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a &amp;ldquo;handshake&amp;rdquo; - receive start symbol from computer.</description>
     </item>
   </channel>
 </rss>

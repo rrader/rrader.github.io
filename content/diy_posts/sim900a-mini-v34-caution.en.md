@@ -35,16 +35,13 @@ Here is the list of officially supported territories and Mobile Country Codes (M
 | Philippines | 515 |
 | East Timor | 514 |
 
-The hardware board:
+I received this piece of hardware:
 
 ![SIM900A Mini v3.4 — Front side](/images/sim900a-mini/image-01.jpg)
 
 ![SIM900A Mini v3.4 — Back side](/images/sim900a-mini/image-02.jpg)
 
-After wiring up the module and establishing bidirectional UART communication, I ran into unexpected behavior:
-* The module scanned base stations normally (network discovery via `AT+COPS=?` returned available cell carriers);
-* It recognized the inserted SIM card;
-* Yet **it persistently failed to register on the cell tower**:
+Played around with the connection for a long time, and when I finally managed to send AT commands, something strange emerged: the device sees networks (`AT+COPS=?` network scan works), sees the SIM card and the carrier. But does not register on the network:
 
 ```text
 AT+CREG?
@@ -56,9 +53,9 @@ AT+CPIN?
 OK
 ```
 
-The response `+CPIN: PH-NET PIN` indicates that the chip is carrier/region-locked and demands a network unlock password.
+After some googling, it turned out that the highlighted response means the device is **locked**.
 
-**Takeaway:** Avoid ordering breakout boards equipped with the **SIM900A** revision unless you are prepared to perform custom firmware reflashing via SIMCom proprietary flashing tools. Standard **SIM900** modems (without the "A" suffix) are genuine quad-band devices without regional restrictions.
+Therefore, avoid buying SIM900A chips — without the 'A' is better.
 
 ---
 

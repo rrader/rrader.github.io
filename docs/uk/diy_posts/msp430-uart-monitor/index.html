@@ -4,9 +4,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="description" content="Пов&rsquo;язані статті серії:
-Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.
-Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:
-Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard). Використати саму плату TI MSP430 LaunchPad виключно як апаратний USB-UART міст до комп&rsquo;ютера.">  
+Чому не варто купувати GSM-модуль SIM900A Підключення MSP430 до SIM900A При використанні UART, з метою налагодження, мені було необхідно моніторити, що посилає MSP430 і що відповідає другий пристрій (SIM900).
+Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).
+А сам LaunchPad підключити до комп&rsquo;ютера, щоб моніторити UART.
+Схема підключення UART MSP430 -&gt; Device так, щоб на комп&rsquo;ютері можна було бачити відповіді Device:
+На комп&rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).">  
 
   <title>
     
@@ -114,7 +116,7 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-18 21:08:00 &#43;0200 EET">2015-01-18</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 134</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 98</span>
       <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
@@ -155,17 +157,13 @@ if (!doNotTrack) {
 <li><a href="../../../uk/diy_posts/msp430-interfacing-sim900a/">Підключення MSP430 до SIM900A</a></li>
 </ul>
 <hr>
-<p>Під час налагодження протоколу UART виникла потреба одночасно відстежувати, які команди мікроконтролер MSP430 відправляє у підключений пристрій (GSM-модуль SIM900) і що саме пристрій повертає у відповідь.</p>
-<p>Один зі зручних апаратних способів це зробити без покупки окремого логічного аналізатора:</p>
-<ol>
-<li>Вийняти мікроконтролер із панельки LaunchPad і зібрати його автономно на макетній платі (breadboard).</li>
-<li>Використати саму плату <strong>TI MSP430 LaunchPad</strong> виключно як апаратний USB-UART міст до комп&rsquo;ютера.</li>
-</ol>
-<p>Схема підключення для перехоплення відповідей пристрою:</p>
+<p>При використанні UART, з метою налагодження, мені було необхідно моніторити, що посилає MSP430 і що відповідає другий пристрій (SIM900).</p>
+<p>Для цього необхідно вийняти МК з LaunchPad і підключити незалежно (наприклад, на breadboard).<br>
+А сам LaunchPad підключити до комп&rsquo;ютера, щоб моніторити UART.</p>
+<p>Схема підключення UART MSP430 -&gt; Device так, щоб на комп&rsquo;ютері можна було бачити відповіді Device:</p>
 <p><img alt="Схема підключення UART для моніторингу через LaunchPad" src="../../../images/msp430-uart-monitor/image-01.png"></p>
-<p>На комп&rsquo;ютері для читання трафіку з послідовного порту використовується вбудований <em>Serial Monitor</em> у середовищі Energia (або будь-яка інша термінальна програма на зразок <code>minicom</code>, <code>screen</code> чи <code>picocom</code>):</p>
-<p><img alt="Виведення перехоплених AT-команд у Serial Monitor" src="../../../images/msp430-uart-monitor/image-02.png"></p>
-<p>Така схема дозволяє бачити всі команди в реальному часі без внесення затримок чи спотворень у протокол обміну.</p>
+<p>На комп&rsquo;ютері для читання з UART я користуюся Serial Monitor в IDE Energia (підійде будь-який інший спосіб читати з послідовного порту).</p>
+<p><img alt="Виведення перехоплених даних у Serial Monitor" src="../../../images/msp430-uart-monitor/image-02.png"></p>
 <hr>
 <p><em>Цей матеріал було перенесено зі старого блогу <a href="https://antigluk.blogspot.com/2015/01/uart-uart.html">antigluk.blogspot.com</a>.</em></p>
 
@@ -198,7 +196,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">134 words</span>
+            <span class="status-item">98 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

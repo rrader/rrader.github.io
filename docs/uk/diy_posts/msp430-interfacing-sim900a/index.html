@@ -4,8 +4,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
    <meta name="description" content="Пов&rsquo;язані статті серії:
-Чому не варто купувати GSM-модуль SIM900A (огляд плати) UART-монітор на базі MSP430 для налагодження зв&rsquo;язку 1. Схема підключення та живлення Схема підключення UART типова: лінія RX мікроконтролера з&rsquo;єднується з TX модуля, а TX — з RX.
-Щодо живлення SIM900A: для базового запуску та перевірки мені вистачило 3.3V безпосередньо з шини плати LaunchPad. Хоча за даташитом для впевненої роботи GSM-радіотракту потрібно від 3.4V до 4.5V (рекомендовано 4.0V) зі струмом у піках до 2A, для ініціалізації логіки 3.">  
+Чому не варто купувати GSM-модуль SIM900A (огляд плати) UART-монітор на базі MSP430 для налагодження зв&rsquo;язку Про підводні камені плати SIM900A Mini v3.4 читати тут.
+Схема підключення UART проста: RX в TX, TX в RX.
+Живлення для SIM900A: для запуску мені вистачило живлення 3.3V від LaunchPad&rsquo;а, але це порушує даташит — необхідно 4V. Тим не менш, все працює.
+Спочатку джампери знаходяться в такому положенні для перетворення UART через MAX232:">  
 
   <title>
     
@@ -113,8 +115,8 @@ if (!doNotTrack) {
   <div class="tty-header-card">
     <div class="tty-header-row">
       <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2015-01-17 12:58:00 &#43;0200 EET">2015-01-17</time></span>
-      <span class="tty-badge"><span class="tty-label">WORDS:</span> 300</span>
-      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 256</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~1m</span>
       <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
     </div>
     
@@ -156,21 +158,17 @@ if (!doNotTrack) {
 <li><a href="../../../uk/diy_posts/msp430-uart-monitor/">UART-монітор на базі MSP430 для налагодження зв&rsquo;язку</a></li>
 </ul>
 <hr>
-<h2 id="1-схема-підключення-та-живлення">1. Схема підключення та живлення</h2>
-<p>Схема підключення UART типова: лінія <code>RX</code> мікроконтролера з&rsquo;єднується з <code>TX</code> модуля, а <code>TX</code> — з <code>RX</code>.</p>
-<p>Щодо живлення SIM900A: для базового запуску та перевірки мені вистачило 3.3V безпосередньо з шини плати LaunchPad. Хоча за даташитом для впевненої роботи GSM-радіотракту потрібно від 3.4V до 4.5V (рекомендовано 4.0V) зі струмом у піках до 2A, для ініціалізації логіки 3.3V спрацювало:</p>
+<p>Про підводні камені плати SIM900A Mini v3.4 <a href="../../../uk/diy_posts/sim900a-mini-v34-caution/">читати тут</a>.</p>
+<p>Схема підключення UART проста: RX в TX, TX в RX.<br>
+Живлення для SIM900A: для запуску мені вистачило живлення 3.3V від LaunchPad&rsquo;а, але це порушує даташит — необхідно 4V. Тим не менш, все працює.</p>
 <p><img alt="Схема підключення MSP430 Launchpad до SIM900A" src="../../../images/msp430-sim900a/image-01.png"></p>
-<hr>
-<h2 id="2-конфігурація-джамперів-плати">2. Конфігурація джамперів плати</h2>
-<p>За замовчуванням джампери на платі SIM900A Mini встановлені для зв&rsquo;язку через перетворювач рівнів MAX232 (для підключення до COM-порту ПК):</p>
+<p>Спочатку джампери знаходяться в такому положенні для перетворення UART через MAX232:</p>
 <p><img alt="Початкове положення джамперів для MAX232" src="../../../images/msp430-sim900a/image-02.jpg"></p>
-<p>Але нам не потрібен перетворювач для RS-232, оскільки мікроконтролер працює з рівнями TTL (3.3V). Нам потрібен прямий UART-сигнал.</p>
-<p>Тому перемикаємо джампери так, щоб вони «висіли» лише на одному піні роз&rsquo;єму, а в другий відкритий пін вставляємо дроти:</p>
+<p>Але нам не потрібно підключати плату до COM-порту комп&rsquo;ютера, нам потрібен неперетворений UART-сигнал. Тому перемикаємо джампери так, щоб вони «висіли» на одному піні, а в другий отвір джампера підключаємо кабелі:</p>
 <p><img alt="Модифікація джамперів для зняття прямого UART" src="../../../images/msp430-sim900a/image-03.jpg"></p>
-<p>На фото: зелений провід — <code>RX</code>, білий — <code>TX</code>.</p>
-<hr>
-<h2 id="3-мінімальна-програма-для-середовища-energia">3. Мінімальна програма для середовища Energia</h2>
-<p>Завдання мінімум для першого запуску — надсилати команду <code>AT</code>, доки модуль не відповість <code>OK</code>. Це свідчить про те, що модуль прокинувся, синхронізував швидкість передачі (auto-bauding) і готовий приймати команди.</p>
+<p>На картинці: зелений кабель — RX, білий — TX.</p>
+<h3 id="мінімальна-програма-для-energia">Мінімальна програма для Energia</h3>
+<p>Задача мінімум — відправляти команду &ldquo;AT&rdquo;, поки нам не дадуть відповідь &ldquo;OK&rdquo;. Це означає, що ми синхронізувалися за швидкістю передачі і можемо відправляти більш складні команди.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> incomingByte <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
@@ -254,7 +252,7 @@ if (!doNotTrack) {
           </div>
           <div class="status-right">
             <span class="status-item">UTF-8</span>
-            <span class="status-item">300 words</span>
+            <span class="status-item">256 words</span>
             <a href="#top" class="status-action" title="Top">▲ TOP</a>
             <a href="../../../" class="status-action" title="Home">↵ EXIT</a>
           </div>

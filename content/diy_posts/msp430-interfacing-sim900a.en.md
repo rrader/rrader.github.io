@@ -11,35 +11,26 @@ tags: ["diy", "hardware", "msp430", "launchpad", "sim900", "gsm", "uart", "energ
 
 ---
 
-## 1. Wiring & Power Supply
+For pitfalls of the SIM900A Mini v3.4 board [read here](/diy_posts/sim900a-mini-v34-caution/).
 
-The UART connection layout follows standard serial topology: the microcontroller's `RX` connects to the modem's `TX`, and `TX` connects to `RX`.
-
-Regarding power delivery: for basic logic testing and AT probing, drawing 3.3V directly from the LaunchPad header proved sufficient. While the SIM900 datasheet specifies an operating voltage between 3.4V and 4.5V (with a recommended 4.0V rail capable of sustaining 2A burst current during transmission peaks), the 3.3V rail was adequate to boot the baseband processor and verify AT responsiveness:
+UART wiring scheme is simple: RX to TX, TX to RX.  
+Power supply for SIM900A: for bootup 3.3V from the LaunchPad was sufficient for me, though it violates the datasheet (4V required). Nevertheless, everything works.
 
 ![Wiring schematic: MSP430 Launchpad to SIM900A](/images/msp430-sim900a/image-01.png)
 
----
-
-## 2. Breakout Board Jumper Configuration
-
-By default, the jumpers on the SIM900A Mini board are configured to route communication through the MAX232 level-shifting IC (designed for traditional PC COM ports):
+Initially jumpers are in this position for UART conversion through MAX232:
 
 ![Default factory jumper arrangement for MAX232 RS232 levels](/images/msp430-sim900a/image-02.jpg)
 
-Because the MSP430 operates on standard 3.3V TTL logic levels, bypassing the RS-232 transceiver is required.
-
-To tap straight into the raw TTL UART pins, reorient the jumpers so that they clip onto only one pin of the header, leaving the secondary pin exposed to receive jumper wires:
+But we don't need to connect the board to a computer COM port, we need the unconverted UART signal. Therefore, we switch the jumpers so they 'hang' on one pin, and plug cables into the second jumper hole:
 
 ![Reoriented jumpers for direct TTL UART tapping](/images/msp430-sim900a/image-03.jpg)
 
-In the photo above: green wire = `RX`, white wire = `TX`.
+In the picture: green cable is RX, white is TX.
 
----
+### Minimal program for Energia
 
-## 3. Minimal Test Firmware (Energia / C)
-
-The primary objective for the initial smoke test is continuous transmission of the `AT` attention command until the modem acknowledges with `OK`. This confirms proper baud rate synchronization (auto-bauding) and validates serial transceiver stability.
+Task minimum is sending the "AT" command until we receive "OK". This means we synchronized baud rate and can send more complex commands.
 
 ```c
 int incomingByte = 0;

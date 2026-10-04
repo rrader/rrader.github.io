@@ -13,14 +13,14 @@
       <link>https://rrader.github.io/diy_posts/msp430-uart-monitor/</link>
       <pubDate>Sun, 18 Jan 2015 21:08:00 +0200</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-uart-monitor/</guid>
-      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A While debugging UART communications, I needed a simple way to inspect the continuous message flow between the MSP430 microcontroller and the peripheral device (the SIM900 GSM modem) without altering timing characteristics.&#xA;A straightforward hardware sniffing approach without dedicated logic analyzers:&#xA;Extract the MSP430 MCU from the DIP socket on the LaunchPad and deploy it independently on a breadboard.</description>
+      <description>Related series articles:&#xA;Why You Should Avoid the SIM900A GSM Module Connecting MSP430 to SIM900A When using UART, for debugging purposes, I needed to monitor what the MSP430 was sending and what the second device (SIM900) was responding with.&#xA;For this, you need to remove the MCU from the LaunchPad and connect it independently (for example, on a breadboard).&#xA;And connect the LaunchPad itself to the computer to monitor the UART.</description>
     </item>
     <item>
       <title>Plotting Live Data from MSP430 ADC in Python</title>
       <link>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</link>
       <pubDate>Tue, 15 Jul 2014 14:01:00 +0300</pubDate>
       <guid>https://rrader.github.io/diy_posts/msp430-adc-python-plotter/</guid>
-      <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;1. Microcontroller Firmware The high-level firmware logic on the microcontroller is straightforward: it continuously reads the ADC value and outputs it over UART.</description>
+      <description>I&amp;rsquo;ve finally got something for post.&#xA;Last month I&amp;rsquo;ve been playing with the TI MSP430 Launchpad and when I work with ADC it lacks of visualization. Since Launchpad have UART-USB interface, I decided to plot incoming data.&#xA;I&amp;rsquo;m using MSP430G2553, and all code was written for this controller.&#xA;Firmware Firmware of controller is pretty straightforward in large scale: it just sends value from ADC to the UART continously - with one note: before start to send anything, we need to make a &amp;ldquo;handshake&amp;rdquo; - receive start symbol from computer.</description>
     </item>
   </channel>
 </rss>

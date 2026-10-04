@@ -10,36 +10,29 @@ tags: ["diy", "hardware", "msp430", "keypad", "security", "energia", "embedded"]
 
 ---
 
-I built the user-facing interface subsystem for my custom DIY home alarm.
+Built the interface part of the security system.  
+Disarming and arming will be done using a password, so we need a way to enter the password and change it.
 
-Arming and disarming the system is guarded by a numeric passcode, necessitating a secure mechanism to authenticate, reject invalid entries, and update the PIN on the fly.
+The MSP430G2553 contains flash memory, 4 data segments of 64 bytes each. That's where we'll store the password.
 
-## 1. Non-Volatile Passcode Storage in Flash
-The **MSP430G2553** MCU features dedicated internal Flash Information Memory divided into four 64-byte segments. The active security PIN is stored directly in this persistent flash block, ensuring the passcode survives total power disconnections.
+Also, in case the password is forgotten, a "super-password" is needed to reset memory back to the default password.
 
-In case the customized passcode is forgotten, a fallback master "super-password" is hardcoded to reset the flash segment back to factory defaults.
+To read key presses from the keypad, each button must be polled periodically. In addition, contact bounce must be eliminated. The Arduino "Keypad" library implements debouncing, knows how to poll keys, and works great with Energia.
 
-## 2. Matrix Polling & Contact Debouncing
-Reading keystrokes from a 4×4 multiplexed keypad requires cyclical row-and-column scanning. Filtering out mechanical contact bounce (debouncing) is essential to avoid ghost digits.
+### Available commands
 
-The *Keypad* library provides robust contact debouncing and efficient multiplexed scanning, compiling seamlessly inside the Energia environment.
+* Authentication: `<password>` + **#**
+* Cancel input: **\***
+* Reset via super-password: `<superpassword>` + **D**
+* Change password: `<old password>` + **D** + `<new password>` + **D**
 
-## 3. Supported Command Sequences
-
-* **Authentication (Arm / Disarm):** `<PIN> + #`
-* **Clear Entry Buffer:** `*`
-* **Master Reset to Defaults:** `<Master-PIN> + D`
-* **Change Passcode:** `<Old-PIN> + D + <New-PIN> + D`
-
-## 4. Video Demonstration
+### Demo video
 
 {{< youtube wLLoZa_CDJM >}}
 
-*(Direct video link: [YouTube](https://www.youtube.com/watch?v=wLLoZa_CDJM))*
-
-## Resources & Source Code
-* **Source Code Repository:** [github.com/rrader/msp430-experiments/tree/master/energia/keypad_main](https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main)
-* **Keypad Library:** [Arduino Keypad Library Reference](https://playground.arduino.cc/Code/Keypad/)
+* Video: <https://www.youtube.com/watch?v=wLLoZa_CDJM>
+* Keypad library: <http://playground.arduino.cc/Code/Keypad>
+* Source code: <https://github.com/rrader/msp430-experiments/tree/master/energia/keypad_main>
 
 ---
 
