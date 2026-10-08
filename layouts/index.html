@@ -25,6 +25,10 @@
   <link rel="stylesheet" href="{{ $quakeCSS.RelPermalink }}" />
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} (All Posts)" href="{{ "index.xml" | absURL }}" />
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} (Українська)" href="{{ "uk/index.xml" | absURL }}" />
+
+  <!-- Webring.gg Integration -->
+  <script src="https://static.webring.gg/www/scripts/widget.js"></script>
+  <script src="https://www.webring.gg/static/www/scripts/widget.js"></script>
 </head>
 <body>
   <div class="desk-environment">
@@ -103,7 +107,7 @@
             <!-- Top Header Bar -->
             <header class="header-bar">
               <div class="header-title">
-                <a href="{{ if eq .Language.Lang "uk" }}{{ "uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="header-title-link" title="{{ if eq .Language.Lang "uk" }}rmn.pp.ua — Головна{{ else }}rmn.pp.ua — Home{{ end }}">
+                <a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="header-title-link" title="{{ if eq .Language.Lang "uk" }}Головний термінал rmn.pp.ua{{ else }}rmn.pp.ua Home Terminal{{ end }}">
                   <span class="quake-logo">⚡</span>
                   <span>rmn.pp.ua</span>
                 </a>
@@ -121,6 +125,34 @@
 
             <!-- Terminal Main Body -->
             <main class="terminal-container">
+              <noscript>
+                <div class="noscript-content" style="padding: 10px 0; color: var(--text-color); font-family: var(--font-main);">
+                  <h2 style="color: var(--accent-color); font-size: 1.2rem; margin-top: 0;">{{ if eq .Language.Lang "uk" }}Навігація сайтом (режим без JavaScript){{ else }}Site Navigation (No-JS Mode){{ end }}</h2>
+                  <p style="color: var(--text-dim); font-size: 0.95rem;">{{ if eq .Language.Lang "uk" }}Для інтерактивного термінала потрібен JavaScript. Нижче наведено прямі посилання на всі розділи та публікації сайту:{{ else }}The interactive terminal console requires JavaScript. Direct links to all sections and publications are provided below:{{ end }}</p>
+                  
+                  <h3 style="color: var(--text-bright); font-size: 1.05rem; margin-top: 15px;">{{ if eq .Language.Lang "uk" }}Розділи сайту{{ else }}Sections{{ end }}</h3>
+                  <ul style="list-style: square; padding-left: 20px; line-height: 1.6;">
+                    <li><a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/engineering/" | relURL }}{{ else }}{{ "/engineering/" | relURL }}{{ end }}" style="color: var(--link-color);">Engineering (DevOps, Linux, CI/CD, Containers)</a></li>
+                    <li><a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/study_posts/" | relURL }}{{ else }}{{ "/study_posts/" | relURL }}{{ end }}" style="color: var(--link-color);">{{ if eq .Language.Lang "uk" }}Дослідження (Study & Academic Research){{ else }}Study & Academic Research{{ end }}</a></li>
+                    <li><a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/teach_posts/" | relURL }}{{ else }}{{ "/teach_posts/" | relURL }}{{ end }}" style="color: var(--link-color);">{{ if eq .Language.Lang "uk" }}Викладання (Teaching & Education){{ else }}Teaching & Education{{ end }}</a></li>
+                    <li><a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/diy_posts/" | relURL }}{{ else }}{{ "/diy_posts/" | relURL }}{{ end }}" style="color: var(--link-color);">DIY (Hardware, MSP430, 3D Printing)</a></li>
+                    <li><a href="{{ if eq .Language.Lang "uk" }}{{ "/uk/projects/" | relURL }}{{ else }}{{ "/projects/" | relURL }}{{ end }}" style="color: var(--link-color);">Projects</a></li>
+                  </ul>
+
+                  <h3 style="color: var(--text-bright); font-size: 1.05rem; margin-top: 15px;">{{ if eq .Language.Lang "uk" }}Публікації{{ else }}Publications{{ end }}</h3>
+                  <ul style="list-style: square; padding-left: 20px; line-height: 1.6;">
+                    {{- range where site.RegularPages "Section" "in" (slice "diy_posts" "teach_posts" "study_posts" "projects" "engineering") }}
+                    {{- if eq .Language.Lang $.Language.Lang }}
+                    <li>
+                      <span style="color: var(--text-dim);">[{{ .Date.Format "2006-01-02" }}]</span>
+                      <a href="{{ .RelPermalink }}" style="color: var(--link-color);">{{ .Title }}</a>
+                    </li>
+                    {{- end }}
+                    {{- end }}
+                  </ul>
+                </div>
+              </noscript>
+
               <div id="terminal-output" class="terminal-output"></div>
 
               <!-- Quick Action Buttons -->
@@ -134,6 +166,7 @@
                 <button class="pill-btn" data-cmd="study">study</button>
                 <button class="pill-btn" data-cmd="teaching">teaching</button>
                 <button class="pill-btn" data-cmd="contact">contact</button>
+                <button class="pill-btn" data-cmd="webring">webring</button>
                 <button class="pill-btn" data-cmd="rss">rss</button>
                 <button class="pill-btn" data-cmd="help">help</button>
                 <button class="pill-btn" data-cmd="clear">clear</button>
@@ -194,6 +227,11 @@
         <div class="stand-desk-shadow"></div>
       </div>
     </div>
+
+    <!-- Webring.gg Desk Badge -->
+    <aside class="webring-badge-wrapper" aria-label="Webring">
+      <div data-webringgg data-user="fpC7t6YusG9iy" data-verification="L5R1TOopnlHb"></div>
+    </aside>
   </div>
 
   <script>
@@ -204,7 +242,9 @@
         section: {{ .Section }},
         lang: {{ .Language.Lang }},
         url: {{ .RelPermalink }},
-        date: {{ .Date.Format "2006-01-02" }}
+        date: {{ .Date.Format "2006-01-02" }},
+        tags: {{ .Params.tags | default slice }},
+        summary: {{ .Plain | truncate 240 }}
       },
       {{- end }}
     ];

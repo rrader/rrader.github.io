@@ -72,7 +72,7 @@
             <!-- Screen Top Status Bar -->
             <header class="header-bar doc-header-bar">
               <div class="header-title">
-                <a href="{{ "/" | relURL }}" class="ws-logo" title="{{ if eq $.Site.Language.Lang "uk" }}Головний термінал{{ else }}Home Terminal{{ end }}">
+                <a href="{{ if eq $.Site.Language.Lang "uk" }}{{ "/uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="ws-logo" title="{{ if eq $.Site.Language.Lang "uk" }}Головний термінал rmn.pp.ua{{ else }}rmn.pp.ua Home Terminal{{ end }}">
                   <span class="quake-logo">⚡</span>
                   <span>rmn.pp.ua</span>
                 </a>
@@ -89,7 +89,7 @@
                 <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ else }}{{ if eq $.Site.Language.Lang "uk" }}{{ "uk/index.xml" | relURL }}{{ else }}{{ "index.xml" | relURL }}{{ end }}{{ end }}" class="ctrl-btn rss-btn" target="_blank" title="RSS Feed">
                   📡 RSS
                 </a>
-                <a href="{{ "/" | relURL }}" class="ctrl-btn home-btn" title="Back to Quake Terminal">
+                <a href="{{ if eq $.Site.Language.Lang "uk" }}{{ "/uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="ctrl-btn home-btn" title="Back to Quake Terminal">
                   ↵ TERMINAL
                 </a>
               </div>
@@ -112,7 +112,7 @@
                 <span class="status-item">UTF-8</span>
                 {{ if .IsPage }}<span class="status-item">{{ .WordCount }} words</span>{{ end }}
                 <a href="#top" class="status-action" id="doc-btn-top" title="Top">▲ TOP</a>
-                <a href="{{ "/" | relURL }}" class="status-action" title="Home">↵ EXIT</a>
+                <a href="{{ if eq $.Site.Language.Lang "uk" }}{{ "/uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}" class="status-action" title="Home">↵ EXIT</a>
               </div>
             </div>
           </div>
@@ -195,7 +195,7 @@
       const osd2 = document.getElementById('osd-btn-2');
       if (osd2) {
         osd2.addEventListener('click', function() {
-          window.location.href = '{{ "/" | relURL }}';
+          window.location.href = '{{ if eq $.Site.Language.Lang "uk" }}{{ "/uk/" | relURL }}{{ else }}{{ "/" | relURL }}{{ end }}';
         });
       }
 

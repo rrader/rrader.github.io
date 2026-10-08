@@ -232,6 +232,10 @@
       desc: isUk ? 'Посилання на RSS-стрічки сайту (загальна, DIY, навчання, дослідження)' : 'Show RSS feed URLs (Main, DIY, Teaching, Research)',
       action: () => printRss()
     },
+    webring: {
+      desc: isUk ? 'Інформація про вебкільце webring.gg' : 'Information about webring.gg directory & webring',
+      action: () => printWebring()
+    },
     clear: {
       desc: isUk ? 'Очистити екран термінала' : 'Clear terminal screen',
       action: () => clearScreen()
@@ -272,6 +276,22 @@
     // Event Listeners
     sfxBtn.addEventListener('click', () => toggleSfx());
     gfxBtn.addEventListener('click', () => toggleGfx());
+
+    const headerTitleLink = document.querySelector('.header-title-link');
+    if (headerTitleLink) {
+      headerTitleLink.addEventListener('click', (e) => {
+        const targetUrl = isUk ? (window.location.origin + '/uk/') : (window.location.origin + '/');
+        const currentPath = window.location.pathname;
+        const isCurrentHome = isUk
+          ? (currentPath === '/uk/' || currentPath === '/uk' || currentPath.endsWith('/uk/index.html'))
+          : (currentPath === '/' || currentPath === '' || currentPath.endsWith('/index.html'));
+        if (isCurrentHome) {
+          e.preventDefault();
+          window.location.href = targetUrl;
+          window.location.reload();
+        }
+      });
+    }
 
     // Monitor Bezel Controls (ViewSonic PT775)
     const monitorPowerBtn = document.getElementById('monitor-power-btn');
@@ -556,6 +576,18 @@
     printLine(`• <b>DIY & Hardware:</b> <a href="${baseUrl}/diy_posts/index.xml" target="_blank">${baseUrl}/diy_posts/index.xml</a>`);
     printLine(`• <b>Teaching & AI:</b> <a href="${baseUrl}/teach_posts/index.xml" target="_blank">${baseUrl}/teach_posts/index.xml</a>`);
     printLine(`• <b>Study:</b> <a href="${baseUrl}/study_posts/index.xml" target="_blank">${baseUrl}/study_posts/index.xml</a>`);
+    printLine(`--------------------------------------------------`);
+  }
+
+  function printWebring() {
+    printLine(`<b>${isUk ? '[ВЕБКІЛЬЦЕ ТА КАТАЛОГ WEBRING.GG]' : '[WEBRING.GG DIRECTORY & WEBRING]'}</b>`, 'system');
+    printLine(isUk 
+      ? `Цей сайт зареєстровано у спільноті <b>webring.gg</b> — каталозі персональних та авторських сайтів індивідуального вебу.`
+      : `This site is registered in <b>webring.gg</b> — an indie directory and federation of personal webmasters.`);
+    printLine(`--------------------------------------------------`);
+    printLine(`• <b>Webring Portal:</b> <a href="https://www.webring.gg/" target="_blank">https://www.webring.gg/</a>`);
+    printLine(`• <b>Directory:</b> <a href="https://www.webring.gg/sites/" target="_blank">https://www.webring.gg/sites/</a>`);
+    printLine(`• <i>${isUk ? 'Інтерактивний віджет закріплено на робочому столі в правому нижньому кутку.' : 'The interactive widget is anchored on the desk in the bottom-right corner.'}</i>`);
     printLine(`--------------------------------------------------`);
   }
 
@@ -922,7 +954,9 @@
     // Subcase B: Global search across all posts and files
     const allPosts = window.__HUGO_POSTS__ || [];
     const matchedPosts = allPosts.filter(p => {
-      const textToSearch = `${p.title} ${p.section} ${p.url} ${p.date}`;
+      const tagsStr = Array.isArray(p.tags) ? p.tags.join(' ') : (p.tags || '');
+      const summaryStr = p.summary || '';
+      const textToSearch = `${p.title} ${tagsStr} ${summaryStr} ${p.section} ${p.url} ${p.date}`;
       const matched = regex.test(textToSearch);
       return invertMatch ? !matched : matched;
     });
@@ -959,7 +993,14 @@
       matchedPosts.forEach(p => {
         const highlightedTitle = highlightMatch(escapeHtml(p.title), pattern, ignoreCase);
         const highlightedSec = highlightMatch(escapeHtml(p.section), pattern, ignoreCase);
-        printLine(`  • [${highlightedSec}] <a href="${p.url}" target="_blank">${highlightedTitle}</a> <span style="opacity:0.6;">(${p.date})</span>`);
+        let tagNote = '';
+        if (Array.isArray(p.tags) && p.tags.length > 0) {
+          const matchedTags = p.tags.filter(t => regex.test(t));
+          if (matchedTags.length > 0) {
+            tagNote = ` <span style="opacity: 0.75; font-size: 0.9em;">[${matchedTags.map(t => highlightMatch(escapeHtml(t), pattern, ignoreCase)).join(', ')}]</span>`;
+          }
+        }
+        printLine(`  • [${highlightedSec}] <a href="${p.url}">${highlightedTitle}</a> <span style="opacity:0.6;">(${p.date})</span>${tagNote}`);
       });
     }
 
