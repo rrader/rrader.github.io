@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-us"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="The JYSK Sminge kids&rsquo; tipi is held up by four wooden poles that are simply tied together at the top with a cord through factory holes. During active play the whole thing wobbles, the poles spread apart, and the fabric sags. So I made a connector that rigidly ties all 4 poles together at the top and sets the correct angles.
+The model is parametric, written in Python with CadQuery, and slicing is automated through the headless BambuStudio CLI.">  
+
+  <title>
+    
+      TipiLock: 3D-Printed Top Connector for the JYSK Sminge Kids&#39; Tipi Tent // rmn.pp.ua
+    
+  </title>
+
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8H1V8F8PHP"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-8H1V8F8PHP', { 'anonymize_ip': false });
+}
+</script>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="../../" />
+  
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (All Posts)" href="https://rrader.github.io/index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Roman Rader (Українська)" href="https://rrader.github.io/uk/index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  
+  
+  
+  <link rel="stylesheet" href="../../css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css" integrity="sha512-6&#43;FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ==" />
+  
+  
+  <link rel="stylesheet" href="../../css/terminal-doc.css" />
+  
+</head>
+<body class="workstation-body" a="light">
+  <div class="desk-environment">
+    <div class="monitor-assembly">
+      
+      <div class="crt-monitor-casing">
+        
+        <div class="casing-vents-top">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        
+        <div class="bezel-top-bar">
+          <div class="viewsonic-logo" title="ViewSonic">
+            <svg class="viewsonic-birds-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 27 C28 26, 60 27, 106 26" stroke="#6d4c41" stroke-width="2.5" stroke-linecap="round" />
+              
+              <g transform="translate(6, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(38, 2) scale(0.6)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fdd835" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#ab47bc" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#d32f2f" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+              
+              <g transform="translate(72, 4) scale(0.55)">
+                <path d="M8 32 L2 45 L10 43 Z" fill="#1e1e1e" />
+                <path d="M12 18 C10 26, 12 32, 16 36 C22 36, 26 28, 24 20 Z" fill="#43a047" />
+                <path d="M16 26 C16 34, 22 36, 24 32 C26 28, 24 24, 20 25 Z" fill="#fbc02d" />
+                <path d="M18 18 C16 22, 21 25, 23 23 C24 20, 22 17, 18 18 Z" fill="#8e24aa" />
+                <path d="M17 14 C15 16, 20 18, 22 16 Z" fill="#00e5ff" />
+                <circle cx="20" cy="11" r="7" fill="#e53935" />
+                <circle cx="22" cy="10" r="1.5" fill="#ffffff" />
+                <circle cx="22.5" cy="10" r="0.8" fill="#000000" />
+                <path d="M26 10 L31 12 L26 14 Z" fill="#fff9c4" />
+                <path d="M15 37 L17 40 M19 37 L21 40" stroke="#ffb300" stroke-width="1.5" stroke-linecap="round" />
+              </g>
+            </svg>
+            <span class="viewsonic-text">ViewSonic</span>
+          </div>
+
+          <div class="model-badge">
+            <span class="badge-brand">SonicTron</span>
+            <span class="badge-series">PT775</span>
+          </div>
+        </div>
+
+        
+        <div class="crt-tube-frame">
+          <div class="crt-wrapper doc-crt-screen" id="crt-wrapper">
+            
+            <header class="header-bar doc-header-bar">
+              <div class="header-title">
+                <a href="../../" class="ws-logo" title="rmn.pp.ua Home Terminal">
+                  <span class="quake-logo">⚡</span>
+                  <span>rmn.pp.ua</span>
+                </a>
+                <span class="ws-status-chip">
+                  <span class="ws-dot"></span> TTY1: tipi-connector.en.md
+                </span>
+              </div>
+              <div class="header-controls">
+                <a href="../../diy_posts/tipi-connector/" class="ctrl-btn lang-btn active">
+                  🇬🇧 EN
+                </a>
+                <a href="../../uk/diy_posts/tipi-connector/" class="ctrl-btn lang-btn">
+                  🇺🇦 UA
+                </a>
+                <a href="../../index.xml" class="ctrl-btn rss-btn" target="_blank" title="RSS Feed">
+                  📡 RSS
+                </a>
+                <a href="../../" class="ctrl-btn home-btn" title="Back to Quake Terminal">
+                  ↵ TERMINAL
+                </a>
+              </div>
+            </header>
+
+            
+            <main class="terminal-container doc-reading-container" id="top">
+              <div class="document-canvas">
+<article>
+  
+  <div class="cli-prompt-line">
+    <span class="cli-prompt-user">[guest@rmn.pp.ua</span>
+    <span class="cli-prompt-path"><a href="../../">~</a>/<a href="../../diy_posts">diy_posts</a>]$</span>
+    <span class="cli-prompt-cmd">cat tipi-connector.en.md</span>
+    <span class="cli-cursor">_</span>
+  </div>
+
+  
+  <div class="tty-header-card">
+    <div class="tty-header-row">
+      <span class="tty-badge"><span class="tty-label">DATE:</span> <time datetime="2026-10-30 12:00:00 &#43;0200 EET">2026-10-30</time></span>
+      <span class="tty-badge"><span class="tty-label">WORDS:</span> 354</span>
+      <span class="tty-badge"><span class="tty-label">READ:</span> ~2m</span>
+      <span class="tty-badge"><span class="tty-label">MODE:</span> -rw-r--r-- (0644)</span>
+    </div>
+    
+    <div class="tty-tags-row">
+      <span class="tty-label">TAGS:</span>
+      
+        <span class="tty-tag-pill">#diy</span>
+      
+        <span class="tty-tag-pill">#3d-printing</span>
+      
+        <span class="tty-tag-pill">#cadquery</span>
+      
+        <span class="tty-tag-pill">#python</span>
+      
+        <span class="tty-tag-pill">#petg</span>
+      
+        <span class="tty-tag-pill">#maker</span>
+      
+        <span class="tty-tag-pill">#kids</span>
+      
+    </div>
+    
+  </div>
+
+  
+  <h1 class="post-title">TipiLock: 3D-Printed Top Connector for the JYSK Sminge Kids&#39; Tipi Tent</h1>
+
+  
+  <div class="translations-badge">
+    <span style="color: var(--paper-accent); font-weight: 600;">🌐 Other languages:</span><a href="../../uk/diy_posts/tipi-connector/" style="color: var(--paper-link); font-weight: 600; text-decoration: underline;">🇺🇦 Українська</a></div>
+
+  
+  <div class="post-content">
+    <p>The <strong>JYSK Sminge</strong> kids&rsquo; tipi is held up by four wooden poles that are simply tied together at the top with a cord through factory holes. During active play the whole thing wobbles, the poles spread apart, and the fabric sags. So I made a connector that rigidly ties all 4 poles together at the top and sets the correct angles.</p>
+<p>The model is parametric, written in Python with CadQuery, and slicing is automated through the headless BambuStudio CLI.</p>
+<p><img alt="TipiLock on top of the tipi: the arrow on the front tube points to the entrance" src="../../images/tipi-connector/tipi-connector-front-arrow.webp"></p>
+<hr>
+<h2 id="1-measurements-and-geometry">1. Measurements and geometry</h2>
+<ul>
+<li><strong>Pole circumference (measured with a tape):</strong> 70.0 mm, so $D = 70/\pi \approx 22.3$ mm.</li>
+<li><strong>Hole diameter in the model:</strong> 23.0 mm (<code>HOLE_CLEARANCE = +0.7 mm</code> for a free fit and FDM shrinkage).</li>
+<li><strong>Entrance (between the two front poles):</strong> $29.33^\circ$ from vertical, exactly <strong>110 cm</strong> of clearance between the legs.</li>
+<li><strong>Three walls (right, back, left):</strong> $30.15^\circ$ from vertical, exactly <strong>112 cm</strong> of fabric clearance.</li>
+<li><strong>Orientation marks:</strong> arrows embossed on the front tubes point to the entrance, an <code>ADALAB</code> logo on the back one.</li>
+<li><strong>Connector height:</strong> 60 mm (channel length along the tilted pole is 69 mm).</li>
+<li><strong>Position on the poles:</strong> the factory $\varnothing 5$ mm cord hole is 6.5 cm from the top end. The connector sits right below these holes. The cord goes through them and the central $\varnothing 11$ mm hole, so the connector can&rsquo;t slide down.</li>
+<li><strong>Reinforcement:</strong> a solid conical core joins all 4 tubes into one body, no thin legs to snap.</li>
+<li><strong>Chamfers:</strong> 1.2 mm on all holes for easy pole entry, 1.0 mm on the top outer edge.</li>
+</ul>
+<p><img alt="The cord goes through the pole holes and the connector, the knot holds everything in place" src="../../images/tipi-connector/tipi-connector-rope-lock.webp"></p>
+<hr>
+<h2 id="2-printing-bambu-lab-a1-mini">2. Printing (Bambu Lab A1 Mini)</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Material</strong></td>
+<td>PETG</td>
+</tr>
+<tr>
+<td><strong>Layer height</strong></td>
+<td>0.24 mm</td>
+</tr>
+<tr>
+<td><strong>Orientation</strong></td>
+<td>Upright, flat bottom cut on the bed</td>
+</tr>
+<tr>
+<td><strong>Supports</strong></td>
+<td>None needed (self-supporting, angles ~$29.9^\circ$ from vertical)</td>
+</tr>
+<tr>
+<td><strong>Perimeters</strong></td>
+<td>3 walls</td>
+</tr>
+<tr>
+<td><strong>Infill</strong></td>
+<td>15%, Adaptive Cubic or Gyroid</td>
+</tr>
+<tr>
+<td><strong>Print time</strong></td>
+<td>~2 h 17 min</td>
+</tr>
+<tr>
+<td><strong>Filament</strong></td>
+<td>~115 g</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="3-result">3. Result</h2>
+<p>Printed in PETG and tested on a real JYSK Sminge tipi: the wobble is gone, the fabric is evenly tensioned, and the entrance is clearly marked by the arrows.</p>
+<p>If your poles have a different diameter, the generator has a <code>--diameter</code> option, e.g. <code>export.py --diameter 24.0 --branding tube</code>.</p>
+
+  </div>
+
+  
+  <div class="eof-marker">
+    <span class="eof-line">--- [EOF: tipi-connector.en.md] ---</span>
+  </div>
+
+  
+  <div class="post-footer-nav">
+    <a href="../../" class="cli-btn">
+      <span>⚡</span> [cd ~] Main Terminal
+    </a>
+    <a href="#top" class="cli-btn">
+      <span>▲</span> [top] Scroll to Top
+    </a>
+  </div>
+</article>
+
+              </div>
+            </main>
+
+            
+            <div class="doc-statusbar">
+              <div class="status-left">
+                <span class="status-mode">NORMAL</span>
+                <span class="status-filename">tipi-connector.en.md</span>
+              </div>
+              <div class="status-right">
+                <span class="status-item">UTF-8</span>
+                <span class="status-item">354 words</span>
+                <a href="#top" class="status-action" id="doc-btn-top" title="Top">▲ TOP</a>
+                <a href="../../" class="status-action" title="Home">↵ EXIT</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="bezel-bottom-bar">
+          <div class="bezel-speaker-grille">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="bezel-osd-panel">
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">1</span>
+              <button type="button" class="osd-btn" id="osd-btn-1" title="Top">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">2</span>
+              <button type="button" class="osd-btn" id="osd-btn-2" title="Terminal">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▼</span>
+              <button type="button" class="osd-btn" id="osd-btn-down" title="Scroll Down">·</button>
+            </div>
+            <div class="osd-btn-wrapper">
+              <span class="osd-btn-label">▲</span>
+              <button type="button" class="osd-btn" id="osd-btn-up" title="Scroll Up">·</button>
+            </div>
+          </div>
+
+          <div class="bezel-power-panel">
+            <div class="power-indicator" id="monitor-power-led" title="Power Status"></div>
+            <button type="button" class="power-button" id="monitor-power-btn" title="Monitor Power Switch">
+              <span class="power-symbol">⏻</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="monitor-stand">
+        <div class="stand-neck"></div>
+        <div class="stand-swivel-ring"></div>
+        <div class="stand-base"></div>
+        <div class="stand-desk-shadow"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const pwrBtn = document.getElementById('monitor-power-btn');
+      const pwrLed = document.getElementById('monitor-power-led');
+      const crtWrap = document.getElementById('crt-wrapper');
+      const readingCont = document.querySelector('.doc-reading-container');
+      let pwrOn = true;
+
+      if (pwrBtn && crtWrap) {
+        pwrBtn.addEventListener('click', function() {
+          pwrOn = !pwrOn;
+          if (pwrOn) {
+            crtWrap.classList.remove('crt-powered-off');
+            if (pwrLed) pwrLed.classList.remove('standby');
+          } else {
+            crtWrap.classList.add('crt-powered-off');
+            if (pwrLed) pwrLed.classList.add('standby');
+          }
+        });
+      }
+
+      const osd1 = document.getElementById('osd-btn-1');
+      if (osd1 && readingCont) {
+        osd1.addEventListener('click', function() {
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      const osd2 = document.getElementById('osd-btn-2');
+      if (osd2) {
+        osd2.addEventListener('click', function() {
+          window.location.href = '\/';
+        });
+      }
+
+      const osdDown = document.getElementById('osd-btn-down');
+      if (osdDown && readingCont) {
+        osdDown.addEventListener('click', function() {
+          readingCont.scrollBy({ top: 350, behavior: 'smooth' });
+        });
+      }
+
+      const osdUp = document.getElementById('osd-btn-up');
+      if (osdUp && readingCont) {
+        osdUp.addEventListener('click', function() {
+          readingCont.scrollBy({ top: -350, behavior: 'smooth' });
+        });
+      }
+
+      const topBtn = document.getElementById('doc-btn-top');
+      if (topBtn && readingCont) {
+        topBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          readingCont.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

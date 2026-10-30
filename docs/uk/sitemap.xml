@@ -2,6 +2,149 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://rrader.github.io/uk/tags/3d-printing/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/3d-printing/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/3d-printing/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/cadquery/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/cadquery/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/cadquery/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/diy/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/diy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/diy/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/diy_posts/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/kids/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/kids/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/kids/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/maker/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/maker/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/maker/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/petg/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/petg/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/petg/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/python/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/python/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/tags/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/tags/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/diy_posts/tipi-connector/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/diy_posts/tipi-connector/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/diy_posts/tipi-connector/"
+                />
+  </url><url>
+    <loc>https://rrader.github.io/uk/</loc>
+    <lastmod>2026-10-30T12:00:00+02:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://rrader.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="uk-ua"
+                href="https://rrader.github.io/uk/"
+                />
+  </url><url>
     <loc>https://rrader.github.io/uk/tags/ai/</loc>
     <lastmod>2026-09-17T13:00:00+03:00</lastmod>
     <xhtml:link
@@ -52,19 +195,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/stem/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/</loc>
-    <lastmod>2026-09-17T13:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/teaching/</loc>
@@ -119,32 +249,6 @@
                 href="https://rrader.github.io/uk/teach_posts/turing-test-classroom-imitation-game/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/</loc>
-    <lastmod>2026-09-17T13:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/3d-printing/</loc>
-    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/3d-printing/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/3d-printing/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/</loc>
     <lastmod>2026-09-17T12:00:00+03:00</lastmod>
     <xhtml:link
@@ -156,32 +260,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/diy_posts/adabox-diy-rfid-player/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/diy/</loc>
-    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/diy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/diy/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/diy_posts/</loc>
-    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/diy_posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/diy_posts/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/esp32/</loc>
@@ -208,19 +286,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/tags/hardware/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/maker/</loc>
-    <lastmod>2026-09-17T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/maker/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/maker/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/flask/</loc>
@@ -275,19 +340,6 @@
                 href="https://rrader.github.io/uk/tags/projects/"
                 />
   </url><url>
-    <loc>https://rrader.github.io/uk/tags/python/</loc>
-    <lastmod>2026-07-04T16:26:24+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/python/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/python/"
-                />
-  </url><url>
     <loc>https://rrader.github.io/uk/tags/telegram/</loc>
     <lastmod>2026-07-04T16:26:24+03:00</lastmod>
     <xhtml:link
@@ -312,19 +364,6 @@
                 rel="alternate"
                 hreflang="uk-ua"
                 href="https://rrader.github.io/uk/projects/"
-                />
-  </url><url>
-    <loc>https://rrader.github.io/uk/tags/cadquery/</loc>
-    <lastmod>2026-06-01T12:00:00+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://rrader.github.io/tags/cadquery/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="uk-ua"
-                href="https://rrader.github.io/uk/tags/cadquery/"
                 />
   </url><url>
     <loc>https://rrader.github.io/uk/tags/laser-cutting/</loc>

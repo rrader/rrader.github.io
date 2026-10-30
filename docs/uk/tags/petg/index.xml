@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Petg on Роман Радер</title>
+    <link>https://rrader.github.io/uk/tags/petg/</link>
+    <description>Recent content in Petg on Роман Радер</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>uk-ua</language>
+    <lastBuildDate>Fri, 30 Oct 2026 12:00:00 +0200</lastBuildDate>
+    <atom:link href="https://rrader.github.io/uk/tags/petg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TipiLock: надрукований на 3D-принтері з&#39;єднувач верхівки для дитячого вігваму JYSK Sminge</title>
+      <link>https://rrader.github.io/uk/diy_posts/tipi-connector/</link>
+      <pubDate>Fri, 30 Oct 2026 12:00:00 +0200</pubDate>
+      <guid>https://rrader.github.io/uk/diy_posts/tipi-connector/</guid>
+      <description>Дитячий вігвам JYSK Sminge тримається на чотирьох дерев&amp;rsquo;яних палицях, які зверху просто зв&amp;rsquo;язані шнурком через заводські отвори. Під час активних ігор вся конструкція хитається, роз&amp;rsquo;їжджається, а тканина провисає. Тому я зробив конектор, який жорстко зв&amp;rsquo;язує всі 4 палиці у верхівці та задає правильні кути.&#xA;Модель параметрична, написана на Python у CadQuery, а нарізка під принтер автоматизована через headless CLI BambuStudio.&#xA;1. Заміри та геометрія Окружність палиці (стрічкою): 70.0 мм, тобто $D = 70/\pi \approx 22.</description>
+    </item>
+  </channel>
+</rss>
