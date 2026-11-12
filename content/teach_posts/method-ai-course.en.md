@@ -6,7 +6,7 @@ draft: false
 
 Hello!
 
-Methodological resources for the "Fundamentals of Artificial Intelligence Engineering" course are available at https://class.rmn.pp.ua/method.
+Methodological resources for the "Fundamentals of Artificial Intelligence Engineering" course are available at https://moodle.rmn.pp.ua/ai-course.
 
 Available materials include:
 - Curriculum study guide and course textbook

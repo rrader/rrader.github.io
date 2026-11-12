@@ -525,7 +525,7 @@
       : `• <b>Focus Areas:</b> AI Engineering Education (K-12), Informatics Curriculum, and Cybersecurity Awareness.`);
     printLine(`• <b>${isUk ? 'Освітні портали:' : 'Educational Portals:'}</b>`);
     printLine(`  - <a href="https://class.rmn.pp.ua/" target="_blank">https://class.rmn.pp.ua/</a> (Classroom Portal)`);
-    printLine(`  - <a href="https://class.rmn.pp.ua/method" target="_blank">https://class.rmn.pp.ua/method</a> (AI Methodological Guide)`);
+    printLine(`  - <a href="https://moodle.rmn.pp.ua/ai-course" target="_blank">https://moodle.rmn.pp.ua/ai-course</a> (AI Methodological Guide)`);
     
     const posts = getDynamicPosts("teach_posts");
     if (posts.length > 0) {

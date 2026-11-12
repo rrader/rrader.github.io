@@ -33,7 +33,7 @@ SITE_DIR="/Users/roma/Personal/projects/rrader.github.io"
 * **Stack Overflow:** [https://stackoverflow.com/users/330406/antigluk](https://stackoverflow.com/users/330406/antigluk)
 * **Geektastic:** [https://app.geektastic.com/profile/public/ofUqjZqr-oppQOlOhROsCg](https://app.geektastic.com/profile/public/ofUqjZqr-oppQOlOhROsCg)
 * **Освітній портал (Google Classroom / курси):** [https://class.rmn.pp.ua/](https://class.rmn.pp.ua/)
-* **Методичні матеріали з курсу ШІ:** [https://class.rmn.pp.ua/method](https://class.rmn.pp.ua/method)
+* **Методичні матеріали з курсу ШІ:** [https://moodle.rmn.pp.ua/ai-course](https://moodle.rmn.pp.ua/ai-course)
 
 ---
 

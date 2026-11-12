@@ -39,7 +39,7 @@
 * Overview: Cybersecurity awareness materials, AI engineering course resources, informatics study guides, and high-school projects.
 * Educational Portals & Course Materials:
   * Educational portal: [https://class.rmn.pp.ua/](https://class.rmn.pp.ua/)
-  * Methodological materials (AI Engineering): [https://class.rmn.pp.ua/method](https://class.rmn.pp.ua/method)
+  * Methodological materials (AI Engineering): [https://moodle.rmn.pp.ua/ai-course](https://moodle.rmn.pp.ua/ai-course)
 
 ---
 
